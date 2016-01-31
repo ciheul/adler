@@ -1,0 +1,43 @@
+/* Base Application Styles */
+
+body {
+  /* background: #e5e5e5; */
+  /* padding-top: 30px; */
+  /* color: black; */
+}
+
+/* hr { */
+/*     margin: 15px 0px 15px 0px; */
+/* } */
+/*  */
+/* .margin-0 { */
+/*     margin: 0; */
+/* } */
+/*  */
+/* .container h3 { */
+/*     margin-top: 40px; */
+/*     margin-bottom: 20px; */
+/* } */
+/*  */
+/* .caption h5 { */
+/*     font-size: 16px; */
+/*     margin-top: 5px; */
+/*     margin-bottom: 25px; */
+/* } */
+/*  */
+/* .navbar { */
+/*     background-color: #205081; */
+/*     min-height: 40px !important; */
+/*     height: 40px !important; */
+/* } */
+/*  */
+/* .navbar-nav > li > a, .navbar-brand { */
+/*     padding-top:10px !important;  */
+/*     padding-bottom:0 !important; */
+/*     height: 40px; */
+/* } */
+/*  */
+/* .navbar-brand, .navbar-default { */
+/*     color: #fff; */
+/*     background-color: #205081; */
+/* } */

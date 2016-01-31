@@ -1,0 +1,13 @@
+*.pyc                                                                              
+*.swp                                                                              
+*.rdb                                                                              
+*.out                                                                              
+.DS_Store                                                                          
+dist/
+migrations/                                                                   
+hawk/config/
+node_modules/                                                                    
+bower_components/
+adler-rabbitmq/
+sensors/
+dago/
