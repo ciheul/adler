@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <h3>Alarm</h3>
+    <div id="myDataTable"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  YUI().use(
+    'aui-datatable',
+    function(Y) {
+      var columns = ['Date', 'Time', 'Equipment', 'Message'];
+  
+      var data = [
+        {
+          Date: '2015-06-04',
+          Time: '16:33:48',
+          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Message: 'History Incoming ST-5 Undervoltage'
+        },
+        {
+          Date: '2015-06-12',
+          Time: '22:58:11',
+          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Message: 'History Incoming ST-5 Undervoltage'
+        }
+      ];
+  
+      new Y.DataTable
+        .Base({ columnset: columns, recordset: data})
+        .render('#myDataTable');
+    }
+  );
+</script>
+{% endblock %}

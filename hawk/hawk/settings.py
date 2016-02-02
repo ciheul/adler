@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'account.HawkUser'
 
 # Application definition
 
@@ -62,7 +63,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'account'),    
-            os.path.join(BASE_DIR, 'water'),    
+            os.path.join(BASE_DIR, 'water/templates/water'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -92,7 +93,6 @@ DATABASES = {
         'PORT': misc.PORT,
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

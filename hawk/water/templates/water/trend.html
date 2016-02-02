@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <h3>Trend</h3>
+    <h4>Sensor 1</h4>
+    <canvas id="myChart" style="width:100%;height:400px;"></canvas>
+    <hr />
+    <h4>Sensor 2</h4>
+    <canvas id="myChart2" style="width:100%;height:400px;"></canvas>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="/static/water/backboneapp/bower_components/Chart.js/Chart.min.js"></script>
+
+<script>
+  var ctx = $('#myChart').get(0).getContext('2d');
+
+  var data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      }
+    ]
+  };
+
+  var trend = new Chart(ctx).Line(data);
+
+  var ctx2 = $('#myChart2').get(0).getContext('2d');
+  var data2 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      }
+    ]
+  };
+  var trend2 = new Chart(ctx2).Line(data2);
+</script>
+{% endblock %}

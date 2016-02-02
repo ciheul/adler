@@ -31,11 +31,10 @@ class LoginView(View):
         return render(request, "static/account/backboneapp/index.html")
 
 
-# useless
-# class LogoutView(View):
-#     def get(self, request):
-#         logout(request)
-#         return HttpResponseRedirect(reverse_lazy('login'))
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect(reverse_lazy('login'))
 
 
 # revert back to function-based

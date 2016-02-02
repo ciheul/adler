@@ -6,8 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="/static/water/backboneapp/bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/static/water/backboneapp/styles/diesel.css">
+	<link rel="stylesheet" href="/static/water/backboneapp/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/water/backboneapp/styles/water.css" />
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css" />
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10,r-2.0.0/datatables.min.css"/>
+  
 </head>
 
 <body>
@@ -34,63 +38,73 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <!-- <div id="carousel&#45;example&#45;generic" class="carousel slide" data&#45;ride="carousel"> -->
-  <!--   <!&#45;&#45; Indicators &#45;&#45;> -->
-  <!--   <ol class="carousel&#45;indicators"> -->
-  <!--     <li data&#45;target="#carousel&#45;example&#45;generic" data&#45;slide&#45;to="0" class="active"></li> -->
-  <!--     <li data&#45;target="#carousel&#45;example&#45;generic" data&#45;slide&#45;to="1"></li> -->
-  <!--   </ol> -->
+  <!-- <div id="app"></div> -->
   <!--  -->
-  <!--   <!&#45;&#45; Wrapper for slides &#45;&#45;> -->
-  <!--   <div class="carousel&#45;inner" role="listbox"> -->
-  <!--     <div class="item active"> -->
-  <!--       <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera&#45;university&#45;assets.s3.amazonaws.com/aa/e426c7bed595843b5b5f60e85425c9/quad2.jpg?auto=format&#38;dpr=1&#38;blur=25" alt=""> -->
-  <!--       <div class="carousel&#45;caption"></div> -->
-  <!--     </div> -->
-  <!--     <div class="item"> -->
-  <!--       <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera&#45;university&#45;assets.s3.amazonaws.com/8d/ddb9c705da98fcbeecf418326d2223/ucsc&#45;banner&#45;1280.jpg?auto=format&#38;dpr=1&#38;blur=25" alt=""> -->
-  <!--       <div class="carousel&#45;caption"></div> -->
-  <!--     </div> -->
-  <!--   </div> -->
+  <!-- <script type="text/template" id="dashboard&#45;template"> -->
+  <!--   <div id="map"></div> -->
   <!--  -->
-  <!--   <!&#45;&#45; Controls &#45;&#45;> -->
-  <!--   <a class="left carousel&#45;control" href="#carousel&#45;example&#45;generic" role="button" data&#45;slide="prev"> -->
-  <!--     <span class="glyphicon glyphicon&#45;chevron&#45;left" aria&#45;hidden="true"></span> -->
-  <!--     <span class="sr&#45;only">Previous</span> -->
-  <!--   </a> -->
-  <!--   <a class="right carousel&#45;control" href="#carousel&#45;example&#45;generic" role="button" data&#45;slide="next"> -->
-  <!--     <span class="glyphicon glyphicon&#45;chevron&#45;right" aria&#45;hidden="true"></span> -->
-  <!--     <span class="sr&#45;only">Next</span> -->
-  <!--   </a> -->
-  <!-- </div> -->
-
-  <div class="container">
-    <h3>Courses</h3>
-    <div id="course-list" class="row"></div>
-    <a href="/#/courses" class="btn btn-default btn-lg" role="button" style="width: 100%;">Find out all courses</a>
-    <hr />
-    <footer>
-      <div class="col-xs-12 col-md-4">
-        <p>SEKOLAH REPOEBLIK provides universal access to the world’s best education, partnering with top universities and organizations to offer courses for anyone to take, for free.</p>
-        <p>© 2015 SEKOLAH REPOEBLIK. All rights reserved.</p>
-      </div>
-    </footer>
-  </div>
-
-
-  <script type="text/template" id="course-template"></script>
+  <!--   <h5>Assets</h5> -->
+  <!--   <ul> -->
+  <!--     <li><a href="#detail">Nusa Dua</a></li> -->
+  <!--   </ul> -->
+  <!--  -->
+  <!--   <table id="alarm&#45;table"> -->
+  <!--     <thead> -->
+  <!--       <tr> -->
+  <!--         <td>Date</td> -->
+  <!--         <td>Time</td> -->
+  <!--         <td>Equipment</td> -->
+  <!--         <td>Message</td> -->
+  <!--       </tr> -->
+  <!--     </thead> -->
+  <!--     <tbody> -->
+  <!--       <tr> -->
+  <!--         <td>2015&#45;06&#45;04</td> -->
+  <!--         <td>16:33:48</td> -->
+  <!--         <td>EPTJ\ST.V\PM.INC</td> -->
+  <!--         <td>History Incoming ST&#45;5 Undervoltage</td> -->
+  <!--       </tr> -->
+  <!--       <tr> -->
+  <!--         <td>2015&#45;06&#45;12</td> -->
+  <!--         <td>22:58:11</td> -->
+  <!--         <td>EPTJ\ST.V\PM.INC</td> -->
+  <!--         <td>History Incoming ST&#45;5 Undervoltage</td> -->
+  <!--       </tr> -->
+  <!--     </tbody> -->
+  <!--   </table> -->
+  <!-- </script> -->
   
+  <!-- <script type="text/template" id="detail&#45;template"> -->
+    <div class="my-container">
+      <div id="sidenav">
+        <ul class="sidenav-ul">
+          <!-- <li><a href="#/team">A</a></li> -->
+          <!-- <li><a href="#/tracker">T</a></li> -->
+          <!-- <li><a href="#/overview">O</a></li> -->
+          <!-- <li><a href="#/calendar">C</a></li> -->
+          <!-- <li><a href="#/report">R</a></li> -->
+        </ul>
+      </div>
+      <div id="content">
+        <h3>Detail</h3>
+      </div>
+    </div>
+  <!-- </script> -->
+
 	<script src="/static/water/backboneapp/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="/static/water/backboneapp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="/static/water/backboneapp/bower_components/underscore/underscore-min.js"></script>
 	<script src="/static/water/backboneapp/bower_components/backbone/backbone-min.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10,r-2.0.0/datatables.min.js"></script>
 
 	<!-- <script src="/static/diesel/backboneapp/scripts/models/course.js"></script> -->
 	<!-- <script src="/static/diesel/backboneapp/scripts/collections/courses.js"></script> -->
-	<!-- <script src="/static/diesel/backboneapp/scripts/views/course&#45;item&#45;view.js"></script> -->
-	<!-- <script src="/static/diesel/backboneapp/scripts/views/course&#45;list&#45;view.js"></script> -->
-	<!-- <script src="/static/diesel/backboneapp/scripts/routers/router.js"></script> -->
-	<!-- <script src="/static/diesel/backboneapp/scripts/main.js"></script> -->
+	<script src="/static/water/backboneapp/scripts/views/detail-view.js"></script>
+	<script src="/static/water/backboneapp/scripts/views/dashboard-view.js"></script>
+	<script src="/static/water/backboneapp/scripts/routers/router.js"></script>
+	<script src="/static/water/backboneapp/scripts/main.js"></script>
 </body>
 </html>
 

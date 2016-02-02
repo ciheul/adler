@@ -16,7 +16,7 @@ router.register(r'groups', api.GroupViewSet)
 # Additionally, we include login URLs for the browseable API.
 urlpatterns = [
     # url(r'^login/', views.LoginView.as_view(), name='login'),
-    # url(r'^logout/', views.LogoutView.as_view(), name='logout'),
+    url(r'^logout/', views.LogoutView.as_view(), name='logout'),
     # url(r'^profile/', views.UserProfileView.as_view(), name='profile'),
     # url(r'^passwordresetdone/', 'django.contrib.auth.views.password_reset_done',
     #     name='password_reset_done'),

@@ -9,7 +9,7 @@ import simplejson as json
 from mixins import MongoConnectorMixin
 
 
-PORT = 11000
+PORT = 12000
 QUEUE = 'inetscada'
 
 class INetSCADASubscriber(MongoConnectorMixin):

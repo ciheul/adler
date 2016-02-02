@@ -19,12 +19,14 @@ URL:
 import json
 
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.contrib.auth.views import password_reset, password_reset_confirm
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import View
+
+from account.models import HawkUser
 
 from rest_framework import permissions, status, viewsets
 from rest_framework.authentication import (BasicAuthentication,
@@ -67,9 +69,9 @@ class LoginAPIView(APIView):
 
 
 class LogoutAPIView(APIView):
-    def post(self, request):
+    def get(self, request):
         logout(request)
-        data = { 'success': 0, 'next': '/accounts/#/login' }
+        data = { 'success': 0, 'next': '/accounts/login' }
 
         # return http 201 created
         return Response(data=data, status=status.HTTP_201_CREATED)
@@ -125,7 +127,7 @@ class ForgotPasswordAPIView(APIView):
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
-    queryset = User.objects.all()
+    queryset = HawkUser.objects.all()
     serializer_class = UserSerializer
 
 

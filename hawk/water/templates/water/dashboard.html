@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="dashboard-content">
+  <div id="map"></div>
+  <div id="content">
+    <h4>Assets</h4>
+    <ul>
+      <li><a href="detail">Nusa Dua</a></li>
+    </ul>
+
+    <hr />
+
+    <h4>Alarm</h4>
+    <div id="myDataTable"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+<script>
+  var map = L.map('map')
+    .setView([-8.7918741, 115.2269323], 16);
+  
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'winnuayi.p1l11l5e',
+    accessToken: 'pk.eyJ1Ijoid2lubnVheWkiLCJhIjoiY2lrM3A0cWl4MDAwOHY0a3RzOWx3MWQ2ZyJ9.oBxFuNtCJG68Cuu3DK5RWA'
+  }).addTo(map);
+  
+  YUI().use(
+    'aui-datatable',
+    function(Y) {
+      var columns = ['Date', 'Time', 'Equipment', 'Message'];
+  
+      var data = [
+        {
+          Date: '2015-06-04',
+          Time: '16:33:48',
+          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Message: 'History Incoming ST-5 Undervoltage'
+        },
+        {
+          Date: '2015-06-12',
+          Time: '22:58:11',
+          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Message: 'History Incoming ST-5 Undervoltage'
+        },
+        {
+          Date: '2015-06-18',
+          Time: '00:44:23',
+          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Message: 'History Incoming ST-5 Undervoltage'
+        },
+        {
+          Date: '2015-06-22',
+          Time: '13:22:14',
+          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Message: 'History Incoming ST-5 Undervoltage'
+        }
+      ];
+  
+      new Y.DataTable
+        .Base({ columnset: columns, recordset: data})
+        .render('#myDataTable');
+    }
+  );
+</script>
+{% endblock %}
