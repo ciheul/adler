@@ -14,6 +14,7 @@ h3 {
 
 #map { height: 250px; }
 
+/******** NAVBAR ********/
 .navbar-default {
     margin: 0 !important;
     padding: 0 !important;
@@ -35,7 +36,9 @@ h3 {
 .navbar-default .navbar-nav > li > a {
     color: white;
 }
+/******** END OF NAVBAR ********/
 
+/******** SIDENAV & MAIN CONTENT ********/
 .my-container {
     height: 100%;
     display: -ms-flexbox;
@@ -73,6 +76,7 @@ h3 {
 }
 
 #content {
+    background-color: #f0f4f8;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -88,3 +92,46 @@ h3 {
 .sidenav-ul > li {
     padding-bottom: 20px;
 }
+/******** END OF SIDENAV & MAIN CONTENT ********/
+
+/******** GRIDSTER ********/
+ul {
+  list-style-type: none;
+}
+
+.gridster ul {
+    background-color: #f0f4f8;
+}
+
+.gridster li {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100%;
+    border: 1px solid #f2f2f2;
+}
+
+.gridster {
+    margin: 0 auto;
+    opacity: .8;
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+
+.gridster .gs-w {
+    background: #fff;
+    cursor: pointer;
+}
+
+.gridster .player {
+    background: #BBB;
+}
+
+.gridster .preview-holder {
+    border: none!important;
+    background: red!important;
+}
+/******** END OF GRIDSTER ********/

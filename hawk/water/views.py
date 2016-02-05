@@ -19,8 +19,8 @@ def cctv(request):
 
 
 @login_required
-def detail(request):
-    return render(request, 'detail.html')
+def live(request):
+    return render(request, 'live.html')
 
 
 @login_required
