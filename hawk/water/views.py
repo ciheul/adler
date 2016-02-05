@@ -19,8 +19,28 @@ def cctv(request):
 
 
 @login_required
-def live(request):
-    return render(request, 'live.html')
+def live_pretreatment(request):
+    return render(request, 'live-pretreatment.html')
+
+
+@login_required
+def live_osmosis(request):
+    return render(request, 'live-osmosis.html')
+
+
+@login_required
+def live_product(request):
+    return render(request, 'live-product.html')
+
+
+@login_required
+def live_reject(request):
+    return render(request, 'live-reject.html')
+
+
+@login_required
+def live_energy(request):
+    return render(request, 'live-energy.html')
 
 
 @login_required
