@@ -2,6 +2,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/nvd3/build/nv.d3.min.css"></script>
 {% endblock %}
 
 {% block content %}
@@ -9,39 +10,205 @@
   {% include "sidenav-inc.html" %}
   <div id="content">
     <h3>Trend</h3>
-    <h4>Sensor 1</h4>
 
+    <h4>PRE-TREATMENT</h4>
     <div class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="5" data-sizey="5">
-          <canvas id="myChart"></canvas>
-        </li>
-        <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
-          <canvas id="myChart2"></canvas>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div style="padding:20px;">
+            <b>MM FILTER DP & FEED PUMP SPEED</b>
+            <canvas id="myChart" width="1050" height="250" style="margin-top:10px;"></canvas>
+          </div>
         </li>
       </ul>
     </div>
 
     <hr />
 
+    <h4>RO PROCESS</h4>
     <div class="gridster">
       <ul>
         <li data-row="1" data-col="1" data-sizex="5" data-sizey="5">
-          <canvas id="myChart"></canvas>
+          <div style="padding:20px;">
+            <b>FLOW RATES</b>
+            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+          </div>
         </li>
         <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
-          <canvas id="myChart2"></canvas>
+          <div style="padding:20px;">
+            <b>PX PRESSURES</b>
+            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+          </div>
         </li>
-        <li data-row="2" data-col="1" data-sizex="5" data-sizey="5"></li>
-        <li data-row="2" data-col="3" data-sizex="5" data-sizey="5"></li>
+        <li data-row="2" data-col="1" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b>HP & CIRCULATION PUMP SPEED</b>
+            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+          </div>
+        </li>
+        <li data-row="2" data-col="3" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b>ANALYZERS</b>
+            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+          </div>
+        </li>
       </ul>
     </div>
+
+    <hr />
+
+    <h4>PRODUCT</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div style="padding:20px;">
+            <b>TRANSFER TREND</b>
+            <canvas id="chart2" width="1050" height="250" style="margin-top:10px;"></canvas>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h4>REJECT</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div style="padding:20px;">
+            <b>REJECT TREND</b>
+            <canvas id="chart2" width="1050" height="250" style="margin-top:10px;"></canvas>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h4>ENERGY TREND</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div style="padding:20px;">
+            <b>ENERGY TREND</b>
+            <canvas id="chart2" width="1050" height="250" style="margin-top:10px;"></canvas>
+          </div>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </div>
 {% endblock %}
 
 {% block javascript %}
 <script src="/static/water/backboneapp/bower_components/Chart.js/Chart.min.js"></script>
+<script src="/static/water/backboneapp/bower_components/d3/d3.min.js"></script>
+<script src="/static/water/backboneapp/bower_components/nvd3/build/nv.d3.min.js"></script>
+
+<script>
+Chart.types.Line.extend({
+    name: "Line2Y",
+    getScale: function(data) {
+        var startPoint = this.options.scaleFontSize;
+        var endPoint = this.chart.height - (this.options.scaleFontSize * 1.5) - 5;
+        return Chart.helpers.calculateScaleRange(
+            data,
+            endPoint - startPoint,
+            this.options.scaleFontSize,
+            this.options.scaleBeginAtZero,
+            this.options.scaleIntegersOnly);
+    },
+    initialize: function (data) {
+        var y2datasetLabels = [];
+        var y2data = [];
+        var y1data = [];
+        data.datasets.forEach(function (dataset, i) {
+            if (dataset.y2axis == true) {
+                y2datasetLabels.push(dataset.label);
+                y2data = y2data.concat(dataset.data);
+            } else {
+                y1data = y1data.concat(dataset.data);
+            }
+        });
+        
+        // use the helper function to get the scale for both datasets
+        var y1Scale = this.getScale(y1data);
+        this.y2Scale = this.getScale(y2data);
+        var normalizingFactor = y1Scale.max / this.y2Scale.max;
+
+        // update y2 datasets
+        data.datasets.forEach(function(dataset) {
+            if (y2datasetLabels.indexOf(dataset.label) !== -1) {
+                dataset.data.forEach(function (e, j) {
+                    dataset.data[j] = e * normalizingFactor;
+                })
+            }
+        })
+
+        // denormalize tooltip for y2 datasets
+        this.options.multiTooltipTemplate = function (d) {
+            if (y2datasetLabels.indexOf(d.datasetLabel) !== -1) 
+                return Math.round(d.value / normalizingFactor, 6);
+            else 
+                return d.value;
+        }
+
+        Chart.types.Line.prototype.initialize.apply(this, arguments);
+    },
+    draw: function () {
+        this.scale.xScalePaddingRight = this.scale.xScalePaddingLeft;
+        Chart.types.Line.prototype.draw.apply(this, arguments);
+
+        this.chart.ctx.textAlign = 'left';
+        this.chart.ctx.textBaseline = "middle";
+        this.chart.ctx.fillStyle = "#666";
+        var yStep = (this.scale.endPoint - this.scale.startPoint) / this.y2Scale.steps
+        for (var i = 0, y = this.scale.endPoint, label = this.y2Scale.min; 
+             i <= this.y2Scale.steps; 
+             i++) {
+                this.chart.ctx.fillText(label, this.chart.width - this.scale.xScalePaddingRight + 10, y);
+                y -= yStep;
+                label += this.y2Scale.stepValue
+        }
+    }
+});
+
+
+var lineChartData1 = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [{
+        label: "My First dataset",
+        fillColor: "rgba(0,255,0,0.5)",
+        strokeColor: "rgba(0,255,0,1)",
+        pointColor: "rgba(0,255,0,1)",
+        pointStrokeColor: "#fff",
+        data: [15, 25, 90, 81, 56, 55, 400]
+    }, {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.5)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        data: [150, 48, 120, 19, 46, 27, 100],
+        y2axis: true
+    }, {
+        label: "My Third dataset",
+        fillColor: "rgba(205,151,187,0.5)",
+        strokeColor: "rgba(205,151,187,1)",
+        pointColor: "rgba(205,151,187,1)",
+        pointStrokeColor: "#fff",
+        data: [105, 48, 40, 19, 46, 27, 200],
+        y2axis: true
+    }]
+}
+
+var ctx = document.getElementById("chart").getContext("2d");
+var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
+    scaleBeginAtZero: true,
+    scaleShowGridLines: false
+});
+</script>
 
 <script>
   var ctx = $('#myChart').get(0).getContext('2d');
@@ -101,6 +268,84 @@
     ]
   };
   var trend2 = new Chart(ctx2).Line(data2);
+</script>
+
+<script>
+/* Inspired by Lee Byron's test data generator. */
+function stream_layers(n, m, o) {
+  if (arguments.length < 3) o = 0;
+  function bump(a) {
+    var x = 1 / (.1 + Math.random()),
+        y = 2 * Math.random() - .5,
+        z = 10 / (.1 + Math.random());
+    for (var i = 0; i < m; i++) {
+      var w = (i / m - y) * z;
+      a[i] += x * Math.exp(-w * w);
+    }
+  }
+  return d3.range(n).map(function() {
+      var a = [], i;
+      for (i = 0; i < m; i++) a[i] = o + o * Math.random();
+      for (i = 0; i < 5; i++) bump(a);
+      return a.map(stream_index);
+    });
+}
+
+/* Another layer generator using gamma distributions. */
+function stream_waves(n, m) {
+  return d3.range(n).map(function(i) {
+    return d3.range(m).map(function(j) {
+        var x = 20 * j / m - i / 3;
+        return 2 * x * Math.exp(-.5 * x);
+      }).map(stream_index);
+    });
+}
+
+function stream_index(d, i) {
+  return {x: i, y: Math.max(0, d)};
+}
+
+    var testdata = stream_layers(9,10+Math.random()*100,.1).map(function(data, i) {
+        return {
+            key: 'Stream' + i,
+            values: data.map(function(a){a.y = a.y * (i <= 1 ? -1 : 1); return a})
+        };
+    });
+
+    testdata[0].type = "area";
+    testdata[0].yAxis = 1;
+    testdata[1].type = "area";
+    testdata[1].yAxis = 1;
+    testdata[2].type = "line";
+    testdata[2].yAxis = 1;
+    testdata[3].type = "line";
+    testdata[3].yAxis = 2;
+    testdata[4].type = "scatter";
+    testdata[4].yAxis = 1;
+    testdata[5].type = "scatter";
+    testdata[5].yAxis = 2;
+    testdata[6].type = "bar";
+    testdata[6].yAxis = 2;
+    testdata[7].type = "bar";
+    testdata[7].yAxis = 2;
+    testdata[8].type = "bar";
+    testdata[8].yAxis = 2;
+
+    nv.addGraph(function() {
+        var chart = nv.models.multiChart()
+            .margin({top: 30, right: 60, bottom: 50, left: 70})
+            .color(d3.scale.category10().range());
+
+        chart.xAxis.tickFormat(d3.format(',f'));
+        chart.yAxis1.tickFormat(d3.format(',.1f'));
+        chart.yAxis2.tickFormat(d3.format(',.1f'));
+
+        d3.select('#chart1 svg')
+            .datum(testdata)
+            .transition().duration(500).call(chart);
+
+        return chart;
+    });
 </script>
 
 <script type="text/javascript" id="code">
