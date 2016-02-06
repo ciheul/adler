@@ -20,38 +20,65 @@
 
     <div class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="10" data-sizey="6"
-            style="line-height: 340px;">
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5" style="line-height: 350px;">
           <img src="/static/water/images/live-pretreatment.png" />
         </li>
-      </ul>
-    </div>
 
-    <div class="gridster">
-      <ul>
-        <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+        <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
           <table class="table">
             <tr><td colspan="3"><b>RAW WATER TANK</b></td></tr>
+            <tr>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;background-color:red;color:white;">LSH</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
+            </tr>
           </table>
         </li>
-        <li data-row="1" data-col="3" data-sizex="2" data-sizey="2">
+        <li data-row="2" data-col="3" data-sizex="2" data-sizey="2">
           <table class="table">
             <tr><td colspan="3"><b>FEED PUMP</b></td></tr>
+            <tr>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;background-color:green;color:white;">RUN</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
+            </tr>
+            <tr>
+              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">HZ</div></td>
+            </tr>
           </table>
         </li>
-        <li data-row="1" data-col="5" data-sizex="2" data-sizey="2">
+        <li data-row="2" data-col="5" data-sizex="2" data-sizey="2">
           <table class="table">
             <tr><td colspan="3"><b>MM FILTER 2A, 2B</b></td></tr>
+            <tr>
+              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
+            </tr>
+            <tr>
+              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
+            </tr>
           </table>
         </li>
-        <li data-row="1" data-col="7" data-sizex="2" data-sizey="2">
+        <li data-row="2" data-col="7" data-sizex="2" data-sizey="2">
           <table class="table">
             <tr><td colspan="3"><b>AS DOSING</b></td></tr>
+            <tr>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
+            </tr>
           </table>
         </li>
-        <li data-row="1" data-col="9" data-sizex="2" data-sizey="2">
+        <li data-row="2" data-col="9" data-sizex="2" data-sizey="2">
           <table class="table">
             <tr><td colspan="3"><b>BREAK TANK</b></td></tr>
+            <tr>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
+            </tr>
           </table>
         </li>
       </ul>
@@ -62,8 +89,6 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="/static/water/backboneapp/bower_components/Chart.js/Chart.min.js"></script>
-<script src="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.js"></script>
 
 <script type="text/javascript" id="code">
   var gridster;
@@ -72,8 +97,9 @@
     gridster = $(".gridster > ul")
       .gridster({
         widget_margins: [5, 5],
-        widget_base_dimensions: [100, 50],
-        max_cols: 5})
+        widget_base_dimensions: [100, 62],
+        max_cols: 10,
+        max_size_x: 10})
       .data('gridster')
       .disable();
   });

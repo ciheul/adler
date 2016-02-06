@@ -1,15 +1,41 @@
 {% extends "base.html" %}
 
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+{% endblock %}
+
 {% block content %}
 <div class="my-container">
   {% include "sidenav-inc.html" %}
   <div id="content">
     <h3>Trend</h3>
     <h4>Sensor 1</h4>
-    <canvas id="myChart" style="width:100%;height:400px;"></canvas>
+
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="5" data-sizey="5">
+          <canvas id="myChart"></canvas>
+        </li>
+        <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
+          <canvas id="myChart2"></canvas>
+        </li>
+      </ul>
+    </div>
+
     <hr />
-    <h4>Sensor 2</h4>
-    <canvas id="myChart2" style="width:100%;height:400px;"></canvas>
+
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="5" data-sizey="5">
+          <canvas id="myChart"></canvas>
+        </li>
+        <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
+          <canvas id="myChart2"></canvas>
+        </li>
+        <li data-row="2" data-col="1" data-sizex="5" data-sizey="5"></li>
+        <li data-row="2" data-col="3" data-sizex="5" data-sizey="5"></li>
+      </ul>
+    </div>
   </div>
 </div>
 {% endblock %}
@@ -75,5 +101,20 @@
     ]
   };
   var trend2 = new Chart(ctx2).Line(data2);
+</script>
+
+<script type="text/javascript" id="code">
+  var gridster;
+
+  $(function() {
+    gridster = $(".gridster > ul")
+      .gridster({
+        widget_margins: [5, 5],
+        widget_base_dimensions: [100, 54],
+        max_cols: 10,
+        max_size_x: 10})
+      .data('gridster')
+      .disable();
+  });
 </script>
 {% endblock %}
