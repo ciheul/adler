@@ -1,0 +1,3 @@
+message GroupTag {
+    required string JSONData = 1;
+}
