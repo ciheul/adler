@@ -27,6 +27,7 @@ class IOStreamClient(TCPClient):
     def handle(self, stream):
         line = yield stream.read_until('\n')
         line = line.rstrip('\n')
+        print line
         self.r.publish(self.queue, line)
 
     @gen.coroutine
