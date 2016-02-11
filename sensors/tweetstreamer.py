@@ -65,7 +65,7 @@ if __name__ == '__main__':
             # fetch 'lewatmana', 'TMCPoldaMetro', 'NTMCLantasPolri',
             # 'RTMC_Jatim', 'RadioElShinta'
             #stream_api.filter(follow=['18795386', '76647722', '130169009'])
-            stream_api.filter(track=['jakarta'])
+            stream_api.filter(track=['vanno'])
         except IOError, e:
             print e
         except KeyboardInterrupt:
