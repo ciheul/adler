@@ -14,6 +14,10 @@ class GlmHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
     def post(self):
         """Handle post method and insert data to MongoDB."""
+        if int(self.request.headers.get('Content-Length')) <= 2:
+            self.write({'success': 0})
+            return
+
         # convert 'pseudo' dict in str format to real dict
         document = ast.literal_eval(json.loads(self.request.body))
 

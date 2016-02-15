@@ -1,5 +1,11 @@
 # http://stackoverflow.com/questions/31344127/how-to-process-multiple-commands-to-read-from-socket-at-the-same-time-in-tornado
 
+"""
+For development:
+    - to run, use this command:
+      $ python iohub.py inetscada localhost 5757 
+"""
+
 import simplejson as json
 import sys
 

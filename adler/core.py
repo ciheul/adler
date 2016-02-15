@@ -18,15 +18,16 @@ class INetSCADASubscriber(MongoConnectorMixin):
 
         self.nbr = tornadoredis.Client()
         self.nbr.connect()
-        self.nbr.subscribe('inetscada', callback=self.on_connect)
+        self.nbr.subscribe(QUEUE, callback=self.on_connect)
 
     def on_connect(self, data):
         self.nbr.listen(self.on_data)
 
     def on_data(self, data):
         # remove first response when tornado connecting with redis
-	if data.body == 1:
+        if data.body == 1:
             return
+        print data
 
         headers = {'Content-type': 'application/json'}
         self.send('/glm/create', method='POST', headers=headers,
