@@ -7,7 +7,7 @@ from rabbitmqmanager import RabbitMQManager
 
 SNIFF_QUEUE = 'sniff'
 TWITTER_QUEUE = 'tweets'
-SMARTADECO_QUEUE = 'smartadeco'
+INETSCADA_QUEUE = 'inetscada'
 
 class IOStreamServer(TCPServer):
     def __init__(self, io=None, queue=''):
@@ -48,10 +48,10 @@ ioloop = tornado.ioloop.IOLoop.instance()
 
 server0 = IOStreamServer(io=ioloop, queue=SNIFF_QUEUE)
 server1 = IOStreamServer(io=ioloop, queue=TWITTER_QUEUE)
-server2 = IOStreamServer(io=ioloop, queue=SMARTADECO_QUEUE)
+server2 = IOStreamServer(io=ioloop, queue=INETSCADA_QUEUE)
 
-server0.listen(5757)
+server0.listen(5758)
 server1.listen(20001)
-server2.listen(5758)
+server2.listen(5757)
 
 ioloop.start()

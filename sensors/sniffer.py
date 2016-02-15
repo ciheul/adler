@@ -10,7 +10,8 @@ import pika
 
 
 key = 'sniff'
-ip_src = '192.168.2.102'
+ip_src = '192.168.1.3'
+#ip_src = '192.168.2.102'
 # ip_src = '10.10.254.214'
 
 class Sniffer:
