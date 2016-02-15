@@ -18,9 +18,11 @@ def cctv(request):
     return render(request, 'cctv.html')
 
 
-@login_required
+#@login_required
 def live_pretreatment(request):
-    return render(request, 'live-pretreatment.html')
+    #return render(request, 'live-pretreatment.html')
+    messages = {"success": 0}
+    return HttpResponse(json.dumps(messages), mimetype='application/json')
 
 
 @login_required
