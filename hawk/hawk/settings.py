@@ -24,7 +24,7 @@ from config import misc
 SECRET_KEY = 'v7flfy(o&ycv+hl7o+g__1=i*_+mp$t13*30@szaw*$)!w1ub1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True 
 
 ALLOWED_HOSTS = []
 
