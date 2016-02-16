@@ -86,14 +86,16 @@
 
   </div>
 </div>
+
 <div id="txt">
-        <div id="result">jQuery Ajax Loading Animation</div>
-    </div>
-    <p></p>
-    <button id="change">Change Content</button>
-    <div id="wait">
-            <img src='http://perspolistv.com/img/ajax-loader.gif' />
-                <br />Please Wait While Loading Data ...</div>
+    <div id="result">jQuery Ajax Loading Animation</div>
+</div>
+<p></p>
+<button id="change">Change Content</button>
+<div id="wait">
+    <!--div id="spin"></div-->
+    <img src='http://perspolistv.com/img/ajax-loader.gif' />
+ <br />Please Wait While Loading Data ...</div>
 
 <style type="text/css">
 #wait {
@@ -108,14 +110,11 @@
   padding:2px;
   z-index:200;
   margin-left:10%;
-  margin-top:200px;
- 
+  margin-top:200px; 
 }
 #result {
-margin-left:20%;
+  margin-left:20%;
   margin-top:200px;
- 
-
 }
 </style>
 {% endblock %}
@@ -136,9 +135,6 @@ margin-left:20%;
       .disable();
   }); 
 
-  /*$.get({% url "live-pretreatment-api" %}, {user: 1, page:2}, function(json_response) {
-    console.log(json_response.user.some_property);
-  });*/
   $(document).ready(function(){
     var el = $('#spin').spin({ color: '#333', shadow: false });
     var req = $.ajax({
@@ -146,8 +142,9 @@ margin-left:20%;
         url: '{% url "live-pretreatment-api" %}',
         beforeSend: function () {
             $("#wait").css("display", "block");
+            $('#spin').spin({ color: '#333', shadow: false }); 
             $("#result").html('<div id="spin"></div>');
-            console.log('loading...');
+            console.log('loading...'+$('#wait').html());
         },
         complete: function () { 
             $("#wait").css("display", "none");
@@ -156,9 +153,9 @@ margin-left:20%;
     });
     req.done(function (data) {
         //do something
-        $("#result").html('data captured');
+        $("#result").html('<div id="spin"></div>'+'data captured'+ data);
     });
-   });
+  });
  
 </script>
 <script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
