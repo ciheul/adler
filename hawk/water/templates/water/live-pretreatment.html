@@ -102,6 +102,11 @@
         max_size_x: 10})
       .data('gridster')
       .disable();
+  }); 
+
+  $.get('/index/', {user: response.name, page: page}, function(json_response) {
+    console.log(json_response.user.some_property);
   });
+
 </script>
 {% endblock %}
