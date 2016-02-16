@@ -1,8 +1,10 @@
+import ast
 import urllib
 
 import tornado.ioloop
 import tornado.web
 
+import motor
 import tornadoredis
 import simplejson as json
 
@@ -16,18 +18,33 @@ class INetSCADASubscriber(MongoConnectorMixin):
     def __init__(self):
         super(INetSCADASubscriber, self).__init__()
 
+        # connect to redis using non-blocking way
         self.nbr = tornadoredis.Client()
         self.nbr.connect()
-        self.nbr.subscribe('inetscada', callback=self.on_connect)
+        self.nbr.subscribe(QUEUE, callback=self.on_connect)
+
+        # connect to mongodb using motor (not pymongo)
+        self.db = motor.motor_tornado.MotorClient().inetscada
 
     def on_connect(self, data):
         self.nbr.listen(self.on_data)
 
     def on_data(self, data):
         # remove first response when tornado connecting with redis
-	if data.body == 1:
+        # or remove empty data that piggyback subscribed data
+        if data.body == 1 or data.body == '':
             return
 
+        # insert to mongodb. success or error calls on_response callback
+        self.db.glm.insert(json.loads(data.body), callback=self.on_response)
+
+    def on_response(self, result, error):
+        print 'result:', result
+        print 'error :', error
+        
+    def send_to_mongomanager(self, data):
+        """Called this method in on_data callback function when inserting
+           data through mongomanager is preferred."""
         headers = {'Content-type': 'application/json'}
         self.send('/glm/create', method='POST', headers=headers,
                   body=json.dumps(data.body))
