@@ -52,11 +52,11 @@
           <table class="table">
             <tr><td colspan="3"><b>MM FILTER 2A, 2B</b></td></tr>
             <tr>
-              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td colspan="2"><div id="mm_filter_2a" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
             </tr>
             <tr>
-              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td colspan="2"><div id="mm_filter_2b" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
             </tr>
           </table>
@@ -182,12 +182,25 @@
       }
       $('#feed_pump_flt').css('color','#ffffff');
       
-      $('#feed_pump_freq').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\PUMP_FEED03\\FREQ"]['Value'].toFixed(2));
+      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\PUMP_FEED03\\FREQ"]['Value']) {
+        $('#feed_pump_freq').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\PUMP_FEED03\\FREQ"]['Value'].toFixed(2));
+      } else {
+        $('#feed_pump_freq').html('Err');
+      }
 
       //--MM FILTER 2A,2B--//
-      $('#mm_filter_2a').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2A\\DPRESS"]['Value'].toFixed(2)); 
-      $('#mm_filter_2b').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2B\\DPRESS"]['Value'].toFixed(2)); 
-        
+      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2A\\DPRESS"]['Value']) {
+        $('#mm_filter_2a').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2A\\DPRESS"]['Value'].toFixed(2)); 
+      } else {
+        $('#mm_filter_2a').html('Err');
+      } 
+      
+      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2B\\DPRESS"]['Value']) { 
+        $('#mm_filter_2b').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2B\\DPRESS"]['Value'].toFixed(2)); 
+      } else {
+        $('#mm_filter_2b').html('Err');
+      } 
+
       //--AS DOSING--//
       if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\DOSING_ANSCAL\\AGT_RUN"]['Value']) {
         $('#as_dosing_agt').css('background','green');
