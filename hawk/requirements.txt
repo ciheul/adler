@@ -14,6 +14,6 @@ tornado==4.3
 pika==0.10.0
 tweepy==3.5.0
 scapy==2.3.1
-pcapy==0.10.9
+#pcapy==0.10.9
 motor==0.5
 sockjs-tornado==1.0.2

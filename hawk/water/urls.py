@@ -1,6 +1,7 @@
 from django.conf.urls import url, patterns, include
 
 import views
+import api
 
 
 urlpatterns = [
@@ -19,4 +20,7 @@ urlpatterns = [
     url(r'^report/$', views.report, name="report"),
     url(r'^trend/$', views.trend, name="trend"),
     url(r'^$', views.dashboard, name="dashboard"),
+
+    #url` getlive_pretreatment:
+    url(r'^api/live-pretreatment/$',api.live_pretreatment_api,name="live-pretreatment-api"),
 ]
