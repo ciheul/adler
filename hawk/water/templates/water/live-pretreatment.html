@@ -119,8 +119,8 @@
   }); 
 
   $(document).ready(function(){
-   var refresh = setInterval(go_ajax(),10000);
-   function go_ajax(){   
+   //var refresh = setInterval(go_ajax(),10000);
+   //function go_ajax(){   
     var req = $.ajax({
         type: "GET",
         url: '{% url "live-pretreatment-api" %}',
@@ -209,7 +209,7 @@
         }
         $('#break_tank_lsl').css('color','#ffffff');
     }
-   } 
+    
   });
  
 </script>
