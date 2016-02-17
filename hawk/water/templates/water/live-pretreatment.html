@@ -28,8 +28,8 @@
           <table class="table">
             <tr><td colspan="3"><b>RAW WATER TANK</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;background-color:red;color:white;">LSH</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div id="raw_water_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;background-color:red;color:white;">LSH</div></td>
+              <td><div id="raw_water_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -38,12 +38,12 @@
           <table class="table">
             <tr><td colspan="3"><b>FEED PUMP</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;background-color:green;color:white;">RUN</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
+              <td><div id="feed_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;background-color:green;color:white;">RUN</div></td>
+              <td><div id="feed_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
             <tr>
-              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td colspan="2"><div id="feed_pump_freq" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">HZ</div></td>
             </tr>
           </table>
@@ -65,8 +65,8 @@
           <table class="table">
             <tr><td colspan="3"><b>AS DOSING</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
+              <td><div id="as_dosing_agt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
+              <td><div id="as_dosing_pump" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -75,8 +75,8 @@
           <table class="table">
             <tr><td colspan="3"><b>BREAK TANK</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div id="break_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
+              <td><div id="break_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -87,34 +87,17 @@
   </div>
 </div>
 
-<div id="txt">
-    <div id="result">jQuery Ajax Loading Animation</div>
+<div class="row">
+    <div id="spin"></div>
 </div>
-<p></p>
-<button id="change">Change Content</button>
-<div id="wait">
-    <!--div id="spin"></div-->
-    <img src='http://perspolistv.com/img/ajax-loader.gif' />
- <br />Please Wait While Loading Data ...</div>
 
 <style type="text/css">
-#wait {
-  text-align:center;
-  display:none;
-  width:200px;
-  height:89px;
-  border:0px solid black;
-  position:absolute;
-  top:50%;
-  left:50%;
-  padding:2px;
-  z-index:200;
-  margin-left:10%;
-  margin-top:200px; 
-}
-#result {
-  margin-left:20%;
-  margin-top:200px;
+#spin{
+  float: right;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 5px;
 }
 </style>
 {% endblock %}
@@ -136,25 +119,94 @@
   }); 
 
   $(document).ready(function(){
-    var el = $('#spin').spin({ color: '#333', shadow: false });
     var req = $.ajax({
         type: "GET",
         url: '{% url "live-pretreatment-api" %}',
         beforeSend: function () {
-            $("#wait").css("display", "block");
-            $('#spin').spin({ color: '#333', shadow: false }); 
-            $("#result").html('<div id="spin"></div>');
-            console.log('loading...'+$('#wait').html());
+            $('#spin').spin({ color: '#34495E', shadow: false }); 
+            console.log('loading...');
         },
         complete: function () { 
-            $("#wait").css("display", "none");
-            console.log('done');        
+            console.log('ajax request done');        
         }
     });
+ 
     req.done(function (data) {
-        //do something
-        $("#result").html('<div id="spin"></div>'+'data captured'+ data);
+        console.log('data captured'+data.length);
+        console.log(data);
+        $('#spin').hide();
+        widgetSetter(data); 
     });
+
+    req.fail(function (data){
+        console.log('sorry failed');
+        $('#spin').hide(); 
+    });
+    
+    function widgetSetter(data){
+        //--RAW WATER TANK--//
+        if(data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_FEED\\LSH"]["Value"]){
+           $('#raw_water_tank_lsh').css('background','green');
+        }else{
+           $('#raw_water_tank_lsh').css('background','red');
+        }       
+        $('#raw_water_tank_lsh').css('color','#ffffff');
+        if(data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_FEED\\LSL"]["Value"]){
+           $('#raw_water_tank_lsl').css('background','green');
+        }else{
+           $('#raw_water_tank_lsl').css('background','red','color');
+        }
+        $('#raw_water_tank_lsl').css('color','#ffffff');              
+            
+        //--FEED PUMP--//
+        if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\PUMP_FEED03\\RUN"]['Value']){
+           $('#feed_pump_run').css('background','green');
+        }else{
+           $('#feed_pump_run').css('background','red');
+        }
+        $('#feed_pump_run').css('color','#ffffff');
+        if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\PUMP_FEED03\\FAULT"]['Value']){
+           $('#feed_pump_flt').css('background','green');
+        }else{
+           $('#feed_pump_flt').css('background','red');
+        }
+        $('#feed_pump_flt').css('color','#ffffff');
+        $('#feed_pump_freq').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\PUMP_FEED03\\FREQ"]['Value'].toFixed(2));
+
+        //--MM FILTER 2A,2B--//
+        $('#mm_filter_2a').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2A\\DPRESS"]['Value'].toFixed(2)); 
+        $('#mm_filter_2b').html(data[0]['Tags']["GLM\\SWRO_001\\RT01\\MMF2B\\DPRESS"]['Value'].toFixed(2)); 
+        
+        //--AS DOSING--//
+        if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\DOSING_ANSCAL\\AGT_RUN"]['Value']){
+           $('#as_dosing_agt').css('background','green');
+        }else{
+           $('#as_dosing_agt').css('background','red');
+        }
+        $('#as_dosing_agt').css('color','#ffffff');
+        
+        if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\DOSING_ANSCAL\\PUMP_RUN"]['Value']){
+           $('#as_dosing_pump').css('background','green');
+        }else{
+           $('#as_dosing_pump').css('background','red');
+        }
+        $('#as_dosing_pump').css('color','#ffffff');
+        
+        //--BREAK TANK--//
+        if(data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_BREAK\\LSH"]['Value']){
+           $('#break_tank_lsh').css('background','green');
+        }else{
+           $('#break_tank_lsh').css('background','red');
+        }
+        $('#break_tank_lsh').css('color','#ffffff');
+        
+        if(data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_BREAK\\LSL"]['Value']){
+           $('#break_tank_lsl').css('background','green');
+        }else{
+           $('#break_tank_lsl').css('background','red');
+        }
+        $('#break_tank_lsl').css('color','#ffffff');
+    }
   });
  
 </script>
