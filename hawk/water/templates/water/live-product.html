@@ -219,7 +219,12 @@
         $('#transfer_pump_flt').css('background','red');
       }
       $('#transfer_pump_flt').css('color','#ffffff');
-      $('#transfer_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value'].toFixed(2));
+      
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value']) {
+        $('#transfer_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value'].toFixed(2));
+      } else {
+        $('#transfer_pump_freq').html('Err');
+      }
 
       //--HOTEL TANK--//
       if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSH"]['Value']) {  
