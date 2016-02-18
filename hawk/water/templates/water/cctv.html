@@ -48,7 +48,7 @@
             $("#cctv").removeAttr('src',true);
             $("#cctv").attr('src','/static/water/images/cctv.jpg');
             counter++;
-        },600000); //each 10 minutes (60*1000 = 1 minute)
+        },300000); //each 10 minutes (60*1000 = 1 minute)
 
     var idleTime = 0;
     $(document).ready(function () {
@@ -65,7 +65,7 @@
 
     function minutesIncrement() {
         idleTime = idleTime + 1;
-        if (idleTime > 10) { // 10 minutes
+        if (idleTime > 5) { // 5 minutes
             window.location.reload();
         }
         //console.log('passed '+idleTime+' minute(s)');
