@@ -23,10 +23,9 @@ from config import misc
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'v7flfy(o&ycv+hl7o+g__1=i*_+mp$t13*30@szaw*$)!w1ub1'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
-
-ALLOWED_HOSTS = []
+# SECURITY WARNING: don't run with debug turned on in productionDEBUG = True 
+DEBUG = misc.DEBUG
+ALLOWED_HOSTS = misc.ALLOWED_HOSTS
 
 AUTH_USER_MODEL = 'account.HawkUser'
 
