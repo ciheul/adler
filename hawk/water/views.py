@@ -22,10 +22,8 @@ def cctv(request):
 
 @login_required
 def live_pretreatment(request):
-    #print request.GET
     return render(request, 'live-pretreatment.html')
-    #messages = {"success": 0}
-    #return HttpResponse(json.dumps(messages), content_type='application/json')
+
 
 @login_required
 def live_osmosis(request):
