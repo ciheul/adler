@@ -11,7 +11,12 @@ client = MongoClient()
 db = client.inetscada
 
 def live_pretreatment_api(request):
-    message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
+    message = dumps(list(db.glm.find().sort("_id",-1).limit(1)))
+    return HttpResponse(message, content_type='application/json') 
+
+
+def trend_pretreatment_api(request):
+    message = {'success': 0}
     return HttpResponse(message, content_type='application/json') 
 
 def live_osmosis_api(request):
