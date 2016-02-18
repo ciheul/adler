@@ -31,8 +31,8 @@
           <table class="table">
             <tr><td colspan="3"><b>BRINE TANK</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div id="brine_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
+              <td><div id="brine_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -41,12 +41,12 @@
           <table class="table">
             <tr><td colspan="3"><b>BRINE PUMP</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
+              <td><div id="brine_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
+              <td><div id="brine_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
             <tr>
-              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td colspan="2"><div id="brine_pump_freq" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">HZ</div></td>
             </tr>
           </table>
@@ -64,9 +64,27 @@
 
   </div>
 </div>
+
+<div class="row">
+    <div id="spin"></div>
+</div>
+
+<style type="text/css">
+  #spin{
+    float: right;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 5px;
+  }
+</style>
+
 {% endblock %}
 
 {% block javascript %}
+<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
+<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
+
 <script type="text/javascript" id="code">
   var gridster;
 
@@ -80,5 +98,80 @@
       .data('gridster')
       .disable();
   });
+  
+  $(document).ready(function() {
+    go_ajax();
+
+    var refresh = setInterval(go_ajax,10000);
+    
+    function go_ajax() {   
+      var req = $.ajax({
+        type: "GET",
+        url: '{% url "live-reject-api" %}',
+        beforeSend: function() {
+          $('#spin').spin({ color: '#34495E', shadow: false }); 
+          console.log('loading...');
+        },
+        complete: function() { 
+          console.log('ajax request done');        
+        }
+      });
+ 
+      req.done(function(data) {
+        //console.log('data captured'+data.length);
+        //console.log(data);
+        $('#spin').hide();
+        widgetSetter(data); 
+      });
+      
+      req.fail(function(data) {
+        console.log('sorry failed');
+        $('#spin').hide(); 
+      });
+    }
+    
+    function widgetSetter(data) {
+      //--BRINE TANK--//
+      //--BRINE PUMP--//
+      //--BRINE TANK--//
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_BRINE\\LSH']['value']) {
+        $('#brine_tank_lsh').css('background','green');
+      } else { 
+        $('#brine_tank_lsh').css('background','red');
+      }
+      $('#brine_tank_lsh').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_BRINE\\LSL']['value']) {
+        $('#brine_tank_lsl').css('background','green');
+      } else { 
+        $('#brine_tank_lsl').css('background','red');
+      }
+      $('#brine_tank_lsl').css('color','#ffffff');
+
+      //--BRINE PUMP--//
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\RUN']['value']) {
+        $('#brine_pump_run').css('background','green');
+      } else { 
+        $('#brine_pump_run').css('background','red');
+      }
+      $('#brine_pump_run').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FAULT']['value']) {
+        $('#brine_pump_flt').css('background','green');
+      } else { 
+        $('#brine_pump_flt').css('background','red');
+      }
+      $('#brine_pump_flt').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FREQ']['Value']) {
+        $('#brine_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FREQ']['Value'].toFixed(2));
+      } else { 
+        $('#brine_pump_freq').html('Err');
+      }
+
+    }
+    
+  });
+
 </script>
 {% endblock %}

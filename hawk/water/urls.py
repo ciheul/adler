@@ -21,6 +21,12 @@ urlpatterns = [
     url(r'^trend/$', views.trend, name="trend"),
     url(r'^$', views.dashboard, name="dashboard"),
 
-    #url` getlive_pretreatment:
-    url(r'^api/live-pretreatment/$',api.live_pretreatment_api,name="live-pretreatment-api"),
+    #url live api
+    url(r'^api/live-pretreatment/$',api.live_pretreatment_api,
+        name="live-pretreatment-api"),
+    url(r'^api/live-osmosis/$',api.live_osmosis_api,name="live-osmosis-api"),
+    url(r'^api/live-product/$',api.live_product_api,name="live-product-api"),
+    url(r'^api/live-reject/$',api.live_reject_api,name="live-reject-api"),
+    url(r'^api/live-energy/$',api.live_energy_api,name="live-energy-api"),
+
 ]

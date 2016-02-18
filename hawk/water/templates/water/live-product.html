@@ -39,8 +39,8 @@
           <table class="table">
             <tr><td colspan="3"><b>CHLOR. DOSING</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
+              <td><div id="chlor_dosing_agt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
+              <td><div id="chlor_dosing_pmp" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -49,8 +49,8 @@
           <table class="table">
             <tr><td colspan="3"><b>PH DOSING</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
+              <td><div id="ph_dosing_agt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
+              <td><div id="ph_dosing_pmp" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -59,8 +59,8 @@
           <table class="table">
             <tr><td colspan="3"><b>PRODUCT TANK</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div id="product_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
+              <td><div id="product_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -69,12 +69,12 @@
           <table class="table">
             <tr><td colspan="3"><b>TRANSFER PUMP</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
+              <td><div id="transfer_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
+              <td><div id="transfer_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
             <tr>
-              <td colspan="2"><div style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
+              <td colspan="2"><div id="transfer_pump_freq" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">HZ</div></td>
             </tr>
           </table>
@@ -83,8 +83,8 @@
           <table class="table">
             <tr><td colspan="3"><b>HOTEL TANK</b></td></tr>
             <tr>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
-              <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
+              <td><div id="hotel_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
+              <td><div id="hotel_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;"></div></td>
             </tr>
           </table>
@@ -94,9 +94,26 @@
 
   </div>
 </div>
+
+<div class="row">
+    <div id="spin"></div>
+</div>
+
+<style type="text/css">
+  #spin{
+    float: right;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 5px;
+  }
+</style>
 {% endblock %}
 
 {% block javascript %}
+<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
+<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
+
 <script type="text/javascript" id="code">
   var gridster;
 
@@ -107,8 +124,129 @@
         widget_base_dimensions: [100, 62],
         max_cols: 10,
         max_size_x: 10})
-      .disable()
-      .data('gridster');
+      .data('gridster')
+      .disable();
+<<<<<<< HEAD
   });
+  
+  $(document).ready(function() {
+    go_ajax();
+
+    var refresh = setInterval(go_ajax,10000);
+    
+    function go_ajax() {   
+      var req = $.ajax({
+        type: "GET",
+        url: '{% url "live-product-api" %}',
+        beforeSend: function() {
+          $('#spin').spin({ color: '#34495E', shadow: false }); 
+          console.log('loading...');
+        },
+        complete: function() { 
+          console.log('ajax request done');        
+        }
+      });
+ 
+      req.done(function(data) {
+        //console.log('data captured'+data.length);
+        console.log(data);
+        $('#spin').hide();
+        widgetSetter(data); 
+      });
+      
+      req.fail(function(data) {
+        console.log('sorry failed');
+        $('#spin').hide(); 
+      });
+    }
+    
+    function widgetSetter(data) {
+      //--CHLOR DOSING--//
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_CHL\\AGT_RUN']['Value']) {  
+        $('#chlor_dosing_agt').css('background','green');
+      } else {
+        $('#chlor_dosing_agt').css('background','red');
+      }
+      $('#chlor_dosing_agt').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_CHL\\PUMP_RUN']['Value']) {  
+        $('#chlor_dosing_pmp').css('background','green');
+      } else {
+        $('#chlor_dosing_pmp').css('background','red');
+      }
+      $('#chlor_dosing_pmp').css('color','#ffffff');
+
+      //--PH DOSING--//
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_PH\\AGT_RUN']['Value']) {  
+        $('#ph_dosing_agt').css('background','green');
+      } else {
+        $('#ph_dosing_agt').css('background','red');
+      }
+      $('#ph_dosing_agt').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_PH\\PUMP_RUN']['Value']) {  
+        $('#ph_dosing_pmp').css('background','green');
+      } else {
+        $('#ph_dosing_pmp').css('background','red');
+      }
+      $('#ph_dosing_pmp').css('color','#ffffff');
+
+      //--PRODUCT TANK--//
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_PRODUCT\\LSH']['Value']) {  
+        $('#product_tank_lsh').css('background','green');
+      } else {
+        $('#product_tank_lsh').css('background','red');
+      }
+      $('#product_tank_lsh').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_PRODUCT\\LSL']['Value']) {  
+        $('#product_tank_lsl').css('background','green');
+      } else {
+        $('#product_tank_lsl').css('background','red');
+      }
+      $('#product_tank_lsl').css('color','#ffffff');
+
+      //--TRANSFER PUMP---//
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\RUN']['Value']) {  
+        $('#transfer_pump_run').css('background','green');
+      } else {
+        $('#transfer_pump_run').css('background','red');
+      }
+      $('#transfer_pump_run').css('color','#ffffff');
+
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FAULT']['Value']) {  
+        $('#transfer_pump_flt').css('background','green');
+      } else {
+        $('#transfer_pump_flt').css('background','red');
+      }
+      $('#transfer_pump_flt').css('color','#ffffff');
+      
+      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value']) {
+        $('#transfer_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value'].toFixed(2));
+      } else {
+        $('#transfer_pump_freq').html('Err');
+      }
+
+      //--HOTEL TANK--//
+      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSH"]['Value']) {  
+        $('#hotel_tank_lsh').css('background','green');
+      } else {
+        $('#hotel_tank_lsh').css('background','red');
+      }
+      $('#hotel_tank_lsh').css('color','#ffffff');
+
+      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSL"]['Value']) {  
+        $('#hotel_tank_lsl').css('background','green');
+      } else {
+        $('#hotel_tank_lsl').css('background','red');
+      }
+      $('#hotel_tank_lsl').css('color','#ffffff');
+ 
+    }
+    
+=======
+>>>>>>> 3cc620d97c73e275151f0e5bc5b5b765433e3bf8
+  });
+
 </script>
 {% endblock %}
