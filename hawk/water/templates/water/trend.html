@@ -28,16 +28,22 @@
     <h4>RO PROCESS</h4>
     <div class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="5" data-sizey="5">
-          <div style="padding:20px;">
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
             <b>FLOW RATES</b>
-            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+            <!--div id="js-legend" class="chart-legend"></div-->
+            <div class="col-md-10">
+              <canvas id="chart" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">
+              <div id="chart-legend"> Some legend here... </div>
+            </div> 
           </div>
         </li>
         <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
           <div style="padding:20px;">
             <b>PX PRESSURES</b>
-            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+            <canvas id="myChart2" width="500" height="250" style="margin-top:10px;"></canvas>
           </div>
         </li>
         <li data-row="2" data-col="1" data-sizex="5" data-sizey="5">
@@ -99,9 +105,21 @@
 
   </div>
 </div>
+
+<!--style type="text/css">
+  .chart-legend li span{ 
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }
+</style-->
 {% endblock %}
 
 {% block javascript %}
+<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
+<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
+
 <script src="/static/water/backboneapp/bower_components/Chart.js/Chart.min.js"></script>
 <script src="/static/water/backboneapp/bower_components/d3/d3.min.js"></script>
 <script src="/static/water/backboneapp/bower_components/nvd3/build/nv.d3.min.js"></script>
@@ -132,7 +150,7 @@ Chart.types.Line.extend({
             }
         });
         
-        // use the helper function to get the scale for both datasets
+        //use the helper function to get the scale for both datasets
         var y1Scale = this.getScale(y1data);
         this.y2Scale = this.getScale(y2data);
         var normalizingFactor = y1Scale.max / this.y2Scale.max;
@@ -174,7 +192,46 @@ Chart.types.Line.extend({
     }
 });
 
+$(document).ready(function() {
+  go_ajax();
 
+  var refresh = setInterval(go_ajax,60000);
+
+  function go_ajax() {
+    var req = $.ajax({
+        type: "GET",
+        url: '{% url "live-pretreatment-api" %}',
+        beforeSend: function() {
+          $('#spin').spin({ color: '#34495E', shadow: false }); 
+          console.log('loading...');
+        },
+        complete: function() { 
+          console.log('ajax request done');        
+        }
+      });
+ 
+      req.done(function(data) {
+        //console.log('data captured'+data.length);
+        //console.log(data);
+        $('#spin').hide();
+        widgetSetter(data); 
+      });
+      
+      req.fail(function(data) {
+        console.log('sorry failed');
+        $('#spin').hide(); 
+      });
+
+  }
+  
+  function widgetSetter(data){
+   //some magic here
+  }  
+});
+
+</script>
+
+<script>
 var lineChartData1 = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     datasets: [{
@@ -206,8 +263,10 @@ var lineChartData1 = {
 var ctx = document.getElementById("chart").getContext("2d");
 var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
     scaleBeginAtZero: true,
-    scaleShowGridLines: false
+    scaleShowGridLines: true,
+    scaleShowLabels: true
 });
+//document.getElementById('js-legend').innerHTML = myLine1.generateLegend();
 </script>
 
 <script>
