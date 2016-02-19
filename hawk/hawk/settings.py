@@ -25,6 +25,7 @@ SECRET_KEY = 'v7flfy(o&ycv+hl7o+g__1=i*_+mp$t13*30@szaw*$)!w1ub1'
 
 # SECURITY WARNING: don't run with debug turned on in productionDEBUG = True 
 DEBUG = misc.DEBUG
+
 ALLOWED_HOSTS = misc.ALLOWED_HOSTS
 
 AUTH_USER_MODEL = 'account.HawkUser'
@@ -111,6 +112,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
