@@ -33,8 +33,8 @@ def live_energy_api(request):
 
 #trend page
 def trend_pretreatment_api(request):
-    m = list(db.glm.find())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
     y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
@@ -54,8 +54,8 @@ def trend_pretreatment_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_flowrates_api(request):
-    m = list(db.glm.find())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RO_001\RT01\SWRO_FEED\FLOW'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_IN\FLOW'], x)
     y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_FEED\PRESS'], x)
@@ -75,7 +75,7 @@ def trend_flowrates_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_pressures_api(request):
-    m = list(db.glm.find())
+    m = list(db.glm.find_one())
     x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_IN\PRESS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_OUT\PRESSIND'], x)
@@ -99,7 +99,7 @@ def trend_pressures_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_circulation_api(request):
-    m = list(db.glm.find())
+    m = list(db.glm.find_one())
     x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_HP\RUN'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_CIRC\FREQ'], x)
@@ -117,7 +117,7 @@ def trend_circulation_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_analyzers_api(request):
-    m = list(db.glm.find())
+    m = list(db.glm.find_one())
     x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\SWRO_FEED\TDS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\TDS'], x)
@@ -138,7 +138,7 @@ def trend_analyzers_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_transfer_api(request):
-    m = list(db.glm.find())
+    m = list(db.glm.find_one())
     x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\FLOW'], x)
     y2 = map(lambda i: i[u''], x)
@@ -159,7 +159,7 @@ def trend_transfer_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_reject_api(request):
-    m = list(db.glm.find())
+    m = list(db.glm.find_one())
     x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_BRINE\FREQ'], x)
     
@@ -174,7 +174,7 @@ def trend_reject_api(request):
     return HttpResponse(message, content_type='application/json') 
 
 def trend_energy_api(request):
-    m = list(db.glm.find())
+    m = list(db.glm.find_one())
     x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)

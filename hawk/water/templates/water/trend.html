@@ -16,7 +16,8 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>MM FILTER DP & FEED PUMP SPEED</b>
+            <div class="col-md-10">MM FILTER DP & FEED PUMP SPEED</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-1" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -35,7 +36,8 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>FLOW RATES</b>
+            <div class="col-md-10">FLOW RATES</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-2" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -46,18 +48,20 @@
         </li>
         <li data-row="6" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>PX PRESSURES</b>
+            <div class="col-md-10">PX PRESSURES</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-3" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
             <div class="col-md-2">
-              <div id="chart-3" class="chart-legend">some legend here</div>
+              <div id="chart-3-legend" class="chart-legend">some legend here</div>
             </div>
           </div>
         </li>
         <li data-row="11" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>HP & CIRCULATION PUMP SPEED</b>
+            <div class="col-md-10">HP & CIRCULATION PUMP SPEED</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-4" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -68,7 +72,8 @@
         </li>
         <li data-row="16" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>ANALYZERS</b>
+            <div class="col-md-10">ANALYZERS</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-5" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -87,7 +92,8 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>TRANSFER TREND</b>
+            <div class="col-md-10">TRANSFER TREND</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-6" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -106,7 +112,8 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>REJECT TREND</b>
+            <div class="col-md-10">REJECT TREND</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-7" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -125,7 +132,8 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
-            <b>ENERGY TREND</b>
+            <div class="col-md-10">ENERGY TREND</div>
+            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-10">
               <canvas id="chart-8" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
@@ -140,14 +148,24 @@
   </div>
 </div>
 
-<!--style type="text/css">
+<style type="text/css">
+  ul.line2y-legend, ul.line-legend {
+    background: none;
+    border: none;
+  }
+  ul.line2y-legend li, ul.line-legend li {
+    border:none;
+    text-align: left;
+    box-shadow: none;
+    margin-top: 10px;
+  }
   .chart-legend li span{ 
     display: inline-block;
     width: 12px;
     height: 12px;
     margin-right: 5px;
   }
-</style-->
+</style>
 {% endblock %}
 
 {% block javascript %}
@@ -159,7 +177,8 @@
 <script src="/static/water/backboneapp/bower_components/nvd3/build/nv.d3.min.js"></script>
 
 <script>
-Chart.types.Line.extend({
+  /*ChartJS Document*/
+  Chart.types.Line.extend({
     name: "Line2Y",
     getScale: function(data) {
         var startPoint = this.options.scaleFontSize;
@@ -224,55 +243,65 @@ Chart.types.Line.extend({
                 label += this.y2Scale.stepValue
         }
     }
-});
+  });
 
-$(document).ready(function() {
-  go_ajax();
-
-  var refresh = setInterval(go_ajax,60000);
-
-  function go_ajax() {
-    var req = $.ajax({
-        type: "GET",
-        url: '{% url "trend-pretreatment-api" %}',
-        beforeSend: function() {
-          $('#spin').spin({ color: '#34495E', shadow: false }); 
-          console.log('loading...');
-        },
-        complete: function() { 
-          console.log('ajax request done');        
-        }
-      });
- 
-      req.done(function(data) {
-        //console.log('data captured'+data.length);
-        //console.log(data);
-        $('#spin').hide();
-        widgetSetter(data); 
-      });
-      
-      req.fail(function(data) {
-        console.log('sorry failed');
-        $('#spin').hide(); 
-      });
-
+  /* Global ChartJS Options*/
+  var options = {
+    scaleBeginAtZero: true,
+    scaleShowGridLines: true,
+    scaleShowLabels: true
   }
-  
-  function widgetSetter(data){
-   //some magic here
-  }  
-});
 
 </script>
 
 <script>
-var lineChartData1 = {
+  var set_to = [];
+
+  function go_ajax(api_url,idx) {
+    var req = $.ajax({
+      type: "GET",
+      url: api_url,
+      beforeSend: function() {
+        //$('#spin').spin({ color: '#34495E', shadow: false }); 
+        console.log('loading... '+api_url);
+      },
+      complete: function() { 
+        console.log('ajax request done '+api_url);        
+      }
+    });
+ 
+    req.done(function(data) {
+      //console.log('data captured'+data.length); //console.log(data);
+      //$('#spin').hide();
+      widgetSetter(data,idx); 
+    });
+      
+    req.fail(function(data) {
+      console.log('sorry failed '+api_url);
+      //$('#spin').hide(); 
+    });
+
+  }
+  
+  function widgetSetter(data,i){
+    set_to[i] = data; // widget data, top-bottom, [1-8]
+  }
+
+</script>
+
+<script>
+$(document).ready(function(){
+  go_ajax('{% url "trend-pretreatment-api" %}',1);
+  //var refresh = setInterval(go_ajax,60000);
+  var ctx = document.getElementById("chart-1").getContext("2d");
+  var lineChartData1 = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     datasets: [{
         label: "My First dataset",
         fillColor: "rgba(0,255,0,0.5)",
         strokeColor: "rgba(0,255,0,1)",
         pointColor: "rgba(0,255,0,1)",
+        color: "rgba(0,255,0,0,0.5)",
         pointStrokeColor: "#fff",
         data: [15, 25, 90, 81, 56, 55, 400]
     }, {
@@ -292,48 +321,115 @@ var lineChartData1 = {
         data: [105, 48, 40, 19, 46, 27, 200],
         y2axis: true
     }]
-}
-
-var ctx = document.getElementById("chart-3").getContext("2d");
-var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
-    scaleBeginAtZero: true,
-    scaleShowGridLines: true,
-    scaleShowLabels: true
+  }
+  var myLine1 = new Chart(ctx).Line2Y(lineChartData1, options);
+  $('#chart-1-legend').html(myLine1.generateLegend());
 });
-//document.getElementById('js-legend').innerHTML = myLine1.generateLegend();
 </script>
 
 <script>
-  var ctx = $('#chart-1').get(0).getContext('2d');
+$(document).ready(function(){
+  go_ajax('{% url "trend-flowrates-api" %}',2);
+  //var refresh = setInterval(go_ajax,60000);
+  var ctx2 = document.getElementById("chart-2").getContext("2d");
+  var lineChartData2 = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [{
+        label: "My First dataset",
+        fillColor: "rgba(0,255,0,0.5)",
+        strokeColor: "rgba(0,255,0,1)",
+        pointColor: "rgba(0,255,0,1)",
+        color: "rgba(0,255,0,0,0.5)",
+        pointStrokeColor: "#fff",
+        data: [15, 25, 90, 81, 56, 55, 400]
+    }, {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.5)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        data: [150, 48, 120, 19, 46, 27, 100],
+        y2axis: true
+    }, {
+        label: "My Third dataset",
+        fillColor: "rgba(205,151,187,0.5)",
+        strokeColor: "rgba(205,151,187,1)",
+        pointColor: "rgba(205,151,187,1)",
+        pointStrokeColor: "#fff",
+        data: [105, 48, 40, 19, 46, 27, 200],
+        y2axis: true
+    }]
+  }
+  var myLine2 = new Chart(ctx2).Line2Y(lineChartData2, options);
+  $('#chart-2-legend').html(myLine2.generateLegend());
+});
+</script>
 
-  var data = {
+<script>
+$(document).ready(function(){
+  go_ajax('{% url "trend-analyzers-api" %}',5);
+  //var refresh = setInterval(go_ajax,60000);
+  var ctx5 = document.getElementById("chart-5").getContext("2d");
+  var lineChartData5 = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [{
+        label: "My First dataset",
+        fillColor: "rgba(0,255,0,0.5)",
+        strokeColor: "rgba(0,255,0,1)",
+        pointColor: "rgba(0,255,0,1)",
+        color: "rgba(0,255,0,0,0.5)",
+        pointStrokeColor: "#fff",
+        data: [15, 25, 90, 81, 56, 55, 400]
+    }, {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.5)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        data: [150, 48, 120, 19, 46, 27, 100],
+        y2axis: true
+    }, {
+        label: "My Third dataset",
+        fillColor: "rgba(205,151,187,0.5)",
+        strokeColor: "rgba(205,151,187,1)",
+        pointColor: "rgba(205,151,187,1)",
+        pointStrokeColor: "#fff",
+        data: [105, 48, 40, 19, 46, 27, 200],
+        y2axis: true
+    }]
+  }
+  var myLine5 = new Chart(ctx5).Line2Y(lineChartData5, options);
+  $('#chart-5-legend').html(myLine5.generateLegend());
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+  get_ajax('{% url "trend-pressures-api" %}',3);
+  var ctx3 = $('#chart-3').get(0).getContext('2d');
+  var data3 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
-        label: "My First dataset",
+        label: "Reject Trend",
         fillColor: "rgba(220,220,220,0.2)",
         strokeColor: "rgba(220,220,220,1)",
         pointColor: "rgba(220,220,220,1)",
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        data: [65, 59, 80, 81, 56, 55, 40]
-      },
-      {
-        label: "My Second dataset",
-        fillColor: "rgba(151,187,205,0.2)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(151,187,205,1)",
-        data: [28, 48, 40, 19, 86, 27, 90]
+        data: set_to[3]
       }
     ]
   };
+  var myLine3 = new Chart(ctx3).Line(data3, options);
+  $('#chart-3-legend').html(myLine3.generateLegend());
+});
+</script>
 
-  var trend = new Chart(ctx).Line(data);
 
+<script>
   var ctx2 = $('#chart-2').get(0).getContext('2d');
   var data2 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -360,85 +456,36 @@ var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
       }
     ]
   };
-  var trend2 = new Chart(ctx2).Line(data2);
+  var myLine2 = '';
+  //var trend2 = new Chart(ctx2).Line(data2);
+  var myLine2 = new Chart(ctx2).Line2Y(data3, {
+    scaleBeginAtZero: true,
+    scaleShowGridLines: true,
+    scaleShowLabels: true,
+  });
+  $('#chart-2-legend').html(myLine2.generateLegend());
 </script>
 
 <script>
-/* Inspired by Lee Byron's test data generator. */
-function stream_layers(n, m, o) {
-  if (arguments.length < 3) o = 0;
-  function bump(a) {
-    var x = 1 / (.1 + Math.random()),
-        y = 2 * Math.random() - .5,
-        z = 10 / (.1 + Math.random());
-    for (var i = 0; i < m; i++) {
-      var w = (i / m - y) * z;
-      a[i] += x * Math.exp(-w * w);
-    }
-  }
-  return d3.range(n).map(function() {
-      var a = [], i;
-      for (i = 0; i < m; i++) a[i] = o + o * Math.random();
-      for (i = 0; i < 5; i++) bump(a);
-      return a.map(stream_index);
-    });
-}
+  var ctx7 = $('#chart-7').get(0).getContext('2d');
+  var data7 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Reject Trend",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      }
+    ]
+  };
 
-/* Another layer generator using gamma distributions. */
-function stream_waves(n, m) {
-  return d3.range(n).map(function(i) {
-    return d3.range(m).map(function(j) {
-        var x = 20 * j / m - i / 3;
-        return 2 * x * Math.exp(-.5 * x);
-      }).map(stream_index);
-    });
-}
-
-function stream_index(d, i) {
-  return {x: i, y: Math.max(0, d)};
-}
-
-    var testdata = stream_layers(9,10+Math.random()*100,.1).map(function(data, i) {
-        return {
-            key: 'Stream' + i,
-            values: data.map(function(a){a.y = a.y * (i <= 1 ? -1 : 1); return a})
-        };
-    });
-
-    testdata[0].type = "area";
-    testdata[0].yAxis = 1;
-    testdata[1].type = "area";
-    testdata[1].yAxis = 1;
-    testdata[2].type = "line";
-    testdata[2].yAxis = 1;
-    testdata[3].type = "line";
-    testdata[3].yAxis = 2;
-    testdata[4].type = "scatter";
-    testdata[4].yAxis = 1;
-    testdata[5].type = "scatter";
-    testdata[5].yAxis = 2;
-    testdata[6].type = "bar";
-    testdata[6].yAxis = 2;
-    testdata[7].type = "bar";
-    testdata[7].yAxis = 2;
-    testdata[8].type = "bar";
-    testdata[8].yAxis = 2;
-
-    nv.addGraph(function() {
-        var chart = nv.models.multiChart()
-            .margin({top: 30, right: 60, bottom: 50, left: 70})
-            .color(d3.scale.category10().range());
-
-        chart.xAxis.tickFormat(d3.format(',f'));
-        chart.yAxis1.tickFormat(d3.format(',.1f'));
-        chart.yAxis2.tickFormat(d3.format(',.1f'));
-
-        d3.select('#chart1 svg')
-            .datum(testdata)
-            .transition().duration(500).call(chart);
-
-        return chart;
-    });
+  var myLine7 = new Chart(ctx7).Line(data7, options);
+  $('#chart-7-legend').html(myLine7.generateLegend());
 </script>
 
 <script type="text/javascript" id="code">
