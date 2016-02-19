@@ -291,7 +291,7 @@
 
 <script>
 $(document).ready(function(){
-  go_ajax('{% url "trend-pretreatment-api" %}',1);
+  //go_ajax('{% url "trend-pretreatment-api" %}',1);
   //var refresh = setInterval(go_ajax,60000);
   var ctx = document.getElementById("chart-1").getContext("2d");
   var lineChartData1 = {
@@ -329,7 +329,7 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-  go_ajax('{% url "trend-flowrates-api" %}',2);
+  //go_ajax('{% url "trend-flowrates-api" %}',2);
   //var refresh = setInterval(go_ajax,60000);
   var ctx2 = document.getElementById("chart-2").getContext("2d");
   var lineChartData2 = {
@@ -367,7 +367,7 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-  go_ajax('{% url "trend-analyzers-api" %}',5);
+  //go_ajax('{% url "trend-analyzers-api" %}',5);
   //var refresh = setInterval(go_ajax,60000);
   var ctx5 = document.getElementById("chart-5").getContext("2d");
   var lineChartData5 = {
@@ -406,7 +406,7 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
-  get_ajax('{% url "trend-pressures-api" %}',3);
+  //go_ajax('{% url "trend-pressures-api" %}',3);
   var ctx3 = $('#chart-3').get(0).getContext('2d');
   var data3 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -456,13 +456,7 @@ $(document).ready(function(){
       }
     ]
   };
-  var myLine2 = '';
-  //var trend2 = new Chart(ctx2).Line(data2);
-  var myLine2 = new Chart(ctx2).Line2Y(data3, {
-    scaleBeginAtZero: true,
-    scaleShowGridLines: true,
-    scaleShowLabels: true,
-  });
+  var myLine2 = new Chart(ctx2).Line2Y(data2, options);
   $('#chart-2-legend').html(myLine2.generateLegend());
 </script>
 

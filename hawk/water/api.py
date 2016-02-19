@@ -50,7 +50,7 @@ def trend_pretreatment_api(request):
         'value3': z3
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 def trend_flowrates_api(request):
@@ -71,12 +71,12 @@ def trend_flowrates_api(request):
         'value3': z3
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 def trend_pressures_api(request):
-    m = list(db.glm.find_one())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_IN\PRESS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_OUT\PRESSIND'], x)
     y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_REJECT\PRESS'], x)
@@ -95,12 +95,12 @@ def trend_pressures_api(request):
         'value4': z4
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 def trend_circulation_api(request):
-    m = list(db.glm.find_one())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_HP\RUN'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_CIRC\FREQ'], x)
     
@@ -113,12 +113,12 @@ def trend_circulation_api(request):
         'value2': z2
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 def trend_analyzers_api(request):
-    m = list(db.glm.find_one())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\SWRO_FEED\TDS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\TDS'], x)
     y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\PH'], x)
@@ -134,12 +134,12 @@ def trend_analyzers_api(request):
         'value3': z3
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 def trend_transfer_api(request):
-    m = list(db.glm.find_one())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\FLOW'], x)
     y2 = map(lambda i: i[u''], x)
     y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\PRESS'], x)
@@ -155,12 +155,12 @@ def trend_transfer_api(request):
         'value3': z3
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 def trend_reject_api(request):
-    m = list(db.glm.find_one())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_BRINE\FREQ'], x)
     
     z1 = map(lambda i: i[u'Value'], y1)
@@ -170,12 +170,12 @@ def trend_reject_api(request):
         'value1': z1,
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json') 
 
 def trend_energy_api(request):
-    m = list(db.glm.find_one())
-    x = map(lambda i: i['Tags'], m)
+    x = list(db.glm.find_one())
+    #x = map(lambda i: i['Tags'], m)
     y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
     y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
     y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
@@ -191,7 +191,7 @@ def trend_energy_api(request):
         'value3': z3
     }
 
-    message = dumps(z)
+    message = dumps(x)
     return HttpResponse(message, content_type='application/json')
 
 
