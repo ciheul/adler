@@ -15,9 +15,14 @@
     <div class="gridster">
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
-          <div style="padding:20px;">
+          <div class="row" style="padding:20px;">
             <b>MM FILTER DP & FEED PUMP SPEED</b>
-            <canvas id="myChart" width="1050" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-1" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">
+              <div id="chart-1-legend" class="chart-legend">some legend here</div>
+            </div>
           </div>
         </li>
       </ul>
@@ -31,31 +36,47 @@
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
             <b>FLOW RATES</b>
-            <!--div id="js-legend" class="chart-legend"></div-->
             <div class="col-md-10">
-              <canvas id="chart" width="850" height="250" style="margin-top:10px;"></canvas>
+              <canvas id="chart-2" width="850" height="250" style="margin-top:10px;"></canvas>
             </div>
             <div class="col-md-2">
-              <div id="chart-legend"> Some legend here... </div>
+              <div id="chart-2-legend" class="chart-legend">some legend here... </div>
             </div> 
           </div>
         </li>
-        <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
-          <div style="padding:20px;">
+        <li data-row="1" data-col="3" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
             <b>PX PRESSURES</b>
-            <canvas id="myChart2" width="500" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-3" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">
+              <div id="chart-3" class="chart-legend">some legend here</div>
+            </div>
           </div>
         </li>
-        <li data-row="2" data-col="1" data-sizex="5" data-sizey="5">
-          <div style="padding:20px;">
+        <li data-row="2" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
             <b>HP & CIRCULATION PUMP SPEED</b>
-            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-4" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">              
+              <div id="chart-4-legend" class="chart-legend">some legend here... </div>
+            </div> 
+            </div>
           </div>
         </li>
-        <li data-row="2" data-col="3" data-sizex="5" data-sizey="5">
-          <div style="padding:20px;">
+        <li data-row="2" data-col="3" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
             <b>ANALYZERS</b>
-            <canvas id="chart" width="500" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-5" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">  
+              <div id="chart-5-legend" class="chart-legend">some legend here... </div>
+            </div> 
+            </div>
           </div>
         </li>
       </ul>
@@ -67,9 +88,14 @@
     <div class="gridster">
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
-          <div style="padding:20px;">
+          <div class="row" style="padding:20px;">
             <b>TRANSFER TREND</b>
-            <canvas id="chart2" width="1050" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-6" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">
+              <div id="chart-6-legend" class="chart-legend">some legend here</div>
+            </div>
           </div>
         </li>
       </ul>
@@ -81,9 +107,14 @@
     <div class="gridster">
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
-          <div style="padding:20px;">
+          <div class="row" style="padding:20px;">
             <b>REJECT TREND</b>
-            <canvas id="chart2" width="1050" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-7" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">
+              <div id="chart-7-legend" class="chart-legend">some legend here</div>
+            </div>
           </div>
         </li>
       </ul>
@@ -95,9 +126,14 @@
     <div class="gridster">
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
-          <div style="padding:20px;">
+          <div class="row" style="padding:20px;">
             <b>ENERGY TREND</b>
-            <canvas id="chart2" width="1050" height="250" style="margin-top:10px;"></canvas>
+            <div class="col-md-10">
+              <canvas id="chart-8" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2">
+              <div id="chart-8-legend" class="chart-legend">some legend here</div>
+            </div>
           </div>
         </li>
       </ul>
@@ -200,7 +236,7 @@ $(document).ready(function() {
   function go_ajax() {
     var req = $.ajax({
         type: "GET",
-        url: '{% url "live-pretreatment-api" %}',
+        url: '{% url "trend-pretreatment-api" %}',
         beforeSend: function() {
           $('#spin').spin({ color: '#34495E', shadow: false }); 
           console.log('loading...');
@@ -260,7 +296,7 @@ var lineChartData1 = {
     }]
 }
 
-var ctx = document.getElementById("chart").getContext("2d");
+var ctx = document.getElementById("chart-3").getContext("2d");
 var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
     scaleBeginAtZero: true,
     scaleShowGridLines: true,
@@ -270,7 +306,7 @@ var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
 </script>
 
 <script>
-  var ctx = $('#myChart').get(0).getContext('2d');
+  var ctx = $('#chart-1').get(0).getContext('2d');
 
   var data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -300,7 +336,7 @@ var myLine1 = new Chart(ctx).Line2Y(lineChartData1, {
 
   var trend = new Chart(ctx).Line(data);
 
-  var ctx2 = $('#myChart2').get(0).getContext('2d');
+  var ctx2 = $('#chart-2').get(0).getContext('2d');
   var data2 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
