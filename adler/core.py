@@ -4,6 +4,7 @@ import urllib
 import tornado.ioloop
 import tornado.web
 
+import dateutil.parser
 import motor
 import tornadoredis
 import simplejson as json
@@ -35,8 +36,13 @@ class INetSCADASubscriber(MongoConnectorMixin):
         if data.body == 1 or data.body == '':
             return
 
+        # add new field 'SentDatetime' that has datetime format
+        # so that, one can query document using datetime directly
+        d = json.loads(data.body)
+        d[u'SentDatetime'] = dateutil.parser.parse(d['SentTimestamp'])
+
         # insert to mongodb. success or error calls on_response callback
-        self.db.glm.insert(json.loads(data.body), callback=self.on_response)
+        self.db.glm.insert(d, callback=self.on_response)
 
     def on_response(self, result, error):
         print 'result:', result
