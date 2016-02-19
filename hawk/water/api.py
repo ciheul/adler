@@ -56,9 +56,9 @@ def trend_pretreatment_api(request):
 def trend_flowrates_api(request):
     m = list(db.glm.find())
     x = map(lambda i: i['Tags'], m)
-    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
-    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
-    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
+    y1 = map(lambda i: i[u'GLM\SWRO_001\RO_001\RT01\SWRO_FEED\FLOW'], x)
+    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_IN\FLOW'], x)
+    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_FEED\PRESS'], x)
     
     z1 = map(lambda i: i[u'Value'], y1)
     z2 = map(lambda i: i[u'Value'], y2)
@@ -77,19 +77,22 @@ def trend_flowrates_api(request):
 def trend_pressures_api(request):
     m = list(db.glm.find())
     x = map(lambda i: i['Tags'], m)
-    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
-    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
-    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
+    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_IN\PRESS'], x)
+    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PX_RAW_OUT\PRESSIND'], x)
+    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_REJECT\PRESS'], x)
+    y4 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_REJECT\PRESS'], x)
     
     z1 = map(lambda i: i[u'Value'], y1)
     z2 = map(lambda i: i[u'Value'], y2)
     z3 = map(lambda i: i[u'Value'], y3)
+    z4 = map(lambda i: i[u'Value'], y4)
 
     x = {
         'timestamp': ['t0','t1','t2','...'],
         'value1': z1,
         'value2': z2,
-        'value3': z3
+        'value3': z3,
+        'value4': z4
     }
 
     message = dumps(z)
@@ -98,19 +101,16 @@ def trend_pressures_api(request):
 def trend_circulation_api(request):
     m = list(db.glm.find())
     x = map(lambda i: i['Tags'], m)
-    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
-    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
-    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
+    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_HP\RUN'], x)
+    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_CIRC\FREQ'], x)
     
     z1 = map(lambda i: i[u'Value'], y1)
     z2 = map(lambda i: i[u'Value'], y2)
-    z3 = map(lambda i: i[u'Value'], y3)
 
     x = {
         'timestamp': ['t0','t1','t2','...'],
         'value1': z1,
-        'value2': z2,
-        'value3': z3
+        'value2': z2
     }
 
     message = dumps(z)
@@ -119,9 +119,9 @@ def trend_circulation_api(request):
 def trend_analyzers_api(request):
     m = list(db.glm.find())
     x = map(lambda i: i['Tags'], m)
-    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
-    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
-    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
+    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\SWRO_FEED\TDS'], x)
+    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\TDS'], x)
+    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\PH'], x)
     
     z1 = map(lambda i: i[u'Value'], y1)
     z2 = map(lambda i: i[u'Value'], y2)
@@ -140,9 +140,9 @@ def trend_analyzers_api(request):
 def trend_transfer_api(request):
     m = list(db.glm.find())
     x = map(lambda i: i['Tags'], m)
-    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2A\DPRESS'], x)
-    y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
-    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_FEED03\FREQ'], x)
+    y1 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\FLOW'], x)
+    y2 = map(lambda i: i[u''], x)
+    y3 = map(lambda i: i[u'GLM\SWRO_001\RT01\MEMBRANE_PRODUCT\PRESS'], x)
     
     z1 = map(lambda i: i[u'Value'], y1)
     z2 = map(lambda i: i[u'Value'], y2)
