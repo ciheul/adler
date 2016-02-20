@@ -146,6 +146,10 @@ ul {
     border: none!important;
     background: red!important;
 }
+
+.ready .gs-w:not(.preview-holder), .ready .resize-preview-holder {
+    border-radius: 5px;
+}
 /******** END OF GRIDSTER ********/
 
 /******** NAVTAB ********/
@@ -159,3 +163,47 @@ ul {
     background-color: #f0f4f8;
 }
 /******** END OF NAVTAB ********/
+
+/******** NOTIFCATION ********/
+.alert{}
+.page-notif{
+    font-size: 12px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 999;
+    position: fixed;
+}
+#notif-status{
+    box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+    height:35px;/*rm*/
+}
+#notif-status-icon{
+    float:left;
+}
+#notif-status,#notif-content{
+    background: #308CCC;
+    border-radius: 100px;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 9px 9px;/*3px 9px*/
+}
+#notif-closer{
+    color:#ffffff; 
+    float: right;
+    cursor:pointer;
+    font-weight:bold;
+}
+/******** END OF NOTIFCATION ********/
+
+/******** SPIN CSS ********/
+#spin{
+    float: right;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 5px;
+}
+/******** END OF SPIN CSS ********/
+
+

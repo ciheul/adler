@@ -419,7 +419,7 @@ $(document).ready(function(){
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        data: set_to[3]
+        data: [1,3,123,31,31,0,12,33,13,122,12,3,1] //set_to[3]
       }
     ]
   };
@@ -430,8 +430,8 @@ $(document).ready(function(){
 
 
 <script>
-  var ctx2 = $('#chart-2').get(0).getContext('2d');
-  var data2 = {
+  var ctx4 = $('#chart-4').get(0).getContext('2d');
+  var data4 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
@@ -456,9 +456,94 @@ $(document).ready(function(){
       }
     ]
   };
-  var myLine2 = new Chart(ctx2).Line2Y(data2, options);
-  $('#chart-2-legend').html(myLine2.generateLegend());
+  var myLine4 = new Chart(ctx4).Line2Y(data4, options);
+  $('#chart-4-legend').html(myLine4.generateLegend());
 </script>
+
+<script>
+  var ctx5 = $('#chart-5').get(0).getContext('2d');
+  var data5 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [218, 428, 840, 119, 826, 271, 190],
+        y2Axis: true
+      }
+    ]
+  };
+  var myLine5 = new Chart(ctx5).Line2Y(data5, options);
+  $('#chart-5-legend').html(myLine5.generateLegend());
+</script>
+
+<script>
+  var ctx6 = $('#chart-6').get(0).getContext('2d');
+  var data6 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 28, 80, 89, 26, 21, 19, 11, 12, 23], // issues: jika jumlah data series tidak sama dengan yang lain chartjs tidak menampilkan range data yang lebih 
+        y2Axis: true
+      }
+    ]
+  };
+  var myLine6 = new Chart(ctx6).Line2Y(data6, options);
+  $('#chart-6-legend').html(myLine6.generateLegend());
+</script>
+
 
 <script>
   var ctx7 = $('#chart-7').get(0).getContext('2d');
@@ -482,6 +567,9 @@ $(document).ready(function(){
   $('#chart-7-legend').html(myLine7.generateLegend());
 </script>
 
+<script>
+  //code #chart-8 , chart-8-legend?
+</script>
 <script type="text/javascript" id="code">
   var gridster;
 
