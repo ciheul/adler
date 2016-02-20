@@ -9,12 +9,12 @@
   {% include "sidenav-inc.html" %}
   <div id="content">
     <div class="row">
-      <div class="col-md-9"><h3>Live</h3></div>
+      <div class="col-md-9"><h3>Live <span id="notif-log"></span></h3></div>
       <div class="col-md-3">
         <div class="alert page-notif" style="display:none;">
           <div id="notif-status">
               <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
-            <span id="notif-content">Data Updated ..</span>
+            <span id="notif-content">LAST UPDATE: RECENTLY</span>
             <a id="notif-closer">×</a>
           </div>
         </div>
@@ -33,6 +33,36 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="2">
           <table class="table">
+            <tr>
+              <td>SWRO FEED FLOW (F1)</td>
+              <td></td>
+              <td>CIRC. PUMP FLOW (F2)</td>
+              <td></td>
+              <td>CIRC. FLOW PERCENTAGE</td>
+              <td></td>
+              <td>MEMBRANE INLET PRESS</td>
+              <td></td>
+              <td>RAW WATER TDS</td>
+              <td></td>
+              <td>PRODUCT TDS</td>
+              <td></td>
+              <td>PRODUCT PH</td>
+            <tr>
+            <tr>
+              <td class="col-md-1"><div id="swro_feed_flow_f1" class="box_value">99999<div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="circ_pump_flow_f2" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="circ_flow_percentage" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="membrane_inlet_press" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="raw_water_tds" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="product_td" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="product_ph" class="box_value">99999</div></td>
+            </tr>
           </table>
         </li>
       </ul>
@@ -258,15 +288,23 @@
       var ntf_body = '#notif-status';
       var ntf_content = '#notif-content';
       var ntf_icon = '#notif-status-icon';
+      var ntf_sts = ajax_status;
+      var cls = "";
       if (ajax_status) {  
         $(ntf_content).html('Data successfully updated!');
         $(ntf_icon).html('<span class="glyphicon glyphicon-ok">&nbsp;</span>');
         $(ntf_body).css('background','#308CCC');
+        ntf_sts = 'Success';
+        cls = 'glyphicon glyphicon-info-sign';
       } else {
         $(ntf_content).html('Failed to grab data...');
         $(ntf_body).css('background','#A94442');
         $(ntf_icon).html('<span class="glyphicon glyphicon-remove">&nbsp;</span>');
+        ntf_sts = 'Failed to grab data';
+        cls = 'glyphicon glyphicon-info-sign';
       }
+      $('.notif-log-status').css('background','#34495E');
+      $('#notif-log').html('<span><span class="'+cls+'"></span><i> Last update: '+(new Date())+' <span class="notif-log-status">'+ntf_sts +'</span></i></span>');
     }
 
     function process_bar(id) {
@@ -300,6 +338,42 @@
     function widgetSetter(data) {
       var id = '';
       var tag = ''; 
+      
+      //-- F1 --// 
+      id = '#swro_feed_flow_f1';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\SWRO_FEED\\FLOW']['Value'];
+      changeValue(id, tag);
+
+      //-- F2 --//
+      id = '#circ_pump_flow_f2';
+        //tag  = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_IN\\FLOW']['Value'];
+        //changeValue(id, tag);
+
+      //-- CIRC. FLOW PERCENTAGE --//
+      id = '#circ_flow_percentage';
+        //tag = data[0]['Tags']['']['Value'];
+        //changeValue(id, tag);
+
+      //-- membrane_inlet_press --//
+      id = '#membrane_inlet_press';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_FEED\\PRESS']['Value'];
+      changeValue(id, tag);
+      
+      //-- raw_water_tds --//
+      id = '#raw_water_tds';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\SWRO_FEED\\TDS']['Value'];
+      changeValue(id, tag);
+
+      //-- product_td --//
+      id = '#product_td';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\TDS']['Value'];
+      changeValue(id, tag);
+
+      //-- product_ph --//
+      id = '#product_ph';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\PH']['Value'];
+      changeValue(id, tag);
+
       //--CIP TANK--//
       id = '#cip_tank_lsh';
       tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_CIP\\LSH']['Value'];

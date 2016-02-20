@@ -165,8 +165,8 @@ ul {
 /******** END OF NAVTAB ********/
 
 /******** NOTIFCATION ********/
-.alert{}
-.page-notif{
+.alert {}
+.page-notif {
     font-size: 12px;
     text-align: center;
     padding-left: 0;
@@ -174,30 +174,45 @@ ul {
     z-index: 999;
     position: fixed;
 }
-#notif-status{
+#notif-status {
     box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
     height:35px;/*rm*/
 }
-#notif-status-icon{
+#notif-status-icon {
     float:left;
 }
-#notif-status,#notif-content{
+#notif-status,#notif-content {
     background: #308CCC;
     border-radius: 100px;
     color: #ffffff;
     margin: 0 auto;
     padding: 9px 9px;/*3px 9px*/
 }
-#notif-closer{
+#notif-closer {
     color:#ffffff; 
     float: right;
     cursor:pointer;
     font-weight:bold;
 }
+#notif-log {
+    font-size: 12px;
+    /*background: #A94442;*/
+    padding: 2px 7px;
+    /*color: #ffffff;*/
+    border-radius: 3px;
+    vertical-align: middle;
+}
+.notif-log-status {
+    background: #34495E; 
+    padding: 2px 5px; 
+    border-radius: 5px;
+    color: #ffffff;
+    font-style: normal; 
+}
 /******** END OF NOTIFCATION ********/
 
 /******** SPIN CSS ********/
-#spin{
+#spin {
     float: right;
     position: fixed;
     top: 50%;
@@ -206,4 +221,15 @@ ul {
 }
 /******** END OF SPIN CSS ********/
 
+/******** WIDGET BOX VALUE ********/
+.box_value {
+    background: #34495E;
+    padding: 5px 5px;
+    color: #ffffff;
+    margin: 5px auto;
+    min-width: 100px;
+    max-width: 100px;
+    border:1px solid #ddd;
+}
+/******** END OF WIDGET BOX VALUE ********/
 

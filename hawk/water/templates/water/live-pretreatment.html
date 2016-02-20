@@ -9,12 +9,12 @@
   {% include "sidenav-inc.html" %}
   <div id="content">
     <div class="row">
-      <div class="col-md-9"><h3>Live</h3></div>
+      <div class="col-md-9"><h3>Live <span id="notif-log"></span></h3></div>
       <div class="col-md-3">
         <div class="alert page-notif" style="display:none;">
           <div id="notif-status">
               <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
-            <span id="notif-content">Data Updated ..</span>
+            <span id="notif-content">LAST UPDATE: RECENTLY</span>
             <a id="notif-closer">×</a>
           </div>
         </div>
@@ -173,15 +173,23 @@
       var ntf_body = '#notif-status';
       var ntf_content = '#notif-content';
       var ntf_icon = '#notif-status-icon';
+      var ntf_sts = ajax_status;
+      var cls = "";
       if (ajax_status) {  
         $(ntf_content).html('Data successfully updated!');
         $(ntf_icon).html('<span class="glyphicon glyphicon-ok">&nbsp;</span>');
         $(ntf_body).css('background','#308CCC');
+        ntf_sts = 'Success';
+        cls = 'glyphicon glyphicon-info-sign';
       } else {
         $(ntf_content).html('Failed to grab data...');
         $(ntf_body).css('background','#A94442');
         $(ntf_icon).html('<span class="glyphicon glyphicon-remove">&nbsp;</span>');
+        ntf_sts = 'Failed to grab data';
+        cls = 'glyphicon glyphicon-info-sign';
       }
+      $('.notif-log-status').css('background','#34495E');
+      $('#notif-log').html('<span><span class="'+cls+'"></span><i> Last update: '+(new Date())+' <span class="notif-log-status">'+ntf_sts +'</span></i></span>');
     }
 
     function process_bar(id) {
