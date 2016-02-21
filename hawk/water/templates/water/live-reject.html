@@ -8,7 +8,18 @@
 <div class="my-container">
   {% include "sidenav-inc.html" %}
   <div id="content">
-    <h3>Live</h3>
+    <div class="row">
+      <div class="col-md-9"><h3>Live <span id="notif-log"></span></h3></div>
+      <div class="col-md-3">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+              <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">LAST UPDATE: RECENTLY</span>
+            <a id="notif-closer">×</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <ul class="nav nav-tabs">
       <li><a href="{% url 'live-pretreatment' %}">Pre-Treatment</a></li>
@@ -29,7 +40,7 @@
         </li>
         <li data-row="2" data-col="3" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>BRINE TANK</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>BRINE TANK</b></td></tr>
             <tr>
               <td><div id="brine_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
               <td><div id="brine_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
@@ -39,7 +50,7 @@
         </li>
         <li data-row="2" data-col="5" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>BRINE PUMP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>BRINE PUMP</b></td></tr>
             <tr>
               <td><div id="brine_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
               <td><div id="brine_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
@@ -69,22 +80,9 @@
     <div id="spin"></div>
 </div>
 
-<style type="text/css">
-  #spin{
-    float: right;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 5px;
-  }
-</style>
-
 {% endblock %}
 
 {% block javascript %}
-<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
-<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
-
 <script type="text/javascript" id="code">
   var gridster;
 
@@ -99,8 +97,15 @@
       .disable();
   });
   
+  $('#notif-closer').click(function() { 
+    $('.page-notif') .fadeOut();      
+  });
+
   $(document).ready(function() {
+    counter();
     go_ajax();
+
+    var ajax_status = true;
 
     var refresh = setInterval(go_ajax,10000);
     
@@ -111,6 +116,7 @@
         beforeSend: function() {
           $('#spin').spin({ color: '#34495E', shadow: false }); 
           console.log('loading...');
+          ajax_status = true;
         },
         complete: function() { 
           console.log('ajax request done');        
@@ -121,53 +127,102 @@
         //console.log('data captured'+data.length);
         //console.log(data);
         $('#spin').hide();
+        ajax_satatus = true;
         widgetSetter(data); 
       });
       
       req.fail(function(data) {
         console.log('sorry failed');
         $('#spin').hide(); 
+        ajax_status = false;
       });
     }
+   
+    var x = 1;
+    var xInt = setInterval(counter,5000);
     
+    function counter() {
+      //console.log('timer '+x);
+      x++;
+      $('.page-notif').fadeOut();
+    } 
+
+    function page_notif(ajax_status) {
+      var ntf_body = '#notif-status';
+      var ntf_content = '#notif-content';
+      var ntf_icon = '#notif-status-icon';
+      var ntf_sts = ajax_status;
+      var cls = "";
+      if (ajax_status) {  
+        $(ntf_content).html('Data successfully updated!');
+        $(ntf_icon).html('<span class="glyphicon glyphicon-ok">&nbsp;</span>');
+        $(ntf_body).css('background','#308CCC');
+        ntf_sts = 'Success';
+        cls = 'glyphicon glyphicon-info-sign';
+      } else {
+        $(ntf_content).html('Failed to grab data...');
+        $(ntf_body).css('background','#A94442');
+        $(ntf_icon).html('<span class="glyphicon glyphicon-remove">&nbsp;</span>');
+        ntf_sts = 'Failed to grab data';
+        cls = 'glyphicon glyphicon-info-sign';
+      }
+      $('.notif-log-status').css('background','#34495E');
+      $('#notif-log').html('<span><span class="'+cls+'"></span><i> Last update: '+(new Date())+' <span class="notif-log-status">'+ntf_sts +'</span></i></span>');
+    }
+
+    function process_bar(id) {
+        $(id).css('border-color','#3c763d'); 
+        $(id).fadeOut(); 
+        $(id).fadeIn(); 
+        $(id).css('border-color','#ddd');
+        page_notif(ajax_status);
+        $('.page-notif').fadeIn();
+    }
+    
+    function changeCSS(id, tagValue) {
+      if (tagValue) {
+        $(id).css('background','green');
+      } else {
+        $(id).css('background','red');
+      }       
+      $(id).css('color','#ffffff');
+      process_bar(id);
+    }
+
+    function changeValue(id, tagValue) {
+      if (tagValue) {
+        $(id).html(tagValue.toFixed(2));
+      } else {
+        $(id).html('Err');
+      }
+      process_bar(id);
+    }
+
     function widgetSetter(data) {
+      var id = '';
+      var tag = '';
+
       //--BRINE TANK--//
+      id = '#brine_tank_lsh';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_BRINE\\LSH']['value'];
+      changeCSS(id ,tag);
+
+      id = '#brine_tank_lsl';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_BRINE\\LSL']['value'];
+      changeCSS(id, tag);
+      
       //--BRINE PUMP--//
-      //--BRINE TANK--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_BRINE\\LSH']['value']) {
-        $('#brine_tank_lsh').css('background','green');
-      } else { 
-        $('#brine_tank_lsh').css('background','red');
-      }
-      $('#brine_tank_lsh').css('color','#ffffff');
+      id = '#brine_pump_run';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\RUN']['value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_BRINE\\LSL']['value']) {
-        $('#brine_tank_lsl').css('background','green');
-      } else { 
-        $('#brine_tank_lsl').css('background','red');
-      }
-      $('#brine_tank_lsl').css('color','#ffffff');
-
-      //--BRINE PUMP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\RUN']['value']) {
-        $('#brine_pump_run').css('background','green');
-      } else { 
-        $('#brine_pump_run').css('background','red');
-      }
-      $('#brine_pump_run').css('color','#ffffff');
-
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FAULT']['value']) {
-        $('#brine_pump_flt').css('background','green');
-      } else { 
-        $('#brine_pump_flt').css('background','red');
-      }
-      $('#brine_pump_flt').css('color','#ffffff');
-
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FREQ']['Value']) {
-        $('#brine_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FREQ']['Value'].toFixed(2));
-      } else { 
-        $('#brine_pump_freq').html('Err');
-      }
+      id = '#brine_pump_flt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FAULT']['value'];
+      changeCSS(id, tag);
+      
+      id = '#brine_pump_freq';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_BRINE\\FREQ']['Value'];
+      changeValue(id, tag);
 
     }
     

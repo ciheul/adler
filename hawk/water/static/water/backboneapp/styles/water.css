@@ -16,7 +16,7 @@ hr {
 h3 {
     margin-bottom: 30px;
 }
-
+h4 {font-size: 18px; background: #34495E; color: #FCFDFE; width: 100%; padding: 5px 5px; border-radius: 5px; width: 1102px;}
 #map { height: 250px; }
 
 /******** NAVBAR ********/
@@ -146,11 +146,27 @@ ul {
     border: none!important;
     background: red!important;
 }
+
+.ready .gs-w:not(.preview-holder), .ready .resize-preview-holder {
+    border-radius: 5px;
+}
 /******** END OF GRIDSTER ********/
 
 /******** NAVTAB ********/
-.nav-tabs {
+/*.nav-tabs {
     margin-bottom: 30px;
+    background: #34495E;
+    padding: 5px 0px 0px 10px;
+    border-radius: 5px;
+    border-top: 7px solid #308CCC;
+}
+.nav>li>a {
+    color: white;
+}
+*/
+.nav>li>a:hover {
+    background: #34495E;
+    color: white;
 }
 
 .nav-tabs > li.active > a,
@@ -158,4 +174,83 @@ ul {
 .nav-tabs > li.active > a:focus {
     background-color: #f0f4f8;
 }
+
 /******** END OF NAVTAB ********/
+
+/******** NOTIFCATION ********/
+.alert {}
+.page-notif {
+    font-size: 12px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 999;
+    position: fixed;
+    vertical-align: middle;
+}
+#notif-status {
+    box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+    height:35px;/*rm*/
+}
+#notif-status-icon {
+    float:left;
+}
+#notif-status,#notif-content {
+    background: #308CCC;
+    border-radius: 100px;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 9px 9px;/*3px 9px*/
+}
+#notif-closer {
+    color:#ffffff; 
+    float: right;
+    cursor:pointer;
+    font-weight:bold;
+}
+#notif-log {
+    font-size: 12px;
+    /*background: #A94442;*/
+    padding: 2px 7px;
+    /*color: #ffffff;*/
+    border-radius: 3px;
+    vertical-align: middle;
+}
+.notif-log-status {
+    background: #34495E; 
+    padding: 2px 5px; 
+    border-radius: 5px;
+    color: #ffffff;
+    font-style: normal; 
+}
+/******** END OF NOTIFCATION ********/
+
+/******** SPIN CSS ********/
+#spin {
+    float: right;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 5px;
+}
+/******** END OF SPIN CSS ********/
+
+/******** WIDGET BOX VALUE ********/
+.widget-head {
+    background: #F5F5F5; 
+    /*color: #34495E;*/
+    width: 100%; 
+    margin: 0 auto;
+}
+
+.box_value {
+    background: #34495E;
+    padding: 5px 5px;
+    color: #ffffff;
+    margin: 5px auto;
+    min-width: 100px;
+    max-width: 100px;
+    border:1px solid #ddd;
+}
+/******** END OF WIDGET BOX VALUE ********/
+

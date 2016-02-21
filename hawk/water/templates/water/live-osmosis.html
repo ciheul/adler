@@ -8,7 +8,18 @@
 <div class="my-container">
   {% include "sidenav-inc.html" %}
   <div id="content">
-    <h3>Live</h3>
+    <div class="row">
+      <div class="col-md-9"><h3>Live <span id="notif-log"></span></h3></div>
+      <div class="col-md-3">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+              <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">LAST UPDATE: RECENTLY</span>
+            <a id="notif-closer">×</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <ul class="nav nav-tabs">
       <li><a href="{% url 'live-pretreatment' %}">Pre-Treatment</a></li>
@@ -20,8 +31,38 @@
 
     <div class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="10" data-sizey="3">
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="2">
           <table class="table">
+            <tr class="widget-head">
+              <td>SWRO FEED FLOW (F1)</td>
+              <td></td>
+              <td>CIRC. PUMP FLOW (F2)</td>
+              <td></td>
+              <td>CIRC. FLOW PERCENTAGE</td>
+              <td></td>
+              <td>MEMBRANE INLET PRESS</td>
+              <td></td>
+              <td>RAW WATER TDS</td>
+              <td></td>
+              <td>PRODUCT TDS</td>
+              <td></td>
+              <td>PRODUCT PH</td>
+            <tr>
+            <tr>
+              <td class="col-md-1"><div id="swro_feed_flow_f1" class="box_value">99999<div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="circ_pump_flow_f2" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="circ_flow_percentage" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="membrane_inlet_press" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="raw_water_tds" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="product_td" class="box_value">99999</div></td>
+              <td class="col-md-1"></td>
+              <td class="col-md-1"><div id="product_ph" class="box_value">99999</div></td>
+            </tr>
           </table>
         </li>
       </ul>
@@ -33,7 +74,7 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>CIP TANK</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>CIP TANK</b></td></tr>
             <tr>
               <td><div id="cip_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
               <td><div id="cip_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
@@ -43,7 +84,7 @@
         </li>
         <li data-row="1" data-col="3" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>CIP PUMP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>CIP PUMP</b></td></tr>
             <tr>
               <td><div id="cip_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
               <td><div id="cip_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
@@ -57,7 +98,7 @@
         </li>
         <li data-row="1" data-col="5" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>HP PUMP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>HP PUMP</b></td></tr>
             <tr>
               <td><div id="hp_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
               <td><div id="hp_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
@@ -71,7 +112,7 @@
         </li>
         <li data-row="1" data-col="7" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>MEMBR. P4, P5, P7</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>MEMBR. P4, P5, P7</b></td></tr>
             <tr>
               <td colspan="2"><div id="membrane_feed" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
@@ -97,7 +138,7 @@
 
         <li data-row="3" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>SWRO FEED PUMP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>SWRO FEED PUMP</b></td></tr>
             <tr>
               <td><div id="swro_feed_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
               <td><div id="swro_feed_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
@@ -111,7 +152,7 @@
         </li>
         <li data-row="3" data-col="3" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>CRT. FILTER DP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>CRT. FILTER DP</b></td></tr>
             <tr>
               <td colspan="2"><div id="crt_filter_dp_freq" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
@@ -120,7 +161,7 @@
         </li>
         <li data-row="3" data-col="5" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>CIRC. PUMP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>CIRC. PUMP</b></td></tr>
             <tr>
               <td><div id="circ_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
               <td><div id="circ_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
@@ -134,7 +175,7 @@
         </li>
         <li data-row="3" data-col="7" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>PX DEVICE P2, P3, DP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>PX DEVICE P2, P3, DP</b></td></tr>
             <tr>
               <td colspan="2"><div id="px_device_in" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
@@ -151,7 +192,7 @@
         </li>
         <li data-row="3" data-col="9" data-sizex="2" data-sizey="3">
           <table class="table">
-            <tr><td colspan="3"><b>PX DEVICE P5, P6, DP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>PX DEVICE P5, P6, DP</b></td></tr>
             <tr>
               <td colspan="2"><div id="px_device_dp_reject" style="width:120px;height:30px;line-height:30px;border:1px solid #ddd;">9999</div></td>
               <td><div style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">BAR</div></td>
@@ -176,22 +217,9 @@
     <div id="spin"></div>
 </div>
 
-<style type="text/css">
-  #spin{
-    float: right;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 5px;
-  }
-</style>
-
 {% endblock %}
 
 {% block javascript %}
-<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
-<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
-
 <script type="text/javascript" id="code">
   var gridster;
 
@@ -205,10 +233,17 @@
       .data('gridster')
       .disable();
   });
+  
+  $('#notif-closer').click(function() { 
+    $('.page-notif') .fadeOut();      
+  });
 
   $(document).ready(function() {
+    counter();
     go_ajax();
 
+    var ajax_status = true;
+    
     var refresh = setInterval(go_ajax,10000);
     
     function go_ajax() {   
@@ -218,9 +253,10 @@
         beforeSend: function() {
           $('#spin').spin({ color: '#34495E', shadow: false }); 
           console.log('loading...');
+          ajax_status = true;
         },
         complete: function() { 
-          console.log('ajax request done');        
+          console.log('ajax request done'); 
         }
       });
  
@@ -228,173 +264,231 @@
         //console.log('data captured'+data.length);
         //console.log(data);
         $('#spin').hide();
+        ajax_status = true;
         widgetSetter(data); 
       });
       
       req.fail(function(data) {
         console.log('sorry failed');
         $('#spin').hide(); 
+        ajax_status = false;
       });
     }
     
-    function widgetSetter(data) {
-      //--CIP TANK--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_CIP\\LSH']['Value']) {
-        $('#cip_tank_lsh').css('background','green');
-      }else{
-        $('#cip_tank_lsh').css('background','red');
-      }
-      $('#cip_tank_lsh').css('color','#ffffff');
+    var x = 1;
+    var xInt = setInterval(counter,5000);
+    
+    function counter() {
+      //console.log('timer '+x);
+      x++;
+      $('.page-notif').fadeOut();
+    } 
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_CIP\\LSL']['Value']) {
-        $('#cip_tank_lsl').css('background','green');
-      }else{
-        $('#cip_tank_lsl').css('background','red');
+    function page_notif(ajax_status) {
+      var ntf_body = '#notif-status';
+      var ntf_content = '#notif-content';
+      var ntf_icon = '#notif-status-icon';
+      var ntf_sts = ajax_status;
+      var cls = "";
+      if (ajax_status) {  
+        $(ntf_content).html('Data successfully updated!');
+        $(ntf_icon).html('<span class="glyphicon glyphicon-ok">&nbsp;</span>');
+        $(ntf_body).css('background','#308CCC');
+        ntf_sts = 'Success';
+        cls = 'glyphicon glyphicon-info-sign';
+      } else {
+        $(ntf_content).html('Failed to grab data...');
+        $(ntf_body).css('background','#A94442');
+        $(ntf_icon).html('<span class="glyphicon glyphicon-remove">&nbsp;</span>');
+        ntf_sts = 'Failed to grab data';
+        cls = 'glyphicon glyphicon-info-sign';
       }
-      $('#cip_tank_lsl').css('color','#ffffff');
+      $('.notif-log-status').css('background','#34495E');
+      $('#notif-log').html('<span><span class="'+cls+'"></span><i> Last update: '+(new Date())+' <span class="notif-log-status">'+ntf_sts +'</span></i></span>');
+    }
+
+    function process_bar(id) {
+        $(id).css('border-color','#3c763d'); 
+        $(id).fadeOut(); 
+        $(id).fadeIn(); 
+        $(id).css('border-color','#ddd');
+        page_notif(ajax_status);
+        $('.page-notif').fadeIn();
+    }
+    
+    function changeCSS(id, tagValue) {
+      if (tagValue) {
+        $(id).css('background','green');
+      } else {
+        $(id).css('background','red');
+      }       
+      $(id).css('color','#ffffff');
+      process_bar(id);
+    }
+
+    function changeValue(id, tagValue) {
+      if (tagValue) {
+        $(id).html(tagValue.toFixed(2));
+      } else {
+        $(id).html('Err');
+      }
+      process_bar(id);
+    }
+ 
+    function widgetSetter(data) {
+      var id = '';
+      var tag = ''; 
+      
+      //-- F1 --// 
+      id = '#swro_feed_flow_f1';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\SWRO_FEED\\FLOW']['Value'];
+      changeValue(id, tag);
+
+      //-- F2 --//
+      id = '#circ_pump_flow_f2';
+        //tag  = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_IN\\FLOW']['Value'];
+        //changeValue(id, tag);
+
+      //-- CIRC. FLOW PERCENTAGE --//
+      id = '#circ_flow_percentage';
+        //tag = data[0]['Tags']['']['Value'];
+        //changeValue(id, tag);
+
+      //-- membrane_inlet_press --//
+      id = '#membrane_inlet_press';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_FEED\\PRESS']['Value'];
+      changeValue(id, tag);
+      
+      //-- raw_water_tds --//
+      id = '#raw_water_tds';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\SWRO_FEED\\TDS']['Value'];
+      changeValue(id, tag);
+
+      //-- product_td --//
+      id = '#product_td';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\TDS']['Value'];
+      changeValue(id, tag);
+
+      //-- product_ph --//
+      id = '#product_ph';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\PH']['Value'];
+      changeValue(id, tag);
+
+      //--CIP TANK--//
+      id = '#cip_tank_lsh';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_CIP\\LSH']['Value'];
+      changeCSS(id, tag);
+      
+      id = '#cip_tank_lsl'; 
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_CIP\\LSL']['Value'];
+      changeCSS(id, tag);
 
       //--CIP PUMP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\RUN']['Value']) {
-        $('#cip_pump_run').css('background','green');
-      }else{
-        $('#cip_pump_run').css('background','red');
-      }
-      $('#cip_pump_run').css('color','#ffffff');
+      id = '#cip_pump_run';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\RUN']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\FAULT']['Value']) {
-        $('#cip_pump_flt').css('background','green');
-      }else{
-        $('#cip_pump_flt').css('background','red');
-      }
-      $('#cip_pump_flt').css('color','#ffffff');
-      
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\FREQ']['Value']) {
-        $('#cip_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\FREQ']['Value'].toFixed(2));
-      } else {
-        $('#cip_pump_freq').html('Err');
-      }
+      id = '#cip_pump_flt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\FAULT']['Value'];
+      changeCSS(id, tag);
+
+      id = '#cip_pump_freq';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIP\\FREQ']['Value']
+      changeValue(id, tag);
 
       //--HP PUMP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\RUN']['Value']) {
-        $('#hp_pump_run').css('background','green');
-      }else{
-        $('#hp_pump_run').css('background','red');
-      }
-      $('#hp_pump_run').css('color','#ffffff');
+      id = '#hp_pump_run';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\RUN']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\FAULT']['Value']) {
-        $('#hp_pump_flt').css('background','green');
-      }else{
-        $('#hp_pump_flt').css('background','red');
-      }
-      $('#hp_pump_flt').css('color','#ffffff');
-      
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\FREQ']['Value']) {
-        $('#hp_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\FREQ']['Value'].toFixed(2));
-      } else {
-        $('#hp_pump_freq').html('Err');
-      }
+      id = '#hp_pump_flt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\FAULT']['Value'];
+      changeCSS(id, tag);
+    
+      id = '#hp_pump_freq' ;
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_HP\\FREQ']['Value'];
+      changeValue(id, tag);
 
       //--MEMBR--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_FEED\\PRESS']['Value']) {
-        $('#membrane_feed').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_FEED\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('#membrane_feed').html('Err');
-      }
+      id = '#membrane_feed';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_FEED\\PRESS']['Value'];
+      changeValue(id, tag);
+     
+      id = '#membrane_reject';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_REJECT\\PRESS']['Value'];
+      changeValue(id, tag);
       
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_REJECT\\PRESS']['Value']) {
-        $('#membrane_reject').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_REJECT\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('#membrane_reject').html('Err');
-      }
-
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\PRESS']['Value']) {
-        $('#membrane_product').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('#membrane_product').html('Err');
-      }
-
+      id = '#membrane_product';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\PRESS']['Value'];
+      changeValue(id, tag);
+    
       //--SWRO FEED PUMP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\RUN']['Value']) {
-        $('#swro_feed_pump_run').css('background','green');
-      } else {
-        $('#swro_feed_pump_run').css('background','red');
-      }
-      $('#swro_feed_pump_run').css('color','#ffffff');
-      
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\FAULT']['Value']) {
-        $('#swro_feed_pump_flt').css('background','green');
-      } else {
-        $('#swro_feed_pump_flt').css('background','red');
-      }
-      $('#swro_feed_pump_flt').css('color','#ffffff');
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\FREQ']['Value']) {
-        $('#swro_feed_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\FREQ']['Value'].toFixed(2));
-      } else {
-        $('#swro_feed_pump_freq').html('Err');
-      }
+      id = '#swro_feed_pump_run';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\RUN']['Value'];
+      changeCSS(id, tag);
+   
+      id = '#swro_feed_pump_flt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\FAULT']['Value'];
+      changeCSS(id, tag);
+
+      id = '#swro_feed_pump_freq';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_SWRO_FEED\\FREQ']['Value'];
+      changeValue(id, tag);
 
       //--CRT FILTER DP--//
-        //not defined yet 
+      id = '#crt_filter_dp_freq';
+      tag = 99999; // no document
+      changeValue(id, tag); 
 
       //--CIRC PUMP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\RUN']['Value']) {
-        $('#circ_pump_run').css('background','green');
-      } else {
-        $('#circ_pump_run').css('background','red');
-      }
-      $('#circ_pump_run').css('color','#ffffff');
+      id = '#circ_pump_run';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\RUN']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\FAULT']['Value']) {
-        $('#circ_pump_flt').css('background','green');
-      } else {
-        $('#circ_pump_flt').css('background','red');
-      }
-      $('#circ_pump_flt').css('color','#ffffff');
+      id = '#circ_pump_flt';
+      tagg = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\FAULT']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\FREQ']['Value']) {
-        $('#circ_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\FREQ']['Value'].toFixed(2));
-      } else { 
-        $('#circ_pump_freq').html('Err');
-      } 
+      id = '#circ_pump_freq';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_CIRC\\FREQ']['Value'];
+      changeValue(id, tag);
 
       //--PX DEVICE 2 3 DP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_IN\\PRESS']['Value']) {
-        $('#px_device_in').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_IN\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('#px_device_in').html('Err');
-      }
-      
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_OUT\\PRESS']['Value']) {
-        $('#px_device_out').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_OUT\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('#px_device_out').html('Err');
-      }
+      id = '#px_device_in';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_IN\\PRESS']['Value'];
+      changeValue(id, tag);
+        
+      id = '#px_device_out';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_RAW_OUT\\PRESS']['Value'];
+      changeValue(id, tag);
 
-      var temp = $('#px_device_out').html() - $('px_device_in').html();
+      id = '#px_device_flow';
+      tag = 'Err999';
+      var temp = $('#px_device_in').html() - $('#px_device_out').html();
       if (temp != '') {
-        $('#px_device_flow').html(temp);
+        changeValue(id, temp);
       } else {
-        $('#px_device_flow').html('Err');
-      }//#note: search change data to int
-      
-      //--PX DEVICE 5 6 DP--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_REJECT\\PRESS']['Value']) {
-        $('#px_device_dp_reject').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_REJECT\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('$px_device_dp_reject').html('Err');
+        changeValue(id, temp);
       }
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_REJECT_OUT\\PRESS']['Value']) {
-        $('#px_device_dp_out').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_REJECT_OUT\\PRESS']['Value'].toFixed(2));
-      } else {
-        $('#px_device_dp_out').html('Err');
-      }    
+      //--PX DEVICE 5 6 DP--//
+      id = '#px_device_dp_reject';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_REJECT\\PRESS']['Value'];
+      changeValue(id, tag);
+
+      id = '#px_device_dp_out';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PX_REJECT_OUT\\PRESS']['Value'];
+      changeValue(id, tag);
       
-      if (true){
-        $('#px_device_dp').html('99999');
+      id = '#px_device_dp';
+      tag = 99; // no document
+      temp = false;
+      if (temp){
+        //$('#px_device_dp').html('99999');
+        changeValue(id, tag);
       } else {
-        $('#px_device_dp').html('Err');
+        //$('#px_device_dp').html('Err');
+        changeValue(id, tag);
       } 
     }
     
