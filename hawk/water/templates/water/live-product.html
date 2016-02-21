@@ -8,7 +8,18 @@
 <div class="my-container">
   {% include "sidenav-inc.html" %}
   <div id="content">
-    <h3>Live</h3>
+    <div class="row">
+      <div class="col-md-9"><h3>Live <span id="notif-log"></span></h3></div>
+      <div class="col-md-3">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+              <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">LAST UPDATE: RECENTLY</span>
+            <a id="notif-closer">×</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <ul class="nav nav-tabs">
       <li><a href="{% url 'live-pretreatment' %}">Pre-Treatment</a></li>
@@ -18,10 +29,24 @@
       <li><a href="{% url 'live-energy' %}">Energy</a></li>
     </ul>
 
+    <br>
+
     <div class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="10" data-sizey="3">
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="2">
           <table class="table">
+            <tr class="widget-head">
+              <td>TRANSFER FLOWRATE </td>
+              <td>TRANSFER VOLUME TODAY</td>
+              <td>TRANSFER VOLUME TOTALIZER</td>
+              <td>TRANSFER PRESSURE</td>
+            <tr>
+            <tr>
+              <td class="col-md-3"><div id="transfer_flowrate_cfh" class="box_value">99999</div><div>CFH</div></td>
+              <td class="col-md-3"><div id="transfer_volume_today_cubic_feet" class="box_value">99999</div><div>CUBIC FEET</div></td>
+              <td class="col-md-3"><div id="transfer_volume_totalizer_cubic_feet" class="box_value">99999</div><div>CUBIC FEET</div></td>
+              <td class="col-md-3"><div id="transfer_volume_bar" class="box_value">99999</div><div>BAR</div></td>
+            </tr>
           </table>
         </li>
       </ul>
@@ -37,7 +62,7 @@
         </li>
         <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>CHLOR. DOSING</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>CHLOR. DOSING</b></td></tr>
             <tr>
               <td><div id="chlor_dosing_agt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
               <td><div id="chlor_dosing_pmp" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
@@ -47,7 +72,7 @@
         </li>
         <li data-row="2" data-col="3" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>PH DOSING</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>PH DOSING</b></td></tr>
             <tr>
               <td><div id="ph_dosing_agt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">AGT</div></td>
               <td><div id="ph_dosing_pmp" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">PMP</div></td>
@@ -57,7 +82,7 @@
         </li>
         <li data-row="2" data-col="5" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>PRODUCT TANK</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>PRODUCT TANK</b></td></tr>
             <tr>
               <td><div id="product_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
               <td><div id="product_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
@@ -67,7 +92,7 @@
         </li>
         <li data-row="2" data-col="7" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>TRANSFER PUMP</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>TRANSFER PUMP</b></td></tr>
             <tr>
               <td><div id="transfer_pump_run" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">RUN</div></td>
               <td><div id="transfer_pump_flt" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">FLT</div></td>
@@ -81,7 +106,7 @@
         </li>
         <li data-row="2" data-col="9" data-sizex="2" data-sizey="2">
           <table class="table">
-            <tr><td colspan="3"><b>HOTEL TANK</b></td></tr>
+            <tr><td class="widget-head" colspan="3"><b>HOTEL TANK</b></td></tr>
             <tr>
               <td><div id="hotel_tank_lsh" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;margin-left:2px;">LSH</div></td>
               <td><div id="hotel_tank_lsl" style="width:50px;height:30px;line-height:30px;border:1px solid #ddd;">LSL</div></td>
@@ -99,21 +124,9 @@
     <div id="spin"></div>
 </div>
 
-<style type="text/css">
-  #spin{
-    float: right;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 5px;
-  }
-</style>
 {% endblock %}
 
 {% block javascript %}
-<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
-<script rel="stylesheet" src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
-
 <script type="text/javascript" id="code">
   var gridster;
 
@@ -128,9 +141,16 @@
       .disable();
   });
   
+  $('#notif-closer').click(function() { 
+    $('.page-notif') .fadeOut();      
+  });
+  
   $(document).ready(function() {
+    counter();
     go_ajax();
 
+    var ajax_status = true;
+    
     var refresh = setInterval(go_ajax,10000);
     
     function go_ajax() {   
@@ -140,6 +160,7 @@
         beforeSend: function() {
           $('#spin').spin({ color: '#34495E', shadow: false }); 
           console.log('loading...');
+          ajax_status = true;
         },
         complete: function() { 
           console.log('ajax request done');        
@@ -148,98 +169,152 @@
  
       req.done(function(data) {
         //console.log('data captured'+data.length);
-        console.log(data);
+        //console.log(data);
         $('#spin').hide();
+        ajax_status = true;
         widgetSetter(data); 
       });
       
       req.fail(function(data) {
         console.log('sorry failed');
         $('#spin').hide(); 
+        ajax_status = false;
       });
     }
+   
+    var x = 1;
+    var xInt = setInterval(counter,5000);
     
-    function widgetSetter(data) {
-      //--CHLOR DOSING--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_CHL\\AGT_RUN']['Value']) {  
-        $('#chlor_dosing_agt').css('background','green');
-      } else {
-        $('#chlor_dosing_agt').css('background','red');
-      }
-      $('#chlor_dosing_agt').css('color','#ffffff');
+    function counter() {
+      //console.log('timer '+x);
+      x++;
+      $('.page-notif').fadeOut();
+    } 
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_CHL\\PUMP_RUN']['Value']) {  
-        $('#chlor_dosing_pmp').css('background','green');
+    function page_notif(ajax_status) {
+      var ntf_body = '#notif-status';
+      var ntf_content = '#notif-content';
+      var ntf_icon = '#notif-status-icon';
+      var ntf_sts = ajax_status;
+      var cls = "";
+      if (ajax_status) {  
+        $(ntf_content).html('Data successfully updated!');
+        $(ntf_icon).html('<span class="glyphicon glyphicon-ok">&nbsp;</span>');
+        $(ntf_body).css('background','#308CCC');
+        ntf_sts = 'Success';
+        cls = 'glyphicon glyphicon-info-sign';
       } else {
-        $('#chlor_dosing_pmp').css('background','red');
+        $(ntf_content).html('Failed to grab data...');
+        $(ntf_body).css('background','#A94442');
+        $(ntf_icon).html('<span class="glyphicon glyphicon-remove">&nbsp;</span>');
+        ntf_sts = 'Failed to grab data';
+        cls = 'glyphicon glyphicon-info-sign';
       }
-      $('#chlor_dosing_pmp').css('color','#ffffff');
+      $('.notif-log-status').css('background','#34495E');
+      $('#notif-log').html('<span><span class="'+cls+'"></span><i> Last update: '+(new Date())+' <span class="notif-log-status">'+ntf_sts +'</span></i></span>');
+    }
+
+    function process_bar(id) {
+        $(id).css('border-color','#3c763d'); 
+        $(id).fadeOut(); 
+        $(id).fadeIn(); 
+        $(id).css('border-color','#ddd');
+        page_notif(ajax_status);
+        $('.page-notif').fadeIn();
+    }
+    
+    function changeCSS(id, tagValue) {
+      if (tagValue) {
+        $(id).css('background','green');
+      } else {
+        $(id).css('background','red');
+      }       
+      $(id).css('color','#ffffff');
+      process_bar(id);
+    }
+
+    function changeValue(id, tagValue) {
+      if (tagValue) {
+        $(id).html(tagValue.toFixed(2));
+      } else {
+        $(id).html('Err');
+      }
+      process_bar(id);
+    }
+
+
+    function widgetSetter(data) {
+      var id = '';
+      var tag = '';
+
+      //-- transfer_flowrate_cfh --//
+      id = '#transfer_flowrate_cfh';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\FLOW']['Value'];
+      changeValue(id, tag);
+
+      //-- --//
+      id = '#transfer_volume_today_cubic_feet'; 
+        //tag = data[0]['Tags']['']['Value'];
+        //changeValue(id, tag);
+      
+      //-- --//
+      id = '#transfer_volume_totalizer_cubic_feet'; 
+        //tag = data[0]['Tags']['']['Value'];
+        //changeValue(id, tag);
+
+      //-- --//
+      id = '#transfer_volume_bar'; 
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\MEMBRANE_PRODUCT\\PRESS']['Value'];
+      changeValue(id, tag);
+
+      //--CHLOR DOSING--//
+      id = '#chlor_dosing_agt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_CHL\\AGT_RUN']['Value'];  
+      changeCSS(id, tag);
+
+      id = '#chlor_dosing_pmp';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_CHL\\PUMP_RUN']['Value'];
+      changeCSS(id, tag);
 
       //--PH DOSING--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_PH\\AGT_RUN']['Value']) {  
-        $('#ph_dosing_agt').css('background','green');
-      } else {
-        $('#ph_dosing_agt').css('background','red');
-      }
-      $('#ph_dosing_agt').css('color','#ffffff');
+      id = '#ph_dosing_agt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_PH\\AGT_RUN']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_PH\\PUMP_RUN']['Value']) {  
-        $('#ph_dosing_pmp').css('background','green');
-      } else {
-        $('#ph_dosing_pmp').css('background','red');
-      }
-      $('#ph_dosing_pmp').css('color','#ffffff');
+      id = '#ph_dosing_pmp';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\DOSING_PH\\PUMP_RUN']['Value'];
+      changeCSS(id, tag);
 
       //--PRODUCT TANK--//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_PRODUCT\\LSH']['Value']) {  
-        $('#product_tank_lsh').css('background','green');
-      } else {
-        $('#product_tank_lsh').css('background','red');
-      }
-      $('#product_tank_lsh').css('color','#ffffff');
+      id = '#product_tank_lsh';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_PRODUCT\\LSH']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_PRODUCT\\LSL']['Value']) {  
-        $('#product_tank_lsl').css('background','green');
-      } else {
-        $('#product_tank_lsl').css('background','red');
-      }
-      $('#product_tank_lsl').css('color','#ffffff');
+      id = '#product_tank_lsl';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\TANK_PRODUCT\\LSL']['Value'];
+      changeCSS(id, tag);
 
       //--TRANSFER PUMP---//
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\RUN']['Value']) {  
-        $('#transfer_pump_run').css('background','green');
-      } else {
-        $('#transfer_pump_run').css('background','red');
-      }
-      $('#transfer_pump_run').css('color','#ffffff');
+      id = '#transfer_pump_run';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\RUN']['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FAULT']['Value']) {  
-        $('#transfer_pump_flt').css('background','green');
-      } else {
-        $('#transfer_pump_flt').css('background','red');
-      }
-      $('#transfer_pump_flt').css('color','#ffffff');
-      
-      if (data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value']) {
-        $('#transfer_pump_freq').html(data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value'].toFixed(2));
-      } else {
-        $('#transfer_pump_freq').html('Err');
-      }
+      id = '#transger_pump_flt';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FAULT']['Value'];
+      changeCSS(id, tag);
+
+      id = '#transfer_pump_freq';
+      tag = data[0]['Tags']['GLM\\SWRO_001\\RT01\\PUMP_PRODUCT\\FREQ']['Value'];
+      changeValue(id, tag);
 
       //--HOTEL TANK--//
-      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSH"]['Value']) {  
-        $('#hotel_tank_lsh').css('background','green');
-      } else {
-        $('#hotel_tank_lsh').css('background','red');
-      }
-      $('#hotel_tank_lsh').css('color','#ffffff');
+      id = '#hotel_tank_lsh';
+      tag = data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSH"]['Value'];
+      changeCSS(id, tag);
 
-      if (data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSL"]['Value']) {  
-        $('#hotel_tank_lsl').css('background','green');
-      } else {
-        $('#hotel_tank_lsl').css('background','red');
-      }
-      $('#hotel_tank_lsl').css('color','#ffffff');
+      id = '#hotel_tank_lsl';
+      tag = data[0]['Tags']["GLM\\SWRO_001\\RT01\\TANK_HOTEL\\LSH"]['Value'];
+      changeCSS(id, tag)
  
     }
     
