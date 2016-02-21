@@ -254,3 +254,7 @@ ul {
 }
 /******** END OF WIDGET BOX VALUE ********/
 
+#myDataTable {
+    width: 1100px;
+    word-wrap: break-word;
+}
