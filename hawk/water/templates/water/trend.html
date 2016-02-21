@@ -158,6 +158,7 @@
     text-align: left;
     box-shadow: none;
     margin-top: 10px;
+    font-size: 11px;
   }
   .chart-legend li span{ 
     display: inline-block;
@@ -256,118 +257,140 @@
 
 <script>
   var set_to = [];
-
-  function go_ajax(api_url,idx) {
+  var go = [false, false, false, false, false, false, false, false];
+  
+  //$(document).ready(function(){
+    var ajr = [];
+  
+    ajr[1] = '{% url "trend-pretreatment-api" %}';
+    ajr[2] = '{% url "trend-flowrates-api" %}';
+    ajr[3] = '{% url "trend-pressures-api" %}' ; 
+    ajr[4] = '{% url "trend-circulation-api" %}' ; 
+    ajr[5] = '{% url "trend-analyzers-api" %}';
+    ajr[6] = '{% url "trend-transfer-api" %}' ; 
+    ajr[7] = '{% url "trend-reject-api" %}' ;
+    ajr[8] = '{% url "trend-energy-api" %}' ;
+  
+    go_ajax(ajr[1], 1);
+    go_ajax(ajr[2], 2);
+    
+    var nxt = false;
+    var inc = 3;
+    
+    while (inc <= 2) {
+      var cheque = false;
+      var itr = 0;
+      go_ajax(ajr[inc], inc); 
+      //console.log(set_to[inc]);
+      var timeout = setInterval(function(){
+        console.log(go[inc]);
+        itr++;
+      }, 1000);
+      //if (itr==10) {
+          clearInterval(timeout);
+        //  console.log('timeout');
+      //}
+      if (go[inc]) {
+        console.log('yay')
+      }
+      inc++;
+      console.log('inc '+inc);
+    }
+   
+  //});
+ 
+  function go_ajax(api_url, idx) {
     var req = $.ajax({
       type: "GET",
       url: api_url,
       beforeSend: function() {
         //$('#spin').spin({ color: '#34495E', shadow: false }); 
-        console.log('loading... '+api_url);
+        console.log('loading... ' + api_url);
       },
       complete: function() { 
-        console.log('ajax request done '+api_url);        
+        console.log('ajax request done ' + api_url);       
       }
     });
  
     req.done(function(data) {
       //console.log('data captured'+data.length); //console.log(data);
       //$('#spin').hide();
-      widgetSetter(data,idx); 
+      //console.log(data['value1']+idx);
+      set_to[idx] = data;
+      console.log(set_to[idx]);
+      widgetSetter(data, idx); 
     });
       
     req.fail(function(data) {
-      console.log('sorry failed '+api_url);
+      console.log('sorry failed ' + api_url);
       //$('#spin').hide(); 
     });
-
+    //console.log(req);
+  } 
+  
+  function widgetSetter(data, i){
+    //console.log(data, i+' inside widgetSetter');
+    set_to[i] = data; // widget data, top-bottom, [1-8]
+    if (i == 1 || i == 2 || i == 5 || i == 6) {
+      set2Yaxis(data, i);
+    } else if (i == 3) {
+      set1Yaxis(data, i, 4);
+    } else if (i == 4) {
+      set1Yaxis(data, i, 2);
+    } else if (i == 7) {
+      set1Yaxis(data, i, 1);
+    }
+    go[i] = true;
   }
   
-  function widgetSetter(data,i){
-    set_to[i] = data; // widget data, top-bottom, [1-8]
+  var ctx = []; 
+  var lineChartData = [];
+  var myLine = [];
+  function set2Yaxis(nodes, i) {
+    console.log("chart-"+i);
+    ctx[i] = document.getElementById("chart-"+i).getContext("2d");
+    lineChartData[i] = {
+      labels: nodes['timestamp'],
+      datasets: [{
+          label: nodes['label1'],
+          fillColor: "rgba(0,255,0,0.5)",
+          strokeColor: "rgba(0,255,0,1)",
+          pointColor: "rgba(0,255,0,1)",
+          color: "rgba(0,255,0,0,0.5)",
+          pointStrokeColor: "#fff",
+          data: nodes['value1'],
+          y2axis: true
+      }, {
+          label: nodes['label2'],
+          fillColor: "rgba(151,187,205,0.5)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          data: nodes['value2'],
+          y2axis: true
+      }, {
+          label: nodes['label3'],
+          fillColor: "rgba(205,151,187,0.5)",
+          strokeColor: "rgba(205,151,187,1)",
+          pointColor: "rgba(205,151,187,1)",
+          pointStrokeColor: "#fff",
+          data: nodes['value3'],
+      }]
+    } 
+    console.log(lineChartData[i]);
+    myLine[i] = new Chart(ctx[i]).Line2Y(lineChartData[i], options);
+    $('#chart-' + i + '-legend').html(myLine[i].generateLegend());
+    go[i] = true;
+  }
+
+  function set1Yaxis(nodes, i, seriesC) {
+    //
   }
 
 </script>
 
 <script>
 $(document).ready(function(){
-  //go_ajax('{% url "trend-pretreatment-api" %}',1);
-  //var refresh = setInterval(go_ajax,60000);
-  var ctx = document.getElementById("chart-1").getContext("2d");
-  var lineChartData1 = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    datasets: [{
-        label: "My First dataset",
-        fillColor: "rgba(0,255,0,0.5)",
-        strokeColor: "rgba(0,255,0,1)",
-        pointColor: "rgba(0,255,0,1)",
-        color: "rgba(0,255,0,0,0.5)",
-        pointStrokeColor: "#fff",
-        data: [15, 25, 90, 81, 56, 55, 400]
-    }, {
-        label: "My Second dataset",
-        fillColor: "rgba(151,187,205,0.5)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#fff",
-        data: [150, 48, 120, 19, 46, 27, 100],
-        y2axis: true
-    }, {
-        label: "My Third dataset",
-        fillColor: "rgba(205,151,187,0.5)",
-        strokeColor: "rgba(205,151,187,1)",
-        pointColor: "rgba(205,151,187,1)",
-        pointStrokeColor: "#fff",
-        data: [105, 48, 40, 19, 46, 27, 200],
-        y2axis: true
-    }]
-  }
-  var myLine1 = new Chart(ctx).Line2Y(lineChartData1, options);
-  $('#chart-1-legend').html(myLine1.generateLegend());
-});
-</script>
-
-<script>
-$(document).ready(function(){
-  //go_ajax('{% url "trend-flowrates-api" %}',2);
-  //var refresh = setInterval(go_ajax,60000);
-  var ctx2 = document.getElementById("chart-2").getContext("2d");
-  var lineChartData2 = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    datasets: [{
-        label: "My First dataset",
-        fillColor: "rgba(0,255,0,0.5)",
-        strokeColor: "rgba(0,255,0,1)",
-        pointColor: "rgba(0,255,0,1)",
-        color: "rgba(0,255,0,0,0.5)",
-        pointStrokeColor: "#fff",
-        data: [15, 25, 90, 81, 56, 55, 400]
-    }, {
-        label: "My Second dataset",
-        fillColor: "rgba(151,187,205,0.5)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#fff",
-        data: [150, 48, 120, 19, 46, 27, 100],
-        y2axis: true
-    }, {
-        label: "My Third dataset",
-        fillColor: "rgba(205,151,187,0.5)",
-        strokeColor: "rgba(205,151,187,1)",
-        pointColor: "rgba(205,151,187,1)",
-        pointStrokeColor: "#fff",
-        data: [105, 48, 40, 19, 46, 27, 200],
-        y2axis: true
-    }]
-  }
-  var myLine2 = new Chart(ctx2).Line2Y(lineChartData2, options);
-  $('#chart-2-legend').html(myLine2.generateLegend());
-});
-</script>
-
-<script>
-$(document).ready(function(){
-  //go_ajax('{% url "trend-analyzers-api" %}',5);
   //var refresh = setInterval(go_ajax,60000);
   var ctx5 = document.getElementById("chart-5").getContext("2d");
   var lineChartData5 = {
@@ -569,7 +592,19 @@ $(document).ready(function(){
 
 <script>
   //code #chart-8 , chart-8-legend?
+  $('#chart-8').ready(function(){
+    $('#chart-8').css('background','#eeeeee');
+    $('#chart-8').css('border-radius','5px');    
+  });
 </script>
+
+<script>
+  $(window).load(function() {
+    //alert('loadding');
+    $('#spin').spin({color: '#34495e', shadow: false});
+  });
+</script>
+
 <script type="text/javascript" id="code">
   var gridster;
 
