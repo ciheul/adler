@@ -177,6 +177,42 @@ ul {
 
 /******** END OF NAVTAB ********/
 
+/******** REPORT ********/
+.box {
+    float:left;
+    width:33.33%;
+    height:100%;
+}
+
+.title-box {
+    font-size: 20px;
+}
+
+.header-box {
+    /* padding-top:10px; */
+    height: 30%;
+    vertical-align: middle;
+}
+
+.content-box {
+    height: 35%;
+    font-size: 36px;
+    color: white;
+    background: black;
+    padding-top: 16px;
+    /* padding-right: 15px; */
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #dddddd;
+}
+
+.footer-box {
+    height: 35%;
+    font-size: 12px;
+    padding-top:5px;
+}
+/******** END OF REPORT ********/
+
 /******** NOTIFCATION ********/
 .alert {}
 .page-notif {

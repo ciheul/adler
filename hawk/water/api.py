@@ -241,11 +241,16 @@ def trend_energy_api(request):
     return HttpResponse(message, content_type='application/json')
 
 def trend_reject_api(request):
-    m = list(db.glm.find())
-    x = map(lambda i: i['Tags'], m)
-    y = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_BRINE\FREQ'], x)
-    z = map(lambda i: i[u'Value'], y)
-    print z
+    #m = list(db.glm.find())
+    #x = map(lambda i: i['Tags'], m)
+    #y = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_BRINE\FREQ'], x)
+    #z = map(lambda i: i[u'Value'], y)
+    #print z
+    x = [1,2,3]
 
+    z = {
+        'timestamp':['1','2','3'],
+        'values': x
+    }
     message = dumps(z)
     return HttpResponse(message, content_type='application/json') 
