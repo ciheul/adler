@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^report/$', views.report, name="report"),
     url(r'^trend/$', views.trend, name="trend"),
     url(r'^$', views.dashboard, name="dashboard"),
-
+     
     #url live api
     url(r'^api/live-pretreatment/$',api.live_pretreatment_api,
         name="live-pretreatment-api"),
