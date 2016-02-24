@@ -11,9 +11,9 @@
   <div id="content">
     <h3>Trend</h3>
 
-    <h4>PRE-TREATMENT</h4>
+    <h4>PRE-TREATMENT <span class="glyphicon glyphicon-menu-down" id="chart-1-toggler" style="float:right;cursor:pointer;"></span></h4>
     <div class="gridster">
-      <ul>
+      <ul id="chart-1-toggle">
         <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
           <div class="row" style="padding:20px;">
             <div class="col-md-10">MM FILTER DP & FEED PUMP SPEED</div>
@@ -602,6 +602,12 @@ $(document).ready(function(){
   $(window).load(function() {
     //alert('loadding');
     $('#spin').spin({color: '#34495e', shadow: false});
+  });
+</script>
+
+<script>
+  $('#chart-1-toggler').click(function(){
+    $('#chart-1-toggle').toggle(); 
   });
 </script>
 

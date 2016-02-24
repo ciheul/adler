@@ -29,4 +29,5 @@ urlpatterns = [
         name='api-forgotpassword'),
 
     url(r'^', views.LoginView.as_view(), name='login')
+    #url(r'^', views.LoginView, name='login')
 ]
