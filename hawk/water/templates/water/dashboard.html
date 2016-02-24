@@ -9,13 +9,18 @@
   <div id="map"></div>
   <div id="content">
     <h4>Assets</h4>
-    <ul>
-      <li><a href="{% url 'live-pretreatment' %}">Nusa Dua</a></li>
-    </ul>
+    <br>
+    <div style="width:70px;height:100px;margin-left:25px">
+      <a href="{% url 'live-pretreatment' %}">
+        <div class="assets-offline" style="background:red;height:70%;border:1px solid #dddddd; border-radius:5px;"></div>
+        <div class="text-center" style="height:30%;padding-top:5px">Nusa Dua</div>
+      </a>
+    </div>
 
     <hr />
 
-    <h4>Alarm</h4>
+    <h4><!--span class="glyphicon glyphicon-bell"></span-->Alarm</h4>
+    <br>
     <div id="myDataTable"></div>
   </div>
 </div>
@@ -45,25 +50,25 @@
         {
           Date: '2015-06-04',
           Time: '16:33:48',
-          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Equipment: 'GLM\\ST.V\\PM.INC',
           Message: 'History Incoming ST-5 Undervoltage'
         },
         {
           Date: '2015-06-12',
           Time: '22:58:11',
-          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Equipment: 'GLM\\ST.V\\PM.INC',
           Message: 'History Incoming ST-5 Undervoltage'
         },
         {
           Date: '2015-06-18',
           Time: '00:44:23',
-          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Equipment: 'GLM\\ST.V\\PM.INC',
           Message: 'History Incoming ST-5 Undervoltage'
         },
         {
           Date: '2015-06-22',
           Time: '13:22:14',
-          Equipment: 'EPTJ\\ST.V\\PM.INC',
+          Equipment: 'GLM\\ST.V\\PM.INC',
           Message: 'History Incoming ST-5 Undervoltage'
         }
       ];

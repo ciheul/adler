@@ -13,7 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.views import password_reset_confirm
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
 
@@ -28,8 +28,10 @@ class LoginView(View):
         # return render(request, "static/account/reactapp/index.html")
 
         # BackboneJS
+        if request.user.is_authenticated():
+            return HttpResponseRedirect("/water/")
+        
         return render(request, "static/account/backboneapp/index.html")
-
 
 class LogoutView(View):
     def get(self, request):

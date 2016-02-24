@@ -42,33 +42,41 @@
 </script>
 
 <script type="text/javascript" id="code">
-    var counter = 0;
-        setInterval(function(){
-            $("#cctv").removeAttr('src','/static/water/images/cctv.jpg');
-            $("#cctv").removeAttr('src',true);
-            $("#cctv").attr('src','/static/water/images/cctv.jpg');
-            counter++;
-        },300000); //each 10 minutes (60*1000 = 1 minute)
+  function process_bar(id) { 
+    $(id).fadeOut(); 
+    $(id).css('border-color','#3c763d'); 
+    $(id).fadeIn(); 
+    $(id).css('border-color','#ddd');
+  }
 
-    var idleTime = 0;
-    $(document).ready(function () {
-        //Increment the idle time counter every minute.
-        var idleInterval = setInterval(minutesIncrement, 60*1000);
-        //Zero the idle timer on mouse movement.
-        $(this).mousemove(function (e) {
-            idleTime = 0;
-        });
-        $(this).keypress(function (e) {
-            idleTime = 0;
-        });
+  var counter = 0;
+    setInterval(function(){
+      $("#cctv").removeAttr('src','/static/water/images/cctv.jpg');
+      $("#cctv").removeAttr('src',true);
+      $("#cctv").attr('src','/static/water/images/cctv.jpg');
+      process_bar('#cctv');
+      counter++;
+    },300000); //each 5 minutes (60*1000 = 1 minute)
+
+  var idleTime = 0;
+  $(document).ready(function () {
+    //Increment the idle time counter every minute.
+    var idleInterval = setInterval(minutesIncrement, 60*1000);
+    //Zero the idle timer on mouse movement.
+    $(this).mousemove(function (e) {
+      idleTime = 0;
     });
+    $(this).keypress(function (e) {
+      idleTime = 0;
+    });
+  });
 
-    function minutesIncrement() {
-        idleTime = idleTime + 1;
-        if (idleTime > 5) { // 5 minutes
-            window.location.reload();
-        }
-        //console.log('passed '+idleTime+' minute(s)');
+  function minutesIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 5) { // 5 minutes
+      window.location.reload();
     }
+    //console.log('passed '+idleTime+' minute(s)');
+  }
 </script>
 {% endblock %}

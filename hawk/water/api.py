@@ -31,6 +31,7 @@ def live_energy_api(request):
     message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
 
+
 #trend page
 def trend_pretreatment_api(request):
     #x = list(db.glm.find({},{}))
