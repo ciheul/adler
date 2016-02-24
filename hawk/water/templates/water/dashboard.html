@@ -10,13 +10,32 @@
   <div id="content">
     <h4>Assets</h4>
     <br>
-    <div style="width:70px;height:100px;margin-left:25px">
+    <!--div style="width:70px;height:100px;margin-left:25px">
       <a href="{% url 'live-pretreatment' %}">
         <div style="background:green;height:70%;border:1px solid #dddddd"></div>
+        <div class="assets-offline" style="background:red;height:70%;border:1px solid #dddddd; border-radius:5px;"></div>
         <div class="text-center" style="height:30%;padding-top:5px">Sofitel</div>
       </a>
-    </div>
+    </div-->
+    <div class="row" style="margin-left: 0px; height: auto; max-width: 1100px;">
+      <div id="" class="col-md-2" align="center">
+        <a href="{% url 'live-pretreatment' %}">
+          <div class="assets-offline" style="background:red;width:70px;vertical-align: middle;height:70px;border:1px solid #dddddd; border-radius:5px;">
+            <div class="glyphicon glyphicon-tint" style="font-size: 45px; padding-top: 12px; color: #ffffff; "></div>
+          </div>
+          <div class="text-center" style="height:30%;padding-top:5px">Sofitel</div>
+        </a>
+      </div>
+      <div id="" class="col-md-2" align="center">
+        <a href="">
+          <div class="assets-offline" style="background:red;width:70px;vertical-align: middle;height:70px;border:1px solid #dddddd; border-radius:5px;">
+            <div class="glyphicon glyphicon-ban-circle" style="font-size: 45px; padding-top: 12px; color: #ffffff; "></div>
+          </div>
+          <div class="text-center" style="height:30%;padding-top:5px">Client</div>
+        </a>
+      </div>
 
+    </div>
     <hr />
 
     <h4><!--span class="glyphicon glyphicon-bell"></span-->Alarm</h4>

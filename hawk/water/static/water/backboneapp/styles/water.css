@@ -94,7 +94,9 @@ h4 {font-size: 18px; background: #34495E; color: #FCFDFE; width: 100%; padding: 
     color: white;
     /* font-size: 36px; */
     margin: 0;
-    padding: 80px 0 0 13px;
+    padding: 80px 0 0 0;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .sidenav-ul > li {
@@ -290,8 +292,28 @@ ul {
 }
 /******** END OF WIDGET BOX VALUE ********/
 
-/* alarm page */
+/******** DASHBOARD PAGE ********/
 #myDataTable {
     width: 1100px;
     word-wrap: break-word;
 }
+/******** END OF DASHBOARD PAGE ********/
+
+/******** TRENDING PAGE ********/
+.chart-legend {
+
+}
+.sidechart {
+    margin-left: -8px; 
+    margin-top: -19px;    
+}
+.chart-radio {
+    width: 10px;
+    height: 10px;
+}
+.chart-legend {
+    font-size: 13px;
+}
+/******** END OF TRENDING PAGE ********/
+
+
