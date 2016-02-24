@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^accounts/', include('account.urls')),
     url(r'^water/', include('water.urls')),
     url(r'^', include('account.urls'))
+    #url(r'^', views.index),
 ]
