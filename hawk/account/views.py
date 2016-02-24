@@ -28,14 +28,10 @@ class LoginView(View):
         # return render(request, "static/account/reactapp/index.html")
 
         # BackboneJS
-        return render(request, "static/account/backboneapp/index.html")
+        if request.user.is_authenticated():
+            return HttpResponseRedirect("/water/")
         
-        '''
-        if not request.user.is_authenticated(): 
-            return render(request, "static/account/backboneapp/index.html")
-        else 
-            return render(request, "static/account/backboneapp/index.html")
-        '''
+        return render(request, "static/account/backboneapp/index.html")
 
 class LogoutView(View):
     def get(self, request):
