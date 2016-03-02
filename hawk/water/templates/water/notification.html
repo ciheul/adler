@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  {% include 'sidenav-inc.html' %}
+  <div id="content">
+    <h3>Nofitifications</h3>
+    <style type="text/css">
+      .notif {
+        margin-bottom: 10px;
+      }
+      .notif-ico {
+        height: 20px;
+        width: 20px;
+        padding: 0px 2px 2px 2px;
+        background: #FFFFFF;
+        margin: 3px 0px 0px -5px;
+        float: left;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        color: #34495E;
+        box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+      }
+      .notif-content {
+        background: #ffffff;
+        padding: 10px;
+        margin-left: 20px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+      }
+      .notif-time {
+        font-size: 11px;
+        font-style: italic;
+        color: #34495E;
+        float: right;
+      }
+      .notif-info {
+        color: #34495E;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .notif-detail {
+        border-top: 1px solid #ddd;
+        font-size: 12px;
+      }
+    </style>
+
+    <div class="notif">
+      <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+      <div class="notif-content">
+        <div class="notif-time">sat 20:00</div>
+        <div class="notif-info">Data successfully grabbed</div>
+        <div class="notif-detail">no matter where you are i'll be there</div>
+      </div>
+    </div>
+    
+    <div class="notif">
+      <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+      <div class="notif-content">
+        <div class="notif-time">sat 20:00</div>
+        <div class="notif-info">Data successfully grabbed</div>
+        <div class="notif-detail">no matter where you are i'll be there</div>
+      </div>
+    </div>
+    
+    <div class="notif">
+      <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+      <div class="notif-content">
+        <div class="notif-time">sat 20:00</div>
+        <div class="notif-info">Data successfully grabbed</div>
+        <div class="notif-detail">no matter where you are i'll be there</div>
+      </div>
+    </div>
+
+    <div class="notif">
+      <div class="notif-content notif-info" align="center">
+        <div class="glyphicon glyphicon-tint"></div>
+        <div>Oops! <br> No More Notifications...</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+    <div id="spin"></div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+  $(window).on('load', function() {
+    $('#spin').spin({
+      color: '#000'
+    });
+    $('#spin').show();
+    console.log('something');
+  }).load(function(){
+    $('#spin').hide();
+    console.log('is hidden');
+  });
+</script>
+
+{% endblock %}
