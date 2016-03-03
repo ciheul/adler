@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^$', views.dashboard, name="dashboard"),
     url(r'^profile/$', views.profile, name="profile"),
     url(r'^notifications/$', views.notifications, name="notifications"),
-     
-     
+    url(r'^tags/$', views.tags, name="tags"),
+          
     #url live api
     url(r'^api/live-pretreatment/$',api.live_pretreatment_api,
         name="live-pretreatment-api"),
