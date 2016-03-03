@@ -106,4 +106,80 @@
   });
 </script>
 
+<script id="notif-template" type="text/template">
+  <div class="notif">
+    <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+    <div class="notif-content">
+      <div class="notif-time"></div>
+      <div class="notif-info"></div>
+      <div class="notif-detail"></div>
+    </div>
+  </div>
+</script>
+
+<script>
+  (function($) {
+    //asasdas
+  })(jQuery);
+</script>
+
+<script type="text/template" id="first_template">
+	<label>1 view</label>	
+	<a href="#second">second view</a>
+</script>
+<script type="text/template" id="second_template">
+	<label>2 view</label>	
+	<a href="#first">first view</a>
+</script>
+
+<div id="container" align="center" style="left: 100px;">somee</div>
+
+<script type="text/javascript">
+(function($){
+	FirstView = Backbone.View.extend({
+		el: $('#container'),
+		initialize: function() {
+			this.render();
+			return this;
+		},
+		render: function() {
+			var template = _.template($('#notif-template').html(), {});
+			this.$el.html(template);
+		}
+	});
+
+	SecondView = Backbone.View.extend({
+		el: $('#container'),
+		initialize: function() {
+			this.render();
+			return this;
+		},
+		render: function() {
+			var template = _.template($('#second_template').html(), {});
+			this.$el.html(template);
+		}
+	});
+
+	MyRouter = Backbone.Router.extend({
+		routes: {
+			"" : "firstPage",
+			"first" : "firstPage",
+			"second" : "secondPage",
+		},
+		firstPage: function() {
+			new FirstView();
+			console.log('something');
+		}, 
+		secondPage: function() {
+			new SecondView();
+			console.log('something 2s');
+		}
+	});
+
+	var router = new MyRouter();
+
+	Backbone.history.start();
+})(jQuery);
+</script>
+
 {% endblock %}
