@@ -31,6 +31,32 @@
 
 {% block javascript %}
 <script>
+  go_ajax();
+  function go_ajax() {   
+    var req = $.ajax({
+      type: "GET",
+      url: '{% url "tags-api" %}',
+      beforeSend: function() {
+        $('#spin').spin({ color: '#34495E', shadow: false }); 
+        console.log('loading...');
+      },
+      complete: function() { 
+        console.log('ajax request done');        
+      }
+    });
+ 
+    req.done(function(data) {
+      $('#spin').hide();
+      console.log(data);
+    });
+      
+    req.fail(function(data) {
+      console.log('sorry failed');
+      $('#spin').hide(); 
+    });
+  }
+</script>
+<script>
   $(window).on('load', function() {
     $('#spin').spin({
       color: '#000'
