@@ -64,6 +64,4 @@ def notifications(request):
     return render(request, 'notification.html')
 
 
-@login_required
-def tags(request):
-    return render(request, 'tags.html')
+
