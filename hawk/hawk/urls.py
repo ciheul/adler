@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('account.urls')),
     url(r'^water/', include('water.urls')),
-    url(r'^', include('account.urls'))
+    url(r'^adm/', include('adm.urls')),
+    url(r'^', include('account.urls')),
     #url(r'^', views.index),
 ]

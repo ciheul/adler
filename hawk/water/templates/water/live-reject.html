@@ -192,7 +192,7 @@
     }
 
     function changeValue(id, tagValue) {
-      if (tagValue) {
+      if (tagValue || tagValue == 0) {
         $(id).html(tagValue.toFixed(2));
       } else {
         $(id).html('Err');

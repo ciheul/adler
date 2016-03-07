@@ -19,11 +19,9 @@ urlpatterns = [
         name="live-energy"),
     url(r'^report/$', views.report, name="report"),
     url(r'^trend/$', views.trend, name="trend"),
-    url(r'^$', views.dashboard, name="dashboard"),
     url(r'^profile/$', views.profile, name="profile"),
     url(r'^notifications/$', views.notifications, name="notifications"),
-     
-     
+
     #url live api
     url(r'^api/live-pretreatment/$',api.live_pretreatment_api,
         name="live-pretreatment-api"),
@@ -44,4 +42,5 @@ urlpatterns = [
     url(r'^api/trend/$',api.trend_reject_api, name="trend-reject-api"),
     url(r'^api/trend/$',api.trend_energy_api, name="trend-energy-api"),
 
+    url(r'^$', views.dashboard, name="dashboard"),
 ]

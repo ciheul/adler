@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block css %}
+<!--link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" /-->
+<style>
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  
+  <div id="content">
+    <h3>Tags</h3>
+    <form id="new-tweet">
+      <button id="" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk">&nbsp;</span>Save Changes</button>
+      <input id="author-name" name="author-name" type="text" placeholder="Asset Name">
+      <input id="author-text" name="author-text" type="text" placeholder="Tag e.g.: GLM\ASSET\RT1\UNIT\UNIT">
+      <input type="submit">
+    </form>
+    <hr>
+    <div id="tags-container"></div>
+  </div>
+</div>
+
+<div class="row">
+    <div id="spin"></div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+  go_ajax();
+  function go_ajax() {   
+    var req = $.ajax({
+      type: "GET",
+      url: '{% url "tags-api" %}',
+      beforeSend: function() {
+        $('#spin').spin({ color: '#34495E', shadow: false }); 
+        console.log('loading...');
+      },
+      complete: function() { 
+        console.log('ajax request done');        
+      }
+    });
+ 
+    req.done(function(data) {
+      $('#spin').hide();
+      console.log(data);
+    });
+      
+    req.fail(function(data) {
+      console.log('sorry failed');
+      $('#spin').hide(); 
+    });
+  }
+</script>
+<script>
+  $(window).on('load', function() {
+    $('#spin').spin({
+      color: '#000'
+    });
+    $('#spin').show();
+    console.log('something');
+  }).load(function(){
+    $('#spin').hide();
+    console.log('is hidden');
+  });
+</script>
+
+<script type="text/javascript">
+(function($){
+  
+  var TagModel = Backbone.Model.extend({
+    defaults: function() {
+      return {
+        tagname: "PUMP FAULT",
+        tagvalue: "GLM\\SWRO_001\\RT01\\PUMP_FEED03\\FAULT",
+        tagtype: ''        
+      }
+    }
+  });
+  
+  var TagList = Backbone.Collection.extend({
+    model: TagModel
+  });
+    
+  var deploy = new TagList();
+  
+  for (var i=0; i<22; i++) {
+    deploy.add(new TagModel()); //dummy
+  }
+
+  var TagView = Backbone.View.extend({
+    model: new TagModel(),
+    tagName: 'div',
+    events: {
+      'click .edit': 'edit',
+      'click .delete': 'delete',
+      'blur .status': 'close',
+      'keypress .status': 'onEnterUpdate'
+    },
+    initialize: function() {
+      this.template = _.template($('#tag-template').html());
+    },
+    edit: function(ev) {
+      ev.preventDefault();
+      this.$('.status').attr('contenteditable', true).focus();
+    },
+    close: function(ev) {
+      var status = this.$('.status').text();
+      this.model.set('status', status);
+      this.$('.status').removeAttr('contenteditable');
+    },
+    onEnterUpdate: function(ev) {
+      var self = this;
+      if (ev.keyCode === 13) {
+        this.close();
+        _.delay(function() { self.$('.status').blur() }, 100);
+      }
+    },
+    delete: function(ev) {
+      ev.preventDefault();
+      deploy.remove(this.model);
+    },
+    render: function() {
+      this.$el.html(this.template(this.model.toJSON()));
+      return this;
+    }
+  });
+        
+  var TagsView = Backbone.View.extend({
+    model: deploy,
+    el: $('#tags-container'),
+    initialize: function() {
+      this.render();
+      this.model.on('add', this.render, this);
+      this.model.on('remove', this.render, this);
+    },
+    render: function() {
+      var self = this;
+      self.$el.html('');
+      _.each(this.model.toArray(), function(tag, i) { 
+        self.$el.append((new TagView({model: tag})).render().$el);
+      });
+      return this;
+    }
+  });
+            
+  $(document).ready(function(){
+    $('#new-tweet').submit(function(ev) {
+      var tag = new TagModel({tagname: $('#author-name').val(), tagvalue: $('#author-text').val()});
+      deploy.add(tag);
+      console.log(deploy.toJSON());
+      return false;
+    });
+                        
+    var appView = new TagsView();
+  });
+})(jQuery);
+</script>
+
+<script type="text/template" id="tag-template">
+<div class="row">
+  <div class="col-md-2" style="padding-top: 8px;">
+    <label class="author"><%= tagname %></label>
+  </div>
+  <div class="col-md-8">
+    <input class="form-control status" value="<%= tagvalue %>" placeholder="GLM\ASSET\RT1\UNIT\UNIT">
+  </div>
+  <div class="col-md-2" align="">
+    <button href="#" class="btn btn-warning edit">edit</button>
+    <button href="#" class="btn btn-danger delete">delete</button>
+  </div>
+  <div class="col-md-12"><hr></div>
+  </div>
+</div>
+</script>
+{% endblock %}

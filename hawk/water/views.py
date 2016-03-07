@@ -53,10 +53,15 @@ def report(request):
 def trend(request):
     return render(request, 'trend.html')
 
+
 @login_required
 def profile(request):
     return render(request, 'profile.html')
 
+
 @login_required
 def notifications(request):
     return render(request, 'notification.html')
+
+
+

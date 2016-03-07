@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'water',
     'rest_framework',
     'rest_framework.authtoken',
+    'adm',
 )
 
 MIDDLEWARE_CLASSES = (

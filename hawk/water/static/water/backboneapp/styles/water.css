@@ -102,6 +102,7 @@ h4 {font-size: 18px; background: #34495E; color: #FCFDFE; width: 100%; padding: 
 .sidenav-ul > li {
     padding-bottom: 20px;
 }
+
 /******** END OF SIDENAV & MAIN CONTENT ********/
 
 /******** GRIDSTER ********/
@@ -316,4 +317,16 @@ ul {
 }
 /******** END OF TRENDING PAGE ********/
 
+.asset-online, .asset-offline {
+    background: green;
+    width:70px;
+    vertical-align: middle;
+    height:70px;
+    border:1px solid #dddddd; 
+    border-radius:5px;
+}
+
+.asset-offline {
+    background: red;
+}
 
