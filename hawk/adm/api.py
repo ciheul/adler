@@ -21,7 +21,8 @@ def tag_update_1_api(request):
 def tags_api(request):
     #x = list(db.glm.find({},{}))
     #y2 = map(lambda i: i[u'GLM\SWRO_001\RT01\MMF2B\DPRESS'], x)
-    
+    print request 
+    print "something up"
     z1 = {
          "dateupdated":"date",
          "tagname": "",
