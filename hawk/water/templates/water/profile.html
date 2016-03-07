@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  {% include 'sidenav-inc.html' %}
+  <div id="content">
+    <style type="text/css">
+      .profile {
+        box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42); margin-bottom: 10px; border-radius: 5px;
+      }
+      .profile-body {
+        margin-top: 20px;background: white;padding: 10px;border-radius: 5px 5px 5px 5px;
+      }
+      .pro-header {
+        border: 1px solid #ddd; font-size: 24px; margin-bottom: 10px;background: #34495E;color: #fff; padding: 0px 10px 0px 10px; border-radius: 5px;
+      }
+      .pro-detail {
+        padding: 0px 10px 0px 10px;
+      }
+      .pro-decorator {
+        margin-top: 37px;margin-bottom: 37px;padding-top: 27px;font-size: 65px;text-align: center;background: #34495e;border-radius: 70%;vertical-align: middle;width: 150px;height: 150px;color: #FFF;border: 5px solid rgb(63, 129, 186);box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+      }
+      .divider {
+        border-top: 1px solid #ddd;height: 10px;
+      }
+    </style>
+    
+    <h3>Profile</h3>
+    <div class="profile">
+      <div class="profile-body">
+        <div class="pro-header">Account</div>
+        <div class="row pro-detail">
+          <div class="col-md-2" align="center">
+            <div class="pro-decorator"><span class="glyphicon glyphicon-user"></span></div> 
+          </div>
+          <div class="col-md-10">
+            <div class="col-md-12"><label>Username</label></div>
+            <div class="col-md-12"><input type="text" value="smartadmin" class="form-control"></div>
+            <div class="col-md-12">&nbsp;</div>
+            <div class="col-md-12"><label>Email</label></div>
+            <div class="col-md-12"><input type="email" value="smartadmin@gmail.com" class="form-control"></div>
+            <div class="col-md-12">&nbsp;</div>
+            <div class="col-md-12"><label>Phone</label></div>
+            <div class="col-md-12"><input type="number" value="081381121234" class="form-control"></div>
+          </div>
+          <div>&nbsp;</div>
+        </div>
+        <div class="divider">&nbsp;</div> 
+
+        <div class="pro-header">Password</div>
+        <div class="row pro-detail">
+          <div class="col-md-2" align="center">
+            <div class="pro-decorator"><span class="glyphicon glyphicon-lock"></span></div> 
+          </div>
+          <div class="col-md-10">
+            <div class="col-md-12"><label for="o-password">Old Password</label></div>
+            <div class="col-md-12"><input id="o-password" type="password" class="form-control"></div>
+            <div class="col-md-12">&nbsp;</div>
+            <div class="col-md-12"><label for="n-password">New Password</labclass="col-md-4"el></div>
+            <div class="col-md-12"><input id="n-password" type="password" class="form-control"></div>
+            <div class="col-md-12">&nbsp;</div>
+            <div class="col-md-12"><label for="c-password">Confirm Password</label></div>
+            <div class="col-md-12"><input id="c-password" type="password" class="form-control"></div>
+          </div>
+          <div>&nbsp;</div>
+        </div>
+        <div class="divider">&nbsp;</div> 
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+    <div id="spin"></div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+  $(window).on('load', function() {
+    $('#spin').spin({
+      color: '#000'
+    });
+    $('#spin').show();
+    console.log('something');
+  }).load(function(){
+    $('#spin').hide();
+    console.log('is hidden');
+  });
+</script>
+
+{% endblock %}

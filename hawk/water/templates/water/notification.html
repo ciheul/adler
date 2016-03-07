@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  {% include 'sidenav-inc.html' %}
+  <div id="content">
+    <h3>Nofitifications</h3>
+    <style type="text/css">
+      .notif {
+        margin-bottom: 10px;
+      }
+      .notif-ico {
+        height: 20px;
+        width: 20px;
+        padding: 0px 2px 2px 2px;
+        background: #FFFFFF;
+        margin: 3px 0px 0px -5px;
+        float: left;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        color: #34495E;
+        box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+      }
+      .notif-content {
+        background: #ffffff;
+        padding: 10px;
+        margin-left: 20px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px rgba(123,123,123,0.42);
+      }
+      .notif-time {
+        font-size: 11px;
+        font-style: italic;
+        color: #34495E;
+        float: right;
+      }
+      .notif-info {
+        color: #34495E;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .notif-detail {
+        border-top: 1px solid #ddd;
+        font-size: 12px;
+      }
+    </style>
+
+    <div class="notif">
+      <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+      <div class="notif-content">
+        <div class="notif-time">sat 20:00</div>
+        <div class="notif-info">Data successfully grabbed</div>
+        <div class="notif-detail">no matter where you are i'll be there</div>
+      </div>
+    </div>
+    
+    <div class="notif">
+      <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+      <div class="notif-content">
+        <div class="notif-time">sat 20:00</div>
+        <div class="notif-info">Data successfully grabbed</div>
+        <div class="notif-detail">no matter where you are i'll be there</div>
+      </div>
+    </div>
+    
+    <div class="notif">
+      <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+      <div class="notif-content">
+        <div class="notif-time">sat 20:00</div>
+        <div class="notif-info">Data successfully grabbed</div>
+        <div class="notif-detail">no matter where you are i'll be there</div>
+      </div>
+    </div>
+
+    <div class="notif">
+      <div class="notif-content notif-info" align="center">
+        <div class="glyphicon glyphicon-tint"></div>
+        <div>Oops! <br> No More Notifications...</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+    <div id="spin"></div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+  $(window).on('load', function() {
+    $('#spin').spin({
+      color: '#000'
+    });
+    $('#spin').show();
+    console.log('something');
+  }).load(function(){
+    $('#spin').hide();
+    console.log('is hidden');
+  });
+</script>
+
+<script id="notif-template" type="text/template">
+  <div class="notif">
+    <div class="notif-ico"><span class="glyphicon glyphicon-tint"></span></div>
+    <div class="notif-content">
+      <div class="notif-time"></div>
+      <div class="notif-info"></div>
+      <div class="notif-detail"></div>
+    </div>
+  </div>
+</script>
+
+<script>
+  (function($) {
+    //asasdas
+  })(jQuery);
+</script>
+
+<script type="text/template" id="first_template">
+	<label>1 view</label>	
+	<a href="#second">second view</a>
+</script>
+<script type="text/template" id="second_template">
+	<label>2 view</label>	
+	<a href="#first">first view</a>
+</script>
+
+<div id="container" align="center" style="left: 100px;">somee</div>
+
+<script type="text/javascript">
+(function($){
+	FirstView = Backbone.View.extend({
+		el: $('#container'),
+		initialize: function() {
+			this.render();
+			return this;
+		},
+		render: function() {
+			var template = _.template($('#notif-template').html(), {});
+			this.$el.html(template);
+		}
+	});
+
+	SecondView = Backbone.View.extend({
+		el: $('#container'),
+		initialize: function() {
+			this.render();
+			return this;
+		},
+		render: function() {
+			var template = _.template($('#second_template').html(), {});
+			this.$el.html(template);
+		}
+	});
+
+	MyRouter = Backbone.Router.extend({
+		routes: {
+			"" : "firstPage",
+			"first" : "firstPage",
+			"second" : "secondPage",
+		},
+		firstPage: function() {
+			new FirstView();
+			console.log('something');
+		}, 
+		secondPage: function() {
+			new SecondView();
+			console.log('something 2s');
+		}
+	});
+
+	var router = new MyRouter();
+
+	Backbone.history.start();
+})(jQuery);
+</script>
+
+{% endblock %}

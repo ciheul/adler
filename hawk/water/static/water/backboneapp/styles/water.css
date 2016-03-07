@@ -300,8 +300,8 @@ ul {
 /******** END OF DASHBOARD PAGE ********/
 
 /******** TRENDING PAGE ********/
-.chart-legend {
-
+.chart-legend, .chart-radio{
+    cursor: pointer;
 }
 .sidechart {
     margin-left: -8px; 
