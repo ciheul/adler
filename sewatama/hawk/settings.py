@@ -41,11 +41,18 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # hawk internal apps
+    'adm',
     'account',
-    'water',
+
+    # hawk apps for client
+    # 'water',
+    'electrical',
+
+    # third party
     'rest_framework',
     'rest_framework.authtoken',
-    'adm',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,7 +73,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'account'),    
-            os.path.join(BASE_DIR, 'water/templates/water'),
+            os.path.join(BASE_DIR, 'electrical/templates/electrical'),
+            # os.path.join(BASE_DIR, 'water/templates/water'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
