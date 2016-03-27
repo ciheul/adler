@@ -28,3 +28,13 @@ def electrical_sld_outgoing_1(request):
 @login_required
 def electrical_sld_outgoing_2(request):
     return render(request, 'electrical-sld-outgoing-2.html')
+
+
+@login_required
+def genset_overview_outgoing_1(request):
+    return render(request, 'genset-overview-outgoing-1.html')
+
+
+@login_required
+def genset_overview_outgoing_2(request):
+    return render(request, 'genset-overview-outgoing-2.html')
