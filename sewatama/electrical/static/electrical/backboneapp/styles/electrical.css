@@ -330,3 +330,11 @@ ul {
     background: red;
 }
 
+.panel-indicator {
+    background: rgb(92, 184, 92);
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
+}
