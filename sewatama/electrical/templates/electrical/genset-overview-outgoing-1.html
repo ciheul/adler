@@ -5,7 +5,7 @@
   {% include "sidenav-inc.html" %}
   <div id="content">
     <div class="row">
-      <div class="col-md-9"><h3>Electrical <span id="notif-log"></span></h3></div>
+      <div class="col-md-9"><h3>Genset<span id="notif-log"></span></h3></div>
       <div class="col-md-3">
         <div class="alert page-notif" style="display:none;">
           <div id="notif-status">
@@ -20,165 +20,176 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#"><b>Overview Outgoing #1</b></a></li>
       <li><a href="{% url 'genset-overview-outgoing-2' %}">Overview Outgoing #2</a></li>
-      <li><a href="#">Outgoing #1</a></li>
-      <li><a href="#">Outgoing #2</a></li>
+      <li><a href="{% url 'genset-outgoing-1-unit-1' %}">Outgoing #1</a></li>
+      <li><a href="{% url 'genset-outgoing-2-unit-1' %}">Outgoing #2</a></li>
     </ul>
 
     <br>
     
     <div id="genset-1" class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="3" data-sizey="11">
+        <li data-row="1" data-col="1" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #1</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="1" data-col="1" data-sizex="3" data-sizey="11">
+        <li data-row="1" data-col="2" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #2</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="1" data-col="1" data-sizex="3" data-sizey="11">
+        <li data-row="1" data-col="3" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #3</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="2" data-col="2" data-sizex="3" data-sizey="11">
+        <li data-row="1" data-col="4" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #4</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="2" data-col="2" data-sizex="3" data-sizey="11">
+        <li data-row="2" data-col="1" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #5</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="2" data-col="2" data-sizex="3" data-sizey="11">
+        <li data-row="2" data-col="2" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #6</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="3" data-col="3" data-sizex="3" data-sizey="11">
+        <li data-row="2" data-col="3" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #7</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="3" data-col="3" data-sizex="3" data-sizey="11">
+        <li data-row="2" data-col="4" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #8</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="3" data-col="3" data-sizex="3" data-sizey="11">
+        <li data-row="3" data-col="1" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #9</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="3" data-col="4" data-sizex="3" data-sizey="11">
+        <li data-row="3" data-col="2" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #10</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
-        <li data-row="3" data-col="4" data-sizex="3" data-sizey="11">
+        <li data-row="3" data-col="3" data-sizex="3" data-sizey="14">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>GENSET #11</b></td></tr>
-            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>%17.2</td><td>lf V</td></tr>
-            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>%17.2</td><td>lf A</td></tr>
-            <tr style="font-size:12px"><td>FREQUENCY</td><td>%17.2</td><td>lf Hz</td></tr>
-            <tr style="font-size:12px"><td>POWER FACT.</td><td>%17.2</td><td>lf </td></tr>
-            <tr style="font-size:12px"><td>REAL POWER</td><td>%17.2</td><td>lf kW</td></tr>
-            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>%17.2</td><td>lf kWh</td></tr>
-            <tr style="font-size:12px"><td>BATTERY</td><td>%17.2 lf</td><td>lf V</td></tr>
+            <tr><td colspan="3"><img src="/static/electrical/images/generator.bmp" /></td></tr>
+            <tr style="font-size:12px"><td>VOLT. AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>VOLT. L-N AVRG</td><td>123456.7</td><td>V</td></tr>
+            <tr style="font-size:12px"><td>CURRENT AVRG</td><td>123456.7</td><td>A</td></tr>
+            <tr style="font-size:12px"><td>FREQUENCY</td><td>123456.7</td><td>Hz</td></tr>
+            <tr style="font-size:12px"><td>POWER FACT.</td><td>123456.7</td><td></td></tr>
+            <tr style="font-size:12px"><td>REAL POWER</td><td>123456.7</td><td>kW</td></tr>
+            <tr style="font-size:12px"><td>ENERGY EXPORT</td><td>123456.7</td><td>kWh</td></tr>
+            <tr style="font-size:12px"><td>BATTERY</td><td>123456.7</td><td>V</td></tr>
           </table>
         </li>
 
@@ -196,67 +207,11 @@
       .gridster({
         namespace: '#genset-1',
         widget_margins: [5, 5],
-        widget_base_dimensions: [100, 20],
-        max_cols: 10,
-        max_size_x: 10})
+        widget_base_dimensions: [90, 23],
+        max_cols: 12,
+        max_size_x: 12})
       .data('gridster')
       .disable();
   });
-
-  var opts = {
-    lines: 12, // The number of lines to draw
-    angle: 0, // The length of each line
-    lineWidth: 0.05, // The line thickness
-    pointer: {
-      length: 0.9, // The radius of the inner circle
-      strokeWidth: 0.035, // The rotation offset
-      color: '#000000' // Fill color
-    },
-    limitMax: 'false',   // If true, the pointer will not go past the end of the gauge
-    colorStart: '#6FADCF',   // Colors
-    colorStop: '#8FC0DA',    // just experiment with them
-    strokeColor: '#E0E0E0',   // to see which ones work best for you
-    generateGradient: true
-  };
-
-  var target = document.getElementById('gauge-outgoing-power'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-
-  gauge.setTextField(document.getElementById('indicator-outgoing-power'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
-
-  var target = document.getElementById('gauge-genset-power'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-
-  gauge.setTextField(document.getElementById('indicator-genset-power'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
-
-  var target = document.getElementById('gauge-power-factor'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-
-  gauge.setTextField(document.getElementById('indicator-power-factor'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
-
-  var target = document.getElementById('gauge-frequency'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-
-  gauge.setTextField(document.getElementById('indicator-frequency'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
-
-  var target = document.getElementById('gauge-voltage'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-
-  gauge.setTextField(document.getElementById('indicator-voltage'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
 </script>
 {% endblock %}

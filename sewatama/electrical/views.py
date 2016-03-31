@@ -38,3 +38,43 @@ def genset_overview_outgoing_1(request):
 @login_required
 def genset_overview_outgoing_2(request):
     return render(request, 'genset-overview-outgoing-2.html')
+
+
+@login_required
+def genset_outgoing_1_unit_1(request):
+    return render(request, 'genset-outgoing-1-unit-1.html')
+
+
+@login_required
+def genset_outgoing_1_unit_2(request):
+    return render(request, 'genset-outgoing-1-unit-2.html')
+
+
+@login_required
+def genset_outgoing_1_unit_3(request):
+    return render(request, 'genset-outgoing-1-unit-3.html')
+
+
+@login_required
+def genset_outgoing_1_unit_4(request):
+    return render(request, 'genset-outgoing-1-unit-4.html')
+
+
+@login_required
+def genset_outgoing_2_unit_1(request):
+    return render(request, 'genset-outgoing-2-unit-1.html')
+
+
+@login_required
+def genset_outgoing_2_unit_2(request):
+    return render(request, 'genset-outgoing-2-unit-2.html')
+
+
+@login_required
+def genset_outgoing_2_unit_3(request):
+    return render(request, 'genset-outgoing-2-unit-3.html')
+
+
+@login_required
+def genset_outgoing_2_unit_4(request):
+    return render(request, 'genset-outgoing-2-unit-4.html')
