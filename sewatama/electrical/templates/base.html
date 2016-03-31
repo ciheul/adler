@@ -28,6 +28,19 @@
         <a class="navbar-brand" href="{% url 'dashboard' %}">Sumberdaya Sewatama</a>
       </div>
 
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" style="color: white;">
+              <i class="glyphicon glyphicon-triangle-bottom"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user" style="">
+              <li><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+            </ul>
+            <!-- /.dropdown-user -->
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
