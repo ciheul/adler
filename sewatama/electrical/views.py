@@ -78,3 +78,23 @@ def genset_outgoing_2_unit_3(request):
 @login_required
 def genset_outgoing_2_unit_4(request):
     return render(request, 'genset-outgoing-2-unit-4.html')
+
+
+@login_required
+def trend_unit_1(request):
+    return render(request, 'trend-unit-1.html')
+
+
+@login_required
+def trend_unit_2(request):
+    return render(request, 'trend-unit-2.html')
+
+
+@login_required
+def trend_unit_3(request):
+    return render(request, 'trend-unit-3.html')
+
+
+@login_required
+def trend_unit_4(request):
+    return render(request, 'trend-unit-4.html')

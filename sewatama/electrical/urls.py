@@ -37,4 +37,9 @@ urlpatterns = [
         name="genset-outgoing-2-unit-3"),
     url(r'^genset-outgoing-2-unit-4/$', views.genset_outgoing_2_unit_4,
         name="genset-outgoing-2-unit-4"),
+
+    url(r'^trend-unit-1/$', views.trend_unit_1, name="trend-unit-1"),
+    url(r'^trend-unit-2/$', views.trend_unit_2, name="trend-unit-2"),
+    url(r'^trend-unit-3/$', views.trend_unit_3, name="trend-unit-3"),
+    url(r'^trend-unit-4/$', views.trend_unit_4, name="trend-unit-4"),
 ]
