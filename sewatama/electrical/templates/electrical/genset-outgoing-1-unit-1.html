@@ -472,8 +472,9 @@
       var params = {
         'canvasId': 'gauge-avg-line-voltage',
         'textId': 'indicator-avg-line-voltage',
-        'maxValue': 3000,
-        'value': -0
+        'minValue': 0,
+        'maxValue': 500,
+        'value': data.obj1.Value
       }
       createGauge(params);
     }
@@ -482,7 +483,8 @@
       var params = {
         'canvasId': 'gauge-total-current',
         'textId': 'indicator-total-current',
-        'maxValue': 3000,
+        'minValue': -100,
+        'maxValue': 4500,
         'value': data.obj2.Value
       }
       createGauge(params);
@@ -492,7 +494,8 @@
       var params = {
         'canvasId': 'gauge-frequency',
         'textId': 'indicator-frequency',
-        'maxValue': 3000,
+        'minValue': 0,
+        'maxValue': 62,
         'value': data.obj3.Value
       }
       createGauge(params);
@@ -502,7 +505,8 @@
       var params = {
         'canvasId': 'gauge-total-power',
         'textId': 'indicator-total-power',
-        'maxValue': 3000,
+        'minValue': -100,
+        'maxValue': 2000,
         'value': data.obj4.Value
       }
       createGauge(params);
@@ -512,7 +516,8 @@
       var params = {
         'canvasId': 'gauge-cos-phi',
         'textId': 'indicator-cos-phi',
-        'maxValue': 3000,
+        'minValue': -1,
+        'maxValue': 1,
         'value': data.obj5.Value
       }
       createGauge(params);
@@ -522,7 +527,8 @@
       var params = {
         'canvasId': 'gauge-engine-speed',
         'textId': 'indicator-engine-speed',
-        'maxValue': 3000,
+        'minValue': 0,
+        'maxValue': 2500,
         'value': data.obj6.Value
       }
       createGauge(params);
@@ -777,6 +783,7 @@
     var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
     gauge.setTextField(document.getElementById(params.textId));
     gauge.maxValue = params.maxValue; // set max gauge value
+    gauge.minValue = params.minValue; // set min gauge value
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
     gauge.set(params.value); // set actual value
   }

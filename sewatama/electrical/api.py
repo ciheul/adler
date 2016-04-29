@@ -303,7 +303,6 @@ def genset_outgoing_1_unit_1(request):
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
 
-        print tag_name, data[tag_id]
         # remove for security reason
         if 'Name' in data[tag_id]:
             del data[tag_id]['Name']
@@ -317,7 +316,7 @@ def genset_outgoing_1_unit_1(request):
     value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L3_L1_V']['Value'])
 
     data['obj1'] = dict()
-    data['obj1']['Value'] = value1 + value2 + value3
+    data['obj1']['Value'] = (value1 + value2 + value3) / 3
 
     value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\CYL_EXH_TMP_001']['Value']) 
     value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\CYL_EXH_TMP_002']['Value'])
@@ -412,7 +411,6 @@ def genset_outgoing_1_unit_2(request):
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
 
-        print tag_name, data[tag_id]
         # remove for security reason
         if 'Name' in data[tag_id]:
             del data[tag_id]['Name']
@@ -426,7 +424,7 @@ def genset_outgoing_1_unit_2(request):
     value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L3_L1_V']['Value'])
 
     data['obj1'] = dict()
-    data['obj1']['Value'] = value1 + value2 + value3
+    data['obj1']['Value'] = (value1 + value2 + value3) / 3
 
     value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\CYL_EXH_TMP_001']['Value']) 
     value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\CYL_EXH_TMP_002']['Value'])
@@ -521,7 +519,6 @@ def genset_outgoing_1_unit_3(request):
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
 
-        print tag_name, data[tag_id]
         # remove for security reason
         if 'Name' in data[tag_id]:
             del data[tag_id]['Name']
@@ -535,7 +532,7 @@ def genset_outgoing_1_unit_3(request):
     value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L3_L1_V']['Value'])
 
     data['obj1'] = dict()
-    data['obj1']['Value'] = value1 + value2 + value3
+    data['obj1']['Value'] = (value1 + value2 + value3) / 3
 
     value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_001']['Value']) 
     value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_002']['Value'])
@@ -630,7 +627,6 @@ def genset_outgoing_1_unit_4(request):
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
 
-        print tag_name, data[tag_id]
         # remove for security reason
         if 'Name' in data[tag_id]:
             del data[tag_id]['Name']
@@ -644,7 +640,7 @@ def genset_outgoing_1_unit_4(request):
     value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L3_L1_V']['Value'])
 
     data['obj1'] = dict()
-    data['obj1']['Value'] = value1 + value2 + value3
+    data['obj1']['Value'] = (value1 + value2 + value3) / 3
 
     value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\CYL_EXH_TMP_001']['Value']) 
     value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\CYL_EXH_TMP_002']['Value'])
