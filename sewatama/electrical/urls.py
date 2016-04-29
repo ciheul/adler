@@ -1,7 +1,7 @@
 from django.conf.urls import url, patterns, include
 
 import views
-# import api
+import api
 
 urlpatterns = [
     # url(r'^alarm/$', views.alarm, name="alarm"),
@@ -42,4 +42,26 @@ urlpatterns = [
     url(r'^trend-unit-2/$', views.trend_unit_2, name="trend-unit-2"),
     url(r'^trend-unit-3/$', views.trend_unit_3, name="trend-unit-3"),
     url(r'^trend-unit-4/$', views.trend_unit_4, name="trend-unit-4"),
+
+    ##### API #####
+    url(r'^api/overview-outgoing-1/$', api.electrical_overview_outgoing_1,
+        name="electrical-overview-outgoing-1-api"),
+    url(r'^api/sld-outgoing-1/$', api.electrical_sld_outgoing_1,
+        name="electrical-sld-outgoing-1-api"),
+    url(r'^api/genset-overview-outgoing-1/$', api.genset_overview_outgoing_1,
+        name="genset-overview-outgoing-1-api"),
+
+    url(r'^api/genset-outgoing-1-unit-1/$', api.genset_outgoing_1_unit_1,
+        name="genset-outgoing-1-unit-1-api"),
+    url(r'^api/genset-outgoing-1-unit-2/$', api.genset_outgoing_1_unit_2,
+        name="genset-outgoing-1-unit-2-api"),
+    url(r'^api/genset-outgoing-1-unit-3/$', api.genset_outgoing_1_unit_3,
+        name="genset-outgoing-1-unit-3-api"),
+    url(r'^api/genset-outgoing-1-unit-4/$', api.genset_outgoing_1_unit_4,
+        name="genset-outgoing-1-unit-4-api"),
+
+    url(r'^api/trend-unit-1/$', api.trend_unit_1, name="trend-unit-1-api"),
+    url(r'^api/trend-unit-2/$', api.trend_unit_2, name="trend-unit-2-api"),
+    url(r'^api/trend-unit-3/$', api.trend_unit_3, name="trend-unit-3-api"),
+    url(r'^api/trend-unit-4/$', api.trend_unit_4, name="trend-unit-4-api"),
 ]

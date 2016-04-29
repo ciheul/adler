@@ -15,6 +15,9 @@ from mixins import MongoConnectorMixin
 PORT = 12000
 QUEUE = 'inetscada'
 
+GLM = 'GLM'
+SEWATAMA = 'SS'
+
 class INetSCADASubscriber(MongoConnectorMixin):
     def __init__(self):
         super(INetSCADASubscriber, self).__init__()
@@ -41,8 +44,15 @@ class INetSCADASubscriber(MongoConnectorMixin):
         d = json.loads(data.body)
         d[u'SentDatetime'] = dateutil.parser.parse(d['SentTimestamp'])
 
-        # insert to mongodb. success or error calls on_response callback
-        self.db.glm.insert(d, callback=self.on_response)
+        print d['Name'].split('\\')[0]
+
+        if d['Name'].split('\\')[0] == GLM:
+            # insert to mongodb. success or error calls on_response callback
+            self.db.glm.insert(d, callback=self.on_response)
+
+        if d['Name'].split('\\')[0] == SEWATAMA:
+            # insert to mongodb. success or error calls on_response callback
+            self.db.ss.insert(d, callback=self.on_response)
 
     def on_response(self, result, error):
         print 'result:', result

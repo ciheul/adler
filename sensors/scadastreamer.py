@@ -55,7 +55,10 @@ def publish_message_from_array():
 
 
 def publish_message_from_dump():
-    f = open('dump/dump.json', 'r')
+    sources = ['glm', 'sewatama']
+    path = 'dump/%s.json' % (sources[random.randint(0, 1)])
+
+    f = open(path, 'r')
     m = f.read()
     channel.basic_publish(exchange='', routing_key=KEY, body=m)
     print m

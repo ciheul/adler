@@ -330,11 +330,30 @@ ul {
     background: red;
 }
 
-.panel-indicator {
+.panel-indicator-success {
     background: rgb(92, 184, 92);
     margin-top: 2px;
     margin-bottom: 0px;
     padding-top: 2px;
     padding-bottom: 2px;
     color: white;
+}
+
+.panel-indicator-danger {
+    background: rgb(217, 83, 79);
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
+}
+
+.panel-indicator-na {
+    background: #e0e1e2;
+    border-color: #e0e1e2;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: rgb(51, 51, 51);
 }

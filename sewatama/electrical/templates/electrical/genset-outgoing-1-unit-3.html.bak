@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <div class="row">
+      <div class="col-md-9"><h3>Genset<span id="notif-log"></span></h3></div>
+      <div class="col-md-3">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+              <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">LAST UPDATE: RECENTLY</span>
+            <a id="notif-closer">×</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li><a href="{% url 'genset-overview-outgoing-1' %}">Overview Outgoing #1</a></li>
+      <li><a href="{% url 'genset-overview-outgoing-2' %}">Overview Outgoing #2</a></li>
+      <li class="active"><a href="#"><b>Outgoing #1</b></a></li>
+      <li><a href="{% url 'genset-outgoing-2-unit-1' %}">Outgoing #2</a></li>
+    </ul>
+
+    <br>
+
+    <ul class="nav nav-pills">
+      <li><a href="{% url 'genset-outgoing-1-unit-1' %}">Unit #1</a></li>
+      <li><a href="{% url 'genset-outgoing-1-unit-2' %}">Unit #2</a></li>
+      <li class="active"><a href="#">Unit #3</a></li>
+      <li><a href="{% url 'genset-outgoing-1-unit-4' %}">Unit #4</a></li>
+    </ul>
+
+    <br>
+
+    <div id="genset-1" class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="5" data-sizey="8">
+          <table class="table">
+            <tr><td class="widget-head" colspan="2"><b>AVG LINE POWER</b></td></tr>
+            <tr><td colspan="2"><canvas id="gauge-avg-line-voltage" width="120" height="60" style="padding-top:10px"></canvas></td></tr>
+            <tr><td><div id="indicator-avg-line-voltage">0</div></td><td>V</td></tr>
+          </table>
+        </li>
+
+        <li data-row="1" data-col="2" data-sizex="5" data-sizey="8">
+          <table class="table">
+            <tr><td class="widget-head" colspan="2"><b>TOTAL CURRENT</b></td></tr>
+            <tr><td colspan="2"><canvas id="gauge-total-current" width="120" height="60" style="padding-top:10px"></canvas></td></tr>
+            <tr><td><div id="indicator-total-current">0</div></td><td>A</td></tr>
+          </table>
+        </li>
+
+        <li data-row="1" data-col="3" data-sizex="5" data-sizey="8">
+          <table class="table">
+            <tr><td class="widget-head" colspan="2"><b>FREQUENCY</b></td></tr>
+            <tr><td colspan="2"><canvas id="gauge-frequency" width="120" height="60" style="padding-top:10px"></canvas></td></tr>
+            <tr><td><div id="indicator-frequency">0</div></td><td>Hz</td></tr>
+          </table>
+        </li>
+
+        <li data-row="1" data-col="4" data-sizex="24" data-sizey="16">
+          <table class="table">
+            <tr>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g1" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#1</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g3" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#3</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g5" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#5</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g7" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#7</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g9" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#9</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g11" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#11</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g13" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#13</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g15" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#15</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g-avg" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">AVG</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g-oil-press" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">OIL PRESS</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g-oil-temp" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">OIL TEMP</div></td>
+            </tr>
+            <tr>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g2" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#2</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g4" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#4</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g6" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#6</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g8" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#8</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g10" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#10</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g12" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#12</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g14" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#14</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g16" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">#16</div></td>
+              <td></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g-fuel-press" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">FUEL PRESS</div></td>
+              <td><div style="font-size:12px;margin-bottom:4px">1234 F</div><div id="g-jw-temp" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:12px">JW TEMP</div></td>
+            </tr>
+          </table>
+        </li>
+
+        <li data-row="2" data-col="3" data-sizex="5" data-sizey="8">
+          <table class="table">
+            <tr><td class="widget-head" colspan="2"><b>TOTAL POWER</b></td></tr>
+            <tr><td colspan="2"><canvas id="gauge-total-power" width="120" height="60" style="padding-top:10px"></canvas></td></tr>
+            <tr><td><div id="indicator-total-power">0</div></td><td>kW</td></tr>
+          </table>
+        </li>
+
+        <li data-row="2" data-col="2" data-sizex="5" data-sizey="8">
+          <table class="table">
+            <tr><td class="widget-head" colspan="2"><b>COS PHI</b></td></tr>
+            <tr><td colspan="2"><canvas id="gauge-cos-phi" width="120" height="60" style="padding-top:10px"></canvas></td></tr>
+            <tr><td><div id="indicator-cos-phi">0</div></td><td></td></tr>
+          </table>
+        </li>
+
+        <li data-row="2" data-col="3" data-sizex="5" data-sizey="8">
+          <table class="table">
+            <tr><td class="widget-head" colspan="2"><b>ENGINE SPEED</b></td></tr>
+            <tr><td colspan="2"><canvas id="gauge-engine-speed" width="120" height="60" style="padding-top:10px"></canvas></td></tr>
+            <tr><td><div id="indicator-engine-speed">0</div></td><td>RPM</td></tr>
+          </table>
+        </li>
+
+      </ul>
+    </div>
+
+    <hr>
+
+    <div id="genset-2" class="gridster">
+      <ul>
+        <li data-row="3" data-col="1" data-sizex="12" data-sizey="2">
+          <table class="table">
+            <tr style="font-size:12px"><td>ENGINE SERIAL NUMBER YAT00817</td></tr>
+          </table>
+        </li>
+        <li data-row="4" data-col="1" data-sizex="4" data-sizey="15">
+          <table class="table" style="font-size:12px">
+            <tr><td class="text-right">TOTAL ENERGY</td><td>123456.7</td><td>kWh</td></tr>
+            <tr><td class="text-right">TOTAL FUEL CONSUMPTION</td><td>123456.7</td><td>L</td></tr>
+            <tr><td class="text-right">FUEL CONSUMPTION RATE</td><td>123456.7</td><td>L/h</td></tr>
+            <tr><td class="text-right">FUEL PRESSURE</td><td>123456.7</td><td>kPa</td></tr>
+            <tr><td class="text-right">OPERATING HOURS</td><td>123456.7</td><td>Hrs</td></tr>
+            <tr><td class="text-right">BATTERY VOLTAGE</td><td>123456.7</td><td>VDC</td></tr>
+            <tr><td class="text-right">TOTAL REACTIVE POWER</td><td>123456.7</td><td>kVAR</td></tr>
+            <tr><td class="text-right">TOTAL APPARENT POWER</td><td>123456.7</td><td>kVA</td></tr>
+            <tr><td class="text-right">AVG. GENERATED CURRENT</td><td>123456.7</td><td>A</td></tr>
+            <tr><td class="text-right">GROUND CURRENT</td><td>123456.7</td><td>A</td></tr>
+          </table>
+        </li>
+
+        <li data-row="4" data-col="2" data-sizex="4" data-sizey="15">
+          <table class="table" style="font-size:12px">
+            <tr><td class="text-right">VOLTAGE R-S</td><td>123456.7</td><td>V</td></tr>
+            <tr><td class="text-right">VOLTAGE S-T</td><td>123456.7</td><td>V</td></tr>
+            <tr><td class="text-right">VOLTAGE T-R</td><td>123456.7</td><td>V</td></tr>
+            <tr><td class="text-right">CURRENT R</td><td>123456.7</td><td>A</td></tr>
+            <tr><td class="text-right">CURRENT S</td><td>123456.7</td><td>A</td></tr>
+            <tr><td class="text-right">CURRENT T</td><td>123456.7</td><td>A</td></tr>
+            <tr><td class="text-right">WINDING PHASE A TEMP</td><td>123456.7</td><td>degC</td></tr>
+            <tr><td class="text-right">WINDING PHASE B TEMP</td><td>123456.7</td><td>degC</td></tr>
+            <tr><td class="text-right">WINDING PHASE C TEMP</td><td>123456.7</td><td>degC</td></tr>
+            <tr><td class="text-right">BEARING TEMP. (REAR)</td><td>123456.7</td><td>degC</td></tr>
+          </table>
+        </li>
+
+        <li data-row="4" data-col="3" data-sizex="4" data-sizey="15">
+          <table class="table" style="font-size:12px">
+            <tr><td class="text-right">AIR FILTER PRESSURE</td><td>123456.7</td><td>kPa</td></tr>
+            <tr><td class="text-right">FUEL FILTER PRESSURE</td><td>123456.7</td><td>kPa</td></tr>
+            <tr><td class="text-right">OIL FILTER DIFFERENTIAL PRESSURE</td><td>123456.7</td><td>kPa</td></tr>
+            <tr><td class="text-right">INTAKE MANIFOLD #1 TEMP</td><td>123456.7</td><td>degF</td></tr>
+            <tr><td class="text-right">INTAKE MANIFOLD #2 TEMP</td><td>123456.7</td><td>degF</td></tr>
+            <tr><td class="text-right">EXH. MANIFOLD #1 (LEFT) TEMP.</td><td>123456.7</td><td>degF</td></tr>
+            <tr><td class="text-right">EXH. MANIFOLD #2 (RIGHT)EMP.</td><td>123456.7</td><td>degF</td></tr>
+            <tr><td class="text-right">CRANKCASE PRESSURE</td><td>123456.7</td><td>kPa</td></tr>
+            <tr><td class="text-right">BOOST PRESSURE</td><td>123456.7</td><td>kPa</td></tr>
+          </table>
+        </li>
+
+
+      </ul>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" id="code">
+  var gridster = [];
+
+  $(function() {
+    gridster[0] = $("#genset-1 ul")
+      .gridster({
+        namespace: '#genset-1',
+        widget_margins: [5, 5],
+        widget_base_dimensions: [21, 13],
+        max_cols: 50,
+        max_size_x: 50})
+      .data('gridster')
+      .disable();
+
+    gridster[1] = $("#genset-2 ul")
+      .gridster({
+        namespace: '#genset-2',
+        widget_margins: [5, 5],
+        widget_base_dimensions: [90, 14],
+        max_cols: 18,
+        max_size_x: 18})
+      .data('gridster')
+      .disable();
+
+    {# gridster[2] = $("#genset-1-nested ul") #}
+    {#   .gridster({ #}
+    {#     namespace: '#genset-1-nested', #}
+    {#     widget_margins: [5, 5], #}
+    {#     widget_base_dimensions: [90, 15], #}
+    {#     max_cols: 18, #}
+    {#     max_size_x: 18}) #}
+    {#   .data('gridster') #}
+    {#   .disable(); #}
+
+  });
+
+  var opts = {
+    lines: 12, // The number of lines to draw
+    angle: 0, // The length of each line
+    lineWidth: 0.05, // The line thickness
+    pointer: {
+      length: 0.9, // The radius of the inner circle
+      strokeWidth: 0.035, // The rotation offset
+      color: '#000000' // Fill color
+    },
+    limitMax: 'false',   // If true, the pointer will not go past the end of the gauge
+    colorStart: '#6FADCF',   // Colors
+    colorStop: '#8FC0DA',    // just experiment with them
+    strokeColor: '#E0E0E0',   // to see which ones work best for you
+    generateGradient: true
+  };
+
+  var target = document.getElementById('gauge-avg-line-voltage'); // your canvas element
+  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+  gauge.setTextField(document.getElementById('indicator-avg-line-voltage'));
+  gauge.maxValue = 3000; // set max gauge value
+  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+  gauge.set(1250); // set actual value
+
+  var target = document.getElementById('gauge-total-current'); // your canvas element
+  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+  gauge.setTextField(document.getElementById('indicator-total-current'));
+  gauge.maxValue = 3000; // set max gauge value
+  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+  gauge.set(1250); // set actual value
+
+  var target = document.getElementById('gauge-frequency'); // your canvas element
+  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+  gauge.setTextField(document.getElementById('indicator-frequency'));
+  gauge.maxValue = 3000; // set max gauge value
+  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+  gauge.set(1250); // set actual value
+
+  var target = document.getElementById('gauge-total-power'); // your canvas element
+  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+  gauge.setTextField(document.getElementById('indicator-total-power'));
+  gauge.maxValue = 3000; // set max gauge value
+  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+  gauge.set(1250); // set actual value
+
+  var target = document.getElementById('gauge-cos-phi'); // your canvas element
+  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+  gauge.setTextField(document.getElementById('indicator-cos-phi'));
+  gauge.maxValue = 3000; // set max gauge value
+  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+  gauge.set(1250); // set actual value
+
+  var target = document.getElementById('gauge-engine-speed'); // your canvas element
+  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+  gauge.setTextField(document.getElementById('indicator-engine-speed'));
+  gauge.maxValue = 3000; // set max gauge value
+  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+  gauge.set(1250); // set actual value
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g1', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g3', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g5', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g7', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g9', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g11', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g13', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g15', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g-avg', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g-oil-press', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g-oil-temp', height: 100, label: '90%', orientation: 'vertical', value: 10, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g2', height: 100, label: '90%', orientation: 'vertical', value: 10, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g4', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g6', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g8', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g10', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g12', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g14', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g16', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  {# YUI().use('aui-progressbar', #}
+  {#   function(Y) { #}
+  {#     new Y.ProgressBar({ #}
+  {#       boundingBox: '#g-avg', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50 #}
+  {#     }).render(); #}
+  {#   } #}
+  {# ); #}
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g-fuel-press', height: 100, label: '60%', orientation: 'vertical', value: 60, width: 50
+      }).render();
+    }
+  );
+
+  YUI().use('aui-progressbar',
+    function(Y) {
+      new Y.ProgressBar({
+        boundingBox: '#g-jw-temp', height: 100, label: '90%', orientation: 'vertical', value: 10, width: 50
+      }).render();
+    }
+  );
+
+</script>
+{% endblock %}

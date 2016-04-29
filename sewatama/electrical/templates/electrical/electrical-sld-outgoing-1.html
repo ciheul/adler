@@ -19,9 +19,9 @@
 
     <ul class="nav nav-tabs">
       <li><a href="{% url 'electrical-overview-outgoing-1'%}">Overview Outgoing #1</a></li>
-      <li><a href="{% url 'electrical-overview-outgoing-2' %}">Overview Outgoing #2</a></li>
+      {# <li><a href="{% url 'electrical-overview-outgoing-2' %}">Overview Outgoing #2</a></li> #}
       <li class="active"><a href="#"><b>SLD Outgoing #1</b></a></li>
-      <li><a href="{% url 'electrical-sld-outgoing-2' %}">SLD Outgoing #2</a></li>
+      {# <li><a href="{% url 'electrical-sld-outgoing-2' %}">SLD Outgoing #2</a></li> #}
     </ul>
 
     <br>
@@ -35,66 +35,63 @@
         <li data-row="1" data-col="1" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#1</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
-            </tr>
-            <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>Trafo Status<br><div class="panel panel-success panel-indicator">NORMAL</div></td></tr>
+            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr style="font-size:12px;"><td>CB Status<div id="genset-1-cb"></div></td></tr>
+            <tr style="font-size:12px;"><td>GCB Status<div id="genset-1-gcb"></div></td></tr>
+            <tr style="font-size:12px;"><td>Trafo Status<div id="genset-1-trafo"></div></td></tr>
           </table>
         </li>
 
         <li data-row="1" data-col="2" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#2</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
-            </tr>
-            <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>Trafo Status<br><div class="panel panel-success panel-indicator">NORMAL</div></td></tr>
+            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr style="font-size:12px;"><td>CB Status<div id="genset-2-cb"></div></td></tr>
+            <tr style="font-size:12px;"><td>GCB Status<div id="genset-2-gcb"></div></td></tr>
+            <tr style="font-size:12px;"><td>Trafo Status<div id="genset-2-trafo"></div></td></tr>
           </table>
         </li>
 
         <li data-row="1" data-col="3" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#3</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
-            </tr>
-            <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>Trafo Status<br><div class="panel panel-success panel-indicator">NORMAL</div></td></tr>
+            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr style="font-size:12px;"><td>CB Status<div id="genset-3-cb"></div></td></tr>
+            <tr style="font-size:12px;"><td>GCB Status<div id="genset-3-gcb"></div></td></tr>
+            <tr style="font-size:12px;"><td>Trafo Status<div id="genset-3-trafo"></div></td></tr>
           </table>
         </li>
 
         <li data-row="1" data-col="4" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#4</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
-            </tr>
-            <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
-            <tr style="font-size:12px;"><td>Trafo Status<br><div class="panel panel-success panel-indicator">NORMAL</div></td></tr>
+            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr style="font-size:12px;"><td>CB Status<div id="genset-4-cb"></div></td></tr>
+            <tr style="font-size:12px;"><td>GCB Status<div id="genset-4-gcb"></div></td></tr>
+            <tr style="font-size:12px;"><td>Trafo Status<div id="genset-4-trafo"></div></td></tr>
           </table>
         </li>
 
+        <!--
         <li data-row="1" data-col="5" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#5</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
@@ -106,9 +103,9 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#6</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
@@ -120,9 +117,9 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#7</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
@@ -134,9 +131,9 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#8</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
@@ -148,9 +145,9 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#9</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
@@ -162,9 +159,9 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#10</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
@@ -176,23 +173,23 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#11</b></td></tr>
             <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>1234.56 Hr</td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
             </tr>
             <tr style="font-size:12px;"><td>CB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
             <tr style="font-size:12px;"><td>Trafo Status<br><div class="panel panel-success panel-indicator">NORMAL</div></td></tr>
           </table>
         </li>
+        -->
 
         <li data-row="1" data-col="12" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Outgoing<br>#1</b></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>1234.56 kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>1234.56</td></tr>
-            </tr>
-            <tr style="font-size:12px;"><td>PR Status<br><div class="panel panel-success panel-indicator">CLOSED</div></td></tr>
+            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+            <tr style="font-size:12px;"><td>PR Status<div id="outgoing-1-pr"></div></td></tr>
           </table>
         </li>
 
@@ -207,31 +204,31 @@
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>TOTAL POWER</b></td></tr>
-            <tr style="font-size:12px"><td>TOTAL</td><td>% 17</td><td>fl kW</td></tr>
+            <tr style="font-size:12px"><td>TOTAL</td><td>% #NA</td><td>fl kW</td></tr>
           </table>
         </li>
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>ENERGY THIS MONTH</b></td></tr>
-            <tr style="font-size:12px"><td>TOTAL</td><td>% 17</td><td>fl kW</td></tr>
+            <tr style="font-size:12px"><td>TOTAL</td><td>% #NA</td><td>fl kW</td></tr>
           </table>
         </li>
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>ENERGY LAST MONTH</b></td></tr>
-            <tr style="font-size:12px"><td>TOTAL</td><td>% 17</td><td>fl kW</td></tr>
+            <tr style="font-size:12px"><td>TOTAL</td><td>% #NA</td><td>fl kW</td></tr>
           </table>
         </li>
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>ENERGY THIS MONTH</b></td></tr>
-            <tr style="font-size:12px"><td>OUTGOING#1</td><td>% 17</td><td>fl kW</td></tr>
+            <tr style="font-size:12px"><td>OUTGOING#1</td><td>% #NA</td><td>fl kW</td></tr>
           </table>
         </li>
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>ENERGY LAST MONTH</b></td></tr>
-            <tr style="font-size:12px"><td>OUTGOING#1</td><td>% 17</td><td>fl kW</td></tr>
+            <tr style="font-size:12px"><td>OUTGOING#1</td><td>% #NA</td><td>fl kW</td></tr>
           </table>
         </li>
       </ul>
@@ -264,5 +261,135 @@
       .data('gridster')
       .disable();
   });
+
+  $.ajax({
+    url: '/electrical/api/sld-outgoing-1/',
+    method: 'get',
+    success: function(result) {
+      console.log(result);
+      if (result.success === 0) {
+        setWidget(result.data);
+      }
+    },
+    error: function(result) {},
+  });
+
+  function setWidget(data) {
+    // GENSET #1
+    if (typeof data.obj1 !== 'undefined') {
+      setPanelStatus('#genset-1-cb', getPanelStatus(data.obj1.Value));
+    } else {
+      setPanelStatus('#genset-1-cb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj2 !== 'undefined') {
+      setPanelStatus('#genset-1-gcb', getPanelStatus(data.obj2.Value));
+    } else {
+      setPanelStatus('#genset-1-gcb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj3 !== 'undefined') {
+      setPanelStatus('#genset-1-trafo', getTrafoStatus(data.obj3.Value));
+    } else {
+      setPanelStatus('#genset-1-trafo', getPanelNaStatus());
+    }
+
+    // GENSET #2
+    if (typeof data.obj4 !== 'undefined') {
+      setPanelStatus('#genset-2-cb', getPanelStatus(data.obj4.Value));
+    } else {
+      setPanelStatus('#genset-2-cb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj5 !== 'undefined') {
+      setPanelStatus('#genset-2-gcb', getPanelStatus(data.obj5.Value));
+    } else {
+      setPanelStatus('#genset-2-gcb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj6 !== 'undefined') {
+      setPanelStatus('#genset-2-trafo', getTrafoStatus(data.obj6.Value));
+    } else {
+      setPanelStatus('#genset-2-trafo', getPanelNaStatus());
+    }
+
+    // GENSET #3
+    if (typeof data.obj7 !== 'undefined') {
+      setPanelStatus('#genset-3-cb', getPanelStatus(data.obj7.Value));
+    } else {
+      setPanelStatus('#genset-3-cb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj8 !== 'undefined') {
+      setPanelStatus('#genset-3-gcb', getPanelStatus(data.obj8.Value));
+    } else {
+      setPanelStatus('#genset-3-gcb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj9 !== 'undefined') {
+      setPanelStatus('#genset-3-trafo', getTrafoStatus(data.obj9.Value));
+    } else {
+      setPanelStatus('#genset-3-trafo', getPanelNaStatus());
+    }
+
+    // GENSET #4
+    if (typeof data.obj10 !== 'undefined') {
+      setPanelStatus('#genset-4-cb', getPanelStatus(data.obj10.Value));
+    } else {
+      setPanelStatus('#genset-4-cb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj11 !== 'undefined') {
+      setPanelStatus('#genset-4-gcb', getPanelStatus(data.obj11.Value));
+    } else {
+      setPanelStatus('#genset-4-gcb', getPanelNaStatus());
+    }
+
+    if (typeof data.obj12 !== 'undefined') {
+      setPanelStatus('#genset-4-trafo', getTrafoStatus(data.obj12.Value));
+    } else {
+      setPanelStatus('#genset-4-trafo', getPanelNaStatus());
+    }
+
+    // OUTGOING #1
+    if (typeof data.obj13 !== 'undefined') {
+      setPanelStatus('#outgoing-1-pr', getPanelStatus(data.obj13.Value));
+    } else {
+      setPanelStatus('#outgoing-1-pr', getPanelNaStatus());
+    }
+  }
+
+  function setPanelStatus(id, status) {
+    $(id).empty();
+    $(id).append(status);
+  }
+
+  function getStatus(value) {
+    if (value > 0) {
+      return '<button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button>';
+    } else {
+      return '<button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button>';
+    }
+  }
+
+  function getPanelStatus(value) {
+    if (value === 1) {
+      return '<div class="panel panel-success panel-indicator-success">CLOSED</div>';
+    } else {
+      return '<div class="panel panel-danger panel-indicator-danger">OPEN</div>';
+    }
+  }
+
+  function getTrafoStatus(value) {
+    if (value === 0) {
+      return '<div class="panel panel-success panel-indicator-success">NORMAL</div>';
+    } else {
+      return '<div class="panel panel-danger panel-indicator-danger">FAULT</div>';
+    }
+  }
+
+  function getPanelNaStatus() {
+    return '<div class="panel panel-primary panel-indicator-na">#NA</div>';
+  }
 </script>
 {% endblock %}

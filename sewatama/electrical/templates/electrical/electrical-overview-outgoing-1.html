@@ -19,9 +19,9 @@
 
     <ul class="nav nav-tabs">
       <li class="active"><a href="#"><b>Overview Outgoing #1</b></a></li>
-      <li><a href="{% url 'electrical-overview-outgoing-2' %}">Overview Outgoing #2</a></li>
+      {# <li><a href="{% url 'electrical-overview-outgoing-2' %}">Overview Outgoing #2</a></li> #}
       <li><a href="{% url 'electrical-sld-outgoing-1' %}">SLD Outgoing #1</a></li>
-      <li><a href="{% url 'electrical-sld-outgoing-2' %}">SLD Outgoing #2</a></li>
+      {# <li><a href="{% url 'electrical-sld-outgoing-2' %}">SLD Outgoing #2</a></li> #}
     </ul>
 
     <br>
@@ -32,7 +32,7 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>OUTGOING POWER</b></td></tr>
             <tr><td colspan="2"><canvas id="gauge-outgoing-power" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-outgoing-power">0</div></td><td>kW</td></tr>
+            <tr><td><div id="indicator-outgoing-power">#NA</div></td><td>kW</td></tr>
           </table>
         </li>
 
@@ -40,7 +40,7 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>GENSET POWER</b></td></tr>
             <tr><td colspan="2"><canvas id="gauge-genset-power" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-genset-power">0</div></td><td>kW</td></tr>
+            <tr><td><div id="indicator-genset-power">#NA</div></td><td>kW</td></tr>
           </table>
         </li>
 
@@ -48,7 +48,7 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>POWER FACTOR</b></td></tr>
             <tr><td colspan="2"><canvas id="gauge-power-factor" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-power-factor">0</div></td><td></td></tr>
+            <tr><td><div id="indicator-power-factor">#NA</div></td><td></td></tr>
           </table>
         </li>
 
@@ -56,7 +56,7 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>FREQUENCY</b></td></tr>
             <tr><td colspan="2"><canvas id="gauge-frequency" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-frequency">0</div></td><td>Hz</td></tr>
+            <tr><td><div id="indicator-frequency">#NA</div></td><td>Hz</td></tr>
           </table>
         </li>
 
@@ -64,51 +64,51 @@
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>VOLTAGE</b></td></tr>
             <tr><td colspan="2"><canvas id="gauge-voltage" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-voltage">0</div></td><td>V</td></tr>
+            <tr><td><div id="indicator-voltage">#NA</div></td><td>V</td></tr>
           </table>
         </li>
 
         <li data-row="2" data-col="1" data-sizex="3" data-sizey="6">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>ENERGY THIS MONTH</b></td></tr>
-            <tr><td>OUTGOING #1</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>GENSET</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>AVG. LOSSES</td><td>0.0</td><td>%</td></tr>
+            <tr><td>OUTGOING #1</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>GENSET</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>AVG. LOSSES</td><td>#NA</td><td>%</td></tr>
           </table>
         </li>
 
         <li data-row="2" data-col="1" data-sizex="3" data-sizey="6">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>ENERGY LAST MONTH</b></td></tr>
-            <tr><td>OUTGOING #1</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>GENSET</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>AVG. LOSSES</td><td>0.0</td><td>%</td></tr>
+            <tr><td>OUTGOING #1</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>GENSET</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>AVG. LOSSES</td><td>#NA</td><td>%</td></tr>
           </table>
         </li>
 
         <li data-row="2" data-col="1" data-sizex="4" data-sizey="9">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>POWER PLANT INFO</b></td></tr>
-            <tr><td>TOTAL POWER</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>THIS MONTH ENERGY</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>FUEL</td><td>123456.7</td><td>L</td></tr>
-            <tr><td>LAST MONTH ENERGY</td><td>123456.7</td><td>kW</td></tr>
-            <tr><td>FUEL</td><td>123456.7</td><td>L</td></tr>
-            <tr><td>FUEL</td><td>123456.7</td><td>L</td></tr>
+            <tr><td>TOTAL POWER</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>THIS MONTH ENERGY</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>FUEL</td><td>#NA</td><td>L</td></tr>
+            <tr><td>LAST MONTH ENERGY</td><td>#NA</td><td>kW</td></tr>
+            <tr><td>FUEL</td><td>#NA</td><td>L</td></tr>
+            <!--<tr><td>FUEL</td><td>#NA</td><td>L</td></tr>-->
           </table>
         </li>
 
         <li data-row="3" data-col="1" data-sizex="3" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>FUEL THIS MONTH</b></td></tr>
-            <tr><td>CONSUMPTION</td><td>123456.7</td><td>L</td></tr>
+            <tr><td>CONSUMPTION</td><td>#NA</td><td>L</td></tr>
           </table>
         </li>
 
         <li data-row="3" data-col="1" data-sizex="3" data-sizey="3">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>FUEL LAST MONTH</b></td></tr>
-            <tr><td>CONSUMPTION</td><td>123456.7</td><td>L</td></tr>
+            <tr><td>CONSUMPTION</td><td>#NA</td><td>L</td></tr>
           </table>
         </li>
       </ul>
@@ -118,40 +118,26 @@
 
     <div id="genset-2" class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="1" data-sizey="8">
+        <li data-row="1" data-col="1" data-sizex="1" data-sizey="10">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>Genset<br>#1</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
+            <tr><td><div id="genset-1-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-1-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-1-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-1-runhr">#NA Hr</div></td></tr>
           </table>
         </li>
 
-        <li data-row="1" data-col="2" data-sizex="1" data-sizey="8">
+        <li data-row="1" data-col="2" data-sizex="1" data-sizey="10">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>Genset<br>#2</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr>
+            <tr><td><div id="genset-2-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-2-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-2-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-2-runhr">#NA Hr</div></td></tr>
+            <!--<tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Power</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
@@ -159,6 +145,7 @@
             </tr>
             <tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Cos Phi</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
@@ -166,20 +153,25 @@
             </tr>
             <tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Run Hr.</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
               </td>
-            </tr>
+            </tr>-->
           </table>
         </li>
 
-        <li data-row="1" data-col="3" data-sizex="1" data-sizey="8">
+        <li data-row="1" data-col="3" data-sizex="1" data-sizey="10">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>Genset<br>#3</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr>
+            <tr><td><div id="genset-3-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-3-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-3-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-3-runhr">#NA Hr</div></td></tr>
+            <!--<tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Power</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
@@ -187,6 +179,7 @@
             </tr>
             <tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Cos Phi</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
@@ -194,20 +187,25 @@
             </tr>
             <tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Run Hr.</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
               </td>
-            </tr>
+            </tr>-->
           </table>
         </li>
 
-        <li data-row="1" data-col="4" data-sizex="1" data-sizey="8">
+        <li data-row="1" data-col="4" data-sizex="1" data-sizey="10">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>Genset<br>#4</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr>
+            <tr><td><div id="genset-4-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-4-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-4-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-4-runhr">#NA Hr</div></td></tr>
+            <!--<tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Power</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
@@ -215,6 +213,7 @@
             </tr>
             <tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Cos Phi</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
@@ -222,240 +221,254 @@
             </tr>
             <tr>
               <td>
+                <div style="font-size:12px;text-align:left;padding-bottom:5px;">Run Hr.</div>
                 <div class="progress" style="margin-bottom:0">
                   <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
                 </div>
               </td>
-            </tr>
+            </tr>-->
           </table>
         </li>
 
-        <li data-row="1" data-col="5" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#5</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
+        {# <li data-row="1" data-col="5" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#5</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
+        {#  #}
+        {# <li data-row="1" data-col="6" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#6</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
+        {#  #}
+        {# <li data-row="1" data-col="7" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#7</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
+        {#  #}
+        {# <li data-row="1" data-col="8" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#8</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
+        {#  #}
+        {# <li data-row="2" data-col="9" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#9</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
+        {#  #}
+        {# <li data-row="2" data-col="10" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#10</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
+        {#  #}
+        {# <li data-row="2" data-col="11" data-sizex="1" data-sizey="8"> #}
+        {#   <table class="table"> #}
+        {#     <tr><td class="widget-head" colspan="3"><b>Genset<br>#11</b></td></tr> #}
+        {#     <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#     <tr> #}
+        {#       <td> #}
+        {#         <div class="progress" style="margin-bottom:0"> #}
+        {#           <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+        {#         </div> #}
+        {#       </td> #}
+        {#     </tr> #}
+        {#   </table> #}
+        {# </li> #}
 
-        <li data-row="1" data-col="6" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#6</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
-
-        <li data-row="1" data-col="7" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#7</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
-
-        <li data-row="1" data-col="8" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#8</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
-
-        <li data-row="2" data-col="9" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#9</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
-
-        <li data-row="2" data-col="10" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#10</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
-
-        <li data-row="2" data-col="11" data-sizex="1" data-sizey="8">
-          <table class="table">
-            <tr><td class="widget-head" colspan="3"><b>Genset<br>#11</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button></div></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </li>
-
-        <li data-row="1" data-col="12" data-sizex="1" data-sizey="8">
+        <li data-row="1" data-col="4" data-sizex="1" data-sizey="10">
           <table class="table">
             <tr><td class="widget-head" colspan="3"><b>Outgoing<br>#1</b></td></tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="progress" style="margin-bottom:0">
-                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div>
-                </div>
-              </td>
-            </tr>
+            <tr style="font-size:12px;"><td>Power<div id="outgoing-1-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="outgoing-1-cosphi">#NA</div></td></tr>
+            {# <tr> #}
+            {#   <td> #}
+            {#     <div class="progress" style="margin-bottom:0"> #}
+            {#       <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+            {#     </div> #}
+            {#   </td> #}
+            {# </tr> #}
+            {# <tr> #}
+            {#   <td> #}
+            {#     <div class="progress" style="margin-bottom:0"> #}
+            {#       <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+            {#     </div> #}
+            {#   </td> #}
+            {# </tr> #}
+            {# <tr> #}
+            {#   <td> #}
+            {#     <div class="progress" style="margin-bottom:0"> #}
+            {#       <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:30%;"> 30%</div> #}
+            {#     </div> #}
+            {#   </td> #}
+            {# </tr> #}
           </table>
         </li>
 
       </ul>
     </div>
 
+  <script type="text/template" id="genset-detail-template">
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="10">
+      <table class="table">
+        <tr><td class="widget-head" colspan="3"><b>Genset<br>#<%= gensetId %></b></td></tr>
+        <tr><td><div class="btn-group"></div></td></tr>
+        <tr style="font-size:12px;"><td>Power<br><%= power %> kW</td></tr>
+        <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
+        <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+      </table>
+    </li>
+  </script>
 {% endblock %}
 
 {% block javascript %}
@@ -477,7 +490,7 @@
       .gridster({
         namespace: '#genset-2',
         widget_margins: [5, 5],
-        widget_base_dimensions: [90, 18],
+        widget_base_dimensions: [90, 16],
         max_cols: 12,
         max_size_x: 12})
       .data('gridster')
@@ -500,44 +513,220 @@
     generateGradient: true
   };
 
-  var target = document.getElementById('gauge-outgoing-power'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+  {# var target = document.getElementById('gauge-outgoing-power'); // your canvas element #}
+  {# var gauge = new Gauge(target).setOptions(opts); // create sexy gauge! #}
+  {#  #}
+  {# gauge.setTextField(document.getElementById('indicator-outgoing-power')); #}
+  {# gauge.maxValue = 3000; // set max gauge value #}
+  {# gauge.animationSpeed = 32; // set animation speed (32 is default value) #}
+  {# gauge.set(0); // set actual value #}
+  {#  #}
+  {# var target = document.getElementById('gauge-genset-power'); // your canvas element #}
+  {# var gauge = new Gauge(target).setOptions(opts); // create sexy gauge! #}
+  {#  #}
+  {# gauge.setTextField(document.getElementById('indicator-genset-power')); #}
+  {# gauge.maxValue = 3000; // set max gauge value #}
+  {# gauge.animationSpeed = 32; // set animation speed (32 is default value) #}
+  {# gauge.set(0); // set actual value #}
+  {#  #}
+  {# var target = document.getElementById('gauge-power-factor'); // your canvas element #}
+  {# var gauge = new Gauge(target).setOptions(opts); // create sexy gauge! #}
+  {#  #}
+  {# gauge.setTextField(document.getElementById('indicator-power-factor')); #}
+  {# gauge.maxValue = 3000; // set max gauge value #}
+  {# gauge.animationSpeed = 32; // set animation speed (32 is default value) #}
+  {# gauge.set(0); // set actual value #}
+  {#  #}
+  {# var target = document.getElementById('gauge-frequency'); // your canvas element #}
+  {# var gauge = new Gauge(target).setOptions(opts); // create sexy gauge! #}
+  {#  #}
+  {# gauge.setTextField(document.getElementById('indicator-frequency')); #}
+  {# gauge.maxValue = 3000; // set max gauge value #}
+  {# gauge.animationSpeed = 32; // set animation speed (32 is default value) #}
+  {# gauge.set(0); // set actual value #}
+  {#  #}
+  {# var target = document.getElementById('gauge-voltage'); // your canvas element #}
+  {# var gauge = new Gauge(target).setOptions(opts); // create sexy gauge! #}
+  {#  #}
+  {# gauge.setTextField(document.getElementById('indicator-voltage')); #}
+  {# gauge.maxValue = 3000; // set max gauge value #}
+  {# gauge.animationSpeed = 32; // set animation speed (32 is default value) #}
+  {# gauge.set(0); // set actual value #}
 
-  gauge.setTextField(document.getElementById('indicator-outgoing-power'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
+  $.ajax({
+    url: '/electrical/api/overview-outgoing-1/',
+    method: 'get',
+    success: function(result) {
+      console.log(result);
+      if (result.success === 0) {
+        setWidget(result.data);
+      }
+    },
+    error: function(result) {},
+  });
 
-  var target = document.getElementById('gauge-genset-power'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+  function setWidget(data) {
+    if (typeof data.obj1 !== 'undefined') {
+      var params = {
+        'canvasId': 'gauge-outgoing-power',
+        'textId': 'indicator-outgoing-power',
+        'maxValue': 3000,
+        'value': data.obj1.Value
+      }
+      createGauge(params);
+    }
 
-  gauge.setTextField(document.getElementById('indicator-genset-power'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
+    if (typeof data.obj2 !== 'undefined') {
+      var params = {
+        'canvasId': 'gauge-genset-power',
+        'textId': 'indicator-genset-power',
+        'maxValue': 3000,
+        'value': data.obj2.Value
+      }
+      createGauge(params);
+    }
 
-  var target = document.getElementById('gauge-power-factor'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+    if (typeof data.obj3 !== 'undefined') {
+      var params = {
+        'canvasId': 'gauge-power-factor',
+        'textId': 'indicator-power-factor',
+        'maxValue': 3000,
+        'value': data.obj3.Value
+      }
+      createGauge(params);
+    }
 
-  gauge.setTextField(document.getElementById('indicator-power-factor'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
+    if (typeof data.obj4 !== 'undefined') {
+      var params = {
+        'canvasId': 'gauge-frequency',
+        'textId': 'indicator-frequency',
+        'maxValue': 3000,
+        'value': data.obj4.Value
+      }
+      createGauge(params);
+    }
 
-  var target = document.getElementById('gauge-frequency'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+    if (typeof data.obj5 !== 'undefined') {
+      var params = {
+        'canvasId': 'gauge-voltage',
+        'textId': 'indicator-voltage',
+        'maxValue': 3000,
+        'value': data.obj5.Value
+      }
+      createGauge(params);
+    }
 
-  gauge.setTextField(document.getElementById('indicator-frequency'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
+    // GENSET #1
+    if (typeof data.obj19 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj19.Value);
+      $('#genset-1-status').append(buttonGroup);
+    }
 
-  var target = document.getElementById('gauge-voltage'); // your canvas element
-  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+    if (typeof data.obj21 !== 'undefined') {
+      $('#genset-1-power').empty();
+      $('#genset-1-power').append(Math.round(data.obj21.Value * 100) / 100 + ' kW');
+    }
 
-  gauge.setTextField(document.getElementById('indicator-voltage'));
-  gauge.maxValue = 3000; // set max gauge value
-  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-  gauge.set(1250); // set actual value
+    if (typeof data.obj22 !== 'undefined') {
+      $('#genset-1-cosphi').empty();
+      $('#genset-1-cosphi').append(Math.round(data.obj22.Value * 100) / 100);
+    }
+
+    if (typeof data.obj23 !== 'undefined') {
+      $('#genset-1-runhr').empty();
+      $('#genset-1-runhr').append(Math.round(data.obj23.Value * 100) / 100 + ' Hr');
+    }
+
+    // GENSET #2
+    if (typeof data.obj24 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj24.Value);
+      $('#genset-2-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj26 !== 'undefined') {
+      $('#genset-2-power').empty();
+      $('#genset-2-power').append(Math.round(data.obj26.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj27 !== 'undefined') {
+      $('#genset-2-cosphi').empty();
+      $('#genset-2-cosphi').append(Math.round(data.obj27.Value * 100) / 100);
+    }
+
+    if (typeof data.obj28 !== 'undefined') {
+      $('#genset-2-runhr').empty();
+      $('#genset-2-runhr').append(Math.round(data.obj28.Value * 100) / 100 + ' Hr');
+    }
+
+    // GENSET #3
+    if (typeof data.obj29 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj29.Value);
+      $('#genset-3-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj31 !== 'undefined') {
+      $('#genset-3-power').empty();
+      $('#genset-3-power').append(Math.round(data.obj31.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj32 !== 'undefined') {
+      $('#genset-3-cosphi').empty();
+      $('#genset-3-cosphi').append(Math.round(data.obj32.Value * 100) / 100);
+    }
+
+    if (typeof data.obj33 !== 'undefined') {
+      $('#genset-3-runhr').empty();
+      $('#genset-3-runhr').append(Math.round(data.obj33.Value * 100) / 100 + ' Hr');
+    }
+
+    // GENSET #4
+    if (typeof data.obj34 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj34.Value);
+      $('#genset-4-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj36 !== 'undefined') {
+      $('#genset-4-power').empty();
+      $('#genset-4-power').append(Math.round(data.obj36.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj37 !== 'undefined') {
+      $('#genset-4-cosphi').empty();
+      $('#genset-4-cosphi').append(Math.round(data.obj37.Value * 100) / 100);
+    }
+
+    if (typeof data.obj38 !== 'undefined') {
+      $('#genset-4-runhr').empty();
+      $('#genset-4-runhr').append(Math.round(data.obj38.Value * 100) / 100 + ' Hr');
+    }
+
+    if (typeof data.obj39 !== 'undefined') {
+      $('#outgoing-1-power').empty();
+      $('#outgoing-1-power').append(Math.round(data.obj39.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj40 !== 'undefined') {
+      $('#outgoing-1-cosphi').empty();
+      $('#outgoing-1-cosphi').append(Math.round(data.obj40.Value * 100) / 100);
+    }
+
+  }
+
+  function createGauge(params) {
+    var target = document.getElementById(params.canvasId); // your canvas element
+    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+    gauge.setTextField(document.getElementById(params.textId));
+    gauge.maxValue = params.maxValue; // set max gauge value
+    gauge.animationSpeed = 32; // set animation speed (32 is default value)
+    gauge.set(params.value); // set actual value
+  }
+
+  function getStatus(value) {
+    if (value > 0) {
+      return '<button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button>';
+    } else {
+      return '<button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button>';
+    }
+  }
 </script>
 {% endblock %}
