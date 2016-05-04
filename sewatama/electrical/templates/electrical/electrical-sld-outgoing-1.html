@@ -35,10 +35,10 @@
         <li data-row="1" data-col="1" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#1</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr><td><div id="genset-1-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-1-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-1-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-1-runhr">#NA Hr</div></td></tr>
             <tr style="font-size:12px;"><td>CB Status<div id="genset-1-cb"></div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<div id="genset-1-gcb"></div></td></tr>
             <tr style="font-size:12px;"><td>Trafo Status<div id="genset-1-trafo"></div></td></tr>
@@ -48,10 +48,10 @@
         <li data-row="1" data-col="2" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#2</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr><td><div id="genset-2-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-2-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-2-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-2-runhr">#NA Hr</div></td></tr>
             <tr style="font-size:12px;"><td>CB Status<div id="genset-2-cb"></div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<div id="genset-2-gcb"></div></td></tr>
             <tr style="font-size:12px;"><td>Trafo Status<div id="genset-2-trafo"></div></td></tr>
@@ -61,10 +61,10 @@
         <li data-row="1" data-col="3" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#3</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr><td><div id="genset-3-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-3-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-3-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-3-runhr">#NA Hr</div></td></tr>
             <tr style="font-size:12px;"><td>CB Status<div id="genset-3-cb"></div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<div id="genset-3-gcb"></div></td></tr>
             <tr style="font-size:12px;"><td>Trafo Status<div id="genset-3-trafo"></div></td></tr>
@@ -74,10 +74,10 @@
         <li data-row="1" data-col="4" data-sizex="1" data-sizey="11">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>Genset<br>#4</b></td></tr>
-            <tr><td><div class="btn-group"><button class="btn btn-xs">Run</button><button class="btn btn-xs">Fault</button></div></td></tr>
-            <tr style="font-size:12px;"><td>Power<br>#NA kW</td></tr>
-            <tr style="font-size:12px;"><td>Cosphi<br>#NA</td></tr>
-            <tr style="font-size:12px;"><td>Run Hr.<br>#NA Hr</td></tr>
+            <tr><td><div id="genset-4-status" class="btn-group"></div></td></tr>
+            <tr style="font-size:12px;"><td>Power<div id="genset-4-power">#NA kW</div></td></tr>
+            <tr style="font-size:12px;"><td>Cosphi<div id="genset-4-cosphi">#NA</div></td></tr>
+            <tr style="font-size:12px;"><td>Run Hr.<div id="genset-4-runhr">#NA Hr</div></td></tr>
             <tr style="font-size:12px;"><td>CB Status<div id="genset-4-cb"></div></td></tr>
             <tr style="font-size:12px;"><td>GCB Status<div id="genset-4-gcb"></div></td></tr>
             <tr style="font-size:12px;"><td>Trafo Status<div id="genset-4-trafo"></div></td></tr>
@@ -255,7 +255,7 @@
       .gridster({
         namespace: '#genset-2',
         widget_margins: [5, 5],
-        widget_base_dimensions: [90, 19],
+        widget_base_dimensions: [100, 19],
         max_cols: 12,
         max_size_x: 12})
       .data('gridster')
@@ -357,6 +357,96 @@
     } else {
       setPanelStatus('#outgoing-1-pr', getPanelNaStatus());
     }
+
+    // GENSET #1
+    if (typeof data.obj19 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj19.Value);
+      $('#genset-1-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj21 !== 'undefined') {
+      $('#genset-1-power').empty();
+      $('#genset-1-power').append(Math.round(data.obj21.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj22 !== 'undefined') {
+      $('#genset-1-cosphi').empty();
+      $('#genset-1-cosphi').append(Math.round(data.obj22.Value * 100) / 100);
+    }
+
+    if (typeof data.obj23 !== 'undefined') {
+      $('#genset-1-runhr').empty();
+      $('#genset-1-runhr').append(Math.round(data.obj23.Value * 100) / 100 + ' Hr');
+    }
+
+    // GENSET #2
+    if (typeof data.obj24 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj24.Value);
+      $('#genset-2-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj26 !== 'undefined') {
+      $('#genset-2-power').empty();
+      $('#genset-2-power').append(Math.round(data.obj26.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj27 !== 'undefined') {
+      $('#genset-2-cosphi').empty();
+      $('#genset-2-cosphi').append(Math.round(data.obj27.Value * 100) / 100);
+    }
+
+    if (typeof data.obj28 !== 'undefined') {
+      $('#genset-2-runhr').empty();
+      $('#genset-2-runhr').append(Math.round(data.obj28.Value * 100) / 100 + ' Hr');
+    }
+
+    // GENSET #3
+    if (typeof data.obj29 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj29.Value);
+      $('#genset-3-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj31 !== 'undefined') {
+      $('#genset-3-power').empty();
+      $('#genset-3-power').append(Math.round(data.obj31.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj32 !== 'undefined') {
+      $('#genset-3-cosphi').empty();
+      $('#genset-3-cosphi').append(Math.round(data.obj32.Value * 100) / 100);
+    }
+
+    if (typeof data.obj33 !== 'undefined') {
+      $('#genset-3-runhr').empty();
+      $('#genset-3-runhr').append(Math.round(data.obj33.Value * 100) / 100 + ' Hr');
+    }
+
+    // GENSET #4
+    if (typeof data.obj34 !== 'undefined') {
+      var buttonGroup = getStatus(data.obj34.Value);
+      $('#genset-4-status').append(buttonGroup);
+    }
+
+    if (typeof data.obj36 !== 'undefined') {
+      $('#genset-4-power').empty();
+      $('#genset-4-power').append(Math.round(data.obj36.Value * 100) / 100 + ' kW');
+    }
+
+    if (typeof data.obj37 !== 'undefined') {
+      $('#genset-4-cosphi').empty();
+      $('#genset-4-cosphi').append(Math.round(data.obj37.Value * 100) / 100);
+    }
+
+    if (typeof data.obj38 !== 'undefined') {
+      $('#genset-4-runhr').empty();
+      $('#genset-4-runhr').append(Math.round(data.obj38.Value * 100) / 100 + ' Hr');
+    }
+
+    if (typeof data.obj39 !== 'undefined') {
+      $('#outgoing-1-power').empty();
+      $('#outgoing-1-power').append(Math.round(data.obj39.Value * 100) / 100 + ' kW');
+    }
+
   }
 
   function setPanelStatus(id, status) {
@@ -366,9 +456,9 @@
 
   function getStatus(value) {
     if (value > 0) {
-      return '<button class="btn btn-xs btn-success">Run</button><button class="btn btn-xs">Fault</button>';
+      return '<button class="btn btn-xs btn-success" style="font-size:10px">Run</button><button class="btn btn-xs" style="font-size:10px">Fault</button>';
     } else {
-      return '<button class="btn btn-xs">Run</button><button class="btn btn-xs btn-danger">Fault</button>';
+      return '<button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button><button class="btn btn-xs" style="font-size:10px">Fault</button>';
     }
   }
 

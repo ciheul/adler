@@ -92,6 +92,30 @@ def electrical_sld_outgoing_1(request):
         # ('obj11', 'SS\HSD_NPN0\EVT\GEN04\ST_GCB_CLS'), # unavailable
         # ('obj12', 'SS\HSD_NPN0\EVT\GEN04\DI9_TRF'), # unavailable
         # ('obj13', 'SS\HSD_NPN0\EVT\OUT01\ST_CB_CLS'), # unavailable
+
+        ('obj19', 'SS\HSD_NPN0\RT4\GEN01\F'),
+        # ('obj20', 'SS\HSD_NPN0\EVT\GEN01\DI11_EGF'), # unavailable
+        ('obj21', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'),
+        ('obj22', 'SS\HSD_NPN0\RT4\GEN01\PF'),
+        ('obj23', 'SS\HSD_NPN0\RT4\GEN01\OPR_HRS'),
+
+        ('obj24', 'SS\HSD_NPN0\RT4\GEN02\F'),
+        # ('obj25', 'SS\HSD_NPN0\EVT\GEN02\DI11_EGF'), # unavailable
+        ('obj26', 'SS\HSD_NPN0\RT4\GEN02\P_TOT'),
+        ('obj27', 'SS\HSD_NPN0\RT4\GEN02\PF'),
+        ('obj28', 'SS\HSD_NPN0\RT4\GEN02\OPR_HRS'),
+
+        ('obj29', 'SS\HSD_NPN0\RT4\GEN03\F'),
+        # ('obj30', 'SS\HSD_NPN0\EVT\GEN03\DI11_EGF'), # unavailable
+        ('obj31', 'SS\HSD_NPN0\RT4\GEN03\P_TOT'),
+        ('obj32', 'SS\HSD_NPN0\RT4\GEN03\PF'),
+        ('obj33', 'SS\HSD_NPN0\RT4\GEN03\OPR_HRS'),
+
+        ('obj34', 'SS\HSD_NPN0\RT4\GEN04\F'),
+        # ('obj35', 'SS\HSD_NPN0\EVT\GEN04\DI11_EGF'), # unavailable
+        ('obj36', 'SS\HSD_NPN0\RT4\GEN04\P_TOT'),
+        ('obj37', 'SS\HSD_NPN0\RT4\GEN04\PF'),
+        ('obj38', 'SS\HSD_NPN0\RT4\GEN04\OPR_HRS'),
     ]
 
     # query latest row from mongodb. there is only one row in a list
