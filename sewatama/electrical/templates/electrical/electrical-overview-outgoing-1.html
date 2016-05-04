@@ -31,40 +31,45 @@
         <li data-row="1" data-col="1" data-sizex="2" data-sizey="7">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>OUTGOING POWER</b></td></tr>
-            <tr><td colspan="2"><canvas id="gauge-outgoing-power" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-outgoing-power">#NA</div></td><td>kW</td></tr>
+            <tr><td colspan="2"><div id="gauge-outgoing-power" style="margin-top:-30px;width:190px;height:190px"></div></td></tr>
+            {# <tr><td colspan="2"><canvas id="gauge-outgoing-power" width="180" height="90" style="padding-top:10px"></canvas></td></tr> #}
+            {# <tr><td><div id="indicator-outgoing-power">#NA</div></td><td>kW</td></tr> #}
           </table>
         </li>
 
         <li data-row="1" data-col="2" data-sizex="2" data-sizey="7">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>GENSET POWER</b></td></tr>
-            <tr><td colspan="2"><canvas id="gauge-genset-power" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-genset-power">#NA</div></td><td>kW</td></tr>
+            <tr><td colspan="2"><div id="gauge-genset-power" style="margin-top:-30px;width:190px;height:190px"></div></td></tr>
+            {# <tr><td colspan="2"><canvas id="gauge-genset-power" width="180" height="90" style="padding-top:10px"></canvas></td></tr> #}
+            {# <tr><td><div id="indicator-genset-power">#NA</div></td><td>kW</td></tr> #}
           </table>
         </li>
 
         <li data-row="1" data-col="3" data-sizex="2" data-sizey="7">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>POWER FACTOR</b></td></tr>
-            <tr><td colspan="2"><canvas id="gauge-power-factor" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-power-factor">#NA</div></td><td></td></tr>
+            <tr><td colspan="2"><div id="gauge-power-factor" style="margin-top:-30px;width:190px;height:190px"></div></td></tr>
+            {# <tr><td colspan="2"><canvas id="gauge-power-factor" width="180" height="90" style="padding-top:10px"></canvas></td></tr> #}
+            {# <tr><td><div id="indicator-power-factor">#NA</div></td><td></td></tr> #}
           </table>
         </li>
 
         <li data-row="1" data-col="4" data-sizex="2" data-sizey="7">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>FREQUENCY</b></td></tr>
-            <tr><td colspan="2"><canvas id="gauge-frequency" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-frequency">#NA</div></td><td>Hz</td></tr>
+            <tr><td colspan="2"><div id="gauge-frequency" style="margin-top:-30px;width:190px;height:190px"></div></td></tr>
+            {# <tr><td colspan="2"><canvas id="gauge-frequency" width="180" height="90" style="padding-top:10px"></canvas></td></tr> #}
+            {# <tr><td><div id="indicator-frequency">#NA</div></td><td>Hz</td></tr> #}
           </table>
         </li>
 
         <li data-row="1" data-col="5" data-sizex="2" data-sizey="7">
           <table class="table">
             <tr><td class="widget-head" colspan="2"><b>VOLTAGE</b></td></tr>
-            <tr><td colspan="2"><canvas id="gauge-voltage" width="180" height="90" style="padding-top:10px"></canvas></td></tr>
-            <tr><td><div id="indicator-voltage">#NA</div></td><td>V</td></tr>
+            <tr><td colspan="2"><div id="gauge-voltage" style="margin-top:-30px;width:190px;height:190px"></div></td></tr>
+            {# <tr><td colspan="2"><canvas id="gauge-voltage" width="180" height="90" style="padding-top:10px"></canvas></td></tr> #}
+            {# <tr><td><div id="indicator-voltage">#NA</div></td><td>V</td></tr> #}
           </table>
         </li>
 
@@ -459,6 +464,15 @@
     </div>
 
   <script type="text/template" id="genset-detail-template">
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="7">
+      <table class="table">
+        <tr><td class="widget-head" colspan="2"><b>OUTGOING POWER</b></td></tr>
+        <tr><td colspan="2"><div id="gauge-outgoing-power" style="margin-top:-30px;width:190px;height:190px"></div></td></tr>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="genset-detail-template">
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="10">
       <table class="table">
         <tr><td class="widget-head" colspan="3"><b>Genset<br>#<%= gensetId %></b></td></tr>
@@ -566,55 +580,60 @@
   });
 
   function setWidget(data) {
-    if (typeof data.obj1 !== 'undefined') {
-      var params = {
-        'canvasId': 'gauge-outgoing-power',
-        'textId': 'indicator-outgoing-power',
-        'maxValue': 3000,
-        'value': data.obj1.Value
-      }
-      createGauge(params);
+    var value = typeof data.obj1 !== 'undefined' ? data.obj1.Value : undefined;
+    var params = {
+      'canvasId': 'gauge-outgoing-power',
+      'textId': 'indicator-outgoing-power',
+      'minValue': 0,
+      'maxValue': 3000,
+      'value': value,
+      'label': 'kW'
     }
+    createGauge(params);
 
-    if (typeof data.obj2 !== 'undefined') {
-      var params = {
-        'canvasId': 'gauge-genset-power',
-        'textId': 'indicator-genset-power',
-        'maxValue': 3000,
-        'value': data.obj2.Value
-      }
-      createGauge(params);
+    var value = typeof data.obj2 !== 'undefined' ? data.obj2.Value : undefined;
+    var params = {
+      'canvasId': 'gauge-genset-power',
+      'textId': 'indicator-genset-power',
+      'minValue': 0,
+      'maxValue': 3000,
+      'value': value,
+      'label': 'kW'
     }
+    createGauge(params);
 
-    if (typeof data.obj3 !== 'undefined') {
-      var params = {
-        'canvasId': 'gauge-power-factor',
-        'textId': 'indicator-power-factor',
-        'maxValue': 3000,
-        'value': data.obj3.Value
-      }
-      createGauge(params);
+    var value = typeof data.obj3 !== 'undefined' ? data.obj3.Value : undefined;
+    var params = {
+      'canvasId': 'gauge-power-factor',
+      'textId': 'indicator-power-factor',
+      'minValue': 0,
+      'maxValue': 3000,
+      'value': value,
+      'label': ''
     }
+    createGauge(params);
 
-    if (typeof data.obj4 !== 'undefined') {
-      var params = {
-        'canvasId': 'gauge-frequency',
-        'textId': 'indicator-frequency',
-        'maxValue': 3000,
-        'value': data.obj4.Value
-      }
-      createGauge(params);
+    var value = typeof data.obj4 !== 'undefined' ? data.obj4.Value : undefined;
+    var params = {
+      'canvasId': 'gauge-frequency',
+      'textId': 'indicator-frequency',
+      'minValue': 0,
+      'maxValue': 3000,
+      'value': value,
+      'label': 'Hz'
     }
+    createGauge(params);
 
-    if (typeof data.obj5 !== 'undefined') {
-      var params = {
-        'canvasId': 'gauge-voltage',
-        'textId': 'indicator-voltage',
-        'maxValue': 3000,
-        'value': data.obj5.Value
-      }
-      createGauge(params);
+    var value = typeof data.obj5 !== 'undefined' ? data.obj5.Value : undefined;
+    var params = {
+      'canvasId': 'gauge-voltage',
+      'textId': 'indicator-voltage',
+      'minValue': 0,
+      'maxValue': 3000,
+      'value': value,
+      'label': 'V'
     }
+    createGauge(params);
 
     // GENSET #1
     if (typeof data.obj19 !== 'undefined') {
@@ -712,13 +731,37 @@
 
   }
 
+  {# function createGauge(params) { #}
+  {#   var target = document.getElementById(params.canvasId); // your canvas element #}
+  {#   var gauge = new Gauge(target).setOptions(opts); // create sexy gauge! #}
+  {#   gauge.setTextField(document.getElementById(params.textId)); #}
+  {#   gauge.maxValue = params.maxValue; // set max gauge value #}
+  {#   gauge.animationSpeed = 32; // set animation speed (32 is default value) #}
+  {#   gauge.set(params.value); // set actual value #}
+  {# } #}
+
   function createGauge(params) {
-    var target = document.getElementById(params.canvasId); // your canvas element
-    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-    gauge.setTextField(document.getElementById(params.textId));
-    gauge.maxValue = params.maxValue; // set max gauge value
-    gauge.animationSpeed = 32; // set animation speed (32 is default value)
-    gauge.set(params.value); // set actual value
+    var gg1 = new JustGage({                                                       
+      id: params.canvasId,
+      {# title: 'Title', #}
+      label: params.label,
+      value : Math.round(params.value * 100) / 100,
+      min: params.minValue,
+      max: params.maxValue,
+      decimals: 2,
+      gaugeWidthScale: 0.5,
+      customSectors: [{
+        color : "#00ff00",
+        lo : 0,
+        hi : 50
+      },{
+        color : "#ff0000",
+        lo : 50,
+        hi : 100
+      }],
+      counter: true,
+      formatNumber: true
+    });
   }
 
   function getStatus(value) {
