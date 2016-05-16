@@ -67,7 +67,7 @@
         <li data-row="1" data-col="4" data-sizex="24" data-sizey="14">
           <table class="table">
             <tr>
-              <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g1" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#1</div></td>
+              <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g1" class="progress-success" style="background:tomato;margin-bottom:5px"></div><div style="font-size:10px">#1</div></td>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g3" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#3</div></td>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g5" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#5</div></td>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g7" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#7</div></td>
@@ -830,8 +830,10 @@
           height: 95,
           {# label: params['value'] + '%', #}
           orientation: 'vertical',
-          value: calculateRatioProgressBar(params['value']),
-          {# value: params['value'], #}
+          min: -10,
+          max: 1500,
+          {# value: calculateRatioProgressBar(params['value']), #}
+          value: params['value'],
           width: 50
         }).render();
       }

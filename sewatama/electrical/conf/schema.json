@@ -1,0 +1,143 @@
+{
+  "page-overview-outgoing-1": {
+    "gauge-outgoing-power": {
+      "title": "OUTGOING POWER",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "kW",
+      "grid": { "x": 1, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\REAL_PWR_TOTAL"
+    },
+    "gauge-genset-power": {
+      "title": "GENSET POWER",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "kW",
+      "grid": { "x": 3, "y": 1, "w": 2, "h":7 },
+      "value": [
+        "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT", 
+        "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT",
+        "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT",
+        "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT"
+      ],
+      "grammar": "sum"
+    },
+    "gauge-power-factor": {
+      "title": "POWER FACTOR",
+      "type": "gauge",
+      "minValue": -1,
+      "maxValue": 1,
+      "label": "",
+      "grid": { "x": 5, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\PF_TOTAL"
+    },
+    "gauge-frequency": {
+      "title": "FREQUENCY",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 62,
+      "label": "Hz",
+      "grid": { "x": 7, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\FREQ"
+    },
+    "gauge-voltage": {
+      "title": "VOLTAGE",
+      "type": "gauge",
+      "minValue": -1000,
+      "maxValue": 25000,
+      "label": "V",
+      "grid": { "x": 9, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\VOLTAGE_LL_AVG"
+    },
+    "genset-1": {
+      "title": "Genset #1",
+      "type": "oneColumnTable",
+      "grid": { "x": 1, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN01\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN01\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\OPR_HRS" }
+      ]
+    },
+    "genset-2": {
+      "title": "Genset #2",
+      "type": "oneColumnTable",
+      "grid": { "x": 2, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN02\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN02\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\OPR_HRS" }
+      ]
+    },
+    "genset-3": {
+      "title": "Genset #3",
+      "type": "oneColumnTable",
+      "grid": { "x": 3, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN03\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN03\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\OPR_HRS" }
+      ]
+    },
+    "genset-4": {
+      "title": "Genset #4",
+      "type": "oneColumnTable",
+      "grid": { "x": 4, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\OPR_HRS" }
+      ]
+    }
+  }
+}

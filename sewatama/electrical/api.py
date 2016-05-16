@@ -1,3 +1,5 @@
+# http://eli.thegreenplace.net/2009/11/28/python-internals-working-with-python-asts
+
 import simplejson as json
 import pymongo
 from django.http import HttpResponse, Http404, HttpResponseServerError
@@ -5,74 +7,158 @@ from pymongo import MongoClient
 
 from bson.json_util import dumps
 
+import os
 
 db = MongoClient().inetscada
 
 
 def electrical_overview_outgoing_1(request):
-    # TODO get page parameter and query to database which (tag_id, tag_name)
-    # belongs to the page
-    x = [
-        # ('obj1', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
-        # ('obj2', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'), # multivalue
-        # ('obj3', 'SS\HSD_NPN0\RT2\OUT01\PF_TOTAL'), # unavailable
-        # ('obj4', 'SS\HSD_NPN0\RT4\OUT01\FREQ'), # unavailable
-        # ('obj5', 'SS\HSD_NPN0\RT4\OUT01\VOLTAGE_LL_AVG'), # unavailable 
-        # ('obj14', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
-
-        ('obj19', 'SS\HSD_NPN0\RT4\GEN01\F'),
-        # ('obj20', 'SS\HSD_NPN0\EVT\GEN01\DI11_EGF'), # unavailable
-        ('obj21', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'),
-        ('obj22', 'SS\HSD_NPN0\RT4\GEN01\PF'),
-        ('obj23', 'SS\HSD_NPN0\RT4\GEN01\OPR_HRS'),
-
-        ('obj24', 'SS\HSD_NPN0\RT4\GEN02\F'),
-        # ('obj25', 'SS\HSD_NPN0\EVT\GEN02\DI11_EGF'), # unavailable
-        ('obj26', 'SS\HSD_NPN0\RT4\GEN02\P_TOT'),
-        ('obj27', 'SS\HSD_NPN0\RT4\GEN02\PF'),
-        ('obj28', 'SS\HSD_NPN0\RT4\GEN02\OPR_HRS'),
-
-        ('obj29', 'SS\HSD_NPN0\RT4\GEN03\F'),
-        # ('obj30', 'SS\HSD_NPN0\EVT\GEN03\DI11_EGF'), # unavailable
-        ('obj31', 'SS\HSD_NPN0\RT4\GEN03\P_TOT'),
-        ('obj32', 'SS\HSD_NPN0\RT4\GEN03\PF'),
-        ('obj33', 'SS\HSD_NPN0\RT4\GEN03\OPR_HRS'),
-
-        ('obj34', 'SS\HSD_NPN0\RT4\GEN04\F'),
-        # ('obj35', 'SS\HSD_NPN0\EVT\GEN04\DI11_EGF'), # unavailable
-        ('obj36', 'SS\HSD_NPN0\RT4\GEN04\P_TOT'),
-        ('obj37', 'SS\HSD_NPN0\RT4\GEN04\PF'),
-        ('obj38', 'SS\HSD_NPN0\RT4\GEN04\OPR_HRS'),
-
-        # ('obj39', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
-        # ('obj40', 'SS\HSD_NPN0\RT4\OUT01\PF_TOTAL'), # unavailable
-    ]
+    f = open('electrical/conf/schema.json')
+    schema = json.loads(f.read())
+    page = schema['page-overview-outgoing-1']
 
     # query latest row from mongodb. there is only one row in a list
     row = db.ss.find().sort("_id", -1).limit(1)[0]
+
+    response = list()
+    for tag_id, detail in page.iteritems():
+        if detail['type'] == 'gauge':
+            # no grammar means no computation to yield the value. easy
+            # and ensure tag_name exists in the latest mongodb document
+            if 'grammar' not in detail and detail['value'] in row['Tags']:
+                # set value
+                tag_name = detail['value']
+                if tag_name not in row['Tags']:
+                    continue
+                detail['value'] = row['Tags'][tag_name]['Value']
+
+            # sum value from several tag names
+            if 'grammar' in detail and detail['grammar'] == 'sum':
+                total_value = 0
+                for tag_name in detail['value']:
+                    if tag_name not in row['Tags']:
+                        continue
+                    total_value += float(row['Tags'][tag_name]['Value'])
+                detail['value'] = total_value
+                
+            # set tag_id inside detail
+            detail['tagId'] = tag_id
+
+            response.append(detail)
+
+        if detail['type'] == 'oneColumnTable':
+            final_data = list()
+            # loop through data to render row in one column table
+            for d in detail['data']:
+                # default row. just value
+                if d['type'] == 'default':
+                    tag_name = d['value']
+                    if tag_name not in row['Tags']:
+                        continue
+                    d['value'] = \
+                        "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                    final_data.append(d)
+
+                # row with general status (it consists of run and fault
+                if d['type'] == 'general':
+                    tag_name = d['run']
+
+                    # the row is still rendered but without value (NA)
+                    if tag_name not in row['Tags']:
+                        del d['run']
+                    else:
+                        d['run'] = \
+                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+
+                    tag_name = d['fault']
+                    # the row is still rendered but without value (NA)
+                    if tag_name not in row['Tags']:
+                        del d['fault']
+                    else:
+                        d['fault'] = row['Tags'][tag_name]['Value']
+
+                    final_data.append(d)
+
+            # set tag_id inside detail
+            detail['tagId'] = tag_id
+            detail['data'] = final_data
+
+            response.append(detail)
+            
+    # TODO get page parameter and query to database which (tag_id, tag_name)
+    # belongs to the page
+    # x = [
+    #     # ('obj1', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
+    #     # ('obj2', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'), # multivalue
+    #     # ('obj3', 'SS\HSD_NPN0\RT2\OUT01\PF_TOTAL'), # unavailable
+    #     # ('obj4', 'SS\HSD_NPN0\RT4\OUT01\FREQ'), # unavailable
+    #     # ('obj5', 'SS\HSD_NPN0\RT4\OUT01\VOLTAGE_LL_AVG'), # unavailable 
+    #     # ('obj14', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
+    #
+    #     ('obj19', 'SS\HSD_NPN0\RT4\GEN01\F'),
+    #     # ('obj20', 'SS\HSD_NPN0\EVT\GEN01\DI11_EGF'), # unavailable
+    #     ('obj21', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'),
+    #     ('obj22', 'SS\HSD_NPN0\RT4\GEN01\PF'),
+    #     ('obj23', 'SS\HSD_NPN0\RT4\GEN01\OPR_HRS'),
+    #
+    #     ('obj24', 'SS\HSD_NPN0\RT4\GEN02\F'),
+    #     # ('obj25', 'SS\HSD_NPN0\EVT\GEN02\DI11_EGF'), # unavailable
+    #     ('obj26', 'SS\HSD_NPN0\RT4\GEN02\P_TOT'),
+    #     ('obj27', 'SS\HSD_NPN0\RT4\GEN02\PF'),
+    #     ('obj28', 'SS\HSD_NPN0\RT4\GEN02\OPR_HRS'),
+    #
+    #     ('obj29', 'SS\HSD_NPN0\RT4\GEN03\F'),
+    #     # ('obj30', 'SS\HSD_NPN0\EVT\GEN03\DI11_EGF'), # unavailable
+    #     ('obj31', 'SS\HSD_NPN0\RT4\GEN03\P_TOT'),
+    #     ('obj32', 'SS\HSD_NPN0\RT4\GEN03\PF'),
+    #     ('obj33', 'SS\HSD_NPN0\RT4\GEN03\OPR_HRS'),
+    #
+    #     ('obj34', 'SS\HSD_NPN0\RT4\GEN04\F'),
+    #     # ('obj35', 'SS\HSD_NPN0\EVT\GEN04\DI11_EGF'), # unavailable
+    #     ('obj36', 'SS\HSD_NPN0\RT4\GEN04\P_TOT'),
+    #     ('obj37', 'SS\HSD_NPN0\RT4\GEN04\PF'),
+    #     ('obj38', 'SS\HSD_NPN0\RT4\GEN04\OPR_HRS'),
+    #
+    #     # ('obj39', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
+    #     # ('obj40', 'SS\HSD_NPN0\RT4\OUT01\PF_TOTAL'), # unavailable
+    # ]
+    #
+    # # query latest row from mongodb. there is only one row in a list
+    # row = db.ss.find().sort("_id", -1).limit(1)[0]
+    #
+    # # replace tag name with tag id for security reason
+    # data = dict()
+    # for i in x:
+    #     tag_id, tag_name = i[0], i[1]
+    #     data[tag_id] = row['Tags'][tag_name]
+    #
+    #     # remove for security reason
+    #     del data[tag_id]['Name']
+    #
+    # # TODO special case for obj2 because it has more than one tag name
+    # # and need sum operation
+    # value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\P_TOT']['Value'])
+    # value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\P_TOT']['Value']) 
+    # value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\P_TOT']['Value'])
+    # value4 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\P_TOT']['Value'])
+    #
+    # data['obj2'] = dict()
+    # data['obj2']['Value'] = value1 + value2 + value3 + value4
+
+    # data = list()
+    # data.append({
+    #     'type': 'gauge',
+    #     'tagId': 'gauge-outgoing-power',
+    #     'title': 'OUTGOING POWER',
+    #     'minValue': 0,
+    #     'maxValue': 3000,
+    #     'value': 100,
+    #     'label': 'kW'
+    # });
+    # message = { 'success': 0, 'data': data }
     
-    # replace tag name with tag id for security reason
-    data = dict()
-    for i in x:
-        tag_id, tag_name = i[0], i[1]
-        data[tag_id] = row['Tags'][tag_name]
-
-        # remove for security reason
-        del data[tag_id]['Name']
-
-    # TODO special case for obj2 because it has more than one tag name
-    # and need sum operation
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\P_TOT']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\P_TOT']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\P_TOT']['Value'])
-    value4 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\P_TOT']['Value'])
-
-    data['obj2'] = dict()
-    data['obj2']['Value'] = value1 + value2 + value3 + value4
-
-    message = { 'success': 0, 'data': data }
-    
-    return HttpResponse(json.dumps(message), content_type='application/json') 
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+    # return HttpResponse(json.dumps(message), content_type='application/json') 
 
 
 def electrical_sld_outgoing_1(request):
