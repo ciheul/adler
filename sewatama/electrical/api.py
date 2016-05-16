@@ -53,26 +53,27 @@ def electrical_overview_outgoing_1(request):
                 # default row. just value
                 if d['type'] == 'default':
                     tag_name = d['value']
-                    if tag_name not in row['Tags']:
-                        continue
-                    d['value'] = \
-                        "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                    d['value'] = '#NA'
+                    if tag_name in row['Tags']:
+                        d['value'] = \
+                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
                     final_data.append(d)
 
                 # row with general status (it consists of run and fault
                 if d['type'] == 'general':
                     tag_name = d['run']
-
-                    # the row is still rendered but without value (NA)
                     if tag_name not in row['Tags']:
+                        # the row is still rendered without value (NA) because
+                        # value is undefined. logic is in template
                         del d['run']
                     else:
                         d['run'] = \
                             "{:,.2f}".format(row['Tags'][tag_name]['Value'])
 
                     tag_name = d['fault']
-                    # the row is still rendered but without value (NA)
                     if tag_name not in row['Tags']:
+                        # the row is still rendered without value (NA) because
+                        # value is undefined. logic is in template
                         del d['fault']
                     else:
                         d['fault'] = row['Tags'][tag_name]['Value']
@@ -85,6 +86,23 @@ def electrical_overview_outgoing_1(request):
 
             response.append(detail)
             
+        if detail['type'] == 'threeColumnsTable':
+            final_data = list()
+            for d in detail['data']:
+                if d['type'] == 'default':
+                    tag_name = d['value']
+                    d['value'] = '#NA'
+                    if tag_name in row['Tags']:
+                        d['value'] = \
+                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                    final_data.append(d)
+
+            # set tag_id inside detail
+            detail['tagId'] = tag_id
+            detail['data'] = final_data
+
+            response.append(detail)
+
     # TODO get page parameter and query to database which (tag_id, tag_name)
     # belongs to the page
     # x = [

@@ -29,56 +29,14 @@
     </div>
 
     <div id="grid-1" class="gridster">
-      <ul>
-        {# <li data-row="2" data-col="1" data-sizex="3" data-sizey="6"> #}
-        {#   <table class="table"> #}
-        {#     <tr><td class="widget-head" colspan="3"><b>ENERGY THIS MONTH</b></td></tr> #}
-        {#     <tr><td>OUTGOING #1</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>GENSET</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>AVG. LOSSES</td><td>#NA</td><td>%</td></tr> #}
-        {#   </table> #}
-        {# </li> #}
-        {#  #}
-        {# <li data-row="2" data-col="1" data-sizex="3" data-sizey="6"> #}
-        {#   <table class="table"> #}
-        {#     <tr><td class="widget-head" colspan="3"><b>ENERGY LAST MONTH</b></td></tr> #}
-        {#     <tr><td>OUTGOING #1</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>GENSET</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>AVG. LOSSES</td><td>#NA</td><td>%</td></tr> #}
-        {#   </table> #}
-        {# </li> #}
-        {#  #}
-        {# <li data-row="2" data-col="1" data-sizex="4" data-sizey="9"> #}
-        {#   <table class="table"> #}
-        {#     <tr><td class="widget-head" colspan="3"><b>POWER PLANT INFO</b></td></tr> #}
-        {#     <tr><td>TOTAL POWER</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>THIS MONTH ENERGY</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>FUEL</td><td>#NA</td><td>L</td></tr> #}
-        {#     <tr><td>LAST MONTH ENERGY</td><td>#NA</td><td>kW</td></tr> #}
-        {#     <tr><td>FUEL</td><td>#NA</td><td>L</td></tr> #}
-        {#   </table> #}
-        {# </li> #}
-        {#  #}
-        {# <li data-row="3" data-col="1" data-sizex="3" data-sizey="3"> #}
-        {#   <table class="table"> #}
-        {#     <tr><td class="widget-head" colspan="3"><b>FUEL THIS MONTH</b></td></tr> #}
-        {#     <tr><td>CONSUMPTION</td><td>#NA</td><td>L</td></tr> #}
-        {#   </table> #}
-        {# </li> #}
-        {#  #}
-        {# <li data-row="3" data-col="1" data-sizex="3" data-sizey="3"> #}
-        {#   <table class="table"> #}
-        {#     <tr><td class="widget-head" colspan="3"><b>FUEL LAST MONTH</b></td></tr> #}
-        {#     <tr><td>CONSUMPTION</td><td>#NA</td><td>L</td></tr> #}
-        {#   </table> #}
-        {# </li> #}
-      </ul>
+      <ul></ul>
     </div>
 
 
     <div id="grid-2" class="gridster">
       <ul></ul>
     </div>
+  </div>
 
   <script type="text/template" id="gauge-template">
     <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>">
@@ -129,7 +87,7 @@
   </script>
 
   <script type="text/template" id="threecolumns-table-template">
-    <li data-row="<%= x %>" data-col="<%= y %>" data-sizex="<%= dx %>" data-sizey="<%= dy %>">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>">
       <table class="table">
         <% if (typeof title !== 'undefined') { %>
           <thead>
@@ -142,7 +100,11 @@
   </script>
 
   <script type="text/template" id="threecolumns-table-item-template">
-    <tr><td style="text-align:left;padding-left:30px"><%= name %></td><td style="text-align:right"><%= value %></td><td style="text-align:left;width:15%"><%= label %></td></tr>
+    <tr>
+      <td style="text-align:left;padding-left:30px"><%= name %></td>
+      <td style="text-align:right"><%= value %></td>
+      <td style="text-align:left;width:15%"><%= label %></td>
+    </tr>
   </script>
 {% endblock %}
 
@@ -161,81 +123,7 @@
   app.DashboardView = Backbone.View.extend({
     initialize: function() {
       app.widgets = new app.WidgetList();
-
       app.widgets.fetch({ async: false });
-
-      {# app.widgets.add({ #}
-      {#   type: 'threeColumnsTable', #}
-      {#   tagId: 'energy-this-month', #}
-      {#   title: 'ENERGY THIS MONTH', #}
-      {#   x: 1, #}
-      {#   y: 1, #}
-      {#   dx: 3, #}
-      {#   dy: 6, #}
-      {#   data: [ #}
-      {#     { type: 'default', name: 'OUTGOING #1', value: '10,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'GENSET', value: '5,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'AVG. LOSSES', value: '25', label: '%' }, #}
-      {#   ] #}
-      {# }); #}
-      {#  #}
-      {# app.widgets.add({ #}
-      {#   type: 'threeColumnsTable', #}
-      {#   tagId: 'energy-last-month', #}
-      {#   title: 'ENERGY LAST MONTH', #}
-      {#   x: 4, #}
-      {#   y: 1, #}
-      {#   dx: 3, #}
-      {#   dy: 6, #}
-      {#   data: [ #}
-      {#     { type: 'default', name: 'OUTGOING #1', value: '10,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'GENSET', value: '5,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'AVG. LOSSES', value: '25', label: '%' }, #}
-      {#   ] #}
-      {# }); #}
-      {#  #}
-      {# app.widgets.add({ #}
-      {#   type: 'threeColumnsTable', #}
-      {#   tagId: 'fuel-this-month', #}
-      {#   title: 'FUEL THIS MONTH', #}
-      {#   x: 7, #}
-      {#   y: 1, #}
-      {#   dx: 3, #}
-      {#   dy: 3, #}
-      {#   data: [ #}
-      {#     { type: 'default', name: 'CONSUMPTION', value: '1,000', label: 'L' }, #}
-      {#   ] #}
-      {# }); #}
-      {#  #}
-      {# app.widgets.add({ #}
-      {#   type: 'threeColumnsTable', #}
-      {#   tagId: 'fuel-last-month', #}
-      {#   title: 'FUEL LAST MONTH', #}
-      {#   x: 7, #}
-      {#   y: 4, #}
-      {#   dx: 3, #}
-      {#   dy: 3, #}
-      {#   data: [ #}
-      {#     { type: 'default', name: 'CONSUMPTION', value: '1,000', label: 'L' }, #}
-      {#   ] #}
-      {# }); #}
-      {#  #}
-      {# app.widgets.add({ #}
-      {#   type: 'threeColumnsTable', #}
-      {#   tagId: 'power-plant-info', #}
-      {#   title: 'POWER PLANT INFO', #}
-      {#   x: 1, #}
-      {#   y: 7, #}
-      {#   dx: 4, #}
-      {#   dy: 9, #}
-      {#   data: [ #}
-      {#     { type: 'default', name: 'TOTAL POWER', value: '10,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'THIS MONTH ENERGY', value: '100,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'FUEL', value: '1,000', label: 'L' }, #}
-      {#     { type: 'default', name: 'LAST MONTH ENERGY', value: '100,000', label: 'kW' }, #}
-      {#     { type: 'default', name: 'FUEL', value: '1,000', label: 'L' }, #}
-      {#   ] #}
-      {# }); #}
 
       this.render();
     },
@@ -249,6 +137,7 @@
         }
 
         if (widget.get('type') === 'threeColumnsTable') {
+          console.log(widget);
           var widgetView = new app.ThreeColumnsTableView({
             el: $('#grid-1 > ul'),
             model: widget.toJSON()
@@ -350,233 +239,38 @@
 
   app.dashboardView = new app.DashboardView();
 
-  {# $.ajax({ #}
-  {#   url: '/electrical/api/overview-outgoing-1/', #}
-  {#   method: 'get', #}
-  {#   success: function(result) { #}
-  {#     console.log(result); #}
-  {#     if (result.success === 0) { #}
-        {# setWidget(result.data); #}
-  {#     } #}
-  {#   }, #}
-  {#   error: function(result) {}, #}
-  {# }); #}
+  gridster[0] = $("#grid-0 ul")
+    .gridster({
+      namespace: '#grid-0',
+      widget_margins: [5, 5],
+      widget_base_dimensions: [90, 20],
+      min_cols: 12,
+      max_cols: 12,
+      max_size_x: 12})
+    .data('gridster')
+    .disable();
 
-  {# function setWidget(data) { #}
-    {# var value = typeof data.obj1 !== 'undefined' ? data.obj1.Value : undefined; #}
-    {# var params = { #}
-    {#   'canvasId': 'gauge-outgoing-power', #}
-    {#   'textId': 'indicator-outgoing-power', #}
-    {#   'minValue': 0, #}
-    {#   'maxValue': 3000, #}
-    {#   'value': value, #}
-    {#   'label': 'kW' #}
-    {# } #}
-    {# createGauge(params); #}
-    {#  #}
-    {# var value = typeof data.obj2 !== 'undefined' ? data.obj2.Value : undefined; #}
-    {# var params = { #}
-    {#   'canvasId': 'gauge-genset-power', #}
-    {#   'textId': 'indicator-genset-power', #}
-    {#   'minValue': 0, #}
-    {#   'maxValue': 3000, #}
-    {#   'value': value, #}
-    {#   'label': 'kW' #}
-    {# } #}
-    {# createGauge(params); #}
-    {#  #}
-    {# var value = typeof data.obj3 !== 'undefined' ? data.obj3.Value : undefined; #}
-    {# var params = { #}
-    {#   'canvasId': 'gauge-power-factor', #}
-    {#   'textId': 'indicator-power-factor', #}
-    {#   'minValue': 0, #}
-    {#   'maxValue': 3000, #}
-    {#   'value': value, #}
-    {#   'label': '' #}
-    {# } #}
-    {# createGauge(params); #}
-    {#  #}
-    {# var value = typeof data.obj4 !== 'undefined' ? data.obj4.Value : undefined; #}
-    {# var params = { #}
-    {#   'canvasId': 'gauge-frequency', #}
-    {#   'textId': 'indicator-frequency', #}
-    {#   'minValue': 0, #}
-    {#   'maxValue': 3000, #}
-    {#   'value': value, #}
-    {#   'label': 'Hz' #}
-    {# } #}
-    {# createGauge(params); #}
-    {#  #}
-    {# var value = typeof data.obj5 !== 'undefined' ? data.obj5.Value : undefined; #}
-    {# var params = { #}
-    {#   'canvasId': 'gauge-voltage', #}
-    {#   'textId': 'indicator-voltage', #}
-    {#   'minValue': 0, #}
-    {#   'maxValue': 3000, #}
-    {#   'value': value, #}
-    {#   'label': 'V' #}
-    {# } #}
-    {# createGauge(params); #}
-{#  #}
-    {# // GENSET #1 #}
-    {# if (typeof data.obj19 !== 'undefined') { #}
-    {#   var buttonGroup = getStatus(data.obj19.Value); #}
-    {#   $('#genset-1-status').append(buttonGroup); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj21 !== 'undefined') { #}
-    {#   $('#genset-1-power').empty(); #}
-    {#   $('#genset-1-power').append(Math.round(data.obj21.Value * 100) / 100 + ' kW'); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj22 !== 'undefined') { #}
-    {#   $('#genset-1-cosphi').empty(); #}
-    {#   $('#genset-1-cosphi').append(Math.round(data.obj22.Value * 100) / 100); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj23 !== 'undefined') { #}
-    {#   $('#genset-1-runhr').empty(); #}
-    {#   $('#genset-1-runhr').append(Math.round(data.obj23.Value * 100) / 100 + ' Hr'); #}
-    {# } #}
-{#  #}
-    {# // GENSET #2 #}
-    {# if (typeof data.obj24 !== 'undefined') { #}
-    {#   var buttonGroup = getStatus(data.obj24.Value); #}
-    {#   $('#genset-2-status').append(buttonGroup); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj26 !== 'undefined') { #}
-    {#   $('#genset-2-power').empty(); #}
-    {#   $('#genset-2-power').append(Math.round(data.obj26.Value * 100) / 100 + ' kW'); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj27 !== 'undefined') { #}
-    {#   $('#genset-2-cosphi').empty(); #}
-    {#   $('#genset-2-cosphi').append(Math.round(data.obj27.Value * 100) / 100); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj28 !== 'undefined') { #}
-    {#   $('#genset-2-runhr').empty(); #}
-    {#   $('#genset-2-runhr').append(Math.round(data.obj28.Value * 100) / 100 + ' Hr'); #}
-    {# } #}
-    {#  #}
-    {# // GENSET #3 #}
-    {# if (typeof data.obj29 !== 'undefined') { #}
-    {#   var buttonGroup = getStatus(data.obj29.Value); #}
-    {#   $('#genset-3-status').append(buttonGroup); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj31 !== 'undefined') { #}
-    {#   $('#genset-3-power').empty(); #}
-    {#   $('#genset-3-power').append(Math.round(data.obj31.Value * 100) / 100 + ' kW'); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj32 !== 'undefined') { #}
-    {#   $('#genset-3-cosphi').empty(); #}
-    {#   $('#genset-3-cosphi').append(Math.round(data.obj32.Value * 100) / 100); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj33 !== 'undefined') { #}
-    {#   $('#genset-3-runhr').empty(); #}
-    {#   $('#genset-3-runhr').append(Math.round(data.obj33.Value * 100) / 100 + ' Hr'); #}
-    {# } #}
-    {#  #}
-    {# // GENSET #4 #}
-    {# if (typeof data.obj34 !== 'undefined') { #}
-    {#   var buttonGroup = getStatus(data.obj34.Value); #}
-    {#   $('#genset-4-status').append(buttonGroup); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj36 !== 'undefined') { #}
-    {#   $('#genset-4-power').empty(); #}
-    {#   $('#genset-4-power').append(Math.round(data.obj36.Value * 100) / 100 + ' kW'); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj37 !== 'undefined') { #}
-    {#   $('#genset-4-cosphi').empty(); #}
-    {#   $('#genset-4-cosphi').append(Math.round(data.obj37.Value * 100) / 100); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj38 !== 'undefined') { #}
-    {#   $('#genset-4-runhr').empty(); #}
-    {#   $('#genset-4-runhr').append(Math.round(data.obj38.Value * 100) / 100 + ' Hr'); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj39 !== 'undefined') { #}
-    {#   $('#outgoing-1-power').empty(); #}
-    {#   $('#outgoing-1-power').append(Math.round(data.obj39.Value * 100) / 100 + ' kW'); #}
-    {# } #}
-    {#  #}
-    {# if (typeof data.obj40 !== 'undefined') { #}
-    {#   $('#outgoing-1-cosphi').empty(); #}
-    {#   $('#outgoing-1-cosphi').append(Math.round(data.obj40.Value * 100) / 100); #}
-    {# } #}
-  {#  #}
-  {# } #}
-  {#  #}
-  {# function createGauge(params) { #}
-  {#   var gg1 = new JustGage({                                                        #}
-  {#     id: params.canvasId, #}
-  {#     label: params.label, #}
-  {#     value : Math.round(params.value * 100) / 100, #}
-  {#     min: params.minValue, #}
-  {#     max: params.maxValue, #}
-  {#     decimals: 2, #}
-  {#     gaugeWidthScale: 0.5, #}
-  {#     customSectors: [{ #}
-  {#       color : "#00ff00", #}
-  {#       lo : 0, #}
-  {#       hi : 50 #}
-  {#     },{ #}
-  {#       color : "#ff0000", #}
-  {#       lo : 50, #}
-  {#       hi : 100 #}
-  {#     }], #}
-  {#     counter: true, #}
-  {#     formatNumber: true #}
-  {#   }); #}
-  {# } #}
-  {#  #}
-  {# function getStatus(value) { #}
-  {#   if (value > 0) { #}
-  {#     return '<button class="btn btn-xs btn-success" style="font-size:10px">Run</button><button class="btn btn-xs" style="font-size:10px">Fault</button>'; #}
-  {#   } else { #}
-  {#     return '<button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button><button class="btn btn-xs" style="font-size:10px">Fault</button>'; #}
-  {#   } #}
-  {# } #}
+  gridster[1] = $("#grid-1 ul")
+    .gridster({
+      namespace: '#grid-1',
+      widget_margins: [5, 5],
+      widget_base_dimensions: [90, 20],
+      min_cols: 12,
+      max_cols: 12,
+      max_size_x: 12})
+    .data('gridster')
+    .disable();
 
-    gridster[0] = $("#grid-0 ul")
-      .gridster({
-        namespace: '#grid-0',
-        widget_margins: [5, 5],
-        widget_base_dimensions: [90, 20],
-        min_cols: 12,
-        max_cols: 12,
-        max_size_x: 12})
-      .data('gridster')
-      .disable();
-
-    gridster[1] = $("#grid-1 ul")
-      .gridster({
-        namespace: '#grid-1',
-        widget_margins: [5, 5],
-        widget_base_dimensions: [90, 20],
-        min_cols: 12,
-        max_cols: 12,
-        max_size_x: 12})
-      .data('gridster')
-      .disable();
-
-    gridster[2] = $("#grid-2 ul")
-      .gridster({
-        namespace: '#grid-2',
-        widget_margins: [5, 5],
-        widget_base_dimensions: [90, 16],
-        min_cols: 12,
-        max_cols: 12,
-        max_size_x: 12})
-      .data('gridster')
-      .disable();
+  gridster[2] = $("#grid-2 ul")
+    .gridster({
+      namespace: '#grid-2',
+      widget_margins: [5, 5],
+      widget_base_dimensions: [90, 16],
+      min_cols: 12,
+      max_cols: 12,
+      max_size_x: 12})
+    .data('gridster')
+    .disable();
 
 </script>
 {% endblock %}

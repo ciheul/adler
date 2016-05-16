@@ -51,6 +51,93 @@
       "grid": { "x": 9, "y": 1, "w": 2, "h":7 },
       "value": "SS\\HSD_NPN0\\RT4\\GEN01\\VOLTAGE_LL_AVG"
     },
+    "energy-this-month": {
+      "title": "ENERGY THIS MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 1, "y": 1, "w": 3, "h": 6 },
+      "data": [
+        { "type": "default",
+          "name": "OUTGOING #1",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "GENSET",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "AVG. LOSSES",
+          "value": "",
+          "label": "%" }
+      ]
+    },
+    "energy-last-month": {
+      "title": "ENERGY LAST MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 4, "y": 1, "w": 3, "h": 6 },
+      "data": [
+        { "type": "default",
+          "name": "OUTGOING #1",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "GENSET",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "AVG. LOSSES",
+          "value": "",
+          "label": "%" }
+      ]
+    },
+    "fuel-this-month": {
+      "title": "FUEL THIS MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 1, "y": 7, "w": 3, "h": 3 },
+      "data": [
+        { "type": "default",
+          "name": "CONSUMPTION",
+          "value": "",
+          "label": "L" }
+      ]
+    },
+    "fuel-last-month": {
+      "title": "FUEL LAST MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 4, "y": 7, "w": 3, "h": 3 },
+      "data": [
+        { "type": "default",
+          "name": "CONSUMPTION",
+          "value": "",
+          "label": "L" }
+      ]
+    },
+    "power-plant-info": {
+      "title": "POWER PLANT INFO",
+      "type": "threeColumnsTable",
+      "grid": { "x": 7, "y": 1, "w": 4, "h": 9 },
+      "data": [
+        { "type": "default",
+          "name": "TOTAL POWER",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "THIS MONTH ENERGY",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "FUEL",
+          "value": "",
+          "label": "L" },
+        { "type": "default",
+          "name": "LAST MONTH ENERGY",
+          "value": "",
+          "label": "kW" },
+        { "type": "default",
+          "name": "FUEL",
+          "value": "",
+          "label": "L" }
+      ]
+    },
     "genset-1": {
       "title": "Genset #1",
       "type": "oneColumnTable",
