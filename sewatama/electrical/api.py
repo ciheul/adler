@@ -12,11 +12,28 @@ import os
 db = MongoClient().inetscada
 
 
-def electrical_overview_outgoing_1(request):
+def get_page_schema(page_id):
     f = open('electrical/conf/schema.json')
     schema = json.loads(f.read())
-    page = schema['page-overview-outgoing-1']
+    return schema[page_id]
 
+
+def grammar_sum(detail, row):
+    total_value = 0
+    for tag_name in detail['value']:
+        if tag_name not in row['Tags']:
+            continue
+        total_value += float(row['Tags'][tag_name]['Value'])
+
+    return total_value
+
+
+def grammar_mean(detail, row):
+    total_value = grammar_sum(detail, row)
+    return "{:,.2f}".format(total_value / len(detail['value']))
+
+
+def create_response(page):
     # query latest row from mongodb. there is only one row in a list
     row = db.ss.find().sort("_id", -1).limit(1)[0]
 
@@ -34,12 +51,7 @@ def electrical_overview_outgoing_1(request):
 
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'sum':
-                total_value = 0
-                for tag_name in detail['value']:
-                    if tag_name not in row['Tags']:
-                        continue
-                    total_value += float(row['Tags'][tag_name]['Value'])
-                detail['value'] = total_value
+                detail['value'] = grammar_sum(detail, row)
                 
             # set tag_id inside detail
             detail['tagId'] = tag_id
@@ -80,6 +92,17 @@ def electrical_overview_outgoing_1(request):
 
                     final_data.append(d)
 
+                if d['type'] == 'indicator':
+                    tag_name = d['value']
+                    if tag_name not in row['Tags']:
+                        # the row is still rendered without value (NA) because
+                        # value is undefined. logic is in template
+                        del d['value']
+                    else:
+                        d['value'] = row['Tags'][tag_name]['Value']
+
+                    final_data.append(d)
+
             # set tag_id inside detail
             detail['tagId'] = tag_id
             detail['data'] = final_data
@@ -88,13 +111,28 @@ def electrical_overview_outgoing_1(request):
             
         if detail['type'] == 'threeColumnsTable':
             final_data = list()
+            # iterate each row
             for d in detail['data']:
                 if d['type'] == 'default':
-                    tag_name = d['value']
-                    d['value'] = '#NA'
-                    if tag_name in row['Tags']:
-                        d['value'] = \
-                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                    if 'grammar' not in d:
+                        tag_name = d['value']
+                        d['value'] = '#NA'
+                        if tag_name in row['Tags']:
+                            d['value'] = \
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                        final_data.append(d)
+
+                    # get sum value from several tag names
+                    if 'grammar' in d and d['grammar'] == 'sum':
+                        d['value'] = grammar_sum(d, row)
+                        final_data.append(d)
+
+                    # get mean value from several tag names
+                    if 'grammar' in d and d['grammar'] == 'mean':
+                        d['value'] = grammar_mean(d, row)
+                        final_data.append(d)
+
+                if d['type'] == 'image':
                     final_data.append(d)
 
             # set tag_id inside detail
@@ -103,143 +141,39 @@ def electrical_overview_outgoing_1(request):
 
             response.append(detail)
 
-    # TODO get page parameter and query to database which (tag_id, tag_name)
-    # belongs to the page
-    # x = [
-    #     # ('obj1', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
-    #     # ('obj2', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'), # multivalue
-    #     # ('obj3', 'SS\HSD_NPN0\RT2\OUT01\PF_TOTAL'), # unavailable
-    #     # ('obj4', 'SS\HSD_NPN0\RT4\OUT01\FREQ'), # unavailable
-    #     # ('obj5', 'SS\HSD_NPN0\RT4\OUT01\VOLTAGE_LL_AVG'), # unavailable 
-    #     # ('obj14', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
-    #
-    #     ('obj19', 'SS\HSD_NPN0\RT4\GEN01\F'),
-    #     # ('obj20', 'SS\HSD_NPN0\EVT\GEN01\DI11_EGF'), # unavailable
-    #     ('obj21', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'),
-    #     ('obj22', 'SS\HSD_NPN0\RT4\GEN01\PF'),
-    #     ('obj23', 'SS\HSD_NPN0\RT4\GEN01\OPR_HRS'),
-    #
-    #     ('obj24', 'SS\HSD_NPN0\RT4\GEN02\F'),
-    #     # ('obj25', 'SS\HSD_NPN0\EVT\GEN02\DI11_EGF'), # unavailable
-    #     ('obj26', 'SS\HSD_NPN0\RT4\GEN02\P_TOT'),
-    #     ('obj27', 'SS\HSD_NPN0\RT4\GEN02\PF'),
-    #     ('obj28', 'SS\HSD_NPN0\RT4\GEN02\OPR_HRS'),
-    #
-    #     ('obj29', 'SS\HSD_NPN0\RT4\GEN03\F'),
-    #     # ('obj30', 'SS\HSD_NPN0\EVT\GEN03\DI11_EGF'), # unavailable
-    #     ('obj31', 'SS\HSD_NPN0\RT4\GEN03\P_TOT'),
-    #     ('obj32', 'SS\HSD_NPN0\RT4\GEN03\PF'),
-    #     ('obj33', 'SS\HSD_NPN0\RT4\GEN03\OPR_HRS'),
-    #
-    #     ('obj34', 'SS\HSD_NPN0\RT4\GEN04\F'),
-    #     # ('obj35', 'SS\HSD_NPN0\EVT\GEN04\DI11_EGF'), # unavailable
-    #     ('obj36', 'SS\HSD_NPN0\RT4\GEN04\P_TOT'),
-    #     ('obj37', 'SS\HSD_NPN0\RT4\GEN04\PF'),
-    #     ('obj38', 'SS\HSD_NPN0\RT4\GEN04\OPR_HRS'),
-    #
-    #     # ('obj39', 'SS\HSD_NPN0\RT4\OUT01\REAL_PWR_TOTAL'), # unavailable
-    #     # ('obj40', 'SS\HSD_NPN0\RT4\OUT01\PF_TOTAL'), # unavailable
-    # ]
-    #
-    # # query latest row from mongodb. there is only one row in a list
-    # row = db.ss.find().sort("_id", -1).limit(1)[0]
-    #
-    # # replace tag name with tag id for security reason
-    # data = dict()
-    # for i in x:
-    #     tag_id, tag_name = i[0], i[1]
-    #     data[tag_id] = row['Tags'][tag_name]
-    #
-    #     # remove for security reason
-    #     del data[tag_id]['Name']
-    #
-    # # TODO special case for obj2 because it has more than one tag name
-    # # and need sum operation
-    # value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\P_TOT']['Value'])
-    # value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\P_TOT']['Value']) 
-    # value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\P_TOT']['Value'])
-    # value4 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\P_TOT']['Value'])
-    #
-    # data['obj2'] = dict()
-    # data['obj2']['Value'] = value1 + value2 + value3 + value4
+        if detail['type'] == 'image':
+            response.append(detail)
+    return response
 
-    # data = list()
-    # data.append({
-    #     'type': 'gauge',
-    #     'tagId': 'gauge-outgoing-power',
-    #     'title': 'OUTGOING POWER',
-    #     'minValue': 0,
-    #     'maxValue': 3000,
-    #     'value': 100,
-    #     'label': 'kW'
-    # });
-    # message = { 'success': 0, 'data': data }
-    
+
+def electrical_overview_outgoing_1(request):
+    page_id = 'electrical-overview-outgoing-1'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
     return HttpResponse(json.dumps(response), content_type='application/json') 
-    # return HttpResponse(json.dumps(message), content_type='application/json') 
 
 
 def electrical_sld_outgoing_1(request):
-    # TODO get page parameter and query to database which (tag_id, tag_name)
-    # belongs to the page
-    x = [
-        # ('obj1', 'SS\HSD_NPN0\EVT\GEN01\AUX_DI_6'), # unavailable
-        # ('obj2', 'SS\HSD_NPN0\EVT\GEN01\ST_GCB_CLS'), # unavailable
-        # ('obj3', 'SS\HSD_NPN0\EVT\GEN01\DI9_TRF'), # unavailable
-        # ('obj4', 'SS\HSD_NPN0\EVT\GEN02\AUX_DI_6'), # unavailable
-        # ('obj5', 'SS\HSD_NPN0\EVT\GEN02\ST_GCB_CLS'), # unavailable
-        # ('obj6', 'SS\HSD_NPN0\EVT\GEN02\DI9_TRF'), # unavailable
-        # ('obj7', 'SS\HSD_NPN0\EVT\GEN03\AUX_DI_6'), # unavailable
-        # ('obj8', 'SS\HSD_NPN0\EVT\GEN03\ST_GCB_CLS'), # unavailable
-        # ('obj9', 'SS\HSD_NPN0\EVT\GEN03\DI9_TRF'), # unavailable
-        # ('obj10', 'SS\HSD_NPN0\EVT\GEN04\AUX_DI_6'), # unavailable
-        # ('obj11', 'SS\HSD_NPN0\EVT\GEN04\ST_GCB_CLS'), # unavailable
-        # ('obj12', 'SS\HSD_NPN0\EVT\GEN04\DI9_TRF'), # unavailable
-        # ('obj13', 'SS\HSD_NPN0\EVT\OUT01\ST_CB_CLS'), # unavailable
+    page_id = 'electrical-sld-outgoing-1'
 
-        ('obj19', 'SS\HSD_NPN0\RT4\GEN01\F'),
-        # ('obj20', 'SS\HSD_NPN0\EVT\GEN01\DI11_EGF'), # unavailable
-        ('obj21', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'),
-        ('obj22', 'SS\HSD_NPN0\RT4\GEN01\PF'),
-        ('obj23', 'SS\HSD_NPN0\RT4\GEN01\OPR_HRS'),
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
 
-        ('obj24', 'SS\HSD_NPN0\RT4\GEN02\F'),
-        # ('obj25', 'SS\HSD_NPN0\EVT\GEN02\DI11_EGF'), # unavailable
-        ('obj26', 'SS\HSD_NPN0\RT4\GEN02\P_TOT'),
-        ('obj27', 'SS\HSD_NPN0\RT4\GEN02\PF'),
-        ('obj28', 'SS\HSD_NPN0\RT4\GEN02\OPR_HRS'),
-
-        ('obj29', 'SS\HSD_NPN0\RT4\GEN03\F'),
-        # ('obj30', 'SS\HSD_NPN0\EVT\GEN03\DI11_EGF'), # unavailable
-        ('obj31', 'SS\HSD_NPN0\RT4\GEN03\P_TOT'),
-        ('obj32', 'SS\HSD_NPN0\RT4\GEN03\PF'),
-        ('obj33', 'SS\HSD_NPN0\RT4\GEN03\OPR_HRS'),
-
-        ('obj34', 'SS\HSD_NPN0\RT4\GEN04\F'),
-        # ('obj35', 'SS\HSD_NPN0\EVT\GEN04\DI11_EGF'), # unavailable
-        ('obj36', 'SS\HSD_NPN0\RT4\GEN04\P_TOT'),
-        ('obj37', 'SS\HSD_NPN0\RT4\GEN04\PF'),
-        ('obj38', 'SS\HSD_NPN0\RT4\GEN04\OPR_HRS'),
-    ]
-
-    # query latest row from mongodb. there is only one row in a list
-    row = db.ss.find().sort("_id", -1).limit(1)[0]
-    
-    # replace tag name with tag id for security reason
-    data = dict()
-    for i in x:
-        tag_id, tag_name = i[0], i[1]
-        data[tag_id] = row['Tags'][tag_name]
-
-        # remove for security reason
-        del data[tag_id]['Name']
-
-    message = { 'success': 0, 'data': data }
-    
-    return HttpResponse(dumps(message), content_type='application/json') 
+    return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
 def genset_overview_outgoing_1(request):
+    page_id = 'genset-overview-outgoing-1'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+def genset_overview_outgoing_1_2(request):
     # TODO get page parameter and query to database which (tag_id, tag_name)
     # belongs to the page
     x = [

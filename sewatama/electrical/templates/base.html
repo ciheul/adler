@@ -46,6 +46,100 @@
 
   {% block content %}{% endblock %}
 
+  <script type="text/template" id="gauge-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>">
+      <table class="table">
+        <tr><td class="widget-head"><b><%= title %></b></td></tr>
+        <tr><td colspan="2"><div id="<%= tagId %>" style="margin-top:-20px;width:170px;height:170px"></div></td></tr>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="onecolumn-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+        <thead>
+          <tr><td class="widget-head"><%= title %></td></tr>
+        </thead>
+        <% } %>
+        <tbody id="<%= tagId %>" style="font-size:12px"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="onecolumn-table-item-template">
+    <% if (type === 'default') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <div><%= value %> <%= label %></div>
+        </td>
+      </tr>
+    <% } else if (type === 'general') { %>
+      <tr>
+        <td>
+          <div class="btn-group">
+            <% if (typeof run !== 'undefined' && run > 0) { %>
+              <button class="btn btn-xs btn-success" style="font-size:10px">Run</button>
+            <% } else if (typeof run !== 'undefined' && run === false) { %>
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button>
+            <% } else { %>
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+            <% } %>
+            <button class="btn btn-xs" style="font-size:10px">#NA</button>
+          </div>
+        </td>
+      </tr>
+    <% } else if (type === 'indicator') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <% if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-success panel-indicator-success"><% trueText %></div>
+          <% } else if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-danger panel-indicator-danger"><% falseText %></div>
+          <% } else { %>
+            <div class="panel panel-success panel-indicator-na">#NA</div>
+          <% } %>
+        </td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="threecolumns-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+          <thead>
+            <tr><td class="widget-head" colspan="3"><b><%= title %></b></td></tr>
+          </thead>
+        <% } %>
+        <tbody id="<%= tagId %>"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="threecolumns-table-item-template">
+    <% if (type === 'image') { %>
+      <tr>
+        <td colspan="3"><img src="<%= image.url %>" /></td>
+      </tr>
+    <% } else { %>
+      <tr style="font-size:12px">
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td style="text-align:right"><%= value %></td>
+        <td style="text-align:left;width:20%"><%= label %></td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="image-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>">
+      <img src="<%= image.url %>" width="<%= image.w %>"/>
+    </li>
+  </script>
+
   <script src="/static/electrical/backboneapp/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="http://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
@@ -56,6 +150,7 @@
   <script src="/static/electrical/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
   <script src="/static/electrical/backboneapp/vendors/justgage/raphael-2.1.4.min.js"></script>
   <script src="/static/electrical/backboneapp/vendors/justgage/justgage.js"></script>
+  <script src="/static/electrical/backboneapp/scripts/views/widgets.js"></script>
 
   {% block javascript %}{% endblock%}
 </body>

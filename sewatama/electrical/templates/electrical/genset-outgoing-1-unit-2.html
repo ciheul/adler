@@ -39,7 +39,7 @@
       <ul>
         <li data-row="1" data-col="1" data-sizex="5" data-sizey="7">
           <table class="table">
-            <tr><td class="widget-head" colspan="2"><b>AVG LINE POWER</b></td></tr>
+            <tr><td class="widget-head" colspan="2"><b>AVG LINE VOLT.</b></td></tr>
             <tr><td colspan="2"><div id="gauge-avg-line-voltage" style="margin-top:-20px;width:125px;height:125px"></div></td></tr>
             {# <tr><td colspan="2"><canvas id="gauge-avg-line-voltage" width="120" height="60" style="padding-top:10px"></canvas></td></tr> #}
             {# <tr><td><div id="indicator-avg-line-voltage">#NA</div></td><td>V</td></tr> #}
@@ -492,7 +492,7 @@
       'minValue': -100,
       'maxValue': 4500,
       'value': value,
-      'label': 'V'
+      'label': 'A'
     }
     createGauge(params);
 
@@ -503,7 +503,7 @@
       'minValue': 0,
       'maxValue': 62,
       'value': value,
-      'label': 'V'
+      'label': 'Hz'
     }
     createGauge(params);
 
