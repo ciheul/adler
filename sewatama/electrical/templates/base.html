@@ -96,9 +96,9 @@
         <td>
           <div><%= name %></div>
           <% if (typeof value != 'undefined' && value === true) { %>
-            <div class="panel panel-success panel-indicator-success"><% trueText %></div>
+            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
           <% } else if (typeof value != 'undefined' && value === true) { %>
-            <div class="panel panel-danger panel-indicator-danger"><% falseText %></div>
+            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
           <% } else { %>
             <div class="panel panel-success panel-indicator-na">#NA</div>
           <% } %>

@@ -49,6 +49,10 @@ def create_response(page):
                     continue
                 detail['value'] = row['Tags'][tag_name]['Value']
 
+                # TODO just for temporary
+                if tag_id == 'gauge-outgoing-power':
+                    detail['value'] = detail['value'] / 1000
+
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'sum':
                 detail['value'] = grammar_sum(detail, row)

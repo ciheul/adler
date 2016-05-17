@@ -7,7 +7,7 @@
       "maxValue": 15000,
       "label": "kW",
       "grid": { "x": 1, "y": 1, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\REAL_PWR_TOTAL"
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
     },
     "gauge-genset-power": {
       "title": "GENSET POWER",
@@ -31,7 +31,7 @@
       "maxValue": 1,
       "label": "",
       "grid": { "x": 5, "y": 1, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\PF_TOTAL"
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF_TOTAL"
     },
     "gauge-frequency": {
       "title": "FREQUENCY",
@@ -40,7 +40,7 @@
       "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 7, "y": 1, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\FREQ"
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\FREQ"
     },
     "gauge-voltage": {
       "title": "VOLTAGE",
@@ -49,7 +49,7 @@
       "maxValue": 25000,
       "label": "V",
       "grid": { "x": 9, "y": 1, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\GEN01\\VOLTAGE_LL_AVG"
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\VOLTAGE_LL_AVG"
     },
     "energy-this-month": {
       "title": "ENERGY THIS MONTH",
