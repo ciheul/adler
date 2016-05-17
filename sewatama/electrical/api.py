@@ -96,7 +96,7 @@ def create_response(page):
 
                     final_data.append(d)
 
-                if d['type'] == 'indicator':
+                if d['type'] in ['indicator', 'indicatorInverse']:
                     tag_name = d['value']
                     if tag_name not in row['Tags']:
                         # the row is still rendered without value (NA) because
