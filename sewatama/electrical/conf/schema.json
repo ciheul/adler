@@ -284,8 +284,8 @@
           "value": "SS\\HSD_NPN0\\RT4\\GEN01\\ST_GCB_CLS" },
         { "type": "indicator",
           "name": "Trafo Status",
-          "trueText": "NORMAL",
-          "falseText": "FAULT",
+          "trueText": "FAULT",
+          "falseText": "NORMAL",
           "value": "SS\\HSD_NPN0\\RT4\\GEN01\\DI9_TRF" }
       ]
     },
@@ -321,8 +321,8 @@
           "value": "SS\\HSD_NPN0\\RT4\\GEN02\\ST_GCB_CLS" },
         { "type": "indicator",
           "name": "Trafo Status",
-          "trueText": "NORMAL",
-          "falseText": "FAULT",
+          "trueText": "FAULT",
+          "falseText": "NORMAL",
           "value": "SS\\HSD_NPN0\\RT4\\GEN02\\DI9_TRF" }
       ]
     },
@@ -358,8 +358,8 @@
           "value": "SS\\HSD_NPN0\\RT4\\GEN03\\ST_GCB_CLS" },
         { "type": "indicator",
           "name": "Trafo Status",
-          "trueText": "NORMAL",
-          "falseText": "FAULT",
+          "trueText": "FAULT",
+          "falseText": "NORMAL",
           "value": "SS\\HSD_NPN0\\RT4\\GEN03\\DI9_TRF" }
       ]
     },
@@ -395,8 +395,8 @@
           "value": "SS\\HSD_NPN0\\RT4\\GEN04\\ST_GCB_CLS" },
         { "type": "indicator",
           "name": "Trafo Status",
-          "trueText": "NORMAL",
-          "falseText": "FAULT",
+          "trueText": "FAULT",
+          "falseText": "NORMAL",
           "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI9_TRF" }
       ]
     },
@@ -417,7 +417,7 @@
           "name": "PR Status",
           "trueText": "CLOSED",
           "falseText": "OPEN",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\CB_ST_CLS" }
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\CB_ST_CLS" }
       ]
     },
     "total-power": {
