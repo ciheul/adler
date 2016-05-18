@@ -17,13 +17,13 @@
 
     <div id="grid-0" class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
-          <div id="container" style="padding:30px"></div>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div id="container" style="height: 400px; min-width: 310px"></div>
         </li>
 
-        {# <li data-row="1" data-col="1" data-sizex="10" data-sizey="5"> #}
-        {#   <div id="container2" style="height: 400px; min-width: 310px"></div> #}
-        {# </li> #}
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div id="container2" style="height: 400px; min-width: 310px"></div>
+        </li>
       
       </ul>
     </div>
@@ -327,16 +327,13 @@
 <script src="/static/electrical/backboneapp/bower_components/highcharts/highstock.js"></script>
 
 <script>
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 $(function () {
     Highcharts.setOptions({
       global : { useUTC : false }
     });
 
-    $('#container').highcharts({
+    $('#container').highcharts('StockChart', {
         chart : {
             events : {
                 load : function () {
@@ -346,63 +343,76 @@ $(function () {
                     var series3 = this.series[2];
                     setInterval(function () {
                         var x = (new Date()).getTime(), // current time
-                            y = getRandomInt(0, 250);
+                            y = Math.round(Math.random() * 100);
                         series.addPoint([x, y], true, true);
 
-                        y = getRandomInt(0, 1500);
+                        y = Math.round(Math.random() * 100);
                         series2.addPoint([x, y], true, true);
 
-                        y = Math.round(Math.random() * 40);
+                        y = Math.round(Math.random() * 100);
                         series3.addPoint([x, y], true, true);
-                    }, 2000);
+                    }, 10000);
                 }
             }
         },
-        title: { text: 'Average Monthly Weather Data for Tokyo' },
-        subtitle: { text: 'Source: WorldClimate.com' },
-        xAxis: [{ 
-            // set x-axis label in datetime format
-            type: 'datetime',
-            tickmarkPlacement: 'on',
-            gridLineWidth: 1
-        }],
+        title: {
+            text: 'Average Monthly Weather Data for Tokyo'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        {# xAxis: [{ #}
+        {#     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', #}
+        {#         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], #}
+        {#     crosshair: true #}
+        {# }], #}
         yAxis: [{ // Primary yAxis
-            max: 40,
             labels: {
                 format: '{value}°C',
-                style: { color: Highcharts.getOptions().colors[2] }
+                style: {
+                    color: Highcharts.getOptions().colors[2]
+                }
             },
             title: {
                 text: 'Temperature',
-                style: { color: Highcharts.getOptions().colors[2] }
+                style: {
+                    color: Highcharts.getOptions().colors[2]
+                }
             },
             opposite: true
 
         }, { // Secondary yAxis
-            max: 250,
             title: {
                 text: 'Rainfall',
-                style: { color: Highcharts.getOptions().colors[0] }
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
             },
             labels: {
                 format: '{value} mm',
-                style: { color: Highcharts.getOptions().colors[0] }
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
             },
             opposite: true
         }, { // Tertiary yAxis
-            max: 1500,
             title: {
                 text: 'Sea-Level Pressure',
-                style: { color: Highcharts.getOptions().colors[1] }
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
             },
             labels: {
                 format: '{value} mb',
-                style: { color: Highcharts.getOptions().colors[1] }
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
             },
             opposite: true
         }],
-        plotOptions: { line: { marker: { enabled: false } } },
-        tooltip: { shared: true },
+        tooltip: {
+            shared: true
+        },
         exporting: { enabled: false },
         legend: {
             layout: 'vertical',
@@ -412,18 +422,6 @@ $(function () {
             y: 55,
             floating: true,
             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-        },
-        rangeSelector: {
-
-            {# selected: 4, #}
-            enabled: false,
-            {# inputEnabled: false, #}
-            {# buttonTheme: { #}
-            {#     visibility: 'hidden' #}
-            {# }, #}
-            {# labelStyle: { #}
-            {#     visibility: 'hidden' #}
-            {# } #}
         },
         series: [{
             name: 'Rainfall',
@@ -493,18 +491,73 @@ $(function () {
     });
 });
 
-var gridster = [];
+$(function () {
 
-gridster[0] = $("#grid-0 ul")
-  .gridster({
-    namespace: '#grid-0',
-    widget_margins: [5, 5],
-    widget_base_dimensions: [90, 20],
-    min_cols: 12,
-    max_cols: 12,
-    max_size_x: 12})
-  .data('gridster')
-  .disable();
+    Highcharts.setOptions({
+        global : {
+            useUTC : false
+        }
+    });
 
+    // Create the chart
+    $('#container2').highcharts('StockChart', {
+        chart : {
+            events : {
+                load : function () {
+
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // current time
+                            y = Math.round(Math.random() * 100);
+                        series.addPoint([x, y], true, true);
+                    }, 1000);
+                }
+            }
+        },
+
+        rangeSelector: {
+            buttons: [{
+                count: 1,
+                type: 'minute',
+                text: '1M'
+            }, {
+                count: 5,
+                type: 'minute',
+                text: '5M'
+            }, {
+                type: 'all',
+                text: 'All'
+            }],
+            inputEnabled: false,
+            selected: 0
+        },
+
+        title : {
+            text : 'Live random data'
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series : [{
+            name : 'Random data',
+            data : (function () {
+                // generate an array of random data
+                var data = [], time = (new Date()).getTime(), i;
+
+                for (i = -999; i <= 0; i += 1) {
+                    data.push([
+                        time + i * 1000,
+                        Math.round(Math.random() * 100)
+                    ]);
+                }
+                return data;
+            }())
+        }]
+    });
+
+});
 </script>
 {% endblock %}
