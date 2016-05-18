@@ -87,7 +87,14 @@
             <% } else { %>
               <button class="btn btn-xs" style="font-size:10px">#NA</button>
             <% } %>
-            <button class="btn btn-xs" style="font-size:10px">#NA</button>
+
+            <% if (typeof fault !== 'undefined' && fault === false) { %>        
+              <button class="btn btn-xs btn-default" style="font-size:10px">Fault</button>
+            <% } else if (typeof fault !== 'undefined' && fault === true) { %>  
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Fault</button>
+            <% } else { %>                                                      
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>    
+            <% } %>
           </div>
         </td>
       </tr>

@@ -2,6 +2,7 @@
 
 import simplejson as json
 import pymongo
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseServerError
 from pymongo import MongoClient
 
@@ -75,7 +76,7 @@ def create_response(page):
                             "{:,.2f}".format(row['Tags'][tag_name]['Value'])
                     final_data.append(d)
 
-                # row with general status (it consists of run and fault
+                # row with general status (it consists of run and fault)
                 if d['type'] == 'general':
                     tag_name = d['run']
                     if tag_name not in row['Tags']:
@@ -96,7 +97,7 @@ def create_response(page):
 
                     final_data.append(d)
 
-                if d['type'] in ['indicator', 'indicatorInverse']:
+                if d['type'] == 'indicator' or d['type'] == 'indicatorInverse':
                     tag_name = d['value']
                     if tag_name not in row['Tags']:
                         # the row is still rendered without value (NA) because
@@ -150,6 +151,7 @@ def create_response(page):
     return response
 
 
+@login_required
 def electrical_overview_outgoing_1(request):
     page_id = 'electrical-overview-outgoing-1'
 
@@ -159,6 +161,7 @@ def electrical_overview_outgoing_1(request):
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
+@login_required
 def electrical_sld_outgoing_1(request):
     page_id = 'electrical-sld-outgoing-1'
 
@@ -168,6 +171,7 @@ def electrical_sld_outgoing_1(request):
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
+@login_required
 def genset_overview_outgoing_1(request):
     page_id = 'genset-overview-outgoing-1'
 
@@ -177,6 +181,7 @@ def genset_overview_outgoing_1(request):
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
+@login_required
 def genset_overview_outgoing_1_2(request):
     # TODO get page parameter and query to database which (tag_id, tag_name)
     # belongs to the page
@@ -302,6 +307,8 @@ def genset_overview_outgoing_1_2(request):
 
     return HttpResponse(dumps(message), content_type='application/json') 
     
+
+@login_required
 def genset_outgoing_1_unit_1(request):
     x = [
         # ('obj1', ''),
@@ -410,6 +417,8 @@ def genset_outgoing_1_unit_1(request):
     message = { 'success': 0, 'data': data }
     return HttpResponse(dumps(message), content_type='application/json') 
     
+
+@login_required
 def genset_outgoing_1_unit_2(request):
     x = [
         # ('obj1', ''),
@@ -518,6 +527,8 @@ def genset_outgoing_1_unit_2(request):
     message = { 'success': 0, 'data': data }
     return HttpResponse(dumps(message), content_type='application/json') 
     
+
+@login_required
 def genset_outgoing_1_unit_3(request):
     x = [
         # ('obj1', ''),
@@ -626,6 +637,8 @@ def genset_outgoing_1_unit_3(request):
     message = { 'success': 0, 'data': data }
     return HttpResponse(dumps(message), content_type='application/json') 
     
+
+@login_required
 def genset_outgoing_1_unit_4(request):
     x = [
         # ('obj1', ''),
@@ -734,18 +747,26 @@ def genset_outgoing_1_unit_4(request):
     message = { 'success': 0, 'data': data }
     return HttpResponse(dumps(message), content_type='application/json') 
 
+
+@login_required
 def trend_unit_1(request):
     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
 
+
+@login_required
 def trend_unit_2(request):
     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
 
+
+@login_required
 def trend_unit_3(request):
     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
 
+
+@login_required
 def trend_unit_4(request):
     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
