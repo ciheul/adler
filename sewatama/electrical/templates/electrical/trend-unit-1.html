@@ -332,165 +332,132 @@ function getRandomInt(min, max) {
 }
 
 $(function () {
-    Highcharts.setOptions({
-      global : { useUTC : false }
-    });
+  Highcharts.setOptions({
+    global : { useUTC : false }
+  });
 
-    $('#container').highcharts({
-        chart : {
-            events : {
-                load : function () {
-                    // set up the updating of the chart each second
-                    var series = this.series[0];
-                    var series2 = this.series[1];
-                    var series3 = this.series[2];
-                    setInterval(function () {
-                        var x = (new Date()).getTime(), // current time
-                            y = getRandomInt(0, 250);
-                        series.addPoint([x, y], true, true);
+  $('#container').highcharts({
+    title: { text: 'Average Monthly Weather Data for Tokyo' },
+    subtitle: { text: 'Source: WorldClimate.com' },
+    plotOptions: { line: { marker: { enabled: false } } },
+    tooltip: { shared: true },
+    exporting: { enabled: false },
+    chart : {
+      events : {
+        load : function () {
+          // set up the updating of the chart each second
+          var series = this.series[0];
+          var series2 = this.series[1];
+          var series3 = this.series[2];
+          setInterval(function () {
+            var x = (new Date()).getTime();
 
-                        y = getRandomInt(0, 1500);
-                        series2.addPoint([x, y], true, true);
+            var y = getRandomInt(0, 250);
+            series.addPoint([x, y], true, true);
 
-                        y = Math.round(Math.random() * 40);
-                        series3.addPoint([x, y], true, true);
-                    }, 2000);
-                }
-            }
-        },
-        title: { text: 'Average Monthly Weather Data for Tokyo' },
-        subtitle: { text: 'Source: WorldClimate.com' },
-        xAxis: [{ 
-            // set x-axis label in datetime format
-            type: 'datetime',
-            tickmarkPlacement: 'on',
-            gridLineWidth: 1
-        }],
-        yAxis: [{ // Primary yAxis
-            max: 40,
-            labels: {
-                format: '{value}°C',
-                style: { color: Highcharts.getOptions().colors[2] }
-            },
-            title: {
-                text: 'Temperature',
-                style: { color: Highcharts.getOptions().colors[2] }
-            },
-            opposite: true
+            y = getRandomInt(0, 1500);
+            series2.addPoint([x, y], true, true);
 
-        }, { // Secondary yAxis
-            max: 250,
-            title: {
-                text: 'Rainfall',
-                style: { color: Highcharts.getOptions().colors[0] }
-            },
-            labels: {
-                format: '{value} mm',
-                style: { color: Highcharts.getOptions().colors[0] }
-            },
-            opposite: true
-        }, { // Tertiary yAxis
-            max: 1500,
-            title: {
-                text: 'Sea-Level Pressure',
-                style: { color: Highcharts.getOptions().colors[1] }
-            },
-            labels: {
-                format: '{value} mb',
-                style: { color: Highcharts.getOptions().colors[1] }
-            },
-            opposite: true
-        }],
-        plotOptions: { line: { marker: { enabled: false } } },
-        tooltip: { shared: true },
-        exporting: { enabled: false },
-        legend: {
-            layout: 'vertical',
-            align: 'left',
-            x: 80,
-            verticalAlign: 'top',
-            y: 55,
-            floating: true,
-            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-        },
-        rangeSelector: {
-
-            {# selected: 4, #}
-            enabled: false,
-            {# inputEnabled: false, #}
-            {# buttonTheme: { #}
-            {#     visibility: 'hidden' #}
-            {# }, #}
-            {# labelStyle: { #}
-            {#     visibility: 'hidden' #}
-            {# } #}
-        },
-        series: [{
-            name: 'Rainfall',
-            yAxis: 1,
-            data: (function() {
-                var i = 0;
-                var time = (new Date()).getTime();
-                var x = [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4];
-                var data = [];
-
-                x.forEach(function(d) {
-                    data.push([time + i * 1000, d]);
-                    i = i + 1;
-                });
-
-                console.log(data);
-                return data;
-            }()),
-            tooltip: {
-                valueSuffix: ' mm'
-            }
-        }, 
-        {
-            name: 'Sea-Level Pressure',
-            yAxis: 2,
-            data: (function() {
-                var i = 0;
-                var time = (new Date()).getTime();
-                console.log(time);
-                var x = [1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7];
-                var data = [];
-
-                x.forEach(function(d) {
-                    data.push([time + i * 1000, d]);
-                    i = i + 1;
-                });
-
-                console.log(data);
-                return data;
-            }()),
-            tooltip: {
-                valueSuffix: ' mb'
-            }
-
-        },
-        {
-            name: 'Temperature',
-            data: (function() {
-                var i = 0;
-                var time = (new Date()).getTime();
-                var x = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6];
-                var data = [];
-
-                x.forEach(function(d) {
-                    data.push([time + i * 1000, d]);
-                    i = i + 1;
-                });
-
-                console.log(data);
-                return data;
-            }()),
-            tooltip: {
-                valueSuffix: ' °C'
-            }
+            y = Math.round(Math.random() * 40);
+            series3.addPoint([x, y], true, true);
+          }, 1000);
         }
-        ]
-    });
+      }
+    },
+    xAxis: [
+        // set x-axis label in datetime format
+      { type: 'datetime',
+        tickmarkPlacement: 'on',
+        // set grid
+        gridLineWidth: 1 }
+    ],
+    yAxis: [
+      { max: 40,
+        tickInterval: 8,
+        labels: {
+          format: '{value}°C',
+          style: { color: Highcharts.getOptions().colors[2] }
+        },
+        title: {
+          text: 'Temperature',
+          style: { color: Highcharts.getOptions().colors[2] }
+        },
+        opposite: true },
+      { max: 250,
+        tickInterval: 50,
+        title: {
+          text: 'Rainfall',
+          style: { color: Highcharts.getOptions().colors[0] }
+        },
+        labels: {
+          format: '{value} mm',
+          style: { color: Highcharts.getOptions().colors[0] }
+        },
+        opposite: true },
+      { max: 1500,
+        tickInterval: 300,
+        title: {
+          text: 'Sea-Level Pressure',
+          style: { color: Highcharts.getOptions().colors[1] }
+        },
+        labels: {
+          format: '{value} mb',
+          style: { color: Highcharts.getOptions().colors[1] }
+        },
+        opposite: true }
+    ],
+    series: [
+      { name: 'Rainfall',
+        yAxis: 1,
+        data: (function() {
+          var i = 0;
+          var time = (new Date()).getTime();
+          var x = [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4];
+          var data = [];
+
+          x.forEach(function(d) {
+              data.push([time + i * 1000, d]);
+              i = i + 1;
+          });
+
+          console.log(data);
+          return data;
+        }()),
+        tooltip: { valueSuffix: ' mm' } }, 
+      { name: 'Sea-Level Pressure',
+        yAxis: 2,
+        data: (function() {
+          var i = 0;
+          var time = (new Date()).getTime();
+          var x = [1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7];
+          var data = [];
+
+          x.forEach(function(d) {
+              data.push([time + i * 1000, d]);
+              i = i + 1;
+          });
+
+          console.log(data);
+          return data;
+        }()),
+        tooltip: { valueSuffix: ' mb' } },
+      { name: 'Temperature',
+        data: (function() {
+          var i = 0;
+          var time = (new Date()).getTime();
+          var x = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6];
+          var data = [];
+
+          x.forEach(function(d) {
+              data.push([time + i * 1000, d]);
+              i = i + 1;
+          });
+
+          return data;
+        }()),
+        tooltip: { valueSuffix: ' °C' } }
+    ]
+  });
 });
 
 var gridster = [];
