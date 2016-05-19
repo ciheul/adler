@@ -63,6 +63,9 @@ def create_response(page):
 
             response.append(detail)
 
+        # if detail['type'] == 'chart':
+            
+
         if detail['type'] == 'oneColumnTable':
             final_data = list()
             # loop through data to render row in one column table
@@ -180,133 +183,6 @@ def genset_overview_outgoing_1(request):
 
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
-
-@login_required
-def genset_overview_outgoing_1_2(request):
-    # TODO get page parameter and query to database which (tag_id, tag_name)
-    # belongs to the page
-    x = [
-        # ('obj1', ''),
-        # ('obj2', ''),
-        ('obj3', 'SS\HSD_NPN0\RT4\GEN01\AVG_A'),
-        ('obj4', 'SS\HSD_NPN0\RT4\GEN01\F'),
-        ('obj5', 'SS\HSD_NPN0\RT4\GEN01\PF'),
-        ('obj6', 'SS\HSD_NPN0\RT4\GEN01\P_TOT'),
-        ('obj7', 'SS\HSD_NPN0\RT4\GEN01\WH'),
-        ('obj8', 'SS\HSD_NPN0\RT4\GEN01\BAT_V_001'), # TODO verify
-
-        # ('obj9', ''),
-        # ('obj10', ''),
-        ('obj11', 'SS\HSD_NPN0\RT4\GEN02\AVG_A'),
-        ('obj12', 'SS\HSD_NPN0\RT4\GEN02\F'),
-        ('obj13', 'SS\HSD_NPN0\RT4\GEN02\PF'),
-        ('obj14', 'SS\HSD_NPN0\RT4\GEN02\P_TOT'),
-        ('obj15', 'SS\HSD_NPN0\RT4\GEN02\WH'),
-        ('obj16', 'SS\HSD_NPN0\RT4\GEN02\BAT_V_001'),
-
-        # ('obj17', ''),
-        # ('obj18', ''),
-        ('obj19', 'SS\HSD_NPN0\RT4\GEN03\AVG_A'),
-        ('obj20', 'SS\HSD_NPN0\RT4\GEN03\F'),
-        ('obj21', 'SS\HSD_NPN0\RT4\GEN03\PF'),
-        ('obj22', 'SS\HSD_NPN0\RT4\GEN03\P_TOT'),
-        ('obj23', 'SS\HSD_NPN0\RT4\GEN03\WH'),
-        ('obj24', 'SS\HSD_NPN0\RT4\GEN03\BAT_V_001'),
-
-        # ('obj25', ''),
-        # ('obj26', ''),
-        ('obj27', 'SS\HSD_NPN0\RT4\GEN04\AVG_A'),
-        ('obj28', 'SS\HSD_NPN0\RT4\GEN04\F'),
-        ('obj29', 'SS\HSD_NPN0\RT4\GEN04\PF'),
-        ('obj30', 'SS\HSD_NPN0\RT4\GEN04\P_TOT'),
-        ('obj31', 'SS\HSD_NPN0\RT4\GEN04\WH'),
-        ('obj32', 'SS\HSD_NPN0\RT4\GEN04\BAT_V_001'),
-
-    ]
-
-    # query latest row from mongodb. there is only one row in a list
-    row = db.ss.find().sort("_id", -1).limit(1)[0]
-
-    # replace tag name with tag id for security reason
-    data = dict()
-    for i in x:
-        tag_id, tag_name = i[0], i[1]
-        data[tag_id] = row['Tags'][tag_name]
-
-        # remove for security reason
-        del data[tag_id]['Name']
-
-    # TODO special cases because they have more than one tag name
-    # and need sum operation
-
-    # obj1
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L1_L2_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L2_L3_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L3_L1_V']['Value'])
-
-    data['obj1'] = dict()
-    data['obj1']['Value'] = value1 + value2 + value3
-
-    # obj2
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L1_N_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L2_N_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN01\L3_N_V']['Value'])
-
-    data['obj2'] = dict()
-    data['obj2']['Value'] = value1 + value2 + value3
-
-    # obj9
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L1_L2_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L2_L3_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L3_L1_V']['Value'])
-
-    data['obj9'] = dict()
-    data['obj9']['Value'] = value1 + value2 + value3
-
-    # obj10
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L1_N_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L2_N_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN02\L3_N_V']['Value'])
-
-    data['obj10'] = dict()
-    data['obj10']['Value'] = value1 + value2 + value3
-
-    # obj17
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L1_L2_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L2_L3_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L3_L1_V']['Value'])
-
-    data['obj17'] = dict()
-    data['obj17']['Value'] = value1 + value2 + value3
-
-    # obj18
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L1_N_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L2_N_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\L3_N_V']['Value'])
-
-    data['obj18'] = dict()
-    data['obj18']['Value'] = value1 + value2 + value3
-
-    # obj25
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L1_L2_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L2_L3_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L3_L1_V']['Value'])
-
-    data['obj25'] = dict()
-    data['obj25']['Value'] = value1 + value2 + value3
-
-    # obj26
-    value1 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L1_N_V']['Value'])
-    value2 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L2_N_V']['Value']) 
-    value3 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN04\L3_N_V']['Value'])
-
-    data['obj26'] = dict()
-    data['obj26']['Value'] = value1 + value2 + value3
-
-    message = { 'success': 0, 'data': data }
-
-    return HttpResponse(dumps(message), content_type='application/json') 
-    
 
 @login_required
 def genset_outgoing_1_unit_1(request):
@@ -750,8 +626,8 @@ def genset_outgoing_1_unit_4(request):
 
 @login_required
 def trend_unit_1(request):
-    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    rows = dumps(list(db.ss.find().sort("_id",-1).limit(60)))
+    return HttpResponse(rows, content_type='application/json') 
 
 
 @login_required

@@ -689,5 +689,18 @@
           "value": "SS\\HSD_NPN0\\RT4\\GEN04\\BAT_V_001" }
       ]
     }
+  },
+  "trend-unit-1": {
+    "cylinder-exhause-temperature": {
+      "title": "G1T101 - CYLINDER EXHAUSE TEMPERATURE",
+      "type": "chart",
+      "data": [
+        { "name": "EXH. MANIFOLD #1 (LEFT) TEMP.- (°F)",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_001" },
+        { "name": "EXH. MANIFOLD #2 (RIGHT) TEMP.- (°F)",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_002" }
+      ]
+    }
+  
   }
 }
