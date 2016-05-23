@@ -7,24 +7,24 @@ app.TrendView = Backbone.View.extend({
   },
 
   render: function() {
-    var model = {
-      title: 'G1T101 - CYLINDER EXHAUSE TEMPERATURE',
-    };
+    // var model = {
+    //   title: 'G1T101 - CYLINDER EXHAUSE TEMPERATURE',
+    // };
 
     $.ajax({
       method: 'GET',
       url: '/electrical/api/trend-unit-1/',
       success: function(response) {
         console.log(response);
+        trend1 = new app.RealTimeChartView({
+          el: '#container',
+          model: response[0]
+        });
+        trend1.render();
       },
       error: function() {}
     });
 
-    trend1 = new app.RealTimeChartView({
-      el: '#container',
-      model: model
-    });
-    trend1.render();
   }
 });
 

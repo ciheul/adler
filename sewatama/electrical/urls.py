@@ -64,4 +64,6 @@ urlpatterns = [
     url(r'^api/trend-unit-2/$', api.trend_unit_2, name="trend-unit-2-api"),
     url(r'^api/trend-unit-3/$', api.trend_unit_3, name="trend-unit-3-api"),
     url(r'^api/trend-unit-4/$', api.trend_unit_4, name="trend-unit-4-api"),
+    url(r'^api/trend-unit-1/cylinder-exhause-temperature/$', api.trend_unit_chart),
+    # url(r'^api/(?P<trend-unit>\d+)/(?P<chart>\d+)/$', api.trend_unit_chart),
 ]

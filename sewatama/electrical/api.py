@@ -13,6 +13,11 @@ import os
 db = MongoClient().inetscada
 
 
+def modify_datetime(dt):
+    dt = dt.replace(microsecond=0)
+    return dt.isoformat()
+
+
 def get_page_schema(page_id):
     f = open('electrical/conf/schema.json')
     schema = json.loads(f.read())
@@ -63,9 +68,38 @@ def create_response(page):
 
             response.append(detail)
 
-        # if detail['type'] == 'chart':
-            
+        if detail['type'] == 'chart':
+            # get a list of tag name
+            tag_names = map(lambda i: i['data'], detail['series'])
 
+            # get the latest 60 rows
+            rows = list(db.ss.find().sort("_id", -1).limit(10))
+
+            # sort ascending based so that the oldest time in the first element
+            # this is important so that highchart can render x-axis label
+            rows.reverse()
+
+            # collect 60 value for each tag name in temporary dictionary
+            result = dict()
+            for r in rows:
+                for tag_name in tag_names:
+                    # prepare datetime and value
+                    # dt = r['SentTimestamp']
+                    dt = modify_datetime(r['SentDatetime'])
+                    
+                    print r['SentDatetime'], dt
+                    value = float("{:.2f}".format(r['Tags'][tag_name]['Value']))
+
+                    # if key is not in dictionary, create key with list as value
+                    # append a pair of (datetime, value) to list based on tag
+                    result.setdefault(tag_name, []).append([dt, value])
+
+            # replace value with an array of highchart series (datetime, value)
+            for d in detail['series']:
+                d['data'] = result[d['data']]
+
+            response.append(detail)
+            
         if detail['type'] == 'oneColumnTable':
             final_data = list()
             # loop through data to render row in one column table
@@ -626,8 +660,32 @@ def genset_outgoing_1_unit_4(request):
 
 @login_required
 def trend_unit_1(request):
-    rows = dumps(list(db.ss.find().sort("_id",-1).limit(60)))
-    return HttpResponse(rows, content_type='application/json') 
+    page_id = 'trend-unit-1'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+    # rows = dumps(list(db.ss.find().sort("_id",-1).limit(60)))
+    # return HttpResponse(rows, content_type='application/json') 
+
+
+@login_required
+def trend_unit_chart(request):
+    page_id = 'trend-unit-1'
+    page_schema = get_page_schema(page_id)
+    i = request.GET['id']
+    tag_name = page_schema['cylinder-exhause-temperature']['series'][i]['data']
+
+    row = db.ss.find().sort("_id", -1).limit(1)[0]
+
+    dt = modify_datetime(row['SentDatetime'])
+    value = row['Tags'][tag_name]['Value']
+
+    response = [dt, value]
+
+    return HttpResponse(json.dumps(response), content_type='application/json')
 
 
 @login_required

@@ -7,8 +7,14 @@ app.DashboardView = Backbone.View.extend({
 
     // TODO synchronous xmlhttprequest is BAD
     app.widgets.fetch({ async: false });
-
     this.render();
+
+    var that = this;
+    setInterval(function() {
+      app.widgets.fetch({ async: false });
+      $('.gridster > ul').empty();
+      that.render();
+    }, 20000);
   },
 
   render: function() {

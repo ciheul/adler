@@ -694,13 +694,31 @@
     "cylinder-exhause-temperature": {
       "title": "G1T101 - CYLINDER EXHAUSE TEMPERATURE",
       "type": "chart",
-      "data": [
-        { "name": "EXH. MANIFOLD #1 (LEFT) TEMP.- (°F)",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_001" },
-        { "name": "EXH. MANIFOLD #2 (RIGHT) TEMP.- (°F)",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_002" }
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°F", 
+            "style": { "color": "blue" } },
+          "title": {
+            "text": "EXH. MANIFOLD #1 (LEFT)",
+            "style": { "color": "blue" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°F",
+            "style": { "color": "red" } },
+          "title": {
+            "text": "EXH. MANIFOLD #2 (RIGHT)",
+            "style": { "color": "red" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "EXH. MANIFOLD #1 (LEFT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_001",
+          "tooltip": { "valueSuffix": "°F" } },
+        { "name": "EXH. MANIFOLD #2 (RIGHT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_002",
+          "tooltip": { "valueSuffix": "°F" },
+          "yAxis": 1 }
       ]
     }
-  
   }
 }
