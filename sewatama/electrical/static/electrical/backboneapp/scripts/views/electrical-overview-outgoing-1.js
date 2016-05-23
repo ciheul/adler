@@ -14,7 +14,10 @@ app.DashboardView = Backbone.View.extend({
       app.widgets.fetch({ async: false });
       $('.gridster > ul').empty();
       that.render();
-    }, 20000);
+
+      $('.page-notif').fadeIn();
+      $('.page-notif').delay(3000).fadeOut();
+    }, app.constants.DATA_UPDATE_INTERVAL);
   },
 
   render: function() {

@@ -14,13 +14,15 @@ app.DashboardView = Backbone.View.extend({
       app.widgets.fetch({ async: false });
       $('.gridster > ul').empty();
       that.render();
-    }, 20000);
+
+      $('.page-notif').fadeIn();
+      $('.page-notif').delay(3000).fadeOut();
+    }, app.constants.DATA_UPDATE_INTERVAL);
   },
 
   render: function() {
     app.widgets.each(function(widget) {
       if (widget.get('type') === 'threeColumnsTable') {
-        console.log(widget);
         var widgetView = new app.ThreeColumnsTableView({
           el: $('#grid-0 > ul'),
           model: widget.toJSON()
