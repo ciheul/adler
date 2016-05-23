@@ -18,16 +18,64 @@
     <div id="grid-0" class="gridster">
       <ul>
         <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
-          <div id="container" style="text-align:center;width:1200px;padding:30px"></div>
+          <div id="cylinder-exhause-temperature" style="text-align:center;width:1200px;padding:30px"></div>
         </li>
 
-        {# <li data-row="1" data-col="1" data-sizex="10" data-sizey="5"> #}
-        {#   <div id="container2" style="height: 400px; min-width: 310px"></div> #}
-        {# </li> #}
-      
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="winding-temperature" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="bearing-temperature" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="oil-pressure" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
       </ul>
     </div>
 
+    <hr>
+
+    <div id="grid-1" class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="jw-temperature-vs-load" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="jw-temperature-vs-oil-pressure" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="oil-pressure-vs-load" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="oil-pressure-vs-oil-temperature" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+      </ul>
+    </div>
+
+    <hr>
+
+    <div id="grid-2" class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="power-trending" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="voltage-current" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+          <div id="frequency-cosphi" style="text-align:center;width:1200px;padding:30px"></div>
+        </li>
+      </ul>
+    </div>
     {# <h4>TREND GROUP #1 <span class="glyphicon glyphicon-menu-down" id="chart-1-toggler" style="float:right;cursor:pointer;"></span></h4> #}
     {# <div class="gridster"> #}
     {#   <ul id="chart-1-toggle"> #}
@@ -467,6 +515,28 @@ var gridster = [];
 gridster[0] = $("#grid-0 ul")
   .gridster({
     namespace: '#grid-0',
+    widget_margins: [5, 5],
+    widget_base_dimensions: [90, 20],
+    min_cols: 12,
+    max_cols: 12,
+    max_size_x: 12})
+  .data('gridster')
+  .disable();
+
+gridster[1] = $("#grid-1 ul")
+  .gridster({
+    namespace: '#grid-1',
+    widget_margins: [5, 5],
+    widget_base_dimensions: [90, 20],
+    min_cols: 12,
+    max_cols: 12,
+    max_size_x: 12})
+  .data('gridster')
+  .disable();
+
+gridster[2] = $("#grid-2 ul")
+  .gridster({
+    namespace: '#grid-2',
     widget_margins: [5, 5],
     widget_base_dimensions: [90, 20],
     min_cols: 12,

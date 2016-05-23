@@ -112,6 +112,10 @@ app.RealTimeChartView = Backbone.View.extend({
   },
 
   modifySeries: function() {
+    if (this.model.series === undefined) {
+      return;
+    }
+
     this.model.series.forEach(function(s) {
       s.data = s.data.map(function(d) {
         return [(new Date(d[0]).getTime()), d[1]];
@@ -133,44 +137,44 @@ app.RealTimeChartView = Backbone.View.extend({
       tooltip: { shared: true },
       exporting: { enabled: false },
       credits: false,
-      chart: {
-        events: {
-          load: function() {
-            var that = this;
-            setInterval(function() {
-              for (var i = 0; i < that.series.length; i++) {
-                var s = that.series[i];
-                console.log(i);
-                // TODO ajax to query the latest row
-                $.ajax({
-                  method: 'get',
-                  url: '/electrical/api/trend-unit-1/cylinder-exhause-temperature/?id=' + i,
-                  success: function(response) {
-                    console.log(response);
-                    var x = (new Date()).getTime();
-                    var y = getRandomInt(1020, 1100);
-
-                    var graph = s.graph;
-                    var area = s.area;
-                    var currentShift = (graph && graph.shift) || 0;
-
-                    Highcharts.each([graph, area, s.graphNeg, s.areaNeg],
-                      function(shape) {
-                        if (shape) { shape.shift = currentShift + 1; }
-                      });
-
-                    s.data[0].remove(false, false);
-
-                    s.addPoint([(new Date(response[0])).getTime(), response[1]]);
-                    // s.addPoint([x, y]);
-                    console.log(s.data.length);
-                  }
-                });
-              }
-            }, 10000);
-          }
-        }
-      },
+      // chart: {
+      //   events: {
+      //     load: function() {
+      //       var that = this;
+      //       setInterval(function() {
+      //         for (var i = 0; i < that.series.length; i++) {
+      //           var s = that.series[i];
+      //           console.log(i);
+      //           // TODO ajax to query the latest row
+      //           $.ajax({
+      //             method: 'get',
+      //             url: '/electrical/api/trend-unit-1/cylinder-exhause-temperature/?id=' + i,
+      //             success: function(response) {
+      //               console.log(response);
+      //               var x = (new Date()).getTime();
+      //               var y = getRandomInt(1020, 1100);
+      //
+      //               var graph = s.graph;
+      //               var area = s.area;
+      //               var currentShift = (graph && graph.shift) || 0;
+      //
+      //               Highcharts.each([graph, area, s.graphNeg, s.areaNeg],
+      //                 function(shape) {
+      //                   if (shape) { shape.shift = currentShift + 1; }
+      //                 });
+      //
+      //               s.data[0].remove(false, false);
+      //
+      //               s.addPoint([(new Date(response[0])).getTime(), response[1]]);
+      //               // s.addPoint([x, y]);
+      //               console.log(s.data.length);
+      //             }
+      //           });
+      //         }
+      //       }, 10000);
+      //     }
+      //   }
+      // },
       xAxis: [
           // set x-axis label in datetime format
         { type: 'datetime',

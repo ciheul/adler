@@ -16,11 +16,13 @@ app.TrendView = Backbone.View.extend({
       url: '/electrical/api/trend-unit-1/',
       success: function(response) {
         console.log(response);
-        trend1 = new app.RealTimeChartView({
-          el: '#container',
-          model: response[0]
+        response.forEach(function(r) {
+          var trend1 = new app.RealTimeChartView({
+            el: '#' + r.tagId,
+            model: r
+          });
+          trend1.render();
         });
-        trend1.render();
       },
       error: function() {}
     });

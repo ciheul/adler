@@ -98,6 +98,9 @@ def create_response(page):
             for d in detail['series']:
                 d['data'] = result[d['data']]
 
+            # set tag_id inside detail
+            detail['tagId'] = tag_id
+
             response.append(detail)
             
         if detail['type'] == 'oneColumnTable':
@@ -690,17 +693,35 @@ def trend_unit_chart(request):
 
 @login_required
 def trend_unit_2(request):
-    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'trend-unit-2'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
 @login_required
 def trend_unit_3(request):
-    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'trend-unit-3'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
 @login_required
 def trend_unit_4(request):
-    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'trend-unit-4'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+# @login_required
+# def trend_unit_4(request):
+#     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
+#     return HttpResponse(message, content_type='application/json') 
