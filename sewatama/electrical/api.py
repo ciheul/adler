@@ -73,7 +73,7 @@ def create_response(page):
             tag_names = map(lambda i: i['data'], detail['series'])
 
             # get the latest 60 rows
-            rows = list(db.ss.find().sort("_id", -1).limit(10))
+            rows = list(db.ss.find().sort("_id", -1).limit(60))
 
             # sort ascending based so that the oldest time in the first element
             # this is important so that highchart can render x-axis label
@@ -721,7 +721,7 @@ def trend_unit_4(request):
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
-# @login_required
-# def trend_unit_4(request):
-#     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
-#     return HttpResponse(message, content_type='application/json') 
+@login_required
+def latest(request):
+    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
+    return HttpResponse(message, content_type='application/json') 

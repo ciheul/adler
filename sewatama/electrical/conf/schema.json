@@ -767,21 +767,11 @@
           "title": {
             "text": "BEARING REAR",
             "style": { "color": "#93c1ee" } },
-          "opposite": true },
-        { "labels": {
-            "format": "{value}°C",
-            "style": { "color": "#65666b" } },
-          "title": {
-            "text": "BEARING FRONT",
-            "style": { "color": "#65666b" } },
           "opposite": true }
       ],
       "series": [
         { "name": "BEARING REAR",
           "data": "SS\\HSD_NPN0\\RT4\\GEN01\\RER_BRG_TMP",
-          "tooltip": { "valueSuffix": "°C" } },
-        { "name": "BEARING FRONT",
-          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\FRN_BRG_TMP",
           "tooltip": { "valueSuffix": "°C" } }
       ]
     },
@@ -793,12 +783,12 @@
             "format": "{value} kPa", 
             "style": { "color": "#93c1ee" } },
           "title": {
-            "text": "BEARING REAR",
+            "text": "OIL PRESSURE",
             "style": { "color": "#93c1ee" } },
           "opposite": true }
       ],
       "series": [
-        { "name": "BEARING REAR",
+        { "name": "OIL PRESSURE",
           "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_OIL_PRS",
           "tooltip": { "valueSuffix": "kPa" } }
       ]
@@ -828,7 +818,7 @@
           "tooltip": { "valueSuffix": "°C" } },
         { "name": "TOTAL POWER",
           "data": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT",
-          "tooltip": { "valueSuffix": "°C" },
+          "tooltip": { "valueSuffix": " kW" },
           "yAxis": 1 }
       ]
     },
@@ -1030,7 +1020,7 @@
       "series": [
         { "name": "FREQUENCY",
           "data": "SS\\HSD_NPN0\\RT4\\GEN01\\F",
-          "tooltip": { "valueSuffix": " kPa" } },
+          "tooltip": { "valueSuffix": " Hz" } },
         { "name": "COS PHI",
           "data": "SS\\HSD_NPN0\\RT4\\GEN01\\PF",
           "tooltip": { "valueSuffix": "" },
@@ -1115,21 +1105,11 @@
           "title": {
             "text": "BEARING REAR",
             "style": { "color": "#93c1ee" } },
-          "opposite": true },
-        { "labels": {
-            "format": "{value}°C",
-            "style": { "color": "#65666b" } },
-          "title": {
-            "text": "BEARING FRONT",
-            "style": { "color": "#65666b" } },
           "opposite": true }
       ],
       "series": [
         { "name": "BEARING REAR",
           "data": "SS\\HSD_NPN0\\RT4\\GEN02\\RER_BRG_TMP",
-          "tooltip": { "valueSuffix": "°C" } },
-        { "name": "BEARING FRONT",
-          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\FRN_BRG_TMP",
           "tooltip": { "valueSuffix": "°C" } }
       ]
     },
@@ -1141,12 +1121,12 @@
             "format": "{value} kPa", 
             "style": { "color": "#93c1ee" } },
           "title": {
-            "text": "BEARING REAR",
+            "text": "OIL PRESSURE",
             "style": { "color": "#93c1ee" } },
           "opposite": true }
       ],
       "series": [
-        { "name": "BEARING REAR",
+        { "name": "OIL PRESSURE",
           "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_OIL_PRS",
           "tooltip": { "valueSuffix": "kPa" } }
       ]
@@ -1176,7 +1156,7 @@
           "tooltip": { "valueSuffix": "°C" } },
         { "name": "TOTAL POWER",
           "data": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT",
-          "tooltip": { "valueSuffix": "°C" },
+          "tooltip": { "valueSuffix": " kW" },
           "yAxis": 1 }
       ]
     },
@@ -1378,7 +1358,7 @@
       "series": [
         { "name": "FREQUENCY",
           "data": "SS\\HSD_NPN0\\RT4\\GEN02\\F",
-          "tooltip": { "valueSuffix": " kPa" } },
+          "tooltip": { "valueSuffix": " Hz" } },
         { "name": "COS PHI",
           "data": "SS\\HSD_NPN0\\RT4\\GEN02\\PF",
           "tooltip": { "valueSuffix": "" },
@@ -1463,21 +1443,11 @@
           "title": {
             "text": "BEARING REAR",
             "style": { "color": "#93c1ee" } },
-          "opposite": true },
-        { "labels": {
-            "format": "{value}°C",
-            "style": { "color": "#65666b" } },
-          "title": {
-            "text": "BEARING FRONT",
-            "style": { "color": "#65666b" } },
           "opposite": true }
       ],
       "series": [
         { "name": "BEARING REAR",
           "data": "SS\\HSD_NPN0\\RT4\\GEN03\\RER_BRG_TMP",
-          "tooltip": { "valueSuffix": "°C" } },
-        { "name": "BEARING FRONT",
-          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\FRN_BRG_TMP",
           "tooltip": { "valueSuffix": "°C" } }
       ]
     },
@@ -1489,12 +1459,12 @@
             "format": "{value} kPa", 
             "style": { "color": "#93c1ee" } },
           "title": {
-            "text": "BEARING REAR",
+            "text": "OIL PRESSURE",
             "style": { "color": "#93c1ee" } },
           "opposite": true }
       ],
       "series": [
-        { "name": "BEARING REAR",
+        { "name": "OIL PRESSURE",
           "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_OIL_PRS",
           "tooltip": { "valueSuffix": "kPa" } }
       ]
@@ -1524,7 +1494,7 @@
           "tooltip": { "valueSuffix": "°C" } },
         { "name": "TOTAL POWER",
           "data": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT",
-          "tooltip": { "valueSuffix": "°C" },
+          "tooltip": { "valueSuffix": " kW" },
           "yAxis": 1 }
       ]
     },
@@ -1726,7 +1696,7 @@
       "series": [
         { "name": "FREQUENCY",
           "data": "SS\\HSD_NPN0\\RT4\\GEN03\\F",
-          "tooltip": { "valueSuffix": " kPa" } },
+          "tooltip": { "valueSuffix": " Hz" } },
         { "name": "COS PHI",
           "data": "SS\\HSD_NPN0\\RT4\\GEN03\\PF",
           "tooltip": { "valueSuffix": "" },
@@ -1811,21 +1781,11 @@
           "title": {
             "text": "BEARING REAR",
             "style": { "color": "#93c1ee" } },
-          "opposite": true },
-        { "labels": {
-            "format": "{value}°C",
-            "style": { "color": "#65666b" } },
-          "title": {
-            "text": "BEARING FRONT",
-            "style": { "color": "#65666b" } },
           "opposite": true }
       ],
       "series": [
         { "name": "BEARING REAR",
           "data": "SS\\HSD_NPN0\\RT4\\GEN04\\RER_BRG_TMP",
-          "tooltip": { "valueSuffix": "°C" } },
-        { "name": "BEARING FRONT",
-          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\FRN_BRG_TMP",
           "tooltip": { "valueSuffix": "°C" } }
       ]
     },
@@ -1837,12 +1797,12 @@
             "format": "{value} kPa", 
             "style": { "color": "#93c1ee" } },
           "title": {
-            "text": "BEARING REAR",
+            "text": "OIL PRESSURE",
             "style": { "color": "#93c1ee" } },
           "opposite": true }
       ],
       "series": [
-        { "name": "BEARING REAR",
+        { "name": "OIL PRESSURE",
           "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_OIL_PRS",
           "tooltip": { "valueSuffix": "kPa" } }
       ]
@@ -1872,7 +1832,7 @@
           "tooltip": { "valueSuffix": "°C" } },
         { "name": "TOTAL POWER",
           "data": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT",
-          "tooltip": { "valueSuffix": "°C" },
+          "tooltip": { "valueSuffix": " kW" },
           "yAxis": 1 }
       ]
     },
@@ -2074,7 +2034,7 @@
       "series": [
         { "name": "FREQUENCY",
           "data": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "tooltip": { "valueSuffix": " kPa" } },
+          "tooltip": { "valueSuffix": " Hz" } },
         { "name": "COS PHI",
           "data": "SS\\HSD_NPN0\\RT4\\GEN04\\PF",
           "tooltip": { "valueSuffix": "" },

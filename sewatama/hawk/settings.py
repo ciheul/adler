@@ -98,8 +98,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'inetscada',
-        'USER': 'winnuayi',
-        'PASSWORD': '',
+        'USER': 'smartadmin',
+        'PASSWORD': 'workshopG2012',
         'HOST': 'localhost',
         'PORT': 5432,
     }
