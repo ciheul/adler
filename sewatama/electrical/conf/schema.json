@@ -59,11 +59,11 @@
         { "type": "default",
           "name": "OUTGOING #1",
           "value": "",
-          "label": "kW" },
+          "label": "kWH" },
         { "type": "default",
           "name": "GENSET",
           "value": "",
-          "label": "kW" },
+          "label": "kWH" },
         { "type": "default",
           "name": "AVG. LOSSES",
           "value": "",
@@ -78,11 +78,11 @@
         { "type": "default",
           "name": "OUTGOING #1",
           "value": "",
-          "label": "kW" },
+          "label": "kWH" },
         { "type": "default",
           "name": "GENSET",
           "value": "",
-          "label": "kW" },
+          "label": "kWH" },
         { "type": "default",
           "name": "AVG. LOSSES",
           "value": "",
@@ -118,7 +118,7 @@
       "data": [
         { "type": "default",
           "name": "TOTAL POWER",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL",
           "label": "kW" },
         { "type": "default",
           "name": "THIS MONTH ENERGY",
@@ -234,11 +234,11 @@
         { "type": "default",
           "name": "Power",
           "label": "kW",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\P_TOT" },
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
         { "type": "default",
           "name": "Cosphi",
           "label": "",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF" }
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF_TOTAL" }
       ]
     }
   },
@@ -408,11 +408,11 @@
         { "type": "default",
           "name": "Power",
           "label": "kW",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\P_TOT" },
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
         { "type": "default",
           "name": "Cosphi",
           "label": "",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF" },
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF_TOTAL" },
         { "type": "indicator",
           "name": "PR Status",
           "trueText": "CLOSED",
@@ -438,7 +438,7 @@
       "data": [
         { "type": "default",
           "name": "TOTAL",
-          "label": "kW",
+          "label": "kWH",
           "value": "" }
       ]
     },
@@ -449,7 +449,7 @@
       "data": [
         { "type": "default",
           "name": "TOTAL",
-          "label": "kW",
+          "label": "kWH",
           "value": "" }
       ]
     },
@@ -460,7 +460,7 @@
       "data": [
         { "type": "default",
           "name": "OUTGOING#1",
-          "label": "kW",
+          "label": "kWH",
           "value": "" }
       ]
     },
@@ -471,7 +471,7 @@
       "data": [
         { "type": "default",
           "name": "OUTGOING#1",
-          "label": "kW",
+          "label": "kWH",
           "value": "" }
       ]
     }

@@ -112,8 +112,13 @@ def create_response(page):
                     tag_name = d['value']
                     d['value'] = '#NA'
                     if tag_name in row['Tags']:
-                        d['value'] = \
-                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                        # TODO just for temporary
+                        if tag_id == 'outgoing-1' and d['name'] == 'Power':
+                            d['value'] = \
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
+                        else:
+                            d['value'] = \
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'])
                     final_data.append(d)
 
                 # row with general status (it consists of run and fault)
@@ -163,8 +168,12 @@ def create_response(page):
                         tag_name = d['value']
                         d['value'] = '#NA'
                         if tag_name in row['Tags']:
-                            d['value'] = \
-                                "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                            if tag_id == 'power-plant-info' and d['name'] == 'TOTAL POWER':
+                                d['value'] = \
+                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
+                            else:
+                                d['value'] = \
+                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'])
                         final_data.append(d)
 
                     # get sum value from several tag names
