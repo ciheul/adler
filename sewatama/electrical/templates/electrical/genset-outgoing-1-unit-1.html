@@ -76,8 +76,8 @@
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g13" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#13</div></td>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g15" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#15</div></td>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g-avg" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">AVG</div></td>
-              <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g-oil-press" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">OIL PRESS</div></td>
-              <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g-oil-temp" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">OIL TEMP</div></td>
+              <td><div style="font-size:10px;margin-bottom:4px">#NA kPa</div><div id="g-oil-press" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">OIL PRESS</div></td>
+              <td><div style="font-size:10px;margin-bottom:4px">#NA degC</div><div id="g-oil-temp" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">OIL TEMP</div></td>
             </tr>
             <tr>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g2" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#2</div></td>
@@ -89,8 +89,8 @@
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g14" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#14</div></td>
               <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g16" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">#16</div></td>
               <td></td>
-              <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g-fuel-press" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">FUEL PRESS</div></td>
-              <td><div style="font-size:10px;margin-bottom:4px">#NA F</div><div id="g-jw-temp" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">JW TEMP</div></td>
+              <td><div style="font-size:10px;margin-bottom:4px">#NA kPa</div><div id="g-fuel-press" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">FUEL PRESS</div></td>
+              <td><div style="font-size:10px;margin-bottom:4px">#NA degC</div><div id="g-jw-temp" class="progress-success" style="margin-bottom:5px"></div><div style="font-size:10px">JW TEMP</div></td>
             </tr>
           </table>
         </li>
@@ -733,7 +733,7 @@
         value: data.obj24.Value,
       }
       createProgressBar(params);
-      setProgressBarIndicator(params['boundingBox'], data.obj24.Value);
+      setProgressBarIndicator(params['boundingBox'], data.obj24.Value, 'kPa');
     } else {
       createNaProgressBar('#g-oil-press');
     }
@@ -744,7 +744,7 @@
         value: data.obj25.Value,
       }
       createProgressBar(params);
-      setProgressBarIndicator(params['boundingBox'], data.obj25.Value);
+      setProgressBarIndicator(params['boundingBox'], data.obj25.Value, 'degC');
     } else {
       createNaProgressBar('#g-oil-temp');
     }
@@ -755,7 +755,7 @@
         value: data.obj26.Value,
       }
       createProgressBar(params);
-      setProgressBarIndicator(params['boundingBox'], data.obj26.Value);
+      setProgressBarIndicator(params['boundingBox'], data.obj26.Value, 'kPa');
     } else {
       createNaProgressBar('#g-fuel-press');
     }
@@ -766,7 +766,7 @@
         value: data.obj27.Value,
       }
       createProgressBar(params);
-      setProgressBarIndicator(params['boundingBox'], data.obj27.Value);
+      setProgressBarIndicator(params['boundingBox'], data.obj27.Value, 'degC');
     } else {
       createNaProgressBar('#g-jw-temp');
     }
@@ -818,8 +818,12 @@
     });
   }
 
-  function setProgressBarIndicator(boundingBox, value) {
-    $(boundingBox).prev().text((Math.round(value * 100) / 100) + ' F');
+  function setProgressBarIndicator(boundingBox, value, label) {
+    if (label === undefined) {
+      $(boundingBox).prev().text((Math.round(value * 100) / 100) + ' F');
+    } else {
+      $(boundingBox).prev().text(Math.round(value) + ' ' + label);
+    }
   }
 
   function createProgressBar(params) {

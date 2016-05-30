@@ -123,7 +123,7 @@
         { "type": "default",
           "name": "THIS MONTH ENERGY",
           "value": "",
-          "label": "kW" },
+          "label": "kWH" },
         { "type": "default",
           "name": "FUEL",
           "value": "",
@@ -131,7 +131,7 @@
         { "type": "default",
           "name": "LAST MONTH ENERGY",
           "value": "",
-          "label": "kW" },
+          "label": "kWH" },
         { "type": "default",
           "name": "FUEL",
           "value": "",
@@ -392,7 +392,7 @@
           "name": "GCB Status",
           "trueText": "CLOSED",
           "falseText": "OPEN",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\ST_GCB_CLS" },
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\CB_ST_CLS" },
         { "type": "indicatorInverse",
           "name": "Trafo Status",
           "trueText": "NORMAL",
@@ -417,7 +417,7 @@
           "name": "PR Status",
           "trueText": "CLOSED",
           "falseText": "OPEN",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\CB_ST_CLS" }
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\ST_GCB_CLS" }
       ]
     },
     "total-power": {
@@ -428,7 +428,7 @@
         { "type": "default",
           "name": "TOTAL",
           "label": "kW",
-          "value": "" }
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
       ]
     },
     "energy-this-month": {

@@ -171,6 +171,9 @@ def create_response(page):
                             if tag_id == 'power-plant-info' and d['name'] == 'TOTAL POWER':
                                 d['value'] = \
                                     "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
+                            elif tag_id == 'total-power' and d['name'] == 'TOTAL':
+                                d['value'] = \
+                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
                             else:
                                 d['value'] = \
                                     "{:,.2f}".format(row['Tags'][tag_name]['Value'])
