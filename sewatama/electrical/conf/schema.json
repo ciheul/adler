@@ -2041,5 +2041,115 @@
           "yAxis": 1 }
       ]
     }
+  },
+  "report-sfc-outgoing": {
+    "genset-1": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #1",
+      "grid": { "x": 1, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    },
+    "genset-2": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #2",
+      "grid": { "x": 4, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    },
+    "genset-3": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #3",
+      "grid": { "x": 7, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    },
+    "genset-4": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #4",
+      "grid": { "x": 10, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    }
   }
 }

@@ -1,16 +1,20 @@
 # http://eli.thegreenplace.net/2009/11/28/python-internals-working-with-python-asts
 
-import simplejson as json
-import pymongo
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, Http404, HttpResponseServerError
-from pymongo import MongoClient
-
-from bson.json_util import dumps
-
+import csv
+from datetime import datetime
 import os
 
-db = MongoClient().inetscada
+from bson.json_util import dumps
+import simplejson as json
+import pymongo
+import pytz
+
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, Http404, HttpResponseServerError
+from django.utils import timezone
+
+
+db = pymongo.MongoClient().inetscada
 
 
 def modify_datetime(dt):
@@ -30,7 +34,18 @@ def grammar_sum(detail, row):
         if tag_name not in row['Tags']:
             continue
         total_value += float(row['Tags'][tag_name]['Value'])
+    return total_value
 
+
+def grammar_div(detail, row):
+    total_value = 0
+    try:
+        for tag_name in detail['value']:
+            if tag_name not in row['Tags']:
+                continue
+            total_value /= float(row['Tags'][tag_name]['Value'])
+    except ZeroDivisionError:
+        return 'NaN'
     return total_value
 
 
@@ -87,7 +102,6 @@ def create_response(page):
                     # dt = r['SentTimestamp']
                     dt = modify_datetime(r['SentDatetime'])
                     
-                    print r['SentDatetime'], dt
                     value = float("{:.2f}".format(r['Tags'][tag_name]['Value']))
 
                     # if key is not in dictionary, create key with list as value
@@ -182,6 +196,11 @@ def create_response(page):
                     # get sum value from several tag names
                     if 'grammar' in d and d['grammar'] == 'sum':
                         d['value'] = grammar_sum(d, row)
+                        final_data.append(d)
+
+                    # get mean value from several tag names
+                    if 'grammar' in d and d['grammar'] == 'div':
+                        d['value'] = grammar_div(d, row)
                         final_data.append(d)
 
                     # get mean value from several tag names
@@ -726,6 +745,60 @@ def trend_unit_3(request):
 @login_required
 def trend_unit_4(request):
     page_id = 'trend-unit-4'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
+def download_trend_csv(request):
+    if 'page' not in request.GET and 'eq' not in request.GET:
+        return HttpResponse('No parameter')
+
+    page = request.GET['page']
+    equipment = request.GET['eq']
+
+    # TODO need to review
+    dt = timezone.localtime(timezone.make_aware(datetime.now()))
+    dt_str = dt.strftime('%Y%m%d-%H%M%S')
+
+    filename = '%s-%s-%s.csv' % (page, equipment, dt_str)
+
+    # prepare header response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="%s"' % filename
+
+    # create the csv writer
+    writer = csv.writer(response)
+
+    # get the latest n rows
+    total_data = 60
+    rows = db.ss.find().sort("_id",-1).limit(total_data)
+    if rows.count() == 0:
+        return HttpResponse('Fail to retrieve csv data.')
+
+    # get tags
+    schema = get_page_schema(page)
+    tags = map(lambda i: i['data'], schema[equipment]['series'])
+
+    # write to csv in response with ascending time
+    rows = list(rows)
+    rows.reverse()
+    for row in rows:
+        line = [row['SentTimestamp']]
+        for tag in tags:
+            line.append(row['Tags'][tag]['Value'])
+
+        writer.writerow(line)
+
+    return response
+
+
+@login_required
+def report_sfc_outgoing(request):
+    page_id = 'report-sfc-outgoing'
 
     page_schema = get_page_schema(page_id)
     response = create_response(page_schema)

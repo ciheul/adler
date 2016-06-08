@@ -100,6 +100,8 @@ DATABASES = {
         'NAME': 'inetscada',
         'USER': 'smartadmin',
         'PASSWORD': 'workshopG2012',
+        # 'USER': 'ciheul',
+        # 'PASSWORD': 'demi masa depan',
         'HOST': 'localhost',
         'PORT': 5432,
     }
@@ -121,7 +123,8 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 

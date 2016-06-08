@@ -357,3 +357,13 @@ ul {
     padding-bottom: 2px;
     color: rgb(51, 51, 51);
 }
+
+.graph-button {
+    background: red;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    /* float: right; */
+    /* clear: both; */
+
+}

@@ -43,6 +43,8 @@ urlpatterns = [
     url(r'^trend-unit-3/$', views.trend_unit_3, name="trend-unit-3"),
     url(r'^trend-unit-4/$', views.trend_unit_4, name="trend-unit-4"),
 
+    url(r'^report-sfc-outgoing/$', views.report_sfc_outgoing, name="report-sfc-outgoing"),
+
     ##### API #####
     url(r'^api/overview-outgoing-1/$', api.electrical_overview_outgoing_1,
         name="electrical-overview-outgoing-1-api"),
@@ -67,5 +69,9 @@ urlpatterns = [
     url(r'^api/trend-unit-1/cylinder-exhause-temperature/$', api.trend_unit_chart),
     # url(r'^api/(?P<trend-unit>\d+)/(?P<chart>\d+)/$', api.trend_unit_chart),
 
+    url(r'^api/report-sfc-outgoing/$', api.report_sfc_outgoing, name="report-sfc-outgoing-api"),
+
     url(r'^api/latest/$', api.latest, name="latest"),
+
+    url(r'^download/trend/$', api.download_trend_csv, name="csv-trend"),
 ]
