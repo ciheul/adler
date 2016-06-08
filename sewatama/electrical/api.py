@@ -29,7 +29,7 @@ def get_page_schema(page_id):
 
 
 def grammar_sum(detail, row):
-    total_value = 0
+    total_value = 0.0
     for tag_name in detail['value']:
         if tag_name not in row['Tags']:
             continue
@@ -38,12 +38,19 @@ def grammar_sum(detail, row):
 
 
 def grammar_div(detail, row):
-    total_value = 0
+    # total_value = 0
+
+        # for tag_name in detail['value']:
+        #     if tag_name not in row['Tags']:
+        #         continue
+        #     total_value /= float(row['Tags'][tag_name]['Value'])
+        #     print total_value
+
     try:
-        for tag_name in detail['value']:
-            if tag_name not in row['Tags']:
-                continue
-            total_value /= float(row['Tags'][tag_name]['Value'])
+        a = float(row['Tags'][detail['value'][0]]['Value'])
+        b = float(row['Tags'][detail['value'][1]]['Value'])
+
+        total_value = a / b
     except ZeroDivisionError:
         return 'NaN'
     return total_value
@@ -200,7 +207,10 @@ def create_response(page):
 
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'div':
+                        # d['value'] = "{:,.2f}".format(grammar_div(d, row))
                         d['value'] = grammar_div(d, row)
+                        if d['value'] != 'NaN':
+                            d['value'] = "{:,.2f}".format(d['value'])
                         final_data.append(d)
 
                     # get mean value from several tag names
