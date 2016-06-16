@@ -17,118 +17,6 @@
 
     <div id="grid-0" class="gridster">
       <ul>
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=cylinder-exhause-temperature';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="cylinder-exhause-temperature" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=winding-temperature';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="winding-temperature" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=bearing-temperature';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="bearing-temperature" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=oil-pressure';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="oil-pressure" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-      </ul>
-    </div>
-
-    <hr>
-
-    <div id="grid-1" class="gridster">
-      <ul>
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=jw-temperature-vs-load';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="jw-temperature-vs-load" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=jw-temperature-vs-oil-pressure';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="jw-temperature-vs-oil-pressure" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=oil-pressure-vs-load';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="oil-pressure-vs-load" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=oil-pressure-vs-oil-temperature';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="oil-pressure-vs-oil-temperature" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-      </ul>
-    </div>
-
-    <hr>
-
-    <div id="grid-2" class="gridster">
-      <ul>
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=power-trending';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="power-trending" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=voltage-current';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="voltage-current" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
-
-        <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
-          <div class="graph-button">
-            <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-3&eq=frequency-cosphi';">
-              <span class="glyphicon glyphicon-save"></span> CSV
-            </button>
-          </div>
-          <div id="frequency-cosphi" style="text-align:center;width:1200px;padding:30px"></div>
-        </li>
       </ul>
     </div>
 
@@ -141,60 +29,41 @@
 <script src="/static/electrical/backboneapp/bower_components/highcharts/highstock.js"></script>
 
 <script>
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-    $.ajax({
-      method: 'GET',
-      url: '/electrical/api/trend-unit-3/',
-      success: function(response) {
-        console.log(response);
-        response.forEach(function(r) {
-          var trend1 = new app.RealTimeChartView({
-            el: '#' + r.tagId,
-            model: r
-          });
-          trend1.render();
+  var app = app || {};
+  
+  app.TrendView = Backbone.View.extend({
+    initialize: function() {
+      app.widgets = new app.WidgetList();
+      app.widgets.url = '/electrical/api/trend-unit-3/';
+  
+      app.widgets.fetch({ async: false });
+      this.render();
+    },
+  
+    render: function() {
+      app.widgets.each(function(widget) {
+        var widgetView = new app.RealTimeChartView({
+          el: $('#grid-0 > ul'),
+          model: widget.toJSON()
         });
-      },
-      error: function() {}
-    });
-
-var gridster = [];
-
-gridster[0] = $("#grid-0 ul")
-  .gridster({
-    namespace: '#grid-0',
-    widget_margins: [5, 5],
-    widget_base_dimensions: [90, 20],
-    min_cols: 12,
-    max_cols: 12,
-    max_size_x: 12})
-  .data('gridster')
-  .disable();
-
-gridster[1] = $("#grid-1 ul")
-  .gridster({
-    namespace: '#grid-1',
-    widget_margins: [5, 5],
-    widget_base_dimensions: [90, 20],
-    min_cols: 12,
-    max_cols: 12,
-    max_size_x: 12})
-  .data('gridster')
-  .disable();
-
-gridster[2] = $("#grid-2 ul")
-  .gridster({
-    namespace: '#grid-2',
-    widget_margins: [5, 5],
-    widget_base_dimensions: [90, 20],
-    min_cols: 12,
-    max_cols: 12,
-    max_size_x: 12})
-  .data('gridster')
-  .disable();
-
+        widgetView.render();
+      });
+    },
+  });
+  
+  app.trendView = new app.TrendView();
+  
+  var gridster = [];
+  
+  gridster[0] = $("#grid-0 ul")
+    .gridster({
+      namespace: '#grid-0',
+      widget_margins: [5, 5],
+      widget_base_dimensions: [90, 20],
+      min_cols: 12,
+      max_cols: 12,
+      max_size_x: 12})
+    .data('gridster')
+    .disable();
 </script>
 {% endblock %}

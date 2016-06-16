@@ -161,7 +161,7 @@
   </script>
 
   <script type="text/template" id="realtime-chart-container-template">
-    <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
       <div class="graph-button">
         <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-1&eq=cylinder-exhause-temperature';">
           <span class="glyphicon glyphicon-save"></span> CSV

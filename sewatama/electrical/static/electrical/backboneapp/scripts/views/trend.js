@@ -20,23 +20,6 @@ app.TrendView = Backbone.View.extend({
       widgetView.render();
     });
   },
-
-  // render: function() {
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: '/electrical/api/trend-unit-1/',
-  //     success: function(response) {
-  //       response.forEach(function(r) {
-  //         var trend1 = new app.RealTimeChartView({
-  //           el: '#' + r.tagId,
-  //           model: r
-  //         });
-  //         trend1.render();
-  //       });
-  //     },
-  //     error: function() {}
-  //   });
-  // }
 });
 
 app.trendView = new app.TrendView();
