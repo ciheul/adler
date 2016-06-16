@@ -207,10 +207,9 @@ def create_response(page):
 
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'div':
-                        # d['value'] = "{:,.2f}".format(grammar_div(d, row))
                         d['value'] = grammar_div(d, row)
                         if d['value'] != 'NaN':
-                            d['value'] = "{:,.2f}".format(d['value'])
+                            d['value'] = "{:,.3f}".format(d['value'])
                         final_data.append(d)
 
                     # get mean value from several tag names
