@@ -160,6 +160,27 @@
     </li>
   </script>
 
+  <script type="text/template" id="realtime-chart-container-template">
+    <li data-row="1" data-col="1" data-sizex="12" data-sizey="17">
+      <div class="graph-button">
+        <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=trend-unit-1&eq=cylinder-exhause-temperature';">
+          <span class="glyphicon glyphicon-save"></span> CSV
+        </button>
+        <div class="btn-group pull-left" style="margin-left:50px">
+          <button class="btn btn-default btn-md btn-success">Historical</button>
+          <button class="btn btn-default btn-md btn-default">Real Time</button>
+        </div>
+        <div class="btn-group pull-left" style="margin-left:20px">
+          <button class="btn btn-default btn-md btn-default">First</button>
+          <button class="btn btn-default btn-md btn-default">Prev</button>
+          <button class="btn btn-default btn-md btn-default">Next</button>
+          <button class="btn btn-default btn-md btn-default">Last</button>
+        </div>
+      </div>
+      <div id="<%= tagId %>" style="text-align:center;width:1200px;padding:30px"></div>
+    </li>
+  </script>
+
   <script type="text/template" id="update-data-template">
     <div class="alert page-notif" style="display:none;">
       <div id="notif-status">

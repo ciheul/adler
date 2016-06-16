@@ -105,10 +105,21 @@ app.ImageView = Backbone.View.extend({
 });
 
 
+app.RealTimeChartContainerView = Backbone.View.extend({
+  initialize: function(props) {
+  
+  }
+});
+
 app.RealTimeChartView = Backbone.View.extend({
+  template: _.template($('#realtime-chart-container-template').html()),
+
   initialize: function(props) {
     this.props = props;
     this.el = props.el;
+
+    // pagination
+    this.start = { historical: true, start: 0 };
   },
 
   modifySeries: function() {
@@ -130,7 +141,9 @@ app.RealTimeChartView = Backbone.View.extend({
 
     this.modifySeries();
 
-    this.$el.highcharts({
+    this.$el.append(this.template(this.model));
+
+    $('#' + this.model.tagId).highcharts({
       title: { text: this.model.title },
       subtitle: { text: this.model.subtitle },
       plotOptions: { line: { marker: { enabled: false } } },

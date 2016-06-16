@@ -693,6 +693,7 @@
   "trend-unit-1": {
     "cylinder-exhause-temperature": {
       "title": "G1T101 - CYLINDER EXHAUSE TEMPERATURE",
+      "grid": { "x": 10, "y": 1, "w": 3, "h":14 },
       "type": "chart",
       "yAxis": [
         { "labels": {
@@ -911,6 +912,7 @@
     },
     "power-trending": {
       "title": "G1T302 - POWER TRENDING",
+      "grid": { "x": 10, "y": 1, "w": 3, "h":14 },
       "type": "chart",
       "yAxis": [
         { "labels": {

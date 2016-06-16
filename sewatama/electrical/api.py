@@ -54,6 +54,44 @@ def grammar_mean(detail, row):
     return "{:,.2f}".format(total_value / len(detail['value']))
 
 
+def get_chart_data(detail, tag_id, start=0, rows=60):
+    # get a list of tag name
+    tag_names = map(lambda i: i['data'], detail['series'])
+
+    # get the latest 60 rows
+    rows = list(db.ss.find().sort("_id", -1).skip(start).limit(rows))
+
+    # sort ascending based so that the oldest time in the first element
+    # this is important so that highchart can render x-axis label
+    rows.reverse()
+
+    # collect 60 value for each tag name in temporary dictionary
+    result = dict()
+    for r in rows:
+        for tag_name in tag_names:
+            # prepare datetime and value
+            # dt = r['SentTimestamp']
+            dt = modify_datetime(r['SentDatetime'])
+            
+            value = float("{:.2f}".format(r['Tags'][tag_name]['Value']))
+
+            # if key is not in dictionary, create key with list as value
+            # append a pair of (datetime, value) to list based on tag
+            result.setdefault(tag_name, []).append([dt, value])
+
+    # replace value with an array of highchart series (datetime, value)
+    for d in detail['series']:
+        d['data'] = result[d['data']]
+
+    # set tag_id inside detail
+    detail['tagId'] = tag_id
+
+    return detail
+
+
+# please check schema.json
+# key: page_name (ex: trend-unit-1)
+# value: detail (ex: {tag_name: subdetail}
 def create_response(page):
     # query latest row from mongodb. there is only one row in a list
     row = db.ss.find().sort("_id", -1).limit(1)[0]
@@ -84,37 +122,7 @@ def create_response(page):
             response.append(detail)
 
         if detail['type'] == 'chart':
-            # get a list of tag name
-            tag_names = map(lambda i: i['data'], detail['series'])
-
-            # get the latest 60 rows
-            rows = list(db.ss.find().sort("_id", -1).limit(60))
-
-            # sort ascending based so that the oldest time in the first element
-            # this is important so that highchart can render x-axis label
-            rows.reverse()
-
-            # collect 60 value for each tag name in temporary dictionary
-            result = dict()
-            for r in rows:
-                for tag_name in tag_names:
-                    # prepare datetime and value
-                    # dt = r['SentTimestamp']
-                    dt = modify_datetime(r['SentDatetime'])
-                    
-                    value = float("{:.2f}".format(r['Tags'][tag_name]['Value']))
-
-                    # if key is not in dictionary, create key with list as value
-                    # append a pair of (datetime, value) to list based on tag
-                    result.setdefault(tag_name, []).append([dt, value])
-
-            # replace value with an array of highchart series (datetime, value)
-            for d in detail['series']:
-                d['data'] = result[d['data']]
-
-            # set tag_id inside detail
-            detail['tagId'] = tag_id
-
+            detail = get_chart_data(detail, tag_id)
             response.append(detail)
             
         if detail['type'] == 'oneColumnTable':
@@ -706,16 +714,50 @@ def trend_unit_1(request):
 
 
 @login_required
+def get_historical_trend(request):
+    # parameters validation
+    if 'page' not in request.GET or 'eq' not in request.GET \
+            or 'rows' not in request.GET or 'start' not in request.GET:
+        response = {
+            'success': -1,
+            'error_message': 'Parameters are not complete.'
+        }
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json')
+
+    page = request.GET['page']
+    tag_id = request.GET['eq']
+    rows = int(request.GET['rows'])
+
+    # start of query from the latest rows, not from the earliest rows
+    # later, query row using sort and reverse
+    start = int(request.GET['start'])
+    
+    page_schema = get_page_schema(page)
+
+    detail = get_chart_data(page_schema[tag_id], tag_id, start, rows)
+
+    response = list()
+    response.append(detail)
+
+    return HttpResponse(json.dumps(response), content_type='application/json')
+    
+
+@login_required
 def trend_unit_chart(request):
+    """
+    Return a pair of datetime and value of one tag name.
+    TODO maybe it should return all tag names
+    """
     page_id = 'trend-unit-1'
     page_schema = get_page_schema(page_id)
-    i = request.GET['id']
-    tag_name = page_schema['cylinder-exhause-temperature']['series'][i]['data']
+    i = int(request.GET['id'])
 
+    tag_name = page_schema['cylinder-exhause-temperature']['series'][i]['data']
     row = db.ss.find().sort("_id", -1).limit(1)[0]
+    value = row['Tags'][tag_name]['Value']
 
     dt = modify_datetime(row['SentDatetime'])
-    value = row['Tags'][tag_name]['Value']
 
     response = [dt, value]
 
