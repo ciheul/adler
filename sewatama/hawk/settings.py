@@ -24,7 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v7flfy(o&ycv+hl7o+g__1=i*_+mp$t13*30@szaw*$)!w1ub1'
 
 # SECURITY WARNING: don't run with debug turned on in productionDEBUG = True 
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 # DEBUG = misc.DEBUG
 
 ALLOWED_HOSTS = ['*']
@@ -98,10 +99,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'inetscada',
-        # 'USER': 'smartadmin',
-        # 'PASSWORD': 'workshopG2012',
-        'USER': 'ciheul',
-        'PASSWORD': 'demi masa depan',
+        'USER': 'smartadmin',
+        'PASSWORD': 'workshopG2012',
+        # 'USER': 'ciheul',
+        # 'PASSWORD': 'demi masa depan',
         'HOST': 'localhost',
         'PORT': 5432,
     }

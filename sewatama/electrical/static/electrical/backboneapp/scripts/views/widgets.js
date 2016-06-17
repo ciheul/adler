@@ -119,7 +119,110 @@ app.RealTimeChartView = Backbone.View.extend({
     this.el = props.el;
 
     // pagination
-    this.start = { historical: true, start: 0 };
+    this.state = { historical: true, first: false, start: 0, rows: 60 };
+  },
+
+  events: {
+    'click .btn-historical': 'toggleTrend',
+    'click .btn-pagination': 'paginate',
+  },
+
+  toggleTrend: function() {
+    console.log('toggle historical');
+  },
+
+  paginate: function(e) {
+    var tagId = $(e.currentTarget).parent().parent().next().attr('id');
+    if (tagId === this.model.tagId) {
+      // paginationType: [ first | prev | next | last ]
+      var paginationType = $(e.currentTarget).text();
+      if (paginationType === 'First') {
+        this.state.first = true;
+        this.state.start = 0;
+      }
+
+      if (paginationType === 'Last') {
+        this.state.first = false;
+        this.state.start = 0;
+      }
+
+      if (paginationType === 'Prev' && this.state.first === false) {
+        this.state.start += this.state.rows;
+      }
+
+      if (paginationType === 'Prev' && this.state.first === true) {
+        this.state.start -= this.state.rows;
+      }
+
+      if (paginationType === 'Next' && this.state.first === false) {
+        this.state.start -= this.state.rows;
+      }
+
+      if (paginationType === 'Next' && this.state.first === true) {
+        this.state.start += this.state.rows;
+      }
+
+      var data = {
+        page: this.model.page,
+        eq: this.model.tagId,
+        start: this.state.start,
+        rows: this.state.rows,
+        first: this.state.first
+      };
+
+      var that = this;
+      $.ajax({
+        method: 'get',
+        url: '/electrical/api/historical-trend/',
+        data: data,
+        success: function(response) {
+          that.model = response[0];
+          that.model.page = data.page;
+          $('#' + that.model.tagId).empty();
+          that.modifySeries();
+          that.renderHighchart();
+          that.updateButton($(e.currentTarget));
+        }
+      });
+    }
+  },
+
+  updateButton: function(el) {
+    if (el === undefined) { return; }
+
+    var btnGroup = el.parent();
+    var btnFirst = btnGroup.children().eq(0);
+    var btnPrev = btnGroup.children().eq(1);
+    var btnNext = btnGroup.children().eq(2);
+    var btnLast = btnGroup.children().eq(3);
+
+    if (this.state.first === false && this.state.start === 0) {
+      btnFirst.prop('disabled', false);
+      btnPrev.prop('disabled', false);
+      btnNext.prop('disabled', true);
+      btnLast.prop('disabled', true);
+    }
+  
+    if (this.state.first === true && this.state.start === 0) {
+      btnFirst.prop('disabled', true);
+      btnPrev.prop('disabled', true);
+      btnNext.prop('disabled', false);
+      btnLast.prop('disabled', false);
+    }
+
+    if (this.state.first === false && this.state.start !== 0) {
+      btnFirst.prop('disabled', false);
+      btnPrev.prop('disabled', false);
+      btnNext.prop('disabled', false);
+      btnLast.prop('disabled', false);
+    }
+
+    if (this.state.first === true && this.state.start !== 0) {
+      btnFirst.prop('disabled', false);
+      btnPrev.prop('disabled', false);
+      btnNext.prop('disabled', false);
+      btnLast.prop('disabled', false);
+    }
   },
 
   modifySeries: function() {
@@ -141,8 +244,12 @@ app.RealTimeChartView = Backbone.View.extend({
 
     this.modifySeries();
 
+    console.log(this.model);
     this.$el.append(this.template(this.model));
+    this.renderHighchart();
+  },
 
+  renderHighchart: function() {
     $('#' + this.model.tagId).highcharts({
       title: { text: this.model.title },
       subtitle: { text: this.model.subtitle },

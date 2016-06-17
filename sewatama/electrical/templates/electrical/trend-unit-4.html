@@ -41,6 +41,7 @@
   
     render: function() {
       app.widgets.each(function(widget) {
+        widget.set({ page: 'trend-unit-4' });
         var widgetView = new app.RealTimeChartView({
           el: $('#grid-0 > ul'),
           model: widget.toJSON()

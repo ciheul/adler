@@ -54,16 +54,20 @@ def grammar_mean(detail, row):
     return "{:,.2f}".format(total_value / len(detail['value']))
 
 
-def get_chart_data(detail, tag_id, start=0, rows=60):
+def get_chart_data(detail, tag_id, start=0, rows=60, first=False):
     # get a list of tag name
     tag_names = map(lambda i: i['data'], detail['series'])
 
-    # get the latest 60 rows
-    rows = list(db.ss.find().sort("_id", -1).skip(start).limit(rows))
+    if first == True:
+        # get the earliest 60 rows
+        rows = list(db.ss.find().skip(start).limit(rows))
+    else:
+        # get the latest 60 rows
+        rows = list(db.ss.find().sort("_id", -1).skip(start).limit(rows))
 
-    # sort ascending based so that the oldest time in the first element
-    # this is important so that highchart can render x-axis label
-    rows.reverse()
+        # sort ascending based so that the oldest time in the first element
+        # this is important so that highchart can render x-axis label
+        rows.reverse()
 
     # collect 60 value for each tag name in temporary dictionary
     result = dict()
@@ -725,6 +729,10 @@ def get_historical_trend(request):
         return HttpResponse(json.dumps(response),
                             content_type='application/json')
 
+    first = False
+    if 'first' in request.GET and request.GET['first'] == 'true':
+        first = True
+
     page = request.GET['page']
     tag_id = request.GET['eq']
     rows = int(request.GET['rows'])
@@ -735,7 +743,7 @@ def get_historical_trend(request):
     
     page_schema = get_page_schema(page)
 
-    detail = get_chart_data(page_schema[tag_id], tag_id, start, rows)
+    detail = get_chart_data(page_schema[tag_id], tag_id, start, rows, first)
 
     response = list()
     response.append(detail)
