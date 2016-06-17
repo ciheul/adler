@@ -1,0 +1,2199 @@
+{
+  "electrical-overview-outgoing-1": {
+    "gauge-outgoing-power": {
+      "title": "OUTGOING POWER",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "kW",
+      "grid": { "x": 1, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "gauge-genset-power": {
+      "title": "GENSET POWER",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "kW",
+      "grid": { "x": 3, "y": 1, "w": 2, "h":7 },
+      "value": [
+        "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT", 
+        "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT",
+        "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT",
+        "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT"
+      ],
+      "grammar": "sum"
+    },
+    "gauge-power-factor": {
+      "title": "POWER FACTOR",
+      "type": "gauge",
+      "minValue": -1,
+      "maxValue": 1,
+      "label": "",
+      "grid": { "x": 5, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF_TOTAL"
+    },
+    "gauge-frequency": {
+      "title": "FREQUENCY",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 62,
+      "label": "Hz",
+      "grid": { "x": 7, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\FREQ"
+    },
+    "gauge-voltage": {
+      "title": "VOLTAGE",
+      "type": "gauge",
+      "minValue": -1000,
+      "maxValue": 25000,
+      "label": "V",
+      "grid": { "x": 9, "y": 1, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\VOLTAGE_LL_AVG"
+    },
+    "energy-this-month": {
+      "title": "ENERGY THIS MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 1, "y": 1, "w": 3, "h": 6 },
+      "data": [
+        { "type": "default",
+          "name": "OUTGOING #1",
+          "value": "",
+          "label": "kWH" },
+        { "type": "default",
+          "name": "GENSET",
+          "value": "",
+          "label": "kWH" },
+        { "type": "default",
+          "name": "AVG. LOSSES",
+          "value": "",
+          "label": "%" }
+      ]
+    },
+    "energy-last-month": {
+      "title": "ENERGY LAST MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 4, "y": 1, "w": 3, "h": 6 },
+      "data": [
+        { "type": "default",
+          "name": "OUTGOING #1",
+          "value": "",
+          "label": "kWH" },
+        { "type": "default",
+          "name": "GENSET",
+          "value": "",
+          "label": "kWH" },
+        { "type": "default",
+          "name": "AVG. LOSSES",
+          "value": "",
+          "label": "%" }
+      ]
+    },
+    "fuel-this-month": {
+      "title": "FUEL THIS MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 1, "y": 7, "w": 3, "h": 3 },
+      "data": [
+        { "type": "default",
+          "name": "CONSUMPTION",
+          "value": "",
+          "label": "L" }
+      ]
+    },
+    "fuel-last-month": {
+      "title": "FUEL LAST MONTH",
+      "type": "threeColumnsTable",
+      "grid": { "x": 4, "y": 7, "w": 3, "h": 3 },
+      "data": [
+        { "type": "default",
+          "name": "CONSUMPTION",
+          "value": "",
+          "label": "L" }
+      ]
+    },
+    "power-plant-info": {
+      "title": "POWER PLANT INFO",
+      "type": "threeColumnsTable",
+      "grid": { "x": 7, "y": 1, "w": 4, "h": 9 },
+      "data": [
+        { "type": "default",
+          "name": "TOTAL POWER",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL",
+          "label": "kW" },
+        { "type": "default",
+          "name": "THIS MONTH ENERGY",
+          "value": "",
+          "label": "kWH" },
+        { "type": "default",
+          "name": "FUEL",
+          "value": "",
+          "label": "L" },
+        { "type": "default",
+          "name": "LAST MONTH ENERGY",
+          "value": "",
+          "label": "kWH" },
+        { "type": "default",
+          "name": "FUEL",
+          "value": "",
+          "label": "L" }
+      ]
+    },
+    "genset-1": {
+      "title": "Genset #1",
+      "type": "oneColumnTable",
+      "grid": { "x": 1, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN01\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN01\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\OPR_HRS" }
+      ]
+    },
+    "genset-2": {
+      "title": "Genset #2",
+      "type": "oneColumnTable",
+      "grid": { "x": 2, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN02\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN02\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\OPR_HRS" }
+      ]
+    },
+    "genset-3": {
+      "title": "Genset #3",
+      "type": "oneColumnTable",
+      "grid": { "x": 3, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN03\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN03\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\OPR_HRS" }
+      ]
+    },
+    "genset-4": {
+      "title": "Genset #4",
+      "type": "oneColumnTable",
+      "grid": { "x": 4, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\OPR_HRS" }
+      ]
+    },
+    "outgoing-1": {
+      "title": "Outgoing #1",
+      "type": "oneColumnTable",
+      "grid": { "x": 5, "y": 1, "w": 1, "h": 10 },
+      "data": [
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF_TOTAL" }
+      ]
+    }
+  },
+  "electrical-sld-outgoing-1": {
+    "image-sld": {
+      "type": "image",
+      "image": {
+        "url": "/static/electrical/images/PicSLDOutgoing_1.png",
+        "w": "95%",
+        "h": "100%"
+      },
+      "grid": { "x": 1, "y": 1, "w": 12, "h":9, "style": "line-height: 350px" }
+    },
+    "genset-1": {
+      "title": "Genset #1",
+      "type": "oneColumnTable",
+      "grid": { "x": 1, "y": 1, "w": 1, "h": 11 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN01\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN01\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\OPR_HRS" },
+        { "type": "indicator",
+          "name": "CB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\AUX_DI_6" },
+        { "type": "indicator",
+          "name": "GCB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\ST_GCB_CLS" },
+        { "type": "indicatorInverse",
+          "name": "Trafo Status",
+          "trueText": "NORMAL",
+          "falseText": "FAULT",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\DI9_TRF" }
+      ]
+    },
+    "genset-2": {
+      "title": "Genset #2",
+      "type": "oneColumnTable",
+      "grid": { "x": 2, "y": 1, "w": 1, "h": 11 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN02\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN02\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\OPR_HRS" },
+        { "type": "indicator",
+          "name": "CB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\AUX_DI_6" },
+        { "type": "indicator",
+          "name": "GCB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\ST_GCB_CLS" },
+        { "type": "indicatorInverse",
+          "name": "Trafo Status",
+          "trueText": "NORMAL",
+          "falseText": "FAULT",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\DI9_TRF" }
+      ]
+    },
+    "genset-3": {
+      "title": "Genset #3",
+      "type": "oneColumnTable",
+      "grid": { "x": 3, "y": 1, "w": 1, "h": 11 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN03\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN03\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\OPR_HRS" },
+        { "type": "indicator",
+          "name": "CB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\AUX_DI_6" },
+        { "type": "indicator",
+          "name": "GCB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\ST_GCB_CLS" },
+        { "type": "indicatorInverse",
+          "name": "Trafo Status",
+          "trueText": "NORMAL",
+          "falseText": "FAULT",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\DI9_TRF" }
+      ]
+    },
+    "genset-4": {
+      "title": "Genset #4",
+      "type": "oneColumnTable",
+      "grid": { "x": 4, "y": 1, "w": 1, "h": 11 },
+      "data": [
+        { "type": "general",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\PF" },
+        { "type": "default",
+          "name": "Run Hr.",
+          "label": "Hr",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\OPR_HRS" },
+        { "type": "indicator",
+          "name": "CB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" },
+        { "type": "indicator",
+          "name": "GCB Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\CB_ST_CLS" },
+        { "type": "indicatorInverse",
+          "name": "Trafo Status",
+          "trueText": "NORMAL",
+          "falseText": "FAULT",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI9_TRF" }
+      ]
+    },
+    "outgoing-1": {
+      "title": "Outgoing #1",
+      "type": "oneColumnTable",
+      "grid": { "x": 12, "y": 1, "w": 1, "h": 11 },
+      "data": [
+        { "type": "default",
+          "name": "Power",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+        { "type": "default",
+          "name": "Cosphi",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\PF_TOTAL" },
+        { "type": "indicator",
+          "name": "PR Status",
+          "trueText": "CLOSED",
+          "falseText": "OPEN",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\ST_GCB_CLS" }
+      ]
+    },
+    "total-power": {
+      "type": "threeColumnsTable",
+      "title": "TOTAL POWER",
+      "grid": { "x": 1, "y": 1, "w": 2, "h":3 },
+      "data": [
+        { "type": "default",
+          "name": "TOTAL",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+      ]
+    },
+    "energy-this-month": {
+      "type": "threeColumnsTable",
+      "title": "ENERGY THIS MONTH",
+      "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
+      "data": [
+        { "type": "default",
+          "name": "TOTAL",
+          "label": "kWH",
+          "value": "" }
+      ]
+    },
+    "energy-last-month": {
+      "type": "threeColumnsTable",
+      "title": "ENERGY LAST MONTH",
+      "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
+      "data": [
+        { "type": "default",
+          "name": "TOTAL",
+          "label": "kWH",
+          "value": "" }
+      ]
+    },
+    "outgoing-energy-this-month": {
+      "type": "threeColumnsTable",
+      "title": "ENERGY THIS MONTH",
+      "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
+      "data": [
+        { "type": "default",
+          "name": "OUTGOING#1",
+          "label": "kWH",
+          "value": "" }
+      ]
+    },
+    "outgoing-energy-last-month": {
+      "type": "threeColumnsTable",
+      "title": "ENERGY LAST MONTH",
+      "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
+      "data": [
+        { "type": "default",
+          "name": "OUTGOING#1",
+          "label": "kWH",
+          "value": "" }
+      ]
+    }
+  },
+  "genset-overview-outgoing-1": {
+    "genset-1": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #1",
+      "grid": { "x": 1, "y": 1, "w": 3, "h":14 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "VOLT. AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN01\\L1_L2_V",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\L2_L3_V",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\L3_L1_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "VOLT. L-N AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN01\\L1_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\L2_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\L3_N_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "CURRENT AVRG",
+          "label": "A",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\AVG_A" },
+        { "type": "default",
+          "name": "FREQUENCY",
+          "label": "Hz",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\F" },
+        { "type": "default",
+          "name": "POWER FACT.",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\PF" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT" },
+        { "type": "default",
+          "name": "ENERGY EXPORT",
+          "label": "kWh",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\WH" },
+        { "type": "default",
+          "name": "BATTERY",
+          "label": "V",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\BAT_V_001" }
+      ]
+    },
+    "genset-2": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #2",
+      "grid": { "x": 4, "y": 1, "w": 3, "h":14 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "VOLT. AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN02\\L1_L2_V",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\L2_L3_V",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\L3_L1_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "VOLT. L-N AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN02\\L1_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\L2_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\L3_N_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "CURRENT AVRG",
+          "label": "A",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\AVG_A" },
+        { "type": "default",
+          "name": "FREQUENCY",
+          "label": "Hz",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\F" },
+        { "type": "default",
+          "name": "POWER FACT.",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\PF" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT" },
+        { "type": "default",
+          "name": "ENERGY EXPORT",
+          "label": "kWh",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\WH" },
+        { "type": "default",
+          "name": "BATTERY",
+          "label": "V",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\BAT_V_001" }
+      ]
+    },
+    "genset-3": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #3",
+      "grid": { "x": 7, "y": 1, "w": 3, "h":14 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "VOLT. AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN03\\L1_L2_V",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\L2_L3_V",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\L3_L1_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "VOLT. L-N AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN03\\L1_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\L2_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\L3_N_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "CURRENT AVRG",
+          "label": "A",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\AVG_A" },
+        { "type": "default",
+          "name": "FREQUENCY",
+          "label": "Hz",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\F" },
+        { "type": "default",
+          "name": "POWER FACT.",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\PF" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT" },
+        { "type": "default",
+          "name": "ENERGY EXPORT",
+          "label": "kWh",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\WH" },
+        { "type": "default",
+          "name": "BATTERY",
+          "label": "V",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\BAT_V_001" }
+      ]
+    },
+    "genset-4": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #4",
+      "grid": { "x": 10, "y": 1, "w": 3, "h":14 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "VOLT. AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN04\\L1_L2_V",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\L2_L3_V",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\L3_L1_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "VOLT. L-N AVRG",
+          "label": "V",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN04\\L1_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\L2_N_V",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\L3_N_V"
+          ],
+          "grammar": "mean" },
+        { "type": "default",
+          "name": "CURRENT AVRG",
+          "label": "A",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AVG_A" },
+        { "type": "default",
+          "name": "FREQUENCY",
+          "label": "Hz",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\F" },
+        { "type": "default",
+          "name": "POWER FACT.",
+          "label": "",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\PF" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT" },
+        { "type": "default",
+          "name": "ENERGY EXPORT",
+          "label": "kWh",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\WH" },
+        { "type": "default",
+          "name": "BATTERY",
+          "label": "V",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\BAT_V_001" }
+      ]
+    }
+  },
+  "trend-unit-1": {
+    "cylinder-exhause-temperature": {
+      "title": "G1T101 - CYLINDER EXHAUSE TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 1, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°F", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "EXH. MANIFOLD #1 (LEFT)",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°F",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "EXH. MANIFOLD #2 (RIGHT)",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "EXH. MANIFOLD #1 (LEFT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_001",
+          "tooltip": { "valueSuffix": "°F" } },
+        { "name": "EXH. MANIFOLD #2 (RIGHT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\EXH_MAN_TMP_002",
+          "tooltip": { "valueSuffix": "°F" } }
+      ]
+    },
+    "winding-temperature": {
+      "title": "G1T102 - WINDING TEMPERATURE R,S,T",
+      "type": "chart",
+      "grid": { "x": 1, "y": 18, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "WINDING PHASE A",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "WINDING PHASE B",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "WINDING PHASE C",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "WINDING PHASE A",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\WDG_PHSA_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE B",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\WDG_PHSB_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE C",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\WDG_PHSC_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "bearing-temperature": {
+      "title": "G1T103 - BEARING TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 35, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "BEARING REAR",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "BEARING REAR",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\RER_BRG_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "oil-pressure": {
+      "title": "G1T104 - OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 52, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } }
+      ]
+    },
+    "jw-temperature-vs-load": {
+      "title": "G1T201 - JW TEMPERATURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 69, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "jw-temperature-vs-oil-pressure": {
+      "title": "G1T202 - JW TEMPERATURE VS OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 86, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kPa",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-load": {
+      "title": "G1T203 - OIL PRESSURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 103, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "LOAD",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } },
+        { "name": "LOAD",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-oil-temperature": {
+      "title": "G1T204 - OIL PRESSURE VS OIL TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 120, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL TEMPERATURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" } },
+        { "name": "OIL TEMPERATURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\ENG_OIL_TMP",
+          "tooltip": { "valueSuffix": "°C" },
+          "yAxis": 1 }
+      ]
+    },
+    "power-trending": {
+      "title": "G1T302 - POWER TRENDING",
+      "type": "chart",
+      "grid": { "x": 1, "y": 137, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kW", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVAR",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL REACTIVE POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVA",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "TOTAL APPARENT POWER",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" } },
+        { "name": "TOTAL REACTIVE POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\R_TOT",
+          "tooltip": { "valueSuffix": " kVAR" },
+          "yAxis": 1 },
+        { "name": "TOTAL APPARENT POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\S_TOT",
+          "tooltip": { "valueSuffix": " kVA" },
+          "yAxis": 2 }
+      ]
+    },
+    "voltage-current": {
+      "title": "G1T303 - VOLTAGE, CURRENT",
+      "type": "chart",
+      "grid": { "x": 1, "y": 154, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} V", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "VOLTAGE R-S",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "VOLTAGE S-T",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "VOLTAGE T-R",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} A",
+            "style": { "color": "#f5b37b" } },
+          "title": {
+            "text": "AVG. GENERATED CURRENT",
+            "style": { "color": "#f5b37b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "VOLTAGE R-S",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\L1_L2_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE S-T",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\L2_L3_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE T-R",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\L3_L1_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "AVG. GENERATED CURRENT",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\AVG_A",
+          "tooltip": { "valueSuffix": " A" },
+          "yAxis": 3 }
+      ]
+    },
+    "frequency-cosphi": {
+      "title": "G1T304 - FREQUENCY, COS PHI",
+      "type": "chart",
+      "grid": { "x": 1, "y": 171, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Hz", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "FREQUENCY",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "COS PHI",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "FREQUENCY",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\F",
+          "tooltip": { "valueSuffix": " Hz" } },
+        { "name": "COS PHI",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN01\\PF",
+          "tooltip": { "valueSuffix": "" },
+          "yAxis": 1 }
+      ]
+    }
+  },
+  "trend-unit-2": {
+    "cylinder-exhause-temperature": {
+      "title": "G2T101 - CYLINDER EXHAUSE TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 1, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°F", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "EXH. MANIFOLD #1 (LEFT)",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°F",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "EXH. MANIFOLD #2 (RIGHT)",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "EXH. MANIFOLD #1 (LEFT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\EXH_MAN_TMP_001",
+          "tooltip": { "valueSuffix": "°F" } },
+        { "name": "EXH. MANIFOLD #2 (RIGHT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\EXH_MAN_TMP_002",
+          "tooltip": { "valueSuffix": "°F" } }
+      ]
+    },
+    "winding-temperature": {
+      "title": "G2T102 - WINDING TEMPERATURE R,S,T",
+      "type": "chart",
+      "grid": { "x": 1, "y": 18, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "WINDING PHASE A",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "WINDING PHASE B",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "WINDING PHASE C",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "WINDING PHASE A",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\WDG_PHSA_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE B",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\WDG_PHSB_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE C",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\WDG_PHSC_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "bearing-temperature": {
+      "title": "G2T103 - BEARING TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 35, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "BEARING REAR",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "BEARING REAR",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\RER_BRG_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "oil-pressure": {
+      "title": "G2T104 - OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 52, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } }
+      ]
+    },
+    "jw-temperature-vs-load": {
+      "title": "G2T201 - JW TEMPERATURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 69, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "jw-temperature-vs-oil-pressure": {
+      "title": "G2T202 - JW TEMPERATURE VS OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 86, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kPa",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-load": {
+      "title": "G2T203 - OIL PRESSURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 103, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "LOAD",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } },
+        { "name": "LOAD",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-oil-temperature": {
+      "title": "G2T204 - OIL PRESSURE VS OIL TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 120, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL TEMPERATURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" } },
+        { "name": "OIL TEMPERATURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\ENG_OIL_TMP",
+          "tooltip": { "valueSuffix": "°C" },
+          "yAxis": 1 }
+      ]
+    },
+    "power-trending": {
+      "title": "G2T302 - POWER TRENDING",
+      "type": "chart",
+      "grid": { "x": 1, "y": 137, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kW", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVAR",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL REACTIVE POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVA",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "TOTAL APPARENT POWER",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" } },
+        { "name": "TOTAL REACTIVE POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\R_TOT",
+          "tooltip": { "valueSuffix": " kVAR" },
+          "yAxis": 1 },
+        { "name": "TOTAL APPARENT POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\S_TOT",
+          "tooltip": { "valueSuffix": " kVA" },
+          "yAxis": 2 }
+      ]
+    },
+    "voltage-current": {
+      "title": "G2T303 - VOLTAGE, CURRENT",
+      "type": "chart",
+      "grid": { "x": 1, "y": 154, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} V", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "VOLTAGE R-S",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "VOLTAGE S-T",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "VOLTAGE T-R",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} A",
+            "style": { "color": "#f5b37b" } },
+          "title": {
+            "text": "AVG. GENERATED CURRENT",
+            "style": { "color": "#f5b37b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "VOLTAGE R-S",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\L1_L2_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE S-T",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\L2_L3_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE T-R",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\L3_L1_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "AVG. GENERATED CURRENT",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\AVG_A",
+          "tooltip": { "valueSuffix": " A" },
+          "yAxis": 3 }
+      ]
+    },
+    "frequency-cosphi": {
+      "title": "G2T304 - FREQUENCY, COS PHI",
+      "type": "chart",
+      "grid": { "x": 1, "y": 171, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Hz", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "FREQUENCY",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "COS PHI",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "FREQUENCY",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\F",
+          "tooltip": { "valueSuffix": " Hz" } },
+        { "name": "COS PHI",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN02\\PF",
+          "tooltip": { "valueSuffix": "" },
+          "yAxis": 1 }
+      ]
+    }
+  },
+  "trend-unit-3": {
+    "cylinder-exhause-temperature": {
+      "title": "G3T101 - CYLINDER EXHAUSE TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 1, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°F", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "EXH. MANIFOLD #1 (LEFT)",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°F",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "EXH. MANIFOLD #2 (RIGHT)",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "EXH. MANIFOLD #1 (LEFT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\EXH_MAN_TMP_001",
+          "tooltip": { "valueSuffix": "°F" } },
+        { "name": "EXH. MANIFOLD #2 (RIGHT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\EXH_MAN_TMP_002",
+          "tooltip": { "valueSuffix": "°F" } }
+      ]
+    },
+    "winding-temperature": {
+      "title": "G3T102 - WINDING TEMPERATURE R,S,T",
+      "type": "chart",
+      "grid": { "x": 1, "y": 18, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "WINDING PHASE A",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "WINDING PHASE B",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "WINDING PHASE C",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "WINDING PHASE A",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\WDG_PHSA_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE B",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\WDG_PHSB_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE C",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\WDG_PHSC_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "bearing-temperature": {
+      "title": "G3T103 - BEARING TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 35, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "BEARING REAR",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "BEARING REAR",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\RER_BRG_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "oil-pressure": {
+      "title": "G3T104 - OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 52, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } }
+      ]
+    },
+    "jw-temperature-vs-load": {
+      "title": "G3T201 - JW TEMPERATURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 69, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "jw-temperature-vs-oil-pressure": {
+      "title": "G3T202 - JW TEMPERATURE VS OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 86, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kPa",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-load": {
+      "title": "G3T203 - OIL PRESSURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 103, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "LOAD",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } },
+        { "name": "LOAD",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-oil-temperature": {
+      "title": "G3T204 - OIL PRESSURE VS OIL TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 120, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL TEMPERATURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" } },
+        { "name": "OIL TEMPERATURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\ENG_OIL_TMP",
+          "tooltip": { "valueSuffix": "°C" },
+          "yAxis": 1 }
+      ]
+    },
+    "power-trending": {
+      "title": "G3T302 - POWER TRENDING",
+      "type": "chart",
+      "grid": { "x": 1, "y": 137, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kW", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVAR",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL REACTIVE POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVA",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "TOTAL APPARENT POWER",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" } },
+        { "name": "TOTAL REACTIVE POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\R_TOT",
+          "tooltip": { "valueSuffix": " kVAR" },
+          "yAxis": 1 },
+        { "name": "TOTAL APPARENT POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\S_TOT",
+          "tooltip": { "valueSuffix": " kVA" },
+          "yAxis": 2 }
+      ]
+    },
+    "voltage-current": {
+      "title": "G3T303 - VOLTAGE, CURRENT",
+      "type": "chart",
+      "grid": { "x": 1, "y": 154, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} V", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "VOLTAGE R-S",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "VOLTAGE S-T",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "VOLTAGE T-R",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} A",
+            "style": { "color": "#f5b37b" } },
+          "title": {
+            "text": "AVG. GENERATED CURRENT",
+            "style": { "color": "#f5b37b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "VOLTAGE R-S",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\L1_L2_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE S-T",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\L2_L3_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE T-R",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\L3_L1_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "AVG. GENERATED CURRENT",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\AVG_A",
+          "tooltip": { "valueSuffix": " A" },
+          "yAxis": 3 }
+      ]
+    },
+    "frequency-cosphi": {
+      "title": "G3T304 - FREQUENCY, COS PHI",
+      "type": "chart",
+      "grid": { "x": 1, "y": 171, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Hz", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "FREQUENCY",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "COS PHI",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "FREQUENCY",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\F",
+          "tooltip": { "valueSuffix": " Hz" } },
+        { "name": "COS PHI",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN03\\PF",
+          "tooltip": { "valueSuffix": "" },
+          "yAxis": 1 }
+      ]
+    }
+  },
+  "trend-unit-4": {
+    "cylinder-exhause-temperature": {
+      "title": "G4T101 - CYLINDER EXHAUSE TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 1, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°F", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "EXH. MANIFOLD #1 (LEFT)",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°F",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "EXH. MANIFOLD #2 (RIGHT)",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "EXH. MANIFOLD #1 (LEFT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\EXH_MAN_TMP_001",
+          "tooltip": { "valueSuffix": "°F" } },
+        { "name": "EXH. MANIFOLD #2 (RIGHT)",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\EXH_MAN_TMP_002",
+          "tooltip": { "valueSuffix": "°F" } }
+      ]
+    },
+    "winding-temperature": {
+      "title": "G4T102 - WINDING TEMPERATURE R,S,T",
+      "type": "chart",
+      "grid": { "x": 1, "y": 18, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "WINDING PHASE A",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "WINDING PHASE B",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "WINDING PHASE C",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "WINDING PHASE A",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\WDG_PHSA_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE B",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\WDG_PHSB_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "WINDING PHASE C",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\WDG_PHSC_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "bearing-temperature": {
+      "title": "G4T103 - BEARING TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 35, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "BEARING REAR",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "BEARING REAR",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\RER_BRG_TMP",
+          "tooltip": { "valueSuffix": "°C" } }
+      ]
+    },
+    "oil-pressure": {
+      "title": "G4T104 - OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 52, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } }
+      ]
+    },
+    "jw-temperature-vs-load": {
+      "title": "G4T201 - JW TEMPERATURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 69, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "jw-temperature-vs-oil-pressure": {
+      "title": "G4T202 - JW TEMPERATURE VS OIL PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 86, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value}°C", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "JACKET WATER TEMP.",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kPa",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "JACKET WATER TEMP.",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_COL_TMP",
+          "tooltip": { "valueSuffix": "°C" } },
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-load": {
+      "title": "G4T203 - OIL PRESSURE VS LOAD",
+      "type": "chart",
+      "grid": { "x": 1, "y": 103, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kW",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "LOAD",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": "kPa" } },
+        { "name": "LOAD",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" },
+          "yAxis": 1 }
+      ]
+    },
+    "oil-pressure-vs-oil-temperature": {
+      "title": "G4T204 - OIL PRESSURE VS OIL TEMPERATURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 120, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kPa", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "OIL PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}°C",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "OIL TEMPERATURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "OIL PRESSURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_OIL_PRS",
+          "tooltip": { "valueSuffix": " kPa" } },
+        { "name": "OIL TEMPERATURE",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\ENG_OIL_TMP",
+          "tooltip": { "valueSuffix": "°C" },
+          "yAxis": 1 }
+      ]
+    },
+    "power-trending": {
+      "title": "G4T302 - POWER TRENDING",
+      "type": "chart",
+      "grid": { "x": 1, "y": 137, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kW", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "TOTAL POWER",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVAR",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "TOTAL REACTIVE POWER",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} kVA",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "TOTAL APPARENT POWER",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "TOTAL POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT",
+          "tooltip": { "valueSuffix": " kW" } },
+        { "name": "TOTAL REACTIVE POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\R_TOT",
+          "tooltip": { "valueSuffix": " kVAR" },
+          "yAxis": 1 },
+        { "name": "TOTAL APPARENT POWER",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\S_TOT",
+          "tooltip": { "valueSuffix": " kVA" },
+          "yAxis": 2 }
+      ]
+    },
+    "voltage-current": {
+      "title": "G4T303 - VOLTAGE, CURRENT",
+      "type": "chart",
+      "grid": { "x": 1, "y": 154, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} V", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "VOLTAGE R-S",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "VOLTAGE S-T",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} V",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "VOLTAGE T-R",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} A",
+            "style": { "color": "#f5b37b" } },
+          "title": {
+            "text": "AVG. GENERATED CURRENT",
+            "style": { "color": "#f5b37b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "VOLTAGE R-S",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\L1_L2_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE S-T",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\L2_L3_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "VOLTAGE T-R",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\L3_L1_V",
+          "tooltip": { "valueSuffix": " V" } },
+        { "name": "AVG. GENERATED CURRENT",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\AVG_A",
+          "tooltip": { "valueSuffix": " A" },
+          "yAxis": 3 }
+      ]
+    },
+    "frequency-cosphi": {
+      "title": "G4T304 - FREQUENCY, COS PHI",
+      "type": "chart",
+      "grid": { "x": 1, "y": 171, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Hz", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "FREQUENCY",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value}",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "COS PHI",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "FREQUENCY",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
+          "tooltip": { "valueSuffix": " Hz" } },
+        { "name": "COS PHI",
+          "data": "SS\\HSD_NPN0\\RT4\\GEN04\\PF",
+          "tooltip": { "valueSuffix": "" },
+          "yAxis": 1 }
+      ]
+    }
+  },
+  "report-sfc-outgoing": {
+    "genset-1": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #1",
+      "grid": { "x": 1, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    },
+    "genset-2": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #2",
+      "grid": { "x": 4, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    },
+    "genset-3": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #3",
+      "grid": { "x": 7, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    },
+    "genset-4": {
+      "type": "threeColumnsTable",
+      "title": "GENSET #4",
+      "grid": { "x": 10, "y": 1, "w": 3, "h": 9 },
+      "data": [
+        { "type": "image",
+          "image": {
+            "url": "/static/electrical/images/generator.bmp"
+          } },
+        { "type": "default",
+          "name": "FUEL CONS. RATE",
+          "label": "L/h",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS" },
+        { "type": "default",
+          "name": "REAL POWER",
+          "label": "kW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT" },
+        { "type": "default",
+          "name": "SFC",
+          "label": "L/kWH",
+          "value": [
+            "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT"
+          ],
+          "grammar": "div" }
+      ]
+    }
+  }
+}

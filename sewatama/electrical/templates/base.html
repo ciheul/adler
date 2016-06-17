@@ -7,10 +7,10 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <link href="http://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet"></link>
+  <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/alloy-ui/build/aui-css/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/static/electrical/backboneapp/styles/electrical.css" />
   <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/leaflet/dist/leaflet.css" />
 </head>
 
 <body>
@@ -46,17 +46,163 @@
 
   {% block content %}{% endblock %}
 
-	<script src="/static/electrical/backboneapp/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="/static/electrical/backboneapp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="http://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
-	<script src="/static/electrical/backboneapp/bower_components/underscore/underscore-min.js"></script>
-	<script src="/static/electrical/backboneapp/bower_components/backbone/backbone-min.js"></script>
+  <script type="text/template" id="gauge-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <tr><td class="widget-head"><b><%= title %></b></td></tr>
+        <tr><td colspan="2"><div id="<%= tagId %>" style="margin-top:-20px;width:170px;height:170px"></div></td></tr>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="onecolumn-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+        <thead>
+          <tr><td class="widget-head"><%= title %></td></tr>
+        </thead>
+        <% } %>
+        <tbody id="<%= tagId %>" style="font-size:12px"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="onecolumn-table-item-template">
+    <% if (type === 'default') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <div><%= value %> <%= label %></div>
+        </td>
+      </tr>
+    <% } else if (type === 'general') { %>
+      <tr>
+        <td>
+          <div class="btn-group">
+            <% if (typeof run !== 'undefined' && run > 0) { %>
+              <button class="btn btn-xs btn-success" style="font-size:10px">Run</button>
+            <% } else if (typeof run !== 'undefined' && run <= 0) { %>
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button>
+            <% } else { %>
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+            <% } %>
+
+            <% if (typeof fault !== 'undefined' && fault === false) { %>        
+              <button class="btn btn-xs btn-default" style="font-size:10px">Fault</button>
+            <% } else if (typeof fault !== 'undefined' && fault === true) { %>  
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Fault</button>
+            <% } else { %>                                                      
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>    
+            <% } %>
+          </div>
+        </td>
+      </tr>
+    <% } else if (type === 'indicator') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <% if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
+          <% } else if (typeof value != 'undefined' && value === false) { %>
+            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
+          <% } else { %>
+            <div class="panel panel-success panel-indicator-na">#NA</div>
+          <% } %>
+        </td>
+      </tr>
+    <% } else if (type === 'indicatorInverse') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <% if (typeof value != 'undefined' && value === false) { %>
+            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
+          <% } else if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
+          <% } else { %>
+            <div class="panel panel-success panel-indicator-na">#NA</div>
+          <% } %>
+        </td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="threecolumns-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+          <thead>
+            <tr><td class="widget-head" colspan="3"><b><%= title %></b></td></tr>
+          </thead>
+        <% } %>
+        <tbody id="<%= tagId %>"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="threecolumns-table-item-template">
+    <% if (type === 'image') { %>
+      <tr>
+        <td colspan="3"><img src="<%= image.url %>" /></td>
+      </tr>
+    <% } else { %>
+      <tr style="font-size:12px">
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td style="text-align:right"><%= value %></td>
+        <td style="text-align:left;width:20%"><%= label %></td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="image-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+      <img src="<%= image.url %>" width="<%= image.w %>"/>
+    </li>
+  </script>
+
+  <script type="text/template" id="realtime-chart-container-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+      <div class="graph-button">
+        <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=<%= page %>&eq=<%= tagId %>';">
+          <span class="glyphicon glyphicon-save"></span> CSV
+        </button>
+        <!--<div class="btn-group pull-left" style="margin-left:50px">
+          <button class="btn btn-default btn-md btn-success btn-historical">Historical</button>
+          <button class="btn btn-default btn-md btn-default">Real Time</button>
+        </div>-->
+        <div class="btn-group pull-left" style="margin-left:50px">
+          <button class="btn btn-default btn-md btn-primary btn-pagination">First</button>
+          <button class="btn btn-default btn-md btn-primary btn-pagination">Prev</button>
+          <button class="btn btn-default btn-md btn-primary btn-pagination" disabled>Next</button>
+          <button class="btn btn-default btn-md btn-primary btn-pagination" disabled>Last</button>
+        </div>
+      </div>
+      <div id="<%= tagId %>" style="text-align:center;width:1200px;padding:30px"></div>
+    </li>
+  </script>
+
+  <script type="text/template" id="update-data-template">
+    <div class="alert page-notif" style="display:none;">
+      <div id="notif-status">
+        <span id="notif-content">Data updated</span>
+        <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+      </div>
+    </div>
+  </script>
+
+  <script src="/static/electrical/backboneapp/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/static/electrical/backboneapp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/static/electrical/backboneapp/bower_components/alloy-ui/build/aui/aui-min.js"></script>
+  <script src="/static/electrical/backboneapp/bower_components/underscore/underscore-min.js"></script>
+  <script src="/static/electrical/backboneapp/bower_components/backbone/backbone-min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/spin.js/spin.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
-  <script src="/static/electrical/backboneapp/vendors/gauge.min.js"></script>
   <script src="/static/electrical/backboneapp/vendors/justgage/raphael-2.1.4.min.js"></script>
   <script src="/static/electrical/backboneapp/vendors/justgage/justgage.js"></script>
+  <script src="/static/electrical/backboneapp/scripts/misc/constants.js"></script>
+  <script src="/static/electrical/backboneapp/scripts/misc/utility.js"></script>
+  <script src="/static/electrical/backboneapp/scripts/views/widgets.js"></script>
 
   {% block javascript %}{% endblock%}
 </body>
