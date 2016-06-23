@@ -10,7 +10,7 @@ node_modules/
 bower_components/
 adler-rabbitmq/
 dago/
-hawk/water/images/cctv.jpg
+hawk/static/water/images/cctv.jpg
 hawk/hawk/settings.py
 sewatama/hawk/settings.py
 sewatama/static/

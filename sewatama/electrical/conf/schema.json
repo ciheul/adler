@@ -2099,7 +2099,7 @@
         { "type": "default",
           "name": "FUEL CONS. RATE",
           "label": "L/h",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS" },
+          "value": "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS_RAT" },
         { "type": "default",
           "name": "REAL POWER",
           "label": "kW",
@@ -2108,7 +2108,7 @@
           "name": "SFC",
           "label": "L/kWH",
           "value": [
-            "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN01\\FUL_CONS_RAT",
             "SS\\HSD_NPN0\\RT4\\GEN01\\P_TOT"
           ],
           "grammar": "div" }
@@ -2126,7 +2126,7 @@
         { "type": "default",
           "name": "FUEL CONS. RATE",
           "label": "L/h",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS" },
+          "value": "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS_RAT" },
         { "type": "default",
           "name": "REAL POWER",
           "label": "kW",
@@ -2135,7 +2135,7 @@
           "name": "SFC",
           "label": "L/kWH",
           "value": [
-            "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN02\\FUL_CONS_RAT",
             "SS\\HSD_NPN0\\RT4\\GEN02\\P_TOT"
           ],
           "grammar": "div" }
@@ -2153,7 +2153,7 @@
         { "type": "default",
           "name": "FUEL CONS. RATE",
           "label": "L/h",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS" },
+          "value": "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS_RAT" },
         { "type": "default",
           "name": "REAL POWER",
           "label": "kW",
@@ -2162,7 +2162,7 @@
           "name": "SFC",
           "label": "L/kWH",
           "value": [
-            "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN03\\FUL_CONS_RAT",
             "SS\\HSD_NPN0\\RT4\\GEN03\\P_TOT"
           ],
           "grammar": "div" }
@@ -2180,7 +2180,7 @@
         { "type": "default",
           "name": "FUEL CONS. RATE",
           "label": "L/h",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS" },
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS_RAT" },
         { "type": "default",
           "name": "REAL POWER",
           "label": "kW",
@@ -2189,7 +2189,7 @@
           "name": "SFC",
           "label": "L/kWH",
           "value": [
-            "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS",
+            "SS\\HSD_NPN0\\RT4\\GEN04\\FUL_CONS_RAT",
             "SS\\HSD_NPN0\\RT4\\GEN04\\P_TOT"
           ],
           "grammar": "div" }

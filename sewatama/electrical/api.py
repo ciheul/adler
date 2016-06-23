@@ -38,15 +38,19 @@ def grammar_sum(detail, row):
 
 
 def grammar_div(detail, row):
-    total_value = 0
+    # total_value = 0
     try:
-        for tag_name in detail['value']:
-            if tag_name not in row['Tags']:
-                continue
-            total_value /= float(row['Tags'][tag_name]['Value'])
+        a = detail['value'][0]
+        b = detail['value'][1]
+
+        return float(row['Tags'][a]['Value']) / float(row['Tags'][b]['Value'])
+        # for tag_name in detail['value']:
+        #     if tag_name not in row['Tags']:
+        #         continue
+        #     total_value /= float(row['Tags'][tag_name]['Value'])
+        #     return total_value
     except ZeroDivisionError:
         return 'NaN'
-    return total_value
 
 
 def grammar_mean(detail, row):
@@ -213,6 +217,8 @@ def create_response(page):
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'div':
                         d['value'] = grammar_div(d, row)
+                        if d['value'] != 'NaN':
+                            d['value'] = "{:,.3f}".format(d['value'])
                         final_data.append(d)
 
                     # get mean value from several tag names

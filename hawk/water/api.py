@@ -1,6 +1,7 @@
 import simplejson as json
 import pymongo
 from django.http import HttpResponse, Http404, HttpResponseServerError
+from django.contrib.auth.decorators import login_required
 from pymongo import MongoClient
 
 from bson import Binary, Code
@@ -253,4 +254,10 @@ def trend_reject_api(request):
         'values': x
     }
     message = dumps(z)
+    return HttpResponse(message, content_type='application/json') 
+
+
+@login_required
+def latest(request):
+    message = dumps(list(db.glm.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
