@@ -58,15 +58,15 @@
       "data": [
         { "type": "default",
           "name": "OUTGOING #1",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_TM_ENERGY",
           "label": "kWH" },
         { "type": "default",
           "name": "GENSET",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_TM_ENERGY",
           "label": "kWH" },
         { "type": "default",
           "name": "AVG. LOSSES",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_TM_LOSS",
           "label": "%" }
       ]
     },
@@ -77,15 +77,15 @@
       "data": [
         { "type": "default",
           "name": "OUTGOING #1",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_LM_ENERGY",
           "label": "kWH" },
         { "type": "default",
           "name": "GENSET",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_LM_ENERGY",
           "label": "kWH" },
         { "type": "default",
           "name": "AVG. LOSSES",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_LM_LOSS",
           "label": "%" }
       ]
     },
@@ -96,7 +96,7 @@
       "data": [
         { "type": "default",
           "name": "CONSUMPTION",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_TM_FC",
           "label": "L" }
       ]
     },
@@ -107,7 +107,7 @@
       "data": [
         { "type": "default",
           "name": "CONSUMPTION",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_LM_FC",
           "label": "L" }
       ]
     },
@@ -122,19 +122,19 @@
           "label": "kW" },
         { "type": "default",
           "name": "THIS MONTH ENERGY",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_TM_ENERGY",
           "label": "kWH" },
         { "type": "default",
           "name": "FUEL",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_TM_FC",
           "label": "L" },
         { "type": "default",
           "name": "LAST MONTH ENERGY",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_LM_ENERGY",
           "label": "kWH" },
         { "type": "default",
           "name": "FUEL",
-          "value": "",
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_LM_FC",
           "label": "L" }
       ]
     },
@@ -439,7 +439,7 @@
         { "type": "default",
           "name": "TOTAL",
           "label": "kWH",
-          "value": "" }
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_TM_ENERGY" }
       ]
     },
     "energy-last-month": {
@@ -450,7 +450,7 @@
         { "type": "default",
           "name": "TOTAL",
           "label": "kWH",
-          "value": "" }
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_TM_ENERGY" }
       ]
     },
     "outgoing-energy-this-month": {
@@ -461,7 +461,7 @@
         { "type": "default",
           "name": "OUTGOING#1",
           "label": "kWH",
-          "value": "" }
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_LM_ENERGY" }
       ]
     },
     "outgoing-energy-last-month": {
@@ -472,7 +472,7 @@
         { "type": "default",
           "name": "OUTGOING#1",
           "label": "kWH",
-          "value": "" }
+          "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_LM_ENERGY" }
       ]
     }
   },
