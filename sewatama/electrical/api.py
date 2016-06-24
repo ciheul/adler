@@ -3,6 +3,7 @@
 import csv
 from datetime import datetime
 import os
+import os.path
 
 from bson.json_util import dumps
 import simplejson as json
@@ -12,6 +13,8 @@ import pytz
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseServerError
 from django.utils import timezone
+
+import ftpmapper
 
 
 db = pymongo.MongoClient().inetscada
@@ -238,6 +241,12 @@ def create_response(page):
         if detail['type'] == 'image':
             response.append(detail)
     return response
+
+
+@login_required
+def latest(request):
+    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
+    return HttpResponse(message, content_type='application/json') 
 
 
 @login_required
@@ -863,6 +872,57 @@ def report_sfc_outgoing(request):
 
 
 @login_required
-def latest(request):
-    message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+def file_browser_download(request):
+    """
+    Return a binary file.
+    """
+    if 'path' not in request.GET:
+        response = {
+            'success': -1,
+            'error_message': 'Parameters are not complete'
+        }
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json') 
+
+    # path must be the exact path with file in ftp server
+    path = request.GET['path']
+    filename = os.path.basename(path)
+
+    fm = ftpmapper.FtpMapper()
+    try:
+        # get file from ftp server
+        f = fm.download(path)
+    except Exception:
+        response = { 'success': -1, 'error_message': 'No such file' }
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json') 
+
+    # prepare response's header
+    response = HttpResponse(f, content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="%s"' % filename
+
+    return response
+
+
+@login_required
+def file_browser_get_directory(request):
+    """
+    Args:
+        path: directory path in ftp server
+    Returns:
+        a list of files/directories information.
+        ex: [{'name': name, 'type': 'file'}]
+    """
+    path = '/'
+    if 'path' in request.GET:
+        path = request.GET['path']
+
+    fm = ftpmapper.FtpMapper()
+    try:
+        response = fm.get_dir(path)
+    except Exception:
+        response = { 'success': -1, 'error_message': 'No such directory' }
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json') 
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 

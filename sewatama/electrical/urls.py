@@ -77,6 +77,9 @@ urlpatterns = [
 
     url(r'^api/report-sfc-outgoing/$', api.report_sfc_outgoing, name="report-sfc-outgoing-api"),
 
+    url(r'^api/filebrowser/$', api.file_browser_get_directory, name="filebrowser-api"),
+    url(r'^api/filebrowser/download/$', api.file_browser_download, name="filebrowser-api"),
+
     url(r'^api/latest/$', api.latest, name="latest"),
 
     url(r'^download/trend/$', api.download_trend_csv, name="csv-trend"),
