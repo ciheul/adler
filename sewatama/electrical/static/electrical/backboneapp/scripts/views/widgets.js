@@ -375,23 +375,23 @@ app.FileBrowserView = Backbone.View.extend({
 
   getDir: function(url, data) {
     var that = this;
+
+    var spinner = new Spinner().spin();
+    $('#file-browser-table').append(spinner.el);
+
     YUI().use(
       'aui-datatable',
       function(Y) {
-        var spinner = new Spinner().spin();
-        $('#file-browser-table').append(spinner.el);
-
         $.ajax({
           url: url,
           data: data,
           method: 'GET',
           // seconds
-          timeout: 1000,
+          // timeout: 30000,
           success: function(response) {
             // remove spinner
             $('#file-browser-table').empty();
 
-            console.log(response);
             if (response.success === -1) {
               $('#file-browser-table').append('<p>' + response.error_message + '</p>');
               return;
@@ -408,6 +408,7 @@ app.FileBrowserView = Backbone.View.extend({
             $('#file-browser-table').empty();
             if (response.statusText === 'timeout') {
               $('#file-browser-table').append('<p style="margin:0">Timeout</p>');
+              $('#file-browser-table').append(response.statusText);
             }
           }
         });

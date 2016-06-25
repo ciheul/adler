@@ -1,10 +1,9 @@
 import ftplib
 import StringIO
 
-import xlwt
 
-
-HOST = 'localhost'
+# HOST = 'localhost'
+HOST = '10.212.0.10'
 
 class FtpMapper:
     def __init__(self):
