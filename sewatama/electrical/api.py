@@ -917,7 +917,13 @@ def file_browser_get_directory(request):
     if 'path' in request.GET:
         path = request.GET['path']
 
-    fm = ftpmapper.FtpMapper()
+    try:
+        fm = ftpmapper.FtpMapper()
+    except Exception:
+        response = { 'success': -1, 'error_message': 'Technical error occurs' }
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json') 
+
     try:
         response = fm.get_dir(path)
     except Exception:

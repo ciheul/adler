@@ -307,3 +307,111 @@ app.RealTimeChartView = Backbone.View.extend({
     });
   }
 });
+
+app.FileBrowserView = Backbone.View.extend({
+  initialize: function() {
+    this.homeDir = this.model.data.path;
+    this.currDir = this.model.data.path;
+  },
+
+  template: _.template($('#file-browser-template').html()),
+
+  events: {
+    'click #file-browser-home-btn': 'handleHome',
+    'click #file-browser-back-btn': 'handleBack',
+    'click .file-browser-folder': 'handleFolder'
+  },
+
+  handleHome: function() {
+    $('#file-browser-table').empty();
+    this.currDir = this.homeDir;
+    var data = {path: this.homeDir};
+    this.getDir(this.model.url, data);
+    this.updateCurrentDir();
+  },
+
+  handleBack: function() {
+    if (this.currDir === this.homeDir) { return; }
+
+    $('#file-browser-table').empty();
+    this.currDir = this.currDir.substring(0, this.currDir.lastIndexOf('/'));
+    var data = {path: this.currDir};
+    this.getDir(this.model.url, data);
+    this.updateCurrentDir();
+  },
+
+  handleFolder: function(e) {
+    $('#file-browser-table').empty();
+    this.currDir = this.currDir + '/' + $(e.currentTarget).text();
+    var data = {path: this.currDir};
+    this.getDir(this.model.url, data);
+    this.updateCurrentDir();
+  },
+
+  updateCurrentDir: function() {
+    $('#file-browser-current-dir').text(this.currDir);
+  },
+
+  render: function() {
+    this.$el.append(this.template());
+    this.getDir(this.model.url, this.model.data);
+    this.updateCurrentDir();
+  },
+
+  modifyDirAsLink: function(data) {
+    if (data === undefined) {return};
+    var that = this;
+    data.forEach(function(d) {
+      if (d.type === 'folder') {
+        d.Name = '<a href="#" class="file-browser-folder">' + d.Name + '</a>';
+      }
+
+      if (d.type === 'file') {
+        d.Name = '<a href="' + that.model.url + 'download/' + '?path=' + that.currDir + '/' + d.Name + '">' + d.Name + '</a>';
+      }
+    });
+    return data;
+  },
+
+  getDir: function(url, data) {
+    var that = this;
+    YUI().use(
+      'aui-datatable',
+      function(Y) {
+        var spinner = new Spinner().spin();
+        $('#file-browser-table').append(spinner.el);
+
+        $.ajax({
+          url: url,
+          data: data,
+          method: 'GET',
+          // seconds
+          timeout: 1000,
+          success: function(response) {
+            // remove spinner
+            $('#file-browser-table').empty();
+
+            console.log(response);
+            if (response.success === -1) {
+              $('#file-browser-table').append('<p>' + response.error_message + '</p>');
+              return;
+            }
+
+            var columns = [{key: 'Name', allowHTML: true}];
+            var data = that.modifyDirAsLink(response);
+    
+            new Y.DataTable
+              .Base({ columnset: columns, recordset: data })
+              .render('#file-browser-table');
+          },
+          error: function(response) {
+            $('#file-browser-table').empty();
+            if (response.statusText === 'timeout') {
+              $('#file-browser-table').append('<p style="margin:0">Timeout</p>');
+            }
+          }
+        });
+      }
+    );
+  }
+});

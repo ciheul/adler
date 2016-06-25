@@ -26,6 +26,7 @@
     "spin": "^1.1.6",
     "spin.js": "^2.3.2",
     "highcharts": "^4.2.5",
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "datatables": "^1.10.12"
   }
 }
