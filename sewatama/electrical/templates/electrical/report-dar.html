@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <div class="row">
+      <div class="col-md-5"><h3>Report</h3></div>
+      <div class="col-md-6">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+            <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">DATA UPDATED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li><a href="{% url 'report-sfc-outgoing' %}">Overview Outgoing #1</a></li>
+      <li class="active"><a href="#"><b>DAR</b></a></li>
+    </ul>
+
+    <br>
+
+    <div id="grid-0" class="gridster">
+      <ul></ul>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script>
+    var fileBrowserView = new app.FileBrowserView({
+      el: $('#grid-0 > ul'),
+      model: {
+        url: '/electrical/api/filebrowser/',
+        data: {'path': 'HSD_NPN0'}
+      } 
+    });
+    fileBrowserView.render();
+
+    var gridster = [];
+    
+    gridster[0] = $("#grid-0 ul")
+      .gridster({
+        namespace: '#grid-0',
+        widget_margins: [5, 5],
+        widget_base_dimensions: [90, 23],
+        min_cols: 12,
+        max_cols: 12,
+        max_size_x: 12})
+      .data('gridster')
+      .disable();
+  </script>
+{% endblock %}

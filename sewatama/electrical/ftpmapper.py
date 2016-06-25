@@ -48,4 +48,4 @@ class FtpMapper:
         if 'd' not in s[0]:
             type = 'file'
 
-        self.result.append({'name': s[8], 'type': type})
+        self.result.append({'Name': s[8], 'type': type})

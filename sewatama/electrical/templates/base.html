@@ -10,6 +10,8 @@
   <!-- <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/alloy&#45;ui/build/aui&#45;css/css/bootstrap.min.css" /> -->
   <link rel="stylesheet" href="/static/electrical/backboneapp/styles/electrical.css" />
   <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+  <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/datatables/media/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/datatables/media/css/dataTables.bootstrap.min.css" />
   <link rel="stylesheet" href="/static/electrical/backboneapp/bower_components/leaflet/dist/leaflet.css" />
 </head>
 
@@ -181,6 +183,17 @@
     </li>
   </script>
 
+  <script type="text/template" id="file-browser-template">
+    <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+      <div style="margin: 40px 0px 80px 40px">
+        <button id="file-browser-home-btn" class="btn btn-default btn-md btn-primary pull-left"><span class="glyphicon glyphicon-home"></span></button>
+        <button id="file-browser-back-btn" class="btn btn-default btn-md btn-primary pull-left" style="margin-left:20px"><span class="glyphicon glyphicon-arrow-left"></span></button>
+      </div>
+      <div><h3 id="file-browser-current-dir" class="pull-left" style="margin-left:40px;width:100%;text-align:left"></h3></div>
+      <div id="file-browser-table" style="margin:0px 40px 0px 40px;text-align:left"></div>
+    </li>
+  </script>
+
   <script type="text/template" id="update-data-template">
     <div class="alert page-notif" style="display:none;">
       <div id="notif-status">
@@ -195,6 +208,7 @@
   <script src="/static/electrical/backboneapp/bower_components/alloy-ui/build/aui/aui-min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/underscore/underscore-min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/backbone/backbone-min.js"></script>
+  <script src="/static/electrical/backboneapp/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/spin.js/spin.js"></script>
   <script src="/static/electrical/backboneapp/bower_components/spin.js/jquery.spin.js"></script>

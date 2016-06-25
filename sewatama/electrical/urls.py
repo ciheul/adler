@@ -44,6 +44,7 @@ urlpatterns = [
     url(r'^trend-unit-4/$', views.trend_unit_4, name="trend-unit-4"),
 
     url(r'^report-sfc-outgoing/$', views.report_sfc_outgoing, name="report-sfc-outgoing"),
+    url(r'^report-dar/$', views.report_dar, name="report-dar"),
 
     ##### API #####
     url(r'^api/overview-outgoing-1/$', api.electrical_overview_outgoing_1,

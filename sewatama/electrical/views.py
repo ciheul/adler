@@ -103,3 +103,8 @@ def trend_unit_4(request):
 @login_required
 def report_sfc_outgoing(request):
     return render(request, 'report-sfc-outgoing.html')
+
+
+@login_required
+def report_dar(request):
+    return render(request, 'report-dar.html')
