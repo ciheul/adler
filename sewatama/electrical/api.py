@@ -238,12 +238,15 @@ def create_response(page):
                     tag_name = d['value']
                     d['value'] = '#NA'
 
-                    row_report = db.ss_report.find().sort("_id", -1).limit(1)[0]
-                    if tag_name in row['Tags']:
-                        d['value'] = \
-                            "{:,.2f}".format(row_report['Tags'][tag_name]['Value'])
-                        if d['value'] == 'nan':
-                            d['value'] = '#NA'
+                    try:
+                        row_report = db.ss_reportxxx.find().sort("_id", -1).limit(1)[0]
+                        if tag_name in row['Tags']:
+                            d['value'] = \
+                                "{:,.2f}".format(row_report['Tags'][tag_name]['Value'])
+                            if d['value'] == 'nan':
+                                d['value'] = '#NA'
+                    except Exception:
+                        pass
                     final_data.append(d)
 
             # set tag_id inside detail
