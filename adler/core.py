@@ -45,7 +45,7 @@ class INetSCADASubscriber(MongoConnectorMixin):
         d = json.loads(data.body)
         d[u'SentDatetime'] = dateutil.parser.parse(d['SentTimestamp'])
 
-        print d['Name'].split('\\')[0]
+        print d['Name']
 
         if d['Name'].split('\\')[0] == GLM:
             # insert to mongodb. success or error calls on_response callback

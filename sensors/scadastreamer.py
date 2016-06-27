@@ -8,6 +8,8 @@ import simplejson as json
 
 
 KEY = 'inetscada'
+SS_REPORT_KEY = 'ss_report'
+
 GLM_PREFIX = 'GLM\SWRO_001\RT01'
 INTERVAL_TIME = 2
 
@@ -57,11 +59,19 @@ def publish_message_from_array():
 def publish_message_from_dump():
     sources = ['glm', 'ss', 'ss_report']
     # path = 'dump/%s.json' % (sources[random.randint(0, 1)])
-    path = 'dump/%s.json' % (sources[2])
+
+    dump = sources[random.randint(0, 2)]
+    path = 'dump/%s.json' % (dump)
 
     f = open(path, 'r')
     m = f.read()
-    channel.basic_publish(exchange='', routing_key=KEY, body=m)
+
+    if dump == 'glm' or dump == 'ss':
+        channel.basic_publish(exchange='', routing_key=KEY, body=m)
+
+    if dump == 'ss_report':
+        channel.basic_publish(exchange='', routing_key=SS_REPORT_KEY, body=m)
+
     print m
 
 
