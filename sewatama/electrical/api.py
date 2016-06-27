@@ -2,6 +2,7 @@
 
 import csv
 from datetime import datetime
+import math
 import os
 import os.path
 
@@ -201,7 +202,8 @@ def create_response(page):
                         tag_name = d['value']
                         d['value'] = '#NA'
                         if tag_name in row['Tags']:
-                            if tag_id == 'power-plant-info' and d['name'] == 'TOTAL POWER':
+                            if tag_id == 'power-plant-info' \
+                                    and d['name'] == 'TOTAL POWER':
                                 d['value'] = \
                                     "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
                             elif tag_id == 'total-power' and d['name'] == 'TOTAL':
@@ -232,6 +234,18 @@ def create_response(page):
                 if d['type'] == 'image':
                     final_data.append(d)
 
+                if d['type'] == 'report':
+                    tag_name = d['value']
+                    d['value'] = '#NA'
+
+                    row_report = db.ss_report.find().sort("_id", -1).limit(1)[0]
+                    if tag_name in row['Tags']:
+                        d['value'] = \
+                            "{:,.2f}".format(row_report['Tags'][tag_name]['Value'])
+                        if d['value'] == 'nan':
+                            d['value'] = '#NA'
+                    final_data.append(d)
+
             # set tag_id inside detail
             detail['tagId'] = tag_id
             detail['data'] = final_data
@@ -246,6 +260,12 @@ def create_response(page):
 @login_required
 def latest(request):
     message = dumps(list(db.ss.find().sort("_id",-1).limit(1)))
+    return HttpResponse(message, content_type='application/json') 
+
+
+@login_required
+def latest_report(request):
+    message = dumps(list(db.ss_report.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
 
 

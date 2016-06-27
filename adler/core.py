@@ -17,6 +17,7 @@ QUEUE = 'inetscada'
 
 GLM = 'GLM'
 SEWATAMA = 'SS'
+REPORT = 'REPORT'
 
 class INetSCADASubscriber(MongoConnectorMixin):
     def __init__(self):
@@ -50,9 +51,13 @@ class INetSCADASubscriber(MongoConnectorMixin):
             # insert to mongodb. success or error calls on_response callback
             self.db.glm.insert(d, callback=self.on_response)
 
-        if d['Name'].split('\\')[0] == SEWATAMA:
+        if d['Name'].split('\\')[0] == SEWATAMA and d['Name'].split('\\')[2] != REPORT:
             # insert to mongodb. success or error calls on_response callback
             self.db.ss.insert(d, callback=self.on_response)
+
+        if d['Name'].split('\\')[0] == SEWATAMA and d['Name'].split('\\')[2] == REPORT:
+            # insert to mongodb. success or error calls on_response callback
+            self.db.ss_report.insert(d, callback=self.on_response)
 
     def on_response(self, result, error):
         print 'result:', result

@@ -82,6 +82,7 @@ urlpatterns = [
     url(r'^api/filebrowser/download/$', api.file_browser_download, name="filebrowser-api"),
 
     url(r'^api/latest/$', api.latest, name="latest"),
+    url(r'^api/latest/report/$', api.latest_report, name="latest-report"),
 
     url(r'^download/trend/$', api.download_trend_csv, name="csv-trend"),
 ]
