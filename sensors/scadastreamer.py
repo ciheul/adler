@@ -55,8 +55,9 @@ def publish_message_from_array():
 
 
 def publish_message_from_dump():
-    sources = ['glm', 'sewatama']
-    path = 'dump/%s.json' % (sources[random.randint(0, 1)])
+    sources = ['glm', 'ss', 'ss_report']
+    # path = 'dump/%s.json' % (sources[random.randint(0, 1)])
+    path = 'dump/%s.json' % (sources[2])
 
     f = open(path, 'r')
     m = f.read()
