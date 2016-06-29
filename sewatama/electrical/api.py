@@ -240,8 +240,8 @@ def create_response(page):
                     d['value'] = '#NA'
 
                     try:
-                        row_report = db.ss_reportxxx.find().sort("_id", -1).limit(1)[0]
-                        if tag_name in row['Tags']:
+                        row_report = db.ss_report.find().sort("_id", -1).limit(1)[0]
+                        if tag_name in row_report['Tags']:
                             d['value'] = \
                                 "{:,.2f}".format(row_report['Tags'][tag_name]['Value'])
                             if d['value'] == 'nan':
