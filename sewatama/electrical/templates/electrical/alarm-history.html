@@ -17,8 +17,8 @@
     </div>
 
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#"><b>Active</b></a></li>
-      <li><a href="{% url 'alarm-history' %}">History</a></li>
+      <li><a href="{% url 'alarm-summary' %}">Active</a></li>
+      <li class="active"><a href="#"><b>History</b></a></li>
     </ul>
 
     <br>
@@ -27,6 +27,7 @@
             <thead>
               <tr>
                 <th>Class</th>
+                <th>Timestamp</th>
                 <th>Device\Tagname</th>
                 <th>Description</th>
               </tr>
@@ -67,14 +68,16 @@
   $('#example').DataTable({
     bFilter: false,
     bLengthChange: false,
-    bSort: false,
-    paging: false,
+    {# bSort: false, #}
+    {# paging: false, #}
+    iDisplayLength: 20,
     ajax: {
-      url: '/electrical/api/alarm/summary/',
+      url: '/electrical/api/alarm/history/',
       type: 'GET'
     },
     columns: [
       { data: 'class', className: 'dt-left' },
+      { data: 'timestamp', className: 'dt-left' },
       { data: 'alarm_id', className: 'dt-left' },
       { data: 'description', className: 'dt-left' },
     ]
