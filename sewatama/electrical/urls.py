@@ -46,6 +46,10 @@ urlpatterns = [
     url(r'^report-sfc-outgoing/$', views.report_sfc_outgoing, name="report-sfc-outgoing"),
     url(r'^report-dar/$', views.report_dar, name="report-dar"),
 
+    url(r'^alarm/summary/$', views.alarm_summary, name="alarm-summary"),
+    url(r'^alarm/history/$', views.alarm_history, name="alarm-history"),
+    url(r'^alarm/event/$', views.alarm_event, name="alarm-event"),
+
     ##### API #####
     url(r'^api/overview-outgoing-1/$', api.electrical_overview_outgoing_1,
         name="electrical-overview-outgoing-1-api"),
@@ -73,13 +77,22 @@ urlpatterns = [
         name="historical-trend-api"),
 
     # real time trend
-    url(r'^api/trend-unit-1/cylinder-exhause-temperature/$', api.trend_unit_chart),
+    url(r'^api/trend-unit-1/cylinder-exhause-temperature/$',
+        api.trend_unit_chart),
+
     # url(r'^api/(?P<trend-unit>\d+)/(?P<chart>\d+)/$', api.trend_unit_chart),
 
-    url(r'^api/report-sfc-outgoing/$', api.report_sfc_outgoing, name="report-sfc-outgoing-api"),
+    url(r'^api/report-sfc-outgoing/$', api.report_sfc_outgoing,
+        name="report-sfc-outgoing-api"),
 
-    url(r'^api/filebrowser/$', api.file_browser_get_directory, name="filebrowser-api"),
-    url(r'^api/filebrowser/download/$', api.file_browser_download, name="filebrowser-api"),
+    url(r'^api/filebrowser/$', api.file_browser_get_directory,
+        name="filebrowser-api"),
+    url(r'^api/filebrowser/download/$', api.file_browser_download,
+        name="filebrowser-api"),
+
+    url(r'^api/alarm/summary/$', api.alarm_summary, name="alarm-summary-api"),
+    url(r'^api/alarm/history/$', api.alarm_history, name="alarm-history-api"),
+    url(r'^api/alarm/event/$', api.alarm_event, name="alarm-event-api"),
 
     url(r'^api/latest/$', api.latest, name="latest"),
     url(r'^api/latest/report/$', api.latest_report, name="latest-report"),

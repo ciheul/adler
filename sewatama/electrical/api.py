@@ -16,6 +16,7 @@ from django.http import HttpResponse, Http404, HttpResponseServerError
 from django.utils import timezone
 
 import ftpmapper
+import mssqlmapper
 
 
 db = pymongo.MongoClient().inetscada
@@ -955,3 +956,20 @@ def file_browser_get_directory(request):
                             content_type='application/json') 
 
     return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
+def alarm_summary(request):
+    ms = mssqlmapper.MssqlMapper()
+    response = { 'data': ms.get_active_alarm() }
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
+def alarm_history(request):
+    pass
+
+
+@login_required
+def alarm_event(request):
+    pass

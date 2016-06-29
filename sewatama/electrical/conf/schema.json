@@ -436,7 +436,7 @@
       "title": "ENERGY THIS MONTH",
       "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
       "data": [
-        { "type": "default",
+        { "type": "report",
           "name": "TOTAL",
           "label": "kWH",
           "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_TM_ENERGY" }
@@ -447,7 +447,7 @@
       "title": "ENERGY LAST MONTH",
       "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
       "data": [
-        { "type": "default",
+        { "type": "report",
           "name": "TOTAL",
           "label": "kWH",
           "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_TM_ENERGY" }
@@ -458,7 +458,7 @@
       "title": "ENERGY THIS MONTH",
       "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
       "data": [
-        { "type": "default",
+        { "type": "report",
           "name": "OUTGOING#1",
           "label": "kWH",
           "value": "SS\\HSD_NPN0\\REPORT\\OUT01_OUT_LM_ENERGY" }
@@ -469,7 +469,7 @@
       "title": "ENERGY LAST MONTH",
       "grid": { "x": 3, "y": 1, "w": 2, "h":3 },
       "data": [
-        { "type": "default",
+        { "type": "report",
           "name": "OUTGOING#1",
           "label": "kWH",
           "value": "SS\\HSD_NPN0\\REPORT\\OUT01_GEN_LM_ENERGY" }

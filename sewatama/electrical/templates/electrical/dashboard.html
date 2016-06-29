@@ -18,10 +18,6 @@
 
     </div>
     <hr />
-
-    <h4><!--span class="glyphicon glyphicon-bell"></span-->Alarm</h4>
-    <br>
-    <div id="myDataTable"></div>
   </div>
 </div>
 {% endblock %}
@@ -40,43 +36,5 @@
     id: 'winnuayi.p1l11l5e',
     accessToken: 'pk.eyJ1Ijoid2lubnVheWkiLCJhIjoiY2lrM3A0cWl4MDAwOHY0a3RzOWx3MWQ2ZyJ9.oBxFuNtCJG68Cuu3DK5RWA'
   }).addTo(map);
-  
-  YUI().use(
-    'aui-datatable',
-    function(Y) {
-      var columns = ['Date', 'Time', 'Equipment', 'Message'];
-  
-      var data = [
-        {
-          Date: '2015-06-04',
-          Time: '16:33:48',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        },
-        {
-          Date: '2015-06-12',
-          Time: '22:58:11',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        },
-        {
-          Date: '2015-06-18',
-          Time: '00:44:23',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        },
-        {
-          Date: '2015-06-22',
-          Time: '13:22:14',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        }
-      ];
-  
-      new Y.DataTable
-        .Base({ columnset: columns, recordset: data})
-        .render('#myDataTable');
-    }
-  );
 </script>
 {% endblock %}

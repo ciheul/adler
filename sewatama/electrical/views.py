@@ -108,3 +108,18 @@ def report_sfc_outgoing(request):
 @login_required
 def report_dar(request):
     return render(request, 'report-dar.html')
+
+
+@login_required
+def alarm_summary(request):
+    return render(request, 'alarm-summary.html')
+
+
+@login_required
+def alarm_history(request):
+    return render(request, 'alarm-history.html')
+
+
+@login_required
+def alarm_event(request):
+    return render(request, 'alarm-event.html')
