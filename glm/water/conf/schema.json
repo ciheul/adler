@@ -1,0 +1,248 @@
+{
+  "live-overview": {
+    "image-overview": {
+      "type": "image",
+      "image": {
+        "url": "/static/water/images/00_OVERVIEW.png",
+        "w": "90%",
+        "h": "90%"
+      },
+      "grid": {
+        "x": 1, "y": 1, "w": 10, "h": 22,
+        "style": "line-height: 650px"
+      }
+    },
+    "swro-feed-flow": {
+      "type": "gauge",
+      "title": "SWRO FEED FLOW",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "m3/h",
+      "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "circular-pump-flow": {
+      "type": "gauge",
+      "title": "CIRC. PUMP FLOW",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "m3/h",
+      "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "circular-flow-percentage": {
+      "type": "gauge",
+      "title": "CIRC. FLOW PERCENTAGE",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "%",
+      "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "membrane-inlet-pressure": {
+      "type": "gauge",
+      "title": "MEMBRANE INLET PRESSURE",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Bar",
+      "grid": { "x": 7, "y": 23, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "product-tds": {
+      "type": "gauge",
+      "title": "PRODUCT TDS",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "ppm",
+      "grid": { "x": 9, "y": 23, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "raw-water-tds": {
+      "type": "gauge",
+      "title": "RAW WATER TDS",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "ppm",
+      "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "product-ph": {
+      "type": "gauge",
+      "title": "PRODUCT PH",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "",
+      "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "transfer-flow-rate": {
+      "type": "gauge",
+      "title": "TRANSFER FLOW RATE",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "",
+      "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "transfer-summary": {
+      "type": "threeColumnsTable",
+      "title": "TRANSFER SUMMARY",
+      "grid": { "x": 7, "y": 30, "w": 4, "h":7 },
+      "data": [
+        { "type": "default",
+          "name": "VOLUME TODAY",
+          "label": "m3",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+        { "type": "default",
+          "name": "VOLUME TOTALIZER",
+          "label": "m3",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+        { "type": "default",
+          "name": "PRESSURE",
+          "label": "Bar",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+      ]
+    }
+  },
+  "live-intake": {
+    "image-overview": {
+      "type": "image",
+      "image": {
+        "url": "/static/water/images/01_INTAKE.png",
+        "w": "90%",
+        "h": "90%"
+      },
+      "grid": {
+        "x": 1, "y": 1, "w": 8, "h": 12,
+        "style": "line-height: 350px"
+      }
+    },
+    "seawell-pump-frequency": {
+      "title": "SEAWELL PUMP FREQUENCY",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Hz",
+      "grid": { "x": 1, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "seawell-pump-pressure": {
+      "title": "SEAWELL PUMP PRESSURE",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Bar",
+      "grid": { "x": 3, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "tds-raw-water": {
+      "title": "TDS RAW WATER",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "ppm",
+      "grid": { "x": 5, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "ph-raw-meter": {
+      "title": "PH RAW WATER",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "",
+      "grid": { "x": 7, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "seawell-pump": {
+      "type": "twoColumnsTable",
+      "title": "SEAWELL PUMP",
+      "grid": { "x": 1, "y": 24, "w": 4, "h": 4 },
+      "data": [
+        { "type": "running",
+          "name": "RUNNING MODE",
+          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+        { "type": "general",
+          "name": "STATUS",
+          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
+          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+      ]
+    },
+    "raw-water-tank": {
+      "title": "RAW WATER TANK",
+      "type": "fourIndicators",
+      "columns": 2,
+      "grid": { "x": 5, "y": 24, "w": 2, "h": 4 },
+      "data": [
+        { "text": "LO LO",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+        { "text": "HI",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+        { "text": "LO",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+        { "text": "HI HI",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+      ]
+    },
+    "sea-water-level": {
+      "title": "SEA WATER LEVEL",
+      "type": "oneColumnTable",
+      "grid": { "x": 7, "y": 24, "w": 2, "h": 4 },
+      "data": [
+        { "type": "indicator",
+          "trueText": "HIGH",
+          "falseText": "LOW",
+          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" }
+      ]
+    }
+  },
+  "live-pretreatment": {
+    "image-pretreatment": {
+      "type": "image",
+      "image": {
+        "url": "/static/water/images/02_PRETREATMENT.png",
+        "w": "90%",
+        "h": "90%"
+      },
+      "grid": {
+        "x": 1, "y": 1, "w": 8, "h": 12,
+        "style": "line-height: 350px"
+      }
+    },
+    "filter-pump-frequency": {
+      "title": "FILTER PUMP FREQUENCY",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Hz",
+      "grid": { "x": 1, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "filter-pump-pressure": {
+      "title": "FILTER PUMP PRESSURE",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Bar",
+      "grid": { "x": 3, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "mm-filter-pressure-1": {
+      "title": "MM FILTER PRESSURE #1",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Bar",
+      "grid": { "x": 5, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    },
+    "mm-filter-pressure-2": {
+      "title": "MM FILTER PRESSURE #2",
+      "type": "gauge",
+      "minValue": 0,
+      "maxValue": 15000,
+      "label": "Bar",
+      "grid": { "x": 7, "y": 17, "w": 2, "h":7 },
+      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+    }
+  }
+}

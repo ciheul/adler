@@ -21,6 +21,16 @@ def cctv(request):
 
 
 @login_required
+def live_overview(request):
+    return render(request, 'live-overview.html')
+
+
+@login_required
+def live_intake(request):
+    return render(request, 'live-intake.html')
+
+
+@login_required
 def live_pretreatment(request):
     return render(request, 'live-pretreatment.html')
 

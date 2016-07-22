@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+
+    <div class="row">
+      <div class="col-md-5"><h3>Live</h3></div>
+      <div class="col-md-6">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+            <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">DATA UPDATED</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <h3 id="notif-log" style="font-size:14px"></h3>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#"><b>Overview</b></a></li>
+      <li><a href="{% url 'live-intake' %}">Intake</a></li>
+      <li><a href="{% url 'live-pretreatment' %}">Pretreatment</a></li>
+      <li><a href="{% url 'live-osmosis' %}">Reverse Osmosis Process</a></li>
+      <li><a href="{% url 'live-product' %}">Product</a></li>
+      <li><a href="{% url 'live-reject' %}">Reject</a></li>
+      <li><a href="{% url 'live-energy' %}">Energy</a></li>
+    </ul>
+
+    <br>
+
+    <div id="grid-0" class="gridster">
+      <ul></ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  var app = app || {};
+  
+  app.DashboardView = Backbone.View.extend({
+    initialize: function() {
+      app.widgets = new app.WidgetList();
+      app.widgets.url = '/water/api/live-overview/';
+  
+      // TODO synchronous xmlhttprequest is BAD
+      app.widgets.fetch({ async: false });
+      this.render();
+
+      var that = this;
+      setInterval(function() {
+        app.widgets.fetch({ async: false });
+        $('.gridster > ul').empty();
+        that.render();
+  
+        $('.page-notif').fadeIn();
+        $('.page-notif').delay(3000).fadeOut();
+      }, app.constants.DATA_UPDATE_INTERVAL);
+    },
+  
+    render: function() {
+      app.widgets.each(function(widget) {
+        if (widget.get('type') === 'gauge') {
+          var widgetView = new app.GaugeView({ model: widget });
+          $('#grid-0 > ul').append(widgetView.render().el.firstElementChild);
+          widgetView.bindGauge(widget.toJSON());
+        }
+  
+        if (widget.get('type') === 'image') {
+          var widgetView = new app.ImageView({
+            el: $('#grid-0 > ul'),
+            model: widget.toJSON()
+          });
+          widgetView.render();
+        }
+
+        if (widget.get('type') === 'threeColumnsTable') {
+          var widgetView = new app.ThreeColumnsTableView({
+            el: $('#grid-0 > ul'),
+            model: widget.toJSON()
+          });
+          widgetView.render();
+        }
+  
+        if (widget.get('type') === 'oneColumnTable') {
+          var widgetView = new app.OneColumnTableView({
+            el: $('#grid-2 > ul'),
+            model: widget.toJSON()
+          });
+          widgetView.render();
+        }
+      });
+    }
+  });
+  
+  app.dashboardView = new app.DashboardView();
+  
+  
+  var gridster = [];
+  
+  gridster[0] = $("#grid-0 ul")
+    .gridster({
+      namespace: '#grid-0',
+      widget_margins: [5, 5],
+      widget_base_dimensions: [90, 20],
+      min_cols: 12,
+      max_cols: 12,
+      max_size_x: 12})
+    .data('gridster')
+    .disable();
+</script>
+{% endblock %}

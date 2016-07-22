@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Industrial Internet of Things</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="/static/water/backboneapp/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+  <link href="http://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet"></link>
+	<link rel="stylesheet" href="/static/water/backboneapp/styles/electrical.css" />
+	<!-- <link rel="stylesheet" href="/static/water/backboneapp/styles/water.css" /> -->
+  {% block css %}{% endblock %}
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'dashboard' %}">INetSCADA</a>
+        <a class="navbar-brand" href="{% url 'dashboard' %}">Gapura Liqua Mandiri</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!--ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-bell"></a></span></li>
+
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+        </ul-->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" style="color: white;">
+              <i class="glyphicon glyphicon-bell"></i>
+              <i class="glyphicon glyphicon-triangle-bottom"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-alerts" style="max-width: 400px;width: 400px;">
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-comment fa-fw"></i> New Comment <span class="pull-right text-muted small">4 minutes ago </span>
+                  </div>
+                </a>
+              </li>                                                                                                       <li class="divider"></li>                                                                                   <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-twitter fa-fw"></i> 3 New <span class="pull-right text-muted small">12 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-envelope fa-fw"></i> Message Sent <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-tasks fa-fw"></i> New Task <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-upload fa-fw"></i> Server Rebooted <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+              <a class="text-center" href="{% url 'notifications' %}">
+                  <strong>See All Alerts</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-alerts -->
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" style="">
+              <i class="glyphicon glyphicon-user" style=""></i>
+              <i class="glyphicon glyphicon-triangle-bottom" style=""></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user" style="">
+              <li><a href="{% url 'profile' %}"><i class="glyphicon glyphicon-user"></i> User Profile</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+            </ul>
+            <!-- /.dropdown-user -->
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <script type="text/template" id="gauge-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <tr><td class="widget-head"><b><%= title %></b></td></tr>
+        <tr><td colspan="2"><div id="<%= tagId %>" style="margin-top:-20px;width:170px;height:170px"></div></td></tr>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="onecolumn-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+        <thead>
+          <tr><td class="widget-head"><%= title %></td></tr>
+        </thead>
+        <% } %>
+        <tbody id="<%= tagId %>" style="font-size:12px"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="onecolumn-table-item-template">
+    <% if (type === 'default') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <div><%= value %> <%= label %></div>
+        </td>
+      </tr>
+    <% } else if (type === 'general') { %>
+      <tr>
+        <td>
+          <div class="btn-group">
+            <% if (typeof run !== 'undefined' && run > 0) { %>
+              <button class="btn btn-xs btn-success" style="font-size:10px">Run</button>
+            <% } else if (typeof run !== 'undefined' && run <= 0) { %>
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button>
+            <% } else { %>
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+            <% } %>
+
+            <% if (typeof fault !== 'undefined' && fault === false) { %>        
+              <button class="btn btn-xs btn-default" style="font-size:10px">Fault</button>
+            <% } else if (typeof fault !== 'undefined' && fault === true) { %>  
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Fault</button>
+            <% } else { %>                                                      
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>    
+            <% } %>
+          </div>
+        </td>
+      </tr>
+    <% } else if (type === 'indicator') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <% if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
+          <% } else if (typeof value != 'undefined' && value === false) { %>
+            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
+          <% } else { %>
+            <div class="panel panel-success panel-indicator-na">#NA</div>
+          <% } %>
+        </td>
+      </tr>
+    <% } else if (type === 'indicatorInverse') { %>
+      <tr>
+        <td>
+          <div><%= name %></div>
+          <% if (typeof value != 'undefined' && value === false) { %>
+            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
+          <% } else if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
+          <% } else { %>
+            <div class="panel panel-success panel-indicator-na">#NA</div>
+          <% } %>
+        </td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="twocolumns-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+          <thead>
+            <tr><td class="widget-head" colspan="2"><b><%= title %></b></td></tr>
+          </thead>
+        <% } %>
+        <tbody id="<%= tagId %>"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="twocolumns-table-item-template">
+    <% if (type === 'image') { %>
+      <tr>
+        <td colspan="2"><img src="<%= image.url %>" /></td>
+      </tr>
+    <% } else if (type === 'default'){ %>
+      <tr style="font-size:12px">
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td style="text-align:left;width:20%"><%= value %> <%= label %></td>
+      </tr>
+    <% } else if (type === 'general') { %>
+      <tr>
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td>
+          <div class="btn-group">
+            <% if (typeof run !== 'undefined' && run > 0) { %>
+              <button class="btn btn-xs btn-success" style="font-size:10px">Run</button>
+            <% } else if (typeof run !== 'undefined' && run <= 0) { %>
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button>
+            <% } else { %>
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+            <% } %>
+
+            <% if (typeof fault !== 'undefined' && fault === false) { %>        
+              <button class="btn btn-xs btn-default" style="font-size:10px">Fault</button>
+            <% } else if (typeof fault !== 'undefined' && fault === true) { %>  
+              <button class="btn btn-xs btn-danger" style="font-size:10px">Fault</button>
+            <% } else { %>                                                      
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>    
+            <% } %>
+          </div>
+        </td>
+      </tr>
+    <% } else if (type === 'running') { %>
+      <tr>
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td>
+          <div class="btn-group">
+            <% if (typeof run !== 'undefined' && run === 'auto') { %>
+              <button class="btn btn-xs btn-success" style="font-size:10px">Auto</button>
+              <button class="btn btn-xs btn-default" style="font-size:10px">Manual</button>
+            <% } else if (typeof run !== 'undefined' && run === 'manual') { %>
+              <button class="btn btn-xs btn-default" style="font-size:10px">Auto</button>
+              <button class="btn btn-xs btn-success" style="font-size:10px">Manual</button>
+            <% } else { %>
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+            <% } %>
+          </div>
+        </td>
+      </tr>
+    <% } else if (type === 'indicator') { %>
+      <tr>
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td>
+          <% if (typeof value != 'undefined' && value === true) { %>
+            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
+          <% } else if (typeof value != 'undefined' && value === false) { %>
+            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
+          <% } else { %>
+            <div class="panel panel-success panel-indicator-na">#NA</div>
+          <% } %>
+        </td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="threecolumns-table-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+          <thead>
+            <tr><td class="widget-head" colspan="3"><b><%= title %></b></td></tr>
+          </thead>
+        <% } %>
+        <tbody id="<%= tagId %>"></tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="threecolumns-table-item-template">
+    <% if (type === 'image') { %>
+      <tr>
+        <td colspan="3"><img src="<%= image.url %>" /></td>
+      </tr>
+    <% } else { %>
+      <tr style="font-size:12px">
+        <td style="text-align:left;padding-left:30px"><%= name %></td>
+        <td style="text-align:right"><%= value %></td>
+        <td style="text-align:left;width:20%"><%= label %></td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="four-indicators-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+          <thead>
+            <tr><td class="widget-head" colspan="2"><b><%= title %></b></td></tr>
+          </thead>
+        <% } %>
+        <tbody id="<%= tagId %>">
+          <tr>
+            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">LO LO</div></td>
+            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">HI</div></td>
+          </tr>
+          <tr>
+            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">LO</div></td>
+            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">HI HI</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="image-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+      <img src="<%= image.url %>" width="<%= image.w %>"/>
+    </li>
+  </script>
+
+  <script type="text/template" id="realtime-chart-container-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+      <div class="graph-button">
+        <button type="submit" class="btn btn-default btn-md pull-right" onclick="location.href='/electrical/download/trend/?page=<%= page %>&eq=<%= tagId %>';">
+          <span class="glyphicon glyphicon-save"></span> CSV
+        </button>
+        <!--<div class="btn-group pull-left" style="margin-left:50px">
+          <button class="btn btn-default btn-md btn-success btn-historical">Historical</button>
+          <button class="btn btn-default btn-md btn-default">Real Time</button>
+        </div>-->
+        <div class="btn-group pull-left" style="margin-left:50px">
+          <button class="btn btn-default btn-md btn-primary btn-pagination">First</button>
+          <button class="btn btn-default btn-md btn-primary btn-pagination">Prev</button>
+          <button class="btn btn-default btn-md btn-primary btn-pagination" disabled>Next</button>
+          <button class="btn btn-default btn-md btn-primary btn-pagination" disabled>Last</button>
+        </div>
+      </div>
+      <div id="<%= tagId %>" style="text-align:center;width:1200px;padding:30px"></div>
+    </li>
+  </script>
+
+  <script type="text/template" id="file-browser-template">
+    <li data-row="1" data-col="1" data-sizex="12" data-sizey="16">
+      <div style="margin: 40px 0px 80px 40px">
+        <button id="file-browser-home-btn" class="btn btn-default btn-md btn-primary pull-left"><span class="glyphicon glyphicon-home"></span></button>
+        <button id="file-browser-back-btn" class="btn btn-default btn-md btn-primary pull-left" style="margin-left:20px"><span class="glyphicon glyphicon-arrow-left"></span></button>
+      </div>
+      <div><h3 id="file-browser-current-dir" class="pull-left" style="margin-left:40px;width:100%;text-align:left"></h3></div>
+      <div id="file-browser-table" style="margin:0px 40px 0px 40px;text-align:left"></div>
+    </li>
+  </script>
+
+  <script type="text/template" id="update-data-template">
+    <div class="alert page-notif" style="display:none;">
+      <div id="notif-status">
+        <span id="notif-content">Data updated</span>
+        <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+      </div>
+    </div>
+  </script>
+
+	<script src="/static/water/backboneapp/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/static/water/backboneapp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- <script src="http://cdn.alloyui.com/3.0.1/aui/aui&#45;min.js"></script> -->
+  <script src="/static/water/backboneapp/bower_components/alloy-ui/build/aui/aui-min.js"></script>
+	<script src="/static/water/backboneapp/bower_components/underscore/underscore-min.js"></script>
+	<script src="/static/water/backboneapp/bower_components/backbone/backbone-min.js"></script>
+  <script src="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.js"></script>
+  <script src="/static/water/backboneapp/bower_components/spin.js/spin.js"></script>
+  <script src="/static/water/backboneapp/bower_components/spin.js/jquery.spin.js"></script>
+  <script src="/static/water/backboneapp/vendors/justgage/raphael-2.1.4.min.js"></script>
+  <script src="/static/water/backboneapp/vendors/justgage/justgage.js"></script>
+  <script src="/static/water/backboneapp/scripts/misc/constants.js"></script>
+  <script src="/static/water/backboneapp/scripts/misc/utility.js"></script>
+  <script src="/static/water/backboneapp/scripts/views/widgets.js"></script>
+
+  {% block javascript %}{% endblock%}
+</body>
+</html>
