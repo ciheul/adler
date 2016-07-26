@@ -19,28 +19,28 @@
     </div-->
     <div class="row" style="margin-left: 0px; height: auto; max-width: 1100px;">
       <div id="" class="col-md-2" align="center">
-        <a href="{% url 'live-pretreatment' %}">
+        <a href="{% url 'live-overview' %}">
           <div class="asset-online">
             <div class="glyphicon glyphicon-tint" style="font-size: 45px; padding-top: 12px; color: #ffffff; "></div>
           </div>
           <div class="text-center" style="height:30%;padding-top:5px">Sofitel</div>
         </a>
       </div>
-      <div id="" class="col-md-2" align="center">
-        <a href="">
-          <div class="assets-offline" style="background:red;width:70px;vertical-align: middle;height:70px;border:1px solid #dddddd; border-radius:5px;">
-            <div class="glyphicon glyphicon-ban-circle" style="font-size: 45px; padding-top: 12px; color: #ffffff; "></div>
-          </div>
-          <div class="text-center" style="height:30%;padding-top:5px">Client</div>
-        </a>
-      </div>
+      {# <div id="" class="col-md-2" align="center"> #}
+      {#   <a href=""> #}
+      {#     <div class="assets-offline" style="background:red;width:70px;vertical-align: middle;height:70px;border:1px solid #dddddd; border-radius:5px;"> #}
+      {#       <div class="glyphicon glyphicon-ban-circle" style="font-size: 45px; padding-top: 12px; color: #ffffff; "></div> #}
+      {#     </div> #}
+      {#     <div class="text-center" style="height:30%;padding-top:5px">Client</div> #}
+      {#   </a> #}
+      {# </div> #}
 
     </div>
     <hr />
 
-    <h4><!--span class="glyphicon glyphicon-bell"></span-->Alarm</h4>
-    <br>
-    <div id="myDataTable"></div>
+    {# <h4><!--span class="glyphicon glyphicon-bell"></span-->Alarm</h4> #}
+    {# <br> #}
+    {# <div id="myDataTable"></div> #}
   </div>
 </div>
 {% endblock %}
@@ -60,42 +60,42 @@
     accessToken: 'pk.eyJ1Ijoid2lubnVheWkiLCJhIjoiY2lrM3A0cWl4MDAwOHY0a3RzOWx3MWQ2ZyJ9.oBxFuNtCJG68Cuu3DK5RWA'
   }).addTo(map);
   
-  YUI().use(
-    'aui-datatable',
-    function(Y) {
-      var columns = ['Date', 'Time', 'Equipment', 'Message'];
-  
-      var data = [
-        {
-          Date: '2015-06-04',
-          Time: '16:33:48',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        },
-        {
-          Date: '2015-06-12',
-          Time: '22:58:11',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        },
-        {
-          Date: '2015-06-18',
-          Time: '00:44:23',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        },
-        {
-          Date: '2015-06-22',
-          Time: '13:22:14',
-          Equipment: 'GLM\\ST.V\\PM.INC',
-          Message: 'History Incoming ST-5 Undervoltage'
-        }
-      ];
-  
-      new Y.DataTable
-        .Base({ columnset: columns, recordset: data})
-        .render('#myDataTable');
-    }
-  );
+  {# YUI().use( #}
+  {#   'aui-datatable', #}
+  {#   function(Y) { #}
+  {#     var columns = ['Date', 'Time', 'Equipment', 'Message']; #}
+  {#  #}
+  {#     var data = [ #}
+  {#       { #}
+  {#         Date: '2015-06-04', #}
+  {#         Time: '16:33:48', #}
+  {#         Equipment: 'GLM\\ST.V\\PM.INC', #}
+  {#         Message: 'History Incoming ST-5 Undervoltage' #}
+  {#       }, #}
+  {#       { #}
+  {#         Date: '2015-06-12', #}
+  {#         Time: '22:58:11', #}
+  {#         Equipment: 'GLM\\ST.V\\PM.INC', #}
+  {#         Message: 'History Incoming ST-5 Undervoltage' #}
+  {#       }, #}
+  {#       { #}
+  {#         Date: '2015-06-18', #}
+  {#         Time: '00:44:23', #}
+  {#         Equipment: 'GLM\\ST.V\\PM.INC', #}
+  {#         Message: 'History Incoming ST-5 Undervoltage' #}
+  {#       }, #}
+  {#       { #}
+  {#         Date: '2015-06-22', #}
+  {#         Time: '13:22:14', #}
+  {#         Equipment: 'GLM\\ST.V\\PM.INC', #}
+  {#         Message: 'History Incoming ST-5 Undervoltage' #}
+  {#       } #}
+  {#     ]; #}
+  {#  #}
+  {#     new Y.DataTable #}
+  {#       .Base({ columnset: columns, recordset: data}) #}
+  {#       .render('#myDataTable'); #}
+  {#   } #}
+  {# ); #}
 </script>
 {% endblock %}

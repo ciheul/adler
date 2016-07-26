@@ -212,59 +212,59 @@
     <% } else if (type === 'default'){ %>
       <tr style="font-size:12px">
         <td style="text-align:left;padding-left:30px"><%= name %></td>
-        <td style="text-align:left;width:20%"><%= value %> <%= label %></td>
+        <td style="text-align:right;padding-right:30px;width:20%"><%= value %> <%= label %></td>
       </tr>
     <% } else if (type === 'general') { %>
-      <tr>
+      <tr style="font-size:12px">
         <td style="text-align:left;padding-left:30px"><%= name %></td>
-        <td>
+        <td style="width:30%">
           <div class="btn-group">
             <% if (typeof run !== 'undefined' && run > 0) { %>
-              <button class="btn btn-xs btn-success" style="font-size:10px">Run</button>
+              <button class="btn btn-xs btn-success" style="font-size:11px">Run</button>
             <% } else if (typeof run !== 'undefined' && run <= 0) { %>
-              <button class="btn btn-xs btn-danger" style="font-size:10px">Stop</button>
+              <button class="btn btn-xs btn-danger" style="font-size:11px">Stop</button>
             <% } else { %>
-              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+              <button class="btn btn-xs" style="font-size:11px">#NA</button>
             <% } %>
 
             <% if (typeof fault !== 'undefined' && fault === false) { %>        
-              <button class="btn btn-xs btn-default" style="font-size:10px">Fault</button>
+              <button class="btn btn-xs btn-default" style="font-size:11px">Fault</button>
             <% } else if (typeof fault !== 'undefined' && fault === true) { %>  
-              <button class="btn btn-xs btn-danger" style="font-size:10px">Fault</button>
+              <button class="btn btn-xs btn-danger" style="font-size:11px">Fault</button>
             <% } else { %>                                                      
-              <button class="btn btn-xs" style="font-size:10px">#NA</button>    
+              <button class="btn btn-xs" style="font-size:11px">#NA</button>    
             <% } %>
           </div>
         </td>
       </tr>
     <% } else if (type === 'running') { %>
-      <tr>
+      <tr style="font-size:12px">
         <td style="text-align:left;padding-left:30px"><%= name %></td>
-        <td>
+        <td style="width:30%">
           <div class="btn-group">
             <% if (typeof run !== 'undefined' && run === 'auto') { %>
-              <button class="btn btn-xs btn-success" style="font-size:10px">Auto</button>
-              <button class="btn btn-xs btn-default" style="font-size:10px">Manual</button>
+              <button class="btn btn-xs btn-success" style="font-size:11px">Auto</button>
+              <button class="btn btn-xs btn-default" style="font-size:11px">Manual</button>
             <% } else if (typeof run !== 'undefined' && run === 'manual') { %>
-              <button class="btn btn-xs btn-default" style="font-size:10px">Auto</button>
-              <button class="btn btn-xs btn-success" style="font-size:10px">Manual</button>
+              <button class="btn btn-xs btn-default" style="font-size:11px">Auto</button>
+              <button class="btn btn-xs btn-success" style="font-size:11px">Manual</button>
             <% } else { %>
-              <button class="btn btn-xs" style="font-size:10px">#NA</button>
-              <button class="btn btn-xs" style="font-size:10px">#NA</button>
+              <button class="btn btn-xs" style="font-size:11px">#NA</button>
+              <button class="btn btn-xs" style="font-size:11px">#NA</button>
             <% } %>
           </div>
         </td>
       </tr>
     <% } else if (type === 'indicator') { %>
-      <tr>
+      <tr style="font-size:12px">
         <td style="text-align:left;padding-left:30px"><%= name %></td>
-        <td>
+        <td style="width:30%">
           <% if (typeof value != 'undefined' && value === true) { %>
-            <div class="panel panel-success panel-indicator-success"><%= trueText %></div>
+            <button class="btn btn-xs btn-success" style="font-size:11px;width:100px"><%= trueText %></button>
           <% } else if (typeof value != 'undefined' && value === false) { %>
-            <div class="panel panel-danger panel-indicator-danger"><%= falseText %></div>
+            <button class="btn btn-xs btn-danger" style="font-size:11px"><%= falseText %></button>
           <% } else { %>
-            <div class="panel panel-success panel-indicator-na">#NA</div>
+            <button class="btn btn-xs" style="font-size:11px;width:70px">#NA</button>
           <% } %>
         </td>
       </tr>
@@ -296,6 +296,29 @@
         <td style="text-align:left;width:20%"><%= label %></td>
       </tr>
     <% } %>
+  </script>
+
+  <script type="text/template" id="bars-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
+      <table class="table">
+        <% if (typeof title !== 'undefined') { %>
+          <thead>
+            <tr><td class="widget-head" colspan="<%= data.length %>"><b><%= title %></b></td></tr>
+          </thead>
+        <% } %>
+        <tbody>
+          <tr id="<%= tagId %>"></tr>
+        </tbody>
+      </table>
+    </li>
+  </script>
+
+  <script type="text/template" id="bars-item-template">
+    <td>
+      <div style="font-size:10px;margin-bottom:4px"><%= value %> <%= label %></div>
+      <div id="<%= tagId %>" class="progress-success" style="margin-bottom:5px;margin-left:auto;margin-right:auto"></div>
+      <div style="font-size:10px"><%= text %></div>
+    </td>
   </script>
 
   <script type="text/template" id="four-indicators-template">
@@ -344,6 +367,17 @@
         </div>
       </div>
       <div id="<%= tagId %>" style="text-align:center;width:1200px;padding:30px"></div>
+    </li>
+  </script>
+
+  <script type="text/template" id="title-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+      <div style="font-size:20px;line-height:50px;color:black;background-color:lightgrey;border-radius:5px"><%= title %></div>
+    </li>
+  </script>
+
+  <script type="text/template" id="spacer-template">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>">
     </li>
   </script>
 

@@ -79,17 +79,33 @@
           widgetView.render();
         }
 
-        if (widget.get('type') === 'threeColumnsTable') {
-          var widgetView = new app.ThreeColumnsTableView({
-            el: $('#grid-1 > ul'),
+        if (widget.get('type') === 'fourIndicators') {
+          var widgetView = new app.FourIndicatorsView({
+            el: $('#grid-0 > ul'),
+            model: widget.toJSON()
+          });
+          widgetView.render();
+        }
+
+        if (widget.get('type') === 'oneColumnTable') {
+          var widgetView = new app.OneColumnTableView({
+            el: $('#grid-0 > ul'),
+            model: widget.toJSON()
+          });
+          widgetView.render();
+        }
+
+        if (widget.get('type') === 'twoColumnsTable') {
+          var widgetView = new app.TwoColumnsTableView({
+            el: $('#grid-0 > ul'),
             model: widget.toJSON()
           });
           widgetView.render();
         }
   
-        if (widget.get('type') === 'oneColumnTable') {
-          var widgetView = new app.OneColumnTableView({
-            el: $('#grid-2 > ul'),
+        if (widget.get('type') === 'threeColumnsTable') {
+          var widgetView = new app.ThreeColumnsTableView({
+            el: $('#grid-0 > ul'),
             model: widget.toJSON()
           });
           widgetView.render();

@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^api/trend/$',api.trend_reject_api, name="trend-reject-api"),
     url(r'^api/trend/$',api.trend_energy_api, name="trend-energy-api"),
 
+    url(r'^api/report/$',api.report_api, name="report-api"),
+
     url(r'^api/latest/$', api.latest, name="latest"),
 
     url(r'^$', views.dashboard, name="dashboard"),

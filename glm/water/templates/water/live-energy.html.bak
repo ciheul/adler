@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <h3>Live</h3>
+
+    <ul class="nav nav-tabs">
+      <li><a href="{% url 'live-pretreatment' %}">Pre-Treatment</a></li>
+      <li><a href="{% url 'live-osmosis' %}">Reverse Osmosis Process</a></li>
+      <li><a href="{% url 'live-product' %}">Product</a></li>
+      <li><a href="{% url 'live-reject' %}">Reject</a></li>
+      <li class="active"><a href="#"><b>Energy</b></a></li>
+    </ul>
+
+    <br>
+
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="2" data-sizey="3">
+          <table class="table">
+            <tr><td class="widget-head" colspan="3"><b>VOLTAGE</b></td></tr>
+            <tr><td class="text-right">Phase A</td><td class="text-right">0.00</td><td class="text-left">V</td></tr>
+            <tr><td class="text-right">Phase B</td><td class="text-right">20.00</td><td class="text-left">V</td></tr>
+            <tr><td class="text-right">Phase C</td><td class="text-right">100.00</td><td class="text-left">V</td></tr>
+            <tr><td class="text-right">Line AB</td><td class="text-right">0.00</td><td class="text-left">V</td></tr>
+            <tr><td class="text-right">Line BC</td><td class="text-right">20.00</td><td class="text-left">V</td></tr>
+            <tr><td class="text-right">Line CA</td><td class="text-right">100.00</td><td class="text-left">V</td></tr>
+          </table>
+        </li>
+        <li data-row="1" data-col="3" data-sizex="2" data-sizey="3">
+          <table class="table">
+            <tr><td class="widget-head" colspan="3"><b>POWER</b></td></tr>
+            <tr><td class="text-right">Active</td><td class="text-right">0.00</td><td class="text-left">kW</td></tr>
+            <tr><td class="text-right">Reactive</td><td class="text-right">20.00</td><td class="text-left">kVar</td></tr>
+            <tr><td class="text-right">Apparent</td><td class="text-right">100.00</td><td class="text-left">kVA</td></tr>
+            <tr><td class="text-right">cos phi</td><td class="text-right">0.000</td><td class="text-left"></td></tr>
+            <tr><td class="text-right">Freq</td><td class="text-right">20.00</td><td class="text-left">Hz</td></tr>
+          </table>
+        </li>
+        <li data-row="1" data-col="5" data-sizex="2" data-sizey="3">
+          <table class="table">
+            <tr><td class="widget-head" colspan="3"><b>CURRENT</b></td></tr>
+            <tr><td>Phase A</td><td class="text-right">0.00</td><td class="text-left">A</td></tr>
+            <tr><td>Phase B</td><td class="text-right">20.00</td><td class="text-left">A</td></tr>
+            <tr><td>Phase C</td><td class="text-right">100.00</td><td class="text-left">A</td></tr>
+          </table>
+        </li>
+        <li data-row="1" data-col="7" data-sizex="2" data-sizey="3">
+          <table class="table">
+            <tr><td class="widget-head" colspan="3"><b>ENERGY</b></td></tr>
+            <tr><td class="text-right">Active</td><td class="text-right">0.00</td><td class="text-left">kW</td></tr>
+            <tr><td class="text-right">Reactive</td><td class="text-right">20.00</td><td class="text-left">kVar</td></tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" id="code">
+  var gridster;
+
+  $(function() {
+    gridster = $(".gridster > ul")
+      .gridster({
+        widget_margins: [5, 5],
+        widget_base_dimensions: [100, 81],
+        max_cols: 10,
+        max_size_x: 10})
+      .data('gridster')
+      .disable();
+  });
+</script>
+{% endblock %}
