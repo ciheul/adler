@@ -4,13 +4,15 @@ import StringIO
 
 # HOST = 'localhost'
 HOST = '10.212.0.10'
+USER = 'reader'
+PASS = ''
 
 class FtpMapper:
     def __init__(self):
         self.ftp = ftplib.FTP(HOST)
 
     def connect(self):
-        self.ftp.login()
+        self.ftp.login(USER, PASS)
 
     def disconnect(self):
         self.ftp.quit()

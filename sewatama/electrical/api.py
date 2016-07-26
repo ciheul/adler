@@ -876,7 +876,10 @@ def download_trend_csv(request):
     rows = list(rows)
     rows.reverse()
     for row in rows:
-        line = [row['SentTimestamp']]
+        # line = [row['SentTimestamp']]
+        date = row['SentDatetime'].strftime('%Y-%m-%d')
+        time = row['SentDatetime'].strftime('%H:%M:%S')
+        line = [date, time]
         for tag in tags:
             line.append(row['Tags'][tag]['Value'])
 
