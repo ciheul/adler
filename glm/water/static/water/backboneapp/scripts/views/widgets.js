@@ -10,6 +10,24 @@ app.Widget = Backbone.Model.extend({});
 app.WidgetList = Backbone.Collection.extend({ model: app.Widget });
 
 
+app.TitleView = Backbone.View.extend({
+  template: _.template($('#title-template').html()),
+
+  render: function() {
+    this.$el.append(this.template(this.model));
+  }
+});
+
+
+app.SpacerView = Backbone.View.extend({
+  template: _.template($('#spacer-template').html()),
+
+  render: function() {
+    this.$el.append(this.template(this.model));
+  }
+});
+
+
 app.GaugeView = Backbone.View.extend({
   template: _.template($('#gauge-template').html()),
   render: function() {
@@ -38,9 +56,9 @@ app.OneColumnTableView = Backbone.View.extend({
 
   render: function() {
     // title that has two words will be rendered in two lines
-    if (typeof this.model.title !== 'undefined') {
-      this.model.title = this.model.title.replace(' ', '<br/>');
-    }
+    // if (typeof this.model.title !== 'undefined') {
+    //   this.model.title = this.model.title.replace(' ', '<br/>');
+    // }
 
     // render template
     this.$el.append(this.template(this.model));
@@ -121,6 +139,60 @@ app.ThreeColumnsTableItemView = Backbone.View.extend({
 
   render: function() {
     this.$el.append(this.template(this.model));
+  }
+});
+
+
+app.BarsView = Backbone.View.extend({
+  template: _.template($('#bars-template').html()),
+
+  render: function() {
+    // render template
+    this.$el.append(this.template(this.model));
+
+    // render rows inside tbody
+    var that = this;
+    this.model.data.forEach(function(item) {
+      item.height = that.model.height;
+      item.width = that.model.width;
+      item.label = that.model.label;
+
+      var itemView = new app.BarsItemView({
+        el: $('#' + that.model.tagId),
+        model: item
+      }); 
+      itemView.render();
+    });
+  }
+});
+
+
+app.BarsItemView = Backbone.View.extend({
+  template: _.template($('#bars-item-template').html()),
+
+  render: function() {
+    this.$el.append(this.template(this.model));
+    this.renderBar();
+  },
+
+  renderBar: function() {
+    var that = this;
+    YUI().use('aui-progressbar',
+      function(Y) {
+        console.log(that.model);
+        new Y.ProgressBar({
+          boundingBox: '#' + that.model.tagId,
+          // boundingBox: params['boundingBox'],
+          height: that.model.height,
+          width: that.model.width,
+          // {# label: params['value'] + '%', #}
+          orientation: 'vertical',
+          // value: calculateRatioProgressBar(params['value']),
+          value: 50
+          // {# value: params['value'], #}
+        }).render();
+      }
+    );
   }
 });
 

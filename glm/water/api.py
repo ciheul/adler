@@ -285,11 +285,29 @@ def create_response(page):
 
             response.append(detail)
 
+        if detail['type'] == 'bars':
+            final_data = list()
+            for d in detail['data']:
+                tag_name = d['value']
+                d['value'] = '#NA'
+                if tag_name in row['Tags']:
+                    d['value'] = "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                final_data.append(d)
+
+            detail['tagId'] = tag_id
+            detail['data'] = final_data
+
+            # print detail
+            response.append(detail)
+
         if detail['type'] == 'fourIndicators':
             detail['tagId'] = tag_id
             response.append(detail)
 
         if detail['type'] == 'image':
+            response.append(detail)
+
+        if detail['type'] == 'title':
             response.append(detail)
     return response
 
@@ -330,21 +348,73 @@ def live_pretreatment_api(request):
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
+@login_required
 def live_osmosis_api(request):
-    message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'live-osmosis'
 
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
 def live_product_api(request):
-    message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'live-product'
 
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
 def live_reject_api(request):
-    message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'live-reject'
 
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
 def live_energy_api(request):
-    message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
-    return HttpResponse(message, content_type='application/json') 
+    page_id = 'live-energy'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
+def report_api(request):
+    page_id = 'report'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+# def live_osmosis_api(request):
+#     message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
+#     return HttpResponse(message, content_type='application/json') 
+#
+
+
+# def live_product_api(request):
+#     message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
+#     return HttpResponse(message, content_type='application/json') 
+
+# def live_reject_api(request):
+#     message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
+#     return HttpResponse(message, content_type='application/json') 
+#
+# def live_energy_api(request):
+#     message =  dumps(list(db.glm.find().sort("_id",-1).limit(1)))
+#     return HttpResponse(message, content_type='application/json') 
 
 
 #trend page

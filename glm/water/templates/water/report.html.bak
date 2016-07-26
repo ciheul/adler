@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <h3>Report</h3>
+
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b class="title-box">TODAY</b>
+            <div style="margin-top:30px;height:260px">
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">SWRO FEED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">PRODUCT TRANSFER</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">ENERGY CONSUMPTION</div>
+                  <div class="content-box" style="background:gray">9999</div>
+                  <div class="footer-box">KWH</div>
+                </div>
+              </div>
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">KWH PER CF PROCESSED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">KWH PER CF TRANSFERRED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box"></div>
+              </div>
+            <div>
+          </div>
+        </li>
+        <li data-row="1" data-col="3" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b class="title-box">YESTERDAY</b>
+            <div style="margin-top:30px;height:260px">
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">SWRO FEED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">PRODUCT TRANSFER</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">ENERGY CONSUMPTION</div>
+                  <div class="content-box" style="background:gray">9999</div>
+                  <div class="footer-box">KWH</div>
+                </div>
+              </div>
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">KWH PER CF PROCESSED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">KWH PER CF TRANSFERRED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box"></div>
+              </div>
+            <div>
+          </div>
+        </li>
+        <li data-row="2" data-col="1" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b class="title-box">THIS WEEK</b>
+            <div style="margin-top:30px;height:260px">
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">SWRO FEED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">PRODUCT TRANSFER</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">ENERGY CONSUMPTION</div>
+                  <div class="content-box" style="background:gray">9999</div>
+                  <div class="footer-box">KWH</div>
+                </div>
+              </div>
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">KWH PER CF PROCESSED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">KWH PER CF TRANSFERRED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box"></div>
+              </div>
+            <div>
+          </div>
+        </li>
+        <li data-row="2" data-col="3" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b class="title-box">LAST WEEK</b>
+            <div style="margin-top:30px;height:260px">
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">SWRO FEED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">PRODUCT TRANSFER</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">ENERGY CONSUMPTION</div>
+                  <div class="content-box" style="background:gray">9999</div>
+                  <div class="footer-box">KWH</div>
+                </div>
+              </div>
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">KWH PER CF PROCESSED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">KWH PER CF TRANSFERRED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box"></div>
+              </div>
+            <div>
+          </div>
+        </li>
+        <li data-row="3" data-col="1" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b class="title-box">THIS MONTH</b>
+            <div style="margin-top:30px;height:260px">
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">SWRO FEED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">PRODUCT TRANSFER</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">ENERGY CONSUMPTION</div>
+                  <div class="content-box" style="background:gray">9999</div>
+                  <div class="footer-box">KWH</div>
+                </div>
+              </div>
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">KWH PER CF PROCESSED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">KWH PER CF TRANSFERRED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box"></div>
+              </div>
+            <div>
+          </div>
+        </li>
+        <li data-row="3" data-col="3" data-sizex="5" data-sizey="5">
+          <div style="padding:20px;">
+            <b class="title-box">LAST MONTH</b>
+            <div style="margin-top:30px;height:260px">
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">SWRO FEED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">PRODUCT TRANSFER</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">CUBIC FEET</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">ENERGY CONSUMPTION</div>
+                  <div class="content-box" style="background:gray">9999</div>
+                  <div class="footer-box">KWH</div>
+                </div>
+              </div>
+              <div style="height:50%">
+                <div class="box">
+                  <div class="header-box">KWH PER CF PROCESSED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box">
+                  <div class="header-box">KWH PER CF TRANSFERRED</div>
+                  <div class="content-box">9999</div>
+                  <div class="footer-box">KWH / CF</div>
+                </div>
+                <div class="box"></div>
+              </div>
+            <div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" id="code">
+  var gridster;
+
+  $(function() {
+    gridster = $(".gridster > ul")
+      .gridster({
+        widget_margins: [5, 5],
+        widget_base_dimensions: [100, 60],
+        max_cols: 10,
+        max_size_x: 10})
+      .data('gridster')
+      .disable();
+  });
+</script>
+{% endblock %}
