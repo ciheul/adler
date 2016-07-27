@@ -968,6 +968,272 @@
       ]
     }
   },
+  "trend": {
+    "pretreatment-title": {
+      "type": "title",
+      "title": "PRE-TREATMENT",
+      "grid": { "x": 1, "y": 1, "w": 12, "h": 2 }
+    },
+    "trend1": {
+      "title": "MM FILTER DP & FEED PUMP SPEED",
+      "type": "chart",
+      "grid": { "x": 1, "y": 3, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Bar", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "MM FILTER #1 PRESSURE",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} Bar",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "MM FILTER #2 PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} Hz",
+            "style": { "color": "#a3ee96" } },
+          "title": {
+            "text": "FILTER PUMP FREQUENCY",
+            "style": { "color": "#a3ee96" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "MM FILTER #1 PRESSURE",
+          "data": "GLM\\SWRO_001\\RT2\\MMF2A\\DPRESS",
+          "tooltip": { "valueSuffix": " Bar" } },
+        { "name": "MM FILTER #2 PRESSURE",
+          "data": "GLM\\SWRO_001\\RT2\\MMF2B\\DPRESS",
+          "tooltip": { "valueSuffix": " Bar" } },
+        { "name": "FILTER PUMP FREQUENCY",
+          "data": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\FREQ",
+          "tooltip": { "valueSuffix": " Hz" },
+          "yAxis": 2 }
+      ]
+    },
+    "spacer1": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 20, "w": 12, "h": 2 }
+    },
+    "ro-process-title": {
+      "type": "title",
+      "title": "RO PROCESS",
+      "grid": { "x": 1, "y": 22, "w": 12, "h": 2 }
+    },
+    "trend2": {
+      "title": "FLOW RATES",
+      "type": "chart",
+      "grid": { "x": 1, "y": 24, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} m3/h", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "PRODUCT FLOW",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "PRODUCT FLOW",
+          "data": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\FLOW",
+          "tooltip": { "valueSuffix": " m3/h" } }
+      ]
+    },
+    "trend3": {
+      "title": "PX PRESSURE",
+      "type": "chart",
+      "grid": { "x": 1, "y": 41, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Bar", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "PRESS. IN",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} Bar",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "PRESS. OUT",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "PRESS. IN",
+          "data": "GLM\\SWRO_001\\RT2\\PX_RAW_IN\\PRESS",
+          "tooltip": { "valueSuffix": " Bar" } },
+        { "name": "PRESS. OUT",
+          "data": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\PRESS",
+          "tooltip": { "valueSuffix": " Bar" } }
+      ]
+    },
+    "trend4": {
+      "title": "HP & BOOSTER PUMP SPEED",
+      "type": "chart",
+      "grid": { "x": 1, "y": 58, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} Hz", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "HPP FREQUENCY",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} Hz",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "BOOSTER PUMP FREQUENCY",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "HPP FREQUENCY",
+          "data": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FREQ",
+          "tooltip": { "valueSuffix": " Bar" } },
+        { "name": "BOOSTER PUMP FREQUENCY",
+          "data": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FREQ",
+          "tooltip": { "valueSuffix": " Bar" } }
+      ]
+    },
+    "trend5": {
+      "title": "ANALYZER",
+      "type": "chart",
+      "grid": { "x": 1, "y": 65, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} ", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "TBD",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "TBD",
+          "data": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FREQ",
+          "tooltip": { "valueSuffix": " " } }
+      ]
+    },
+    "spacer2": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 82, "w": 12, "h": 2 }
+    },
+    "product-title": {
+      "type": "title",
+      "title": "PRODUCT",
+      "grid": { "x": 1, "y": 84, "w": 12, "h": 2 }
+    },
+    "trend6": {
+      "title": "TRANSFER TREND",
+      "type": "chart",
+      "grid": { "x": 1, "y": 86, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} m3/h", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "MEMBRANE PRODUCT FLOW",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} m3/h",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "MEMBRANE PRODUCT PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "MEMBRANE PRODUCT FLOW",
+          "data": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\FLOW",
+          "tooltip": { "valueSuffix": " m3/h" } },
+        { "name": "MEMBRANE PRODUCT PRESSURE",
+          "data": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PRESS",
+          "tooltip": { "valueSuffix": " m3/h" } }
+      ]
+    },
+    "spacer3": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 103, "w": 12, "h": 2 }
+    },
+    "reject-title": {
+      "type": "title",
+      "title": "REJECT",
+      "grid": { "x": 1, "y": 105, "w": 12, "h": 2 }
+    },
+    "trend7": {
+      "title": "REJECT TREND",
+      "type": "chart",
+      "grid": { "x": 1, "y": 107, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} m3/h", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "MEMBRANE REJECT FLOW",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} m3/h",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "MEMBRANE REJECT PRESSURE",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "MEMBRANE REJECT FLOW",
+          "data": "GLM\\SWRO_001\\RT2\\MEMBRANE_REJECT\\FLOW",
+          "tooltip": { "valueSuffix": " m3/h" } },
+        { "name": "MEMBRANE REJECT PRESSURE",
+          "data": "GLM\\SWRO_001\\RT2\\MEMBRANE_REJECT\\PRESS",
+          "tooltip": { "valueSuffix": " m3/h" } }
+      ]
+    },
+    "spacer4": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 124, "w": 12, "h": 2 }
+    },
+    "transfer-title": {
+      "type": "title",
+      "title": "TRANSFER",
+      "grid": { "x": 1, "y": 126, "w": 12, "h": 2 }
+    },
+    "trend8": {
+      "title": "ENERGY TREND",
+      "type": "chart",
+      "grid": { "x": 1, "y": 128, "w": 12, "h":17 },
+      "yAxis": [
+        { "labels": {
+            "format": "{value} kw", 
+            "style": { "color": "#93c1ee" } },
+          "title": {
+            "text": "ACTIVE POWER",
+            "style": { "color": "#93c1ee" } },
+          "opposite": true },
+        { "labels": {
+            "format": "{value} m3/h",
+            "style": { "color": "#65666b" } },
+          "title": {
+            "text": "MEMBRANE PRODUCT FLOW",
+            "style": { "color": "#65666b" } },
+          "opposite": true }
+      ],
+      "series": [
+        { "name": "ACTIVE POWER",
+          "data": "GLM\\SWRO_001\\RT2\\PM\\P",
+          "tooltip": { "valueSuffix": " m3/h" } },
+        { "name": "MEMBRANE REJECT PRESSURE",
+          "data": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\FLOW",
+          "tooltip": { "valueSuffix": " m3/h" } }
+      ]
+    }
+  },
   "report": {
     "today-title": {
       "type": "title",

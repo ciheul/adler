@@ -1,0 +1,691 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/gridster.js/dist/jquery.gridster.min.css" />
+<link rel="stylesheet" href="/static/water/backboneapp/bower_components/nvd3/build/nv.d3.min.css"></script>
+{% endblock %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <h3>Trend</h3>
+
+    <h4>PRE-TREATMENT <span class="glyphicon glyphicon-menu-down" id="chart-1-toggler" style="float:right;cursor:pointer;"></span></h4>
+    <div class="gridster">
+      <ul id="chart-1-toggle">
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">MM FILTER DP & FEED PUMP SPEED</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-1" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-1-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-1-radio-day">Day</label>
+                  <input id="chart-1-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-1-radio-week">Week</label>
+                  <input id="chart-1-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-1-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-1-legend" class="chart-legend">some legend here</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h4>RO PROCESS</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">FLOW RATES</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-2" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-2-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-2-radio-day">Day</label>
+                  <input id="chart-2-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-2-radio-week">Week</label>
+                  <input id="chart-2-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-2-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-2-legend" class="chart-legend">some legend here... </div>
+            </div> 
+          </div>
+        </li>
+        <li data-row="6" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">PX PRESSURES</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-3" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-3-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-3-radio-day">Day</label>
+                  <input id="chart-3-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-3-radio-week">Week</label>
+                  <input id="chart-3-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-3-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-3-legend" class="chart-legend">some legend here</div>
+            </div>
+          </div>
+        </li>
+        <li data-row="11" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">HP & CIRCULATION PUMP SPEED</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-4" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">              
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-4-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-4-radio-day">Day</label>
+                  <input id="chart-4-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-4-radio-week">Week</label>
+                  <input id="chart-4-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-4-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-4-legend" class="chart-legend">some legend here... </div>
+            </div>         
+          </div>
+        </li>
+        <li data-row="16" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">ANALYZERS</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-5" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">  
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-5-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-5-radio-day">Day</label>
+                  <input id="chart-5-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-5-radio-week">Week</label>
+                  <input id="chart-5-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-5-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-5-legend" class="chart-legend">some legend here... </div>
+            </div> 
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h4>PRODUCT</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">TRANSFER TREND</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-6" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-6-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-6-radio-day">Day</label>
+                  <input id="chart-6-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-6-radio-week">Week</label>
+                  <input id="chart-6-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-6-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-6-legend" class="chart-legend">some legend here</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h4>REJECT</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">REJECT TREND</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-7" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-7-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-7-radio-day">Day</label>
+                  <input id="chart-7-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-7-radio-week">Week</label>
+                  <input id="chart-7-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-7-radio-month">Month</label>
+                </div>
+              </div>
+              <div id="chart-7-legend" class="chart-legend">some legend here</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h4>ENERGY TREND</h4>
+    <div class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="10" data-sizey="5">
+          <div class="row" style="padding:20px;">
+            <div class="col-md-10">ENERGY TREND</div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+              <canvas id="chart-8" width="850" height="250" style="margin-top:10px;"></canvas>
+            </div>
+            <div class="col-md-2 sidechart">
+              <div style="border-bottom: 1px solid #ddd;margin-bottom: 19px;">
+                <div style="font-size: 12px;vertical-align: middle;" class="form-group">
+                  <input id="chart-8-radio-day" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-8-radio-day">Day</label>
+                  <input id="chart-8-radio-week" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-8-radio-week">Week</label>
+                  <input id="chart-8-radio-month" class="chart-radio" type="radio" name="chart1rad"> <label class="chart-legend" for="chart-8-radio-month">Month</label>
+                </div>
+              </div>
+
+              <div id="chart-8-legend" class="chart-legend">some legend here</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<style type="text/css">
+  ul.line2y-legend, ul.line-legend {
+    background: none;
+    border: none;
+  }
+  ul.line2y-legend li, ul.line-legend li {
+    border:none;
+    text-align: left;
+    box-shadow: none;
+    margin-top: 10px;
+    font-size: 11px;
+  }
+  .chart-legend li span{ 
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }
+</style>
+{% endblock %}
+
+{% block javascript %}
+
+<script src="/static/water/backboneapp/bower_components/Chart.js/Chart.min.js"></script>
+<script src="/static/water/backboneapp/bower_components/d3/d3.min.js"></script>
+<script src="/static/water/backboneapp/bower_components/nvd3/build/nv.d3.min.js"></script>
+
+<script>
+  /*ChartJS Document*/
+  Chart.types.Line.extend({
+    name: "Line2Y",
+    getScale: function(data) {
+        var startPoint = this.options.scaleFontSize;
+        var endPoint = this.chart.height - (this.options.scaleFontSize * 1.5) - 5;
+        return Chart.helpers.calculateScaleRange(
+            data,
+            endPoint - startPoint,
+            this.options.scaleFontSize,
+            this.options.scaleBeginAtZero,
+            this.options.scaleIntegersOnly);
+    },
+    initialize: function (data) {
+        var y2datasetLabels = [];
+        var y2data = [];
+        var y1data = [];
+        data.datasets.forEach(function (dataset, i) {
+            if (dataset.y2axis == true) {
+                y2datasetLabels.push(dataset.label);
+                y2data = y2data.concat(dataset.data);
+            } else {
+                y1data = y1data.concat(dataset.data);
+            }
+        });
+        
+        //use the helper function to get the scale for both datasets
+        var y1Scale = this.getScale(y1data);
+        this.y2Scale = this.getScale(y2data);
+        var normalizingFactor = y1Scale.max / this.y2Scale.max;
+
+        // update y2 datasets
+        data.datasets.forEach(function(dataset) {
+            if (y2datasetLabels.indexOf(dataset.label) !== -1) {
+                dataset.data.forEach(function (e, j) {
+                    dataset.data[j] = e * normalizingFactor;
+                })
+            }
+        })
+
+        // denormalize tooltip for y2 datasets
+        this.options.multiTooltipTemplate = function (d) {
+            if (y2datasetLabels.indexOf(d.datasetLabel) !== -1) 
+                return Math.round(d.value / normalizingFactor, 6);
+            else 
+                return d.value;
+        }
+
+        Chart.types.Line.prototype.initialize.apply(this, arguments);
+    },
+    draw: function () {
+        this.scale.xScalePaddingRight = this.scale.xScalePaddingLeft;
+        Chart.types.Line.prototype.draw.apply(this, arguments);
+
+        this.chart.ctx.textAlign = 'left';
+        this.chart.ctx.textBaseline = "middle";
+        this.chart.ctx.fillStyle = "#666";
+        var yStep = (this.scale.endPoint - this.scale.startPoint) / this.y2Scale.steps
+        for (var i = 0, y = this.scale.endPoint, label = this.y2Scale.min; 
+             i <= this.y2Scale.steps; 
+             i++) {
+                this.chart.ctx.fillText(label, this.chart.width - this.scale.xScalePaddingRight + 10, y);
+                y -= yStep;
+                label += this.y2Scale.stepValue
+        }
+    }
+  });
+
+  /* Global ChartJS Options*/
+  var options = {
+    scaleBeginAtZero: true,
+    scaleShowGridLines: true,
+    scaleShowLabels: true
+  }
+
+</script>
+
+<script>
+  var set_to = [];
+  var go = [false, false, false, false, false, false, false, false];
+  
+  //$(document).ready(function(){
+    var ajr = [];
+  
+    ajr[1] = '{% url "trend-pretreatment-api" %}';
+    ajr[2] = '{% url "trend-flowrates-api" %}';
+    ajr[3] = '{% url "trend-pressures-api" %}' ; 
+    ajr[4] = '{% url "trend-circulation-api" %}' ; 
+    ajr[5] = '{% url "trend-analyzers-api" %}';
+    ajr[6] = '{% url "trend-transfer-api" %}' ; 
+    ajr[7] = '{% url "trend-reject-api" %}' ;
+    ajr[8] = '{% url "trend-energy-api" %}' ;
+  
+    go_ajax(ajr[1], 1);
+    go_ajax(ajr[2], 2);
+    
+    var nxt = false;
+    var inc = 3;
+    
+    while (inc <= 2) {
+      var cheque = false;
+      var itr = 0;
+      go_ajax(ajr[inc], inc); 
+      //console.log(set_to[inc]);
+      var timeout = setInterval(function(){
+        console.log(go[inc]);
+        itr++;
+      }, 1000);
+      //if (itr==10) {
+          clearInterval(timeout);
+        //  console.log('timeout');
+      //}
+      if (go[inc]) {
+        console.log('yay')
+      }
+      inc++;
+      console.log('inc '+inc);
+    }
+   
+  //});
+ 
+  function go_ajax(api_url, idx) {
+    var req = $.ajax({
+      type: "GET",
+      url: api_url,
+      beforeSend: function() {
+        //$('#spin').spin({ color: '#34495E', shadow: false }); 
+        console.log('loading... ' + api_url);
+      },
+      complete: function() { 
+        console.log('ajax request done ' + api_url);       
+      }
+    });
+ 
+    req.done(function(data) {
+      //console.log('data captured'+data.length); //console.log(data);
+      //$('#spin').hide();
+      //console.log(data['value1']+idx);
+      set_to[idx] = data;
+      console.log(set_to[idx]);
+      widgetSetter(data, idx); 
+    });
+      
+    req.fail(function(data) {
+      console.log('sorry failed ' + api_url);
+      //$('#spin').hide(); 
+    });
+    //console.log(req);
+  } 
+  
+  function widgetSetter(data, i){
+    //console.log(data, i+' inside widgetSetter');
+    set_to[i] = data; // widget data, top-bottom, [1-8]
+    if (i == 1 || i == 2 || i == 5 || i == 6) {
+      set2Yaxis(data, i);
+    } else if (i == 3) {
+      set1Yaxis(data, i, 4);
+    } else if (i == 4) {
+      set1Yaxis(data, i, 2);
+    } else if (i == 7) {
+      set1Yaxis(data, i, 1);
+    }
+    go[i] = true;
+  }
+  
+  var ctx = []; 
+  var lineChartData = [];
+  var myLine = [];
+  function set2Yaxis(nodes, i) {
+    console.log("chart-"+i);
+    ctx[i] = document.getElementById("chart-"+i).getContext("2d");
+    lineChartData[i] = {
+      labels: nodes['timestamp'],
+      datasets: [{
+          label: nodes['label1'],
+          fillColor: "rgba(0,255,0,0.5)",
+          strokeColor: "rgba(0,255,0,1)",
+          pointColor: "rgba(0,255,0,1)",
+          color: "rgba(0,255,0,0,0.5)",
+          pointStrokeColor: "#fff",
+          data: nodes['value1'],
+          y2axis: true
+      }, {
+          label: nodes['label2'],
+          fillColor: "rgba(151,187,205,0.5)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          data: nodes['value2'],
+          y2axis: true
+      }, {
+          label: nodes['label3'],
+          fillColor: "rgba(205,151,187,0.5)",
+          strokeColor: "rgba(205,151,187,1)",
+          pointColor: "rgba(205,151,187,1)",
+          pointStrokeColor: "#fff",
+          data: nodes['value3'],
+      }]
+    } 
+    console.log(lineChartData[i]);
+    myLine[i] = new Chart(ctx[i]).Line2Y(lineChartData[i], options);
+    $('#chart-' + i + '-legend').html(myLine[i].generateLegend());
+    go[i] = true;
+  }
+
+  function set1Yaxis(nodes, i, seriesC) {
+    //
+  }
+
+</script>
+
+<script>
+$(document).ready(function(){
+  //var refresh = setInterval(go_ajax,60000);
+  var ctx5 = document.getElementById("chart-5").getContext("2d");
+  var lineChartData5 = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [{
+        label: "My First dataset",
+        fillColor: "rgba(0,255,0,0.5)",
+        strokeColor: "rgba(0,255,0,1)",
+        pointColor: "rgba(0,255,0,1)",
+        color: "rgba(0,255,0,0,0.5)",
+        pointStrokeColor: "#fff",
+        data: [15, 25, 90, 81, 56, 55, 400]
+    }, {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.5)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        data: [150, 48, 120, 19, 46, 27, 100],
+        y2axis: true
+    }, {
+        label: "My Third dataset",
+        fillColor: "rgba(205,151,187,0.5)",
+        strokeColor: "rgba(205,151,187,1)",
+        pointColor: "rgba(205,151,187,1)",
+        pointStrokeColor: "#fff",
+        data: [105, 48, 40, 19, 46, 27, 200],
+        y2axis: true
+    }]
+  }
+  var myLine5 = new Chart(ctx5).Line2Y(lineChartData5, options);
+  $('#chart-5-legend').html(myLine5.generateLegend());
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+  //go_ajax('{% url "trend-pressures-api" %}',3);
+  var ctx3 = $('#chart-3').get(0).getContext('2d');
+  var data3 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Reject Trend",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [1,3,123,31,31,0,12,33,13,122,12,3,1] //set_to[3]
+      }
+    ]
+  };
+  var myLine3 = new Chart(ctx3).Line(data3, options);
+  $('#chart-3-legend').html(myLine3.generateLegend());
+});
+</script>
+
+
+<script>
+  var ctx4 = $('#chart-4').get(0).getContext('2d');
+  var data4 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      }
+    ]
+  };
+  var myLine4 = new Chart(ctx4).Line2Y(data4, options);
+  $('#chart-4-legend').html(myLine4.generateLegend());
+</script>
+
+<script>
+  var ctx5 = $('#chart-5').get(0).getContext('2d');
+  var data5 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [218, 428, 840, 119, 826, 271, 190],
+        y2Axis: true
+      }
+    ]
+  };
+  var myLine5 = new Chart(ctx5).Line2Y(data5, options);
+  $('#chart-5-legend').html(myLine5.generateLegend());
+</script>
+
+<script>
+  var ctx6 = $('#chart-6').get(0).getContext('2d');
+  var data6 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [28, 28, 80, 89, 26, 21, 19, 11, 12, 23], // issues: jika jumlah data series tidak sama dengan yang lain chartjs tidak menampilkan range data yang lebih 
+        y2Axis: true
+      }
+    ]
+  };
+  var myLine6 = new Chart(ctx6).Line2Y(data6, options);
+  $('#chart-6-legend').html(myLine6.generateLegend());
+</script>
+
+
+<script>
+  var ctx7 = $('#chart-7').get(0).getContext('2d');
+  var data7 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Reject Trend",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      }
+    ]
+  };
+
+  var myLine7 = new Chart(ctx7).Line(data7, options);
+  $('#chart-7-legend').html(myLine7.generateLegend());
+</script>
+
+<script>
+  //code #chart-8 , chart-8-legend?
+  $('#chart-8').ready(function() {
+    $('#chart-8').css('background','#eeeeee');
+    $('#chart-8').css('border-radius','5px');    
+  });
+</script>
+
+<script>
+  $(window).load(function() {
+    //alert('loadding');
+    $('#spin').spin({color: '#34495e', shadow: false});
+  });
+</script>
+
+<script> 
+  var ctg = 1;
+  $('#chart-1-toggler').click(function(){
+    if (ctg == 0) {
+      $('#chart-1-toggler').attr('class','glyphicon glyphicon-menu-down');
+      ctg++;
+    } else {
+      $('#chart-1-toggler').attr('class','glyphicon glyphicon-menu-up');
+      ctg--;
+    }
+    $('#chart-1-toggle').toggle(); 
+  });
+</script>
+
+<script type="text/javascript" id="code">
+  var gridster;
+
+  $(function() {
+    gridster = $(".gridster > ul")
+      .gridster({
+        widget_margins: [5, 5],
+        widget_base_dimensions: [100, 54],
+        max_cols: 10,
+        max_size_x: 10})
+      .data('gridster')
+      .disable();
+  });
+</script>
+{% endblock %}

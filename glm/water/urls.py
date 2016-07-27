@@ -31,16 +31,24 @@ urlpatterns = [
     url(r'^api/live-energy/$',api.live_energy_api, name="live-energy-api"),
     
     #url trend api
-    url(r'^api/trend/$',api.trend_pretreatment_api, 
-        name="trend-pretreatment-api"),
-    url(r'^api/trend/$',api.trend_flowrates_api, name="trend-flowrates-api"),
-    url(r'^api/trend/$',api.trend_pressures_api, name="trend-pressures-api"),
-    url(r'^api/trend/$',api.trend_circulation_api, 
-        name="trend-circulation-api"),
-    url(r'^api/trend/$',api.trend_analyzers_api, name="trend-analyzers-api"),
-    url(r'^api/trend/$',api.trend_transfer_api, name="trend-transfer-api"),
-    url(r'^api/trend/$',api.trend_reject_api, name="trend-reject-api"),
-    url(r'^api/trend/$',api.trend_energy_api, name="trend-energy-api"),
+    url(r'^api/trend/$',api.trend_api, name="trend-api"), 
+
+    # historical trend
+    url(r'^api/historical-trend/$', api.get_historical_trend,
+        name="historical-trend-api"),
+
+    url(r'^download/trend/$', api.download_trend_csv, name="csv-trend"),
+
+    # url(r'^api/trend/$',api.trend_pretreatment_api, 
+    #     name="trend-pretreatment-api"),
+    # url(r'^api/trend/$',api.trend_flowrates_api, name="trend-flowrates-api"),
+    # url(r'^api/trend/$',api.trend_pressures_api, name="trend-pressures-api"),
+    # url(r'^api/trend/$',api.trend_circulation_api, 
+    #     name="trend-circulation-api"),
+    # url(r'^api/trend/$',api.trend_analyzers_api, name="trend-analyzers-api"),
+    # url(r'^api/trend/$',api.trend_transfer_api, name="trend-transfer-api"),
+    # url(r'^api/trend/$',api.trend_reject_api, name="trend-reject-api"),
+    # url(r'^api/trend/$',api.trend_energy_api, name="trend-energy-api"),
 
     url(r'^api/report/$',api.report_api, name="report-api"),
 

@@ -1,8 +1,17 @@
-import simplejson as json
-import pymongo
+import csv
+from datetime import datetime
+import math
+import os
+import os.path
+
 from django.http import HttpResponse, Http404, HttpResponseServerError
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+
+import simplejson as json
+import pymongo
 from pymongo import MongoClient
+import pytz
 
 from bson import Binary, Code
 from bson.json_util import dumps
@@ -466,6 +475,97 @@ def report_api(request):
     response = create_response(page_schema)
 
     return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
+def trend_api(request):
+    page_id = 'trend'
+
+    page_schema = get_page_schema(page_id)
+    response = create_response(page_schema)
+
+    return HttpResponse(json.dumps(response), content_type='application/json') 
+
+
+@login_required
+def get_historical_trend(request):
+    # parameters validation
+    if 'page' not in request.GET or 'eq' not in request.GET \
+            or 'rows' not in request.GET or 'start' not in request.GET:
+        response = {
+            'success': -1,
+            'error_message': 'Parameters are not complete.'
+        }
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json')
+
+    first = False
+    if 'first' in request.GET and request.GET['first'] == 'true':
+        first = True
+
+    page = request.GET['page']
+    tag_id = request.GET['eq']
+    rows = int(request.GET['rows'])
+
+    # start of query from the latest rows, not from the earliest rows
+    # later, query row using sort and reverse
+    start = int(request.GET['start'])
+    
+    page_schema = get_page_schema(page)
+
+    detail = get_chart_data(page_schema[tag_id], tag_id, start, rows, first)
+
+    response = list()
+    response.append(detail)
+
+    return HttpResponse(json.dumps(response), content_type='application/json')
+    
+
+@login_required
+def download_trend_csv(request):
+    if 'page' not in request.GET and 'eq' not in request.GET:
+        return HttpResponse('No parameter')
+
+    page = request.GET['page']
+    equipment = request.GET['eq']
+
+    # TODO need to review
+    dt = timezone.localtime(timezone.make_aware(datetime.now()))
+    dt_str = dt.strftime('%Y%m%d-%H%M%S')
+
+    filename = '%s-%s-%s.csv' % (page, equipment, dt_str)
+
+    # prepare header response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="%s"' % filename
+
+    # create the csv writer
+    writer = csv.writer(response)
+
+    # get the latest n rows
+    total_data = 60
+    rows = db[COLL].find().sort("_id",-1).limit(total_data)
+    if rows.count() == 0:
+        return HttpResponse('Fail to retrieve csv data. No data.')
+
+    # get tags
+    schema = get_page_schema(page)
+    tags = map(lambda i: i['data'], schema[equipment]['series'])
+
+    # write to csv in response with ascending time
+    rows = list(rows)
+    rows.reverse()
+    for row in rows:
+        # line = [row['SentTimestamp']]
+        date = row['SentDatetime'].strftime('%Y-%m-%d')
+        time = row['SentDatetime'].strftime('%H:%M:%S')
+        line = [date, time]
+        for tag in tags:
+            line.append(row['Tags'][tag]['Value'])
+
+        writer.writerow(line)
+
+    return response
 
 
 # def live_osmosis_api(request):

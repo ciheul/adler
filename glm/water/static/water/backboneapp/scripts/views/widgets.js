@@ -304,7 +304,7 @@ app.RealTimeChartView = Backbone.View.extend({
       var that = this;
       $.ajax({
         method: 'get',
-        url: '/electrical/api/historical-trend/',
+        url: '/water/api/historical-trend/',
         data: data,
         success: function(response) {
           that.model = response[0];
