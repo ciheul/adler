@@ -19,7 +19,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
     },
     "circular-pump-flow": {
       "type": "gauge",
@@ -28,7 +28,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
     },
     "circular-flow-percentage": {
       "type": "gauge",
@@ -37,7 +37,11 @@
       "maxValue": 15000,
       "label": "%",
       "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grammar": "percentage",
+      "value": [
+        "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW",
+        "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
+      ]
     },
     "membrane-inlet-pressure": {
       "type": "gauge",
@@ -46,7 +50,7 @@
       "maxValue": 15000,
       "label": "Bar",
       "grid": { "x": 7, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\PRESS"
     },
     "product-tds": {
       "type": "gauge",
@@ -55,7 +59,7 @@
       "maxValue": 15000,
       "label": "ppm",
       "grid": { "x": 9, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\TDS"
     },
     "raw-water-tds": {
       "type": "gauge",
@@ -64,7 +68,7 @@
       "maxValue": 15000,
       "label": "ppm",
       "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "TBD"
     },
     "product-ph": {
       "type": "gauge",
@@ -73,7 +77,7 @@
       "maxValue": 15000,
       "label": "",
       "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PH"
     },
     "transfer-flow-rate": {
       "type": "gauge",
@@ -82,7 +86,7 @@
       "maxValue": 15000,
       "label": "",
       "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "TBD"
     },
     "transfer-summary": {
       "type": "threeColumnsTable",
@@ -92,15 +96,15 @@
         { "type": "default",
           "name": "VOLUME TODAY",
           "label": "m3",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "default",
           "name": "VOLUME TOTALIZER",
           "label": "m3",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "default",
           "name": "PRESSURE",
           "label": "Bar",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "TBD" }
       ]
     }
   },
@@ -123,8 +127,8 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Hz",
-      "grid": { "x": 1, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
+      "value": "TBD"
     },
     "seawell-pump-pressure": {
       "title": "SEAWELL PUMP PRESSURE",
@@ -132,8 +136,8 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Bar",
-      "grid": { "x": 3, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
+      "value": "TBD"
     },
     "tds-raw-water": {
       "title": "TDS RAW WATER",
@@ -141,8 +145,8 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "ppm",
-      "grid": { "x": 5, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 5, "y": 13, "w": 2, "h":7 },
+      "value": "TBD"
     },
     "ph-raw-meter": {
       "title": "PH RAW WATER",
@@ -150,48 +154,48 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "",
-      "grid": { "x": 7, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 7, "y": 13, "w": 2, "h":7 },
+      "value": "TBD"
     },
     "seawell-pump": {
       "type": "twoColumnsTable",
       "title": "SEAWELL PUMP",
-      "grid": { "x": 1, "y": 24, "w": 4, "h": 4 },
+      "grid": { "x": 1, "y": 20, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "TBD",
+          "fault": "TBD" }
       ]
     },
     "raw-water-tank": {
       "title": "RAW WATER TANK",
       "type": "fourIndicators",
       "columns": 2,
-      "grid": { "x": 5, "y": 24, "w": 2, "h": 4 },
+      "grid": { "x": 5, "y": 20, "w": 2, "h": 4 },
       "data": [
         { "text": "LO LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSLL" },
         { "text": "HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSL" },
         { "text": "LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSH" },
         { "text": "HI HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSHH" }
       ]
     },
     "sea-water-level": {
       "title": "SEA WATER LEVEL",
       "type": "oneColumnTable",
-      "grid": { "x": 7, "y": 24, "w": 2, "h": 4 },
+      "grid": { "x": 7, "y": 20, "w": 2, "h": 4 },
       "data": [
         { "type": "indicator",
           "trueText": "HIGH",
           "falseText": "LOW",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" }
+          "value": "TBD" }
       ]
     }
   },
@@ -214,8 +218,8 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Hz",
-      "grid": { "x": 1, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\FREQ"
     },
     "filter-pump-pressure": {
       "title": "FILTER PUMP PRESSURE",
@@ -223,8 +227,8 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Bar",
-      "grid": { "x": 3, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
+      "value": "GLM\\SWRO_001\\RT2\\CF_CIP\\DPRESS"
     },
     "mm-filter-pressure-1": {
       "title": "MM FILTER PRESSURE #1",
@@ -232,8 +236,8 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Bar",
-      "grid": { "x": 5, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 5, "y": 13, "w": 2, "h":7 },
+      "value": "GLM\\SWRO_001\\RT2\\MMF2A\\DPRESS"
     },
     "mm-filter-pressure-2": {
       "title": "MM FILTER PRESSURE #2",
@@ -241,103 +245,103 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Bar",
-      "grid": { "x": 7, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 7, "y": 13, "w": 2, "h":7 },
+      "value": "GLM\\SWRO_001\\RT2\\MMF2B\\DPRESS"
     },
     "filter-pump": {
       "type": "twoColumnsTable",
       "title": "FILTER PUMP",
-      "grid": { "x": 1, "y": 24, "w": 4, "h": 4 },
+      "grid": { "x": 1, "y": 20, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\FAULT" }
       ]
     },
     "intermediate-tank": {
       "title": "INTERMEDIATE TANK",
       "type": "fourIndicators",
       "columns": 2,
-      "grid": { "x": 5, "y": 24, "w": 2, "h": 4 },
+      "grid": { "x": 5, "y": 20, "w": 2, "h": 4 },
       "data": [
         { "text": "LO LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSLL" },
         { "text": "HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSL" },
         { "text": "LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSH" },
         { "text": "HI HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSHH" }
       ]
     },
     "intermediate-tank-level": {
       "type": "threeColumnsTable",
       "title": "INTERMEDIATE TANK LEVEL",
-      "grid": { "x": 7, "y": 24, "w": 2, "h": 4 },
+      "grid": { "x": 7, "y": 20, "w": 2, "h": 4 },
       "data": [
         { "type": "default",
           "name": "LEVEL",
           "label": "%",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LVL" }
       ]
     },
     "dosing-anti-scalance": {
       "type": "twoColumnsTable",
       "title": "DOSING ANTI SCALANCE",
-      "grid": { "x": 1, "y": 28, "w": 4, "h": 4 },
+      "grid": { "x": 1, "y": 24, "w": 4, "h": 4 },
       "data": [
         { "type": "indicator",
           "name": "AGITATOR",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" },
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_ANSCAL\\AGT_RUN" },
         { "type": "indicator",
           "name": "PUMP",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" }
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_ANSCAL\\PUMP_RUN" }
       ]
     },
     "dosing-chlorine": {
       "type": "twoColumnsTable",
       "title": "DOSING CHLORINE",
-      "grid": { "x": 5, "y": 28, "w": 4, "h": 4 },
+      "grid": { "x": 5, "y": 24, "w": 4, "h": 4 },
       "data": [
         { "type": "indicator",
           "name": "AGITATOR",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" },
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_CHL\\AGT_RUN" },
         { "type": "indicator",
           "name": "PUMP",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" }
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_CHL\\PUMP_RUN" }
       ]
     },
     "dosing-ph": {
       "type": "twoColumnsTable",
       "title": "DOSING PH",
-      "grid": { "x": 1, "y": 32, "w": 4, "h": 6 },
+      "grid": { "x": 1, "y": 28, "w": 4, "h": 6 },
       "data": [
         { "type": "indicator",
           "name": "AGITATOR",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" },
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_PH\\AGT_RUN" },
         { "type": "indicator",
           "name": "PUMP",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" },
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_PH\\PUMP_RUN" },
         { "type": "default",
           "name": "PH",
           "label": "pH",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\AUX_DI_6" }
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_PH\\PH" }
       ]
     }
   },
@@ -361,7 +365,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_SWRO_FEED\\FREQ"
     },
     "feed-pump-out-pressure": {
       "type": "gauge",
@@ -370,7 +374,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
     },
     "feed-pump-out-flow": {
       "type": "gauge",
@@ -379,7 +383,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
     },
     "feed-pump": {
       "type": "twoColumnsTable",
@@ -388,11 +392,11 @@
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_SWRO_FEED\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_SWRO_FEED\\FAULT" }
       ]
     },
     "hpp-frequency": {
@@ -402,7 +406,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FREQ"
     },
     "hpp-in-pressure": {
       "type": "gauge",
@@ -411,7 +415,7 @@
       "maxValue": 15000,
       "label": "Bar",
       "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
     },
     "cartridge-diff-pressure": {
       "type": "gauge",
@@ -420,7 +424,7 @@
       "maxValue": 15000,
       "label": "Bar",
       "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\CF_SWRO_FEED\\DPRESS"
     },
     "high-pressure-pump": {
       "type": "twoColumnsTable",
@@ -429,11 +433,11 @@
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_HP\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FAULT" }
       ]
     },
     "booster-pump-frequency": {
@@ -443,7 +447,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 37, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FREQ"
     },
     "booster-pump-in-flow": {
       "type": "gauge",
@@ -452,7 +456,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 3, "y": 37, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
     },
     "SWRO FEED TDS": {
       "type": "gauge",
@@ -461,7 +465,7 @@
       "maxValue": 15000,
       "label": "ppm",
       "grid": { "x": 5, "y": 37, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\TDS"
     },
     "booster-pump": {
       "type": "twoColumnsTable",
@@ -470,11 +474,11 @@
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FAULT" }
       ]
     },
     "cip-pump-frequency": {
@@ -484,7 +488,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 44, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_CIP\\FREQ"
     },
     "cip-cartridge-diff-press": {
       "type": "gauge",
@@ -493,7 +497,7 @@
       "maxValue": 15000,
       "label": "Bar",
       "grid": { "x": 3, "y": 44, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\CF_CIP\\DPRESS"
     },
     "membrane-inlet-flow": {
       "type": "gauge",
@@ -502,7 +506,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 5, "y": 44, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\FLOW"
     },
     "cip-pump": {
       "type": "twoColumnsTable",
@@ -511,11 +515,11 @@
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_CIP\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_CIP\\FAULT" }
       ]
     },
     "pressure-exchanger": {
@@ -528,13 +532,17 @@
       "data": [
         { "text": "Press. In",
           "tagId": "pressure-exchanger-1",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PX_RAW_IN\\PRESS" },
         { "text": "Press. Out",
           "tagId": "pressure-exchanger-2",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\PRESS" },
         { "text": "Diff.",
           "tagId": "pressure-exchanger-3",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "grammar": "substract",
+          "value": [
+            "GLM\\SWRO_001\\RT2\\PX_RAW_IN\\PRESS",
+            "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\PRESS"
+          ] }
       ]
     },
     "ro-membrane": {
@@ -547,13 +555,17 @@
       "data": [
         { "text": "Press. In",
           "tagId": "ro-membrane-1",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\PRESS" },
         { "text": "Press. Out",
           "tagId": "ro-membrane-2",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PRESS" },
         { "text": "Diff.",
           "tagId": "ro-membrane-3",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "grammar": "substract",
+          "value": [
+            "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\PRESS",
+            "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PRESS"
+          ] }
       ]
     },
     "cip-tank": {
@@ -563,13 +575,13 @@
       "grid": { "x": 7, "y": 51, "w": 2, "h": 4 },
       "data": [
         { "text": "LO LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSLL" },
         { "text": "HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSL" },
         { "text": "LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSH" },
         { "text": "HI HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSHH" }
       ]
     },
     "cip-tank-level": {
@@ -580,7 +592,7 @@
         { "type": "default",
           "name": "LEVEL",
           "label": "%",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LVL" }
       ]
     }
   },
@@ -604,7 +616,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 21, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_PRODUCT\\FREQ"
     },
     "transfer-pump-out-press": {
       "type": "gauge",
@@ -613,7 +625,7 @@
       "maxValue": 15000,
       "label": "Bar",
       "grid": { "x": 3, "y": 21, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PRESS"
     },
     "product-flow": {
       "type": "gauge",
@@ -622,7 +634,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 5, "y": 21, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\FLOW"
     },
     "tds-product": {
       "type": "gauge",
@@ -631,7 +643,7 @@
       "maxValue": 15000,
       "label": "ppm",
       "grid": { "x": 7, "y": 21, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\TDS"
     },
     "ph-product": {
       "type": "gauge",
@@ -640,7 +652,7 @@
       "maxValue": 15000,
       "label": "",
       "grid": { "x": 9, "y": 21, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PH"
     },
     "transfer-pump": {
       "type": "twoColumnsTable",
@@ -649,11 +661,11 @@
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_PRODUCT\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_PRODUCT\\FAULT" }
       ]
     },
     "product-tank": {
@@ -663,13 +675,13 @@
       "grid": { "x": 5, "y": 28, "w": 2, "h": 4 },
       "data": [
         { "text": "LO LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSLL" },
         { "text": "HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSL" },
         { "text": "LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSH" },
         { "text": "HI HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSHH" }
       ]
     },
     "product-tank-level": {
@@ -680,7 +692,7 @@
         { "type": "default",
           "name": "LEVEL",
           "label": "%",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LVL" }
       ]
     },
     "hotel-tank": {
@@ -690,13 +702,13 @@
       "grid": { "x": 9, "y": 28, "w": 2, "h": 4 },
       "data": [
         { "text": "LO LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSLL" },
         { "text": "HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSL" },
         { "text": "LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSH" },
         { "text": "HI HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSHH" }
       ]
     }
   },
@@ -720,7 +732,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 16, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PUMP_BRINE\\FREQ"
     },
     "brine-pump-out-press": {
       "title": "BRINE PUMP OUT PRESS.",
@@ -728,48 +740,48 @@
       "minValue": 0,
       "maxValue": 15000,
       "label": "Bar",
-      "grid": { "x": 3, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grid": { "x": 3, "y": 16, "w": 2, "h":7 },
+      "value": ""
     },
     "brine-pump": {
       "type": "twoColumnsTable",
       "title": "BRINE PUMP",
-      "grid": { "x": 5, "y": 17, "w": 4, "h": 4 },
+      "grid": { "x": 5, "y": 16, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
-          "run": "SS\\HSD_NPN0\\RT4\\GEN04\\F",
-          "fault": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "run": "GLM\\SWRO_001\\RT2\\PUMP_BRINE\\RUN",
+          "fault": "GLM\\SWRO_001\\RT2\\PUMP_BRINE\\FAULT" }
       ]
     },
     "brine-tank": {
       "title": "BRINE TANK",
       "type": "fourIndicators",
       "columns": 2,
-      "grid": { "x": 9, "y": 17, "w": 2, "h": 4 },
+      "grid": { "x": 9, "y": 16, "w": 2, "h": 4 },
       "data": [
         { "text": "LO LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSLL" },
         { "text": "HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSL" },
         { "text": "LO",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSH" },
         { "text": "HI HI",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSHH" }
       ]
     },
     "brine-tank-level": {
       "type": "threeColumnsTable",
       "title": "BRINE TANK LEVEL",
-      "grid": { "x": 9, "y": 21, "w": 2, "h": 3 },
+      "grid": { "x": 9, "y": 20, "w": 2, "h": 3 },
       "data": [
         { "type": "default",
           "name": "LEVEL",
           "label": "%",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LVL" }
       ]
     }
   },
@@ -777,7 +789,7 @@
     "electrical-information": {
       "type": "title",
       "title": "ELECTRICAL INFORMATION",
-      "grid": { "x": 1, "y": 1, "w": 10, "h": 2 }
+      "grid": { "x": 1, "y": 1, "w": 11, "h": 2 }
     },
     "frequency": {
       "type": "gauge",
@@ -786,7 +798,7 @@
       "maxValue": 15000,
       "label": "Hz",
       "grid": { "x": 1, "y": 3, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PM\\F"
     },
     "cosphi": {
       "type": "gauge",
@@ -795,7 +807,7 @@
       "maxValue": 15000,
       "label": "",
       "grid": { "x": 3, "y": 3, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PM\\COSPHI"
     },
     "active-power": {
       "type": "gauge",
@@ -804,7 +816,7 @@
       "maxValue": 15000,
       "label": "kW",
       "grid": { "x": 1, "y": 10, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\RT2\\PM\\P"
     },
     "active-current": {
       "type": "gauge",
@@ -813,53 +825,58 @@
       "maxValue": 15000,
       "label": "A",
       "grid": { "x": 3, "y": 10, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "grammar": "mean",
+      "value": [
+        "GLM\\SWRO_001\\RT2\\PM\\I_A",
+        "GLM\\SWRO_001\\RT2\\PM\\I_B",
+        "GLM\\SWRO_001\\RT2\\PM\\I_C"
+      ]
     },
     "voltage": {
       "type": "bars",
       "title": "VOLTAGE",
       "grid": { "x": 5, "y": 3, "w": 4, "h": 14 },
-      "height": 320,
+      "height": 300,
       "width": 30,
       "label": "V",
       "data": [
         { "text": "L1-L2",
           "tagId": "voltage-1",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\V_AB" },
         { "text": "L2-L3",
           "tagId": "voltage-2",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\V_BC" },
         { "text": "L3-L1",
           "tagId": "voltage-3",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\V_CA" },
         { "text": "L1-N",
           "tagId": "voltage-4",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\V_AN" },
         { "text": "L2-N",
           "tagId": "voltage-5",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\V_BN" },
         { "text": "L3-N",
           "tagId": "voltage-6",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\PM\\V_CN" }
       ]
     },
     "current": {
       "type": "bars",
       "title": "CURRENT",
-      "grid": { "x": 9, "y": 3, "w": 2, "h": 14 },
-      "height": 320,
+      "grid": { "x": 9, "y": 3, "w": 3, "h": 14 },
+      "height": 300,
       "width": 30,
       "label": "A",
       "data": [
         { "text": "L1",
           "tagId": "current-1",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\I_A" },
         { "text": "L2",
           "tagId": "current-2",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\I_B" },
         { "text": "L3",
           "tagId": "current-3",
-          "value": "SS\\HSD_NPN0\\RT4\\GEN04\\DI11_EGF" }
+          "value": "GLM\\SWRO_001\\RT2\\PM\\I_C" }
       ]
     },
     "information-left": {
@@ -869,15 +886,15 @@
         { "type": "default",
           "name": "REACTIVE POWER",
           "label": "kVar",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\Q" },
         { "type": "default",
           "name": "APPARENT POWER",
           "label": "kVA",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "value": "GLM\\SWRO_001\\RT2\\PM\\S" },
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\RT2\\PM\\TOT_E" }
       ]
     },
     "information-right": {
@@ -887,12 +904,26 @@
         { "type": "default",
           "name": "AVG. VOLTAGE L-L",
           "label": "V",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" },
+          "grammar": "mean",
+          "value": [
+            "GLM\\SWRO_001\\RT2\\PM\\V_AB",
+            "GLM\\SWRO_001\\RT2\\PM\\V_BC",
+            "GLM\\SWRO_001\\RT2\\PM\\V_CA"
+          ] },
         { "type": "default",
           "name": "AVG. VOLTAGE L-N",
           "label": "V",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "grammar": "mean",
+          "value": [
+            "GLM\\SWRO_001\\RT2\\PM\\V_AN",
+            "GLM\\SWRO_001\\RT2\\PM\\V_BN",
+            "GLM\\SWRO_001\\RT2\\PM\\V_CN"
+          ] }
       ]
+    },
+    "spacer1": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 21, "w": 10, "h": 2 }
     },
     "today-report": {
       "type": "title",
@@ -906,7 +937,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 1, "y": 25, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "TBD"
     },
     "sec": {
       "type": "gauge",
@@ -915,7 +946,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 3, "y": 25, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "TBD"
     },
     "energy-consumption": {
       "type": "threeColumnsTable",
@@ -925,7 +956,7 @@
         { "type": "default",
           "name": "ENERGY TODAY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "TBD" }
       ]
     }
   },
@@ -998,6 +1029,10 @@
           "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
       ]
     },
+    "spacer1": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 13, "w": 9, "h": 2 }
+    },
     "this-week-title": {
       "type": "title",
       "title": "THIS WEEK",
@@ -1065,6 +1100,10 @@
           "label": "kWh",
           "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
       ]
+    },
+    "spacer2": {
+      "type": "spacer",
+      "grid": { "x": 1, "y": 27, "w": 9, "h": 2 }
     },
     "this-month-title": {
       "type": "title",

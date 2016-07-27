@@ -60,7 +60,6 @@
   
         $('.page-notif').fadeIn();
         $('.page-notif').delay(3000).fadeOut();
-      {# }, 5000); #}
       }, app.constants.DATA_UPDATE_INTERVAL);
     },
   
@@ -127,6 +126,15 @@
           });
           widgetView.render();
         }
+
+        if (widget.get('type') === 'spacer') {
+          var widgetView = new app.SpacerView({
+            el: $('#grid-0 > ul'),
+            model: widget.toJSON()
+          });
+          widgetView.render();
+        }
+
       });
     }
   });

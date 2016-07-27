@@ -24,6 +24,7 @@ app.SpacerView = Backbone.View.extend({
 
   render: function() {
     this.$el.append(this.template(this.model));
+    $('#' + this.model.tagId).hide();
   }
 });
 
@@ -179,7 +180,6 @@ app.BarsItemView = Backbone.View.extend({
     var that = this;
     YUI().use('aui-progressbar',
       function(Y) {
-        console.log(that.model);
         new Y.ProgressBar({
           boundingBox: '#' + that.model.tagId,
           // boundingBox: params['boundingBox'],
@@ -188,7 +188,7 @@ app.BarsItemView = Backbone.View.extend({
           // {# label: params['value'] + '%', #}
           orientation: 'vertical',
           // value: calculateRatioProgressBar(params['value']),
-          value: 50
+          value: that.model.value
           // {# value: params['value'], #}
         }).render();
       }
@@ -201,7 +201,18 @@ app.FourIndicatorsView = Backbone.View.extend({
   template: _.template($('#four-indicators-template').html()),
 
   render: function() {
+    this.model.btn = this.setFourIndicators(this.model.data);
     this.$el.append(this.template(this.model));
+  },
+
+  setFourIndicators: function(data) {
+    var btns = [];
+    data.forEach(function(d) {
+      if (d.value === false) { btns.push('btn-success'); }
+      else if (d.value === true) { btns.push('btn-danger'); }
+      else { btns.push('btn-default'); }
+    });
+    return btns;
   }
 });
 

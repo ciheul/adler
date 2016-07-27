@@ -331,12 +331,12 @@
         <% } %>
         <tbody id="<%= tagId %>">
           <tr>
-            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">LO LO</div></td>
-            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">HI</div></td>
+            <td><div class="btn btn-xs <%= btn[0] %>" style="font-size:11px;width:70px">LO LO</div></td>
+            <td><div class="btn btn-xs <%= btn[1] %>" style="font-size:11px;width:70px">HI</div></td>
           </tr>
           <tr>
-            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">LO</div></td>
-            <td><div class="btn btn-xs btn-default" style="font-size:11px;width:70px">HI HI</div></td>
+            <td><div class="btn btn-xs <%= btn[2] %>" style="font-size:11px;width:70px">LO</div></td>
+            <td><div class="btn btn-xs <%= btn[3] %>" style="font-size:11px;width:70px">HI HI</div></td>
           </tr>
         </tbody>
       </table>
@@ -377,7 +377,7 @@
   </script>
 
   <script type="text/template" id="spacer-template">
-    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>">
+    <li id="<%= tagId %>" data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
     </li>
   </script>
 

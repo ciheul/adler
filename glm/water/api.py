@@ -35,25 +35,37 @@ def grammar_sum(detail, row):
     return total_value
 
 
+def grammar_substract(detail, row):
+    a = detail['value'][0]
+    b = detail['value'][1]
+
+    return float(row['Tags'][a]['Value']) - float(row['Tags'][b]['Value'])
+
+
 def grammar_div(detail, row):
-    # total_value = 0
     try:
         a = detail['value'][0]
         b = detail['value'][1]
 
         return float(row['Tags'][a]['Value']) / float(row['Tags'][b]['Value'])
-        # for tag_name in detail['value']:
-        #     if tag_name not in row['Tags']:
-        #         continue
-        #     total_value /= float(row['Tags'][tag_name]['Value'])
-        #     return total_value
+    except ZeroDivisionError:
+        return 'NaN'
+
+
+def grammar_percentage(detail, row):
+    try:
+        a = detail['value'][0]
+        b = detail['value'][1]
+
+        return float(row['Tags'][a]['Value']) / float(row['Tags'][b]['Value']) * 100.0
     except ZeroDivisionError:
         return 'NaN'
 
 
 def grammar_mean(detail, row):
     total_value = grammar_sum(detail, row)
-    return "{:,.2f}".format(total_value / len(detail['value']))
+    return total_value / len(detail['value'])
+    # return "{:,.2f}".format(total_value / len(detail['value']))
 
 
 def get_chart_data(detail, tag_id, start=0, rows=60, first=False):
@@ -105,11 +117,12 @@ def create_response(page):
     response = list()
     for tag_id, detail in page.iteritems():
         if detail['type'] == 'gauge':
+            tag_name = detail['value']
+
             # no grammar means no computation to yield the value. easy
             # and ensure tag_name exists in the latest mongodb document
             if 'grammar' not in detail and detail['value'] in row['Tags']:
                 # set value
-                tag_name = detail['value']
                 if tag_name not in row['Tags']:
                     continue
                 detail['value'] = row['Tags'][tag_name]['Value']
@@ -122,6 +135,15 @@ def create_response(page):
             if 'grammar' in detail and detail['grammar'] == 'sum':
                 detail['value'] = grammar_sum(detail, row)
                 
+            # sum value from several tag names
+            if 'grammar' in detail and detail['grammar'] == 'mean':
+                print "mean"
+                print detail
+                detail['value'] = grammar_mean(detail, row)
+                
+            if 'grammar' in detail and detail['grammar'] == 'percentage':
+                detail['value'] = grammar_percentage(detail, row)
+
             # set tag_id inside detail
             detail['tagId'] = tag_id
 
@@ -225,6 +247,8 @@ def create_response(page):
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'mean':
                         d['value'] = grammar_mean(d, row)
+                        if d['value'] != 'NaN':
+                            d['value'] = "{:,.2f}".format(d['value'])
                         final_data.append(d)
 
                 # row with general status (it consists of run and fault)
@@ -289,10 +313,17 @@ def create_response(page):
             final_data = list()
             for d in detail['data']:
                 tag_name = d['value']
-                d['value'] = '#NA'
-                if tag_name in row['Tags']:
-                    d['value'] = "{:,.2f}".format(row['Tags'][tag_name]['Value'])
-                final_data.append(d)
+                # d['value'] = '#NA'
+
+                if 'grammar' not in d:
+                    if tag_name in row['Tags']:
+                        d['value'] = \
+                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                    final_data.append(d)
+
+                if 'grammar' in d and d['grammar'] == 'substract':
+                    d['value'] = "{:,.2f}".format(grammar_substract(d, row))
+                    final_data.append(d)
 
             detail['tagId'] = tag_id
             detail['data'] = final_data
@@ -301,13 +332,27 @@ def create_response(page):
             response.append(detail)
 
         if detail['type'] == 'fourIndicators':
+            final_data = list()
+            for d in detail['data']:
+                tag_name = d['value']
+                d['value'] = '#NA'
+                if tag_name in row['Tags']:
+                    d['value'] = row['Tags'][tag_name]['Value']
+                final_data.append(d)
+
             detail['tagId'] = tag_id
+            detail['data'] = final_data
+
             response.append(detail)
 
         if detail['type'] == 'image':
             response.append(detail)
 
         if detail['type'] == 'title':
+            response.append(detail)
+
+        if detail['type'] == 'spacer':
+            detail['tagId'] = tag_id
             response.append(detail)
     return response
 
