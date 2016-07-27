@@ -190,6 +190,8 @@ app.BarsItemView = Backbone.View.extend({
           orientation: 'vertical',
           value: that.calculateRatio(that.model.value, that.model.minValue, that.model.maxValue)
         }).render();
+
+        $('#' + that.model.tagId).children().css('background-color', '#f5f5f5');
       }
     );
   },
@@ -197,9 +199,9 @@ app.BarsItemView = Backbone.View.extend({
   calculateRatio: function(value, minValue, maxValue) {
     if (value > minValue && value < maxValue) {
       var v = (value - minValue) / (maxValue - minValue) * 100;
-      return v;
+      return 100 - v;
     } else {
-      return 0;
+      return 100;
     }
   }
 });
