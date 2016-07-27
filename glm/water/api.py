@@ -130,6 +130,8 @@ def create_response(page):
                 # TODO just for temporary
                 if tag_id == 'gauge-outgoing-power':
                     detail['value'] = detail['value'] / 1000
+                elif tag_id == 'active-power':
+                    detail['value'] = "{:,.2f}".format(detail['value'] / 1000.0)
 
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'sum':
@@ -331,6 +333,11 @@ def create_response(page):
                                 "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 100)
 
                             d['value'] = row['Tags'][tag_name]['Value'] / 100
+                        elif tag_id == 'current':
+                            d['valueStr'] = \
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000)
+
+                            d['value'] = row['Tags'][tag_name]['Value'] / 1000
                         else:
                             d['valueStr'] = \
                                 "{:,.2f}".format(row['Tags'][tag_name]['Value'])

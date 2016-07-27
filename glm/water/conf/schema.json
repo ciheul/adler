@@ -125,7 +125,7 @@
       "title": "SEAWELL PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
       "value": "TBD"
@@ -216,7 +216,7 @@
       "title": "FILTER PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\FREQ"
@@ -362,7 +362,7 @@
       "type": "gauge",
       "title": "FEED PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_SWRO_FEED\\FREQ"
@@ -371,7 +371,7 @@
       "type": "gauge",
       "title": "FEED PUMP OUT PRESSURE",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
@@ -403,7 +403,7 @@
       "type": "gauge",
       "title": "HPP FREQUENCY",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FREQ"
@@ -444,7 +444,7 @@
       "type": "gauge",
       "title": "BOOSTER PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 37, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FREQ"
@@ -485,7 +485,7 @@
       "type": "gauge",
       "title": "CIP PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 44, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_CIP\\FREQ"
@@ -617,7 +617,7 @@
       "type": "gauge",
       "title": "TRANSFER PUMP FREQ.",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_PRODUCT\\FREQ"
@@ -733,7 +733,7 @@
       "title": "BRINE PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 16, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_BRINE\\FREQ"
@@ -799,7 +799,7 @@
       "type": "gauge",
       "title": "FREQUENCY",
       "minValue": 0,
-      "maxValue": 62,
+      "maxValue": 55,
       "label": "Hz",
       "grid": { "x": 1, "y": 3, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PM\\F"
@@ -807,7 +807,7 @@
     "cosphi": {
       "type": "gauge",
       "title": "COS PHI",
-      "minValue": -1.00,
+      "minValue": 0.00,
       "maxValue": 1.00,
       "label": "",
       "grid": { "x": 3, "y": 3, "w": 2, "h":7 },
@@ -816,8 +816,8 @@
     "active-power": {
       "type": "gauge",
       "title": "ACTIVE POWER",
-      "minValue": 0,
-      "maxValue": 15000,
+      "minValue": 0.00,
+      "maxValue": 100.00,
       "label": "kW",
       "grid": { "x": 1, "y": 10, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PM\\P"
@@ -842,8 +842,8 @@
       "grid": { "x": 5, "y": 3, "w": 4, "h": 14 },
       "height": 300,
       "width": 30,
-      "minValue": -500,
-      "maxValue": 500,
+      "minValue": -450,
+      "maxValue": 450,
       "label": "V",
       "data": [
         { "text": "L1-L2",
