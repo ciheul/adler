@@ -137,8 +137,6 @@ def create_response(page):
                 
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'mean':
-                print "mean"
-                print detail
                 detail['value'] = grammar_mean(detail, row)
                 
             if 'grammar' in detail and detail['grammar'] == 'percentage':
@@ -220,11 +218,16 @@ def create_response(page):
                         tag_name = d['value']
                         d['value'] = '#NA'
                         if tag_name in row['Tags']:
+                            # TODO temporary
                             if tag_id == 'power-plant-info' \
                                     and d['name'] == 'TOTAL POWER':
                                 d['value'] = \
                                     "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
-                            elif tag_id == 'total-power' and d['name'] == 'TOTAL':
+                            elif tag_id == 'total-power' \
+                                    and d['name'] == 'TOTAL':
+                                d['value'] = \
+                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
+                            elif tag_id == 'information-left':
                                 d['value'] = \
                                     "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
                             else:
@@ -248,7 +251,12 @@ def create_response(page):
                     if 'grammar' in d and d['grammar'] == 'mean':
                         d['value'] = grammar_mean(d, row)
                         if d['value'] != 'NaN':
-                            d['value'] = "{:,.2f}".format(d['value'])
+                            # # TODO temporary
+                            if tag_id == 'information-right':
+                                d['value'] = \
+                                    "{:,.2f}".format(d['value'] / 100.0)
+                            else:
+                                d['value'] = "{:,.2f}".format(d['value'])
                         final_data.append(d)
 
                 # row with general status (it consists of run and fault)
@@ -317,12 +325,22 @@ def create_response(page):
 
                 if 'grammar' not in d:
                     if tag_name in row['Tags']:
-                        d['value'] = \
-                            "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                        # TODO just for temporary
+                        if tag_id == 'voltage':
+                            d['valueStr'] = \
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 100)
+
+                            d['value'] = row['Tags'][tag_name]['Value'] / 100
+                        else:
+                            d['valueStr'] = \
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+
+                            d['value'] = row['Tags'][tag_name]['Value']
                     final_data.append(d)
 
                 if 'grammar' in d and d['grammar'] == 'substract':
-                    d['value'] = "{:,.2f}".format(grammar_substract(d, row))
+                    d['valueStr'] = "{:,.2f}".format(grammar_substract(d, row))
+                    d['value'] = grammar_substract(d, row)
                     final_data.append(d)
 
             detail['tagId'] = tag_id

@@ -125,7 +125,7 @@
       "title": "SEAWELL PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
       "value": "TBD"
@@ -216,7 +216,7 @@
       "title": "FILTER PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\FREQ"
@@ -362,7 +362,7 @@
       "type": "gauge",
       "title": "FEED PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_SWRO_FEED\\FREQ"
@@ -371,7 +371,7 @@
       "type": "gauge",
       "title": "FEED PUMP OUT PRESSURE",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
@@ -381,7 +381,7 @@
       "title": "FEED PUMP OUT FLOW",
       "minValue": 0,
       "maxValue": 15000,
-      "label": "Hz",
+      "label": "m3/h",
       "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
     },
@@ -403,7 +403,7 @@
       "type": "gauge",
       "title": "HPP FREQUENCY",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FREQ"
@@ -444,7 +444,7 @@
       "type": "gauge",
       "title": "BOOSTER PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 37, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FREQ"
@@ -485,7 +485,7 @@
       "type": "gauge",
       "title": "CIP PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 44, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_CIP\\FREQ"
@@ -528,6 +528,8 @@
       "grid": { "x": 1, "y": 51, "w": 3, "h": 8 },
       "height": 140,
       "width": 60,
+      "minValue": 0,
+      "maxValue": 100,
       "label": "Bar",
       "data": [
         { "text": "Press. In",
@@ -551,6 +553,8 @@
       "grid": { "x": 4, "y": 51, "w": 3, "h": 8 },
       "height": 140,
       "width": 60,
+      "minValue": 0,
+      "maxValue": 100,
       "label": "Bar",
       "data": [
         { "text": "Press. In",
@@ -613,7 +617,7 @@
       "type": "gauge",
       "title": "TRANSFER PUMP FREQ.",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_PRODUCT\\FREQ"
@@ -729,7 +733,7 @@
       "title": "BRINE PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 16, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_BRINE\\FREQ"
@@ -795,7 +799,7 @@
       "type": "gauge",
       "title": "FREQUENCY",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 62,
       "label": "Hz",
       "grid": { "x": 1, "y": 3, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PM\\F"
@@ -803,8 +807,8 @@
     "cosphi": {
       "type": "gauge",
       "title": "COS PHI",
-      "minValue": 0,
-      "maxValue": 15000,
+      "minValue": -1.00,
+      "maxValue": 1.00,
       "label": "",
       "grid": { "x": 3, "y": 3, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PM\\COSPHI"
@@ -838,6 +842,8 @@
       "grid": { "x": 5, "y": 3, "w": 4, "h": 14 },
       "height": 300,
       "width": 30,
+      "minValue": -500,
+      "maxValue": 500,
       "label": "V",
       "data": [
         { "text": "L1-L2",
@@ -866,6 +872,8 @@
       "grid": { "x": 9, "y": 3, "w": 3, "h": 14 },
       "height": 300,
       "width": 30,
+      "minValue": -5000,
+      "maxValue": 5000,
       "label": "A",
       "data": [
         { "text": "L1",

@@ -157,6 +157,8 @@ app.BarsView = Backbone.View.extend({
       item.height = that.model.height;
       item.width = that.model.width;
       item.label = that.model.label;
+      item.minValue = that.model.minValue;
+      item.maxValue = that.model.maxValue;
 
       var itemView = new app.BarsItemView({
         el: $('#' + that.model.tagId),
@@ -182,17 +184,23 @@ app.BarsItemView = Backbone.View.extend({
       function(Y) {
         new Y.ProgressBar({
           boundingBox: '#' + that.model.tagId,
-          // boundingBox: params['boundingBox'],
           height: that.model.height,
           width: that.model.width,
           // {# label: params['value'] + '%', #}
           orientation: 'vertical',
-          // value: calculateRatioProgressBar(params['value']),
-          value: that.model.value
-          // {# value: params['value'], #}
+          value: that.calculateRatio(that.model.value, that.model.minValue, that.model.maxValue)
         }).render();
       }
     );
+  },
+
+  calculateRatio: function(value, minValue, maxValue) {
+    if (value > minValue && value < maxValue) {
+      var v = (value - minValue) / (maxValue - minValue) * 100;
+      return v;
+    } else {
+      return 0;
+    }
   }
 });
 
