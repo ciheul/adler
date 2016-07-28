@@ -139,13 +139,16 @@ def create_response(page):
                 # TODO just for temporary
                 if tag_id == 'gauge-outgoing-power':
                     detail['value'] = detail['value'] / 1000
-                # elif tag_id == 'active-power':
-                #     detail['value'] = "{:,.2f}".format(detail['value'] / 1000.0)
+                elif tag_id == 'active-power':
+                    detail['value'] = "{:,.2f}".format(detail['value'] / 10.0)
 
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'sum':
                 detail['value'] = grammar_sum(detail, row)
-                
+
+                if tag_id == 'active-current':
+                    detail['value'] = detail['value'] / 1000.0
+
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'mean':
                 detail['value'] = grammar_mean(detail, row)
@@ -229,21 +232,22 @@ def create_response(page):
                         tag_name = d['value']
                         d['value'] = '#NA'
                         if tag_name in row['Tags']:
-                            # TODO temporary
+                            d['value'] = row['Tags'][tag_name]['Value']
+
+                            # TODO temporary adjustment
                             if tag_id == 'power-plant-info' \
                                     and d['name'] == 'TOTAL POWER':
-                                d['value'] = \
-                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
+                                d['value'] = "{:,.2f}".format(d['value'] / 1000.0)
                             elif tag_id == 'total-power' \
                                     and d['name'] == 'TOTAL':
-                                d['value'] = \
-                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
-                            elif tag_id == 'information-left' and d['name'] != 'ENERGY':
-                                d['value'] = \
-                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
-                            else:
-                                d['value'] = \
-                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'])
+                                d['value'] = "{:,.2f}".format(d['value'] / 1000.0)
+                            elif tag_id == 'information-left' \
+                                    and d['name'] != 'REACTIVE POWER':
+                                d['value'] = "{:,.2f}".format(d['value'] / 10.0)
+                            elif tag_id == 'information-left' \
+                                    and d['name'] == 'REACTIVE POWER':
+                                d['value'] = "{:,.2f}".format(d['value'] / 100.0)
+
                         final_data.append(d)
 
                     # get sum value from several tag names

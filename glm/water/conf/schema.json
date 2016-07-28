@@ -829,7 +829,7 @@
       "maxValue": 15000,
       "label": "A",
       "grid": { "x": 3, "y": 10, "w": 2, "h":7 },
-      "grammar": "mean",
+      "grammar": "sum",
       "value": [
         "GLM\\SWRO_001\\RT2\\PM\\I_A",
         "GLM\\SWRO_001\\RT2\\PM\\I_B",
