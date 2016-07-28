@@ -141,6 +141,8 @@ def create_response(page):
                     detail['value'] = detail['value'] / 1000.0
                 elif tag_id == 'active-power':
                     detail['value'] = detail['value'] / 10.0
+                elif tag_id == 'product-ph' or tag_id == 'ph-product':
+                    detail['value'] = detail['value'] / 10.0
 
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'sum':
