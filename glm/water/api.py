@@ -138,9 +138,9 @@ def create_response(page):
 
                 # TODO just for temporary
                 if tag_id == 'gauge-outgoing-power':
-                    detail['value'] = detail['value'] / 1000
+                    detail['value'] = detail['value'] / 1000.0
                 elif tag_id == 'active-power':
-                    detail['value'] = "{:,.2f}".format(detail['value'] / 10.0)
+                    detail['value'] = detail['value'] / 10.0
 
             # sum value from several tag names
             if 'grammar' in detail and detail['grammar'] == 'sum':
