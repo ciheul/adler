@@ -339,14 +339,14 @@ def create_response(page):
                         # TODO just for temporary
                         if tag_id == 'voltage':
                             d['valueStr'] = \
-                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 100)
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 100.0)
 
-                            d['value'] = row['Tags'][tag_name]['Value'] / 100
+                            d['value'] = row['Tags'][tag_name]['Value'] / 100.0
                         elif tag_id == 'current':
                             d['valueStr'] = \
-                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000)
+                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)
 
-                            d['value'] = row['Tags'][tag_name]['Value'] / 1000
+                            d['value'] = row['Tags'][tag_name]['Value'] / 1000.0
                         else:
                             d['valueStr'] = \
                                 "{:,.2f}".format(row['Tags'][tag_name]['Value'])
