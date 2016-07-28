@@ -16,7 +16,7 @@
       "type": "gauge",
       "title": "SWRO FEED FLOW",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "m3/h",
       "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
@@ -25,7 +25,7 @@
       "type": "gauge",
       "title": "CIRC. PUMP FLOW",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "m3/h",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
@@ -34,7 +34,7 @@
       "type": "gauge",
       "title": "CIRC. FLOW PERCENTAGE",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "%",
       "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
       "grammar": "percentage",
@@ -47,7 +47,7 @@
       "type": "gauge",
       "title": "MEMBRANE INLET PRESSURE",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 7, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\PRESS"
@@ -56,7 +56,7 @@
       "type": "gauge",
       "title": "PRODUCT TDS",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 1500,
       "label": "ppm",
       "grid": { "x": 9, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\TDS"
@@ -74,7 +74,7 @@
       "type": "gauge",
       "title": "PRODUCT PH",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 20,
       "label": "",
       "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PH"
@@ -83,7 +83,7 @@
       "type": "gauge",
       "title": "TRANSFER FLOW RATE",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "",
       "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
       "value": "TBD"
@@ -134,7 +134,7 @@
       "title": "SEAWELL PUMP PRESSURE",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
       "value": "TBD"
@@ -143,7 +143,7 @@
       "title": "TDS RAW WATER",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 1500,
       "label": "ppm",
       "grid": { "x": 5, "y": 13, "w": 2, "h":7 },
       "value": "TBD"
@@ -152,7 +152,7 @@
       "title": "PH RAW WATER",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 20,
       "label": "",
       "grid": { "x": 7, "y": 13, "w": 2, "h":7 },
       "value": "TBD"
@@ -225,7 +225,7 @@
       "title": "FILTER PUMP PRESSURE",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\CF_CIP\\DPRESS"
@@ -234,7 +234,7 @@
       "title": "MM FILTER PRESSURE #1",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 5, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MMF2A\\DPRESS"
@@ -243,7 +243,7 @@
       "title": "MM FILTER PRESSURE #2",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 7, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MMF2B\\DPRESS"
@@ -371,8 +371,8 @@
       "type": "gauge",
       "title": "FEED PUMP OUT PRESSURE",
       "minValue": 0,
-      "maxValue": 55,
-      "label": "Hz",
+      "maxValue": 100,
+      "label": "Bar",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
     },
@@ -380,7 +380,7 @@
       "type": "gauge",
       "title": "FEED PUMP OUT FLOW",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "m3/h",
       "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
@@ -412,7 +412,7 @@
       "type": "gauge",
       "title": "HPP IN PRESSURE",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
@@ -421,7 +421,7 @@
       "type": "gauge",
       "title": "CARTRIDGE DIFF. PRESSURE",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\CF_SWRO_FEED\\DPRESS"
@@ -453,7 +453,7 @@
       "type": "gauge",
       "title": "BOOSTER PUMP IN FLOW",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "m3/h",
       "grid": { "x": 3, "y": 37, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
@@ -462,7 +462,7 @@
       "type": "gauge",
       "title": "SWRO FEED TDS",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 1500,
       "label": "ppm",
       "grid": { "x": 5, "y": 37, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\TDS"
@@ -494,7 +494,7 @@
       "type": "gauge",
       "title": "CIP CARTRIDGE DIFF. PRESS.",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 3, "y": 44, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\CF_CIP\\DPRESS"
@@ -503,7 +503,7 @@
       "type": "gauge",
       "title": "MEMBRANE INLET FLOW",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "m3/h",
       "grid": { "x": 5, "y": 44, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\FLOW"
@@ -626,7 +626,7 @@
       "type": "gauge",
       "title": "TRANSFER PUMP OUT PRESS.",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 3, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PRESS"
@@ -635,7 +635,7 @@
       "type": "gauge",
       "title": "PRODUCT FLOW",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "m3/h",
       "grid": { "x": 5, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\FLOW"
@@ -644,7 +644,7 @@
       "type": "gauge",
       "title": "TDS PRODUCT",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 1500,
       "label": "ppm",
       "grid": { "x": 7, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\TDS"
@@ -653,7 +653,7 @@
       "type": "gauge",
       "title": "PH PRODUCT",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 20,
       "label": "",
       "grid": { "x": 9, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PH"
@@ -742,7 +742,7 @@
       "title": "BRINE PUMP OUT PRESS.",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 100,
       "label": "Bar",
       "grid": { "x": 3, "y": 16, "w": 2, "h":7 },
       "value": ""
@@ -817,7 +817,7 @@
       "type": "gauge",
       "title": "ACTIVE POWER",
       "minValue": 0.00,
-      "maxValue": 100.00,
+      "maxValue": 3000.00,
       "label": "kW",
       "grid": { "x": 1, "y": 10, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PM\\P"
@@ -826,7 +826,7 @@
       "type": "gauge",
       "title": "ACTIVE CURRENT",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 30,
       "label": "A",
       "grid": { "x": 3, "y": 10, "w": 2, "h":7 },
       "grammar": "sum",
@@ -872,8 +872,8 @@
       "grid": { "x": 9, "y": 3, "w": 3, "h": 14 },
       "height": 300,
       "width": 30,
-      "minValue": -5000,
-      "maxValue": 5000,
+      "minValue": 0,
+      "maxValue": 10,
       "label": "A",
       "data": [
         { "text": "L1",

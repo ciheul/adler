@@ -222,13 +222,13 @@
             <% if (typeof run !== 'undefined' && run > 0) { %>
               <button class="btn btn-xs btn-success" style="font-size:11px">Run</button>
             <% } else if (typeof run !== 'undefined' && run <= 0) { %>
-              <button class="btn btn-xs btn-danger" style="font-size:11px">Stop</button>
+              <button class="btn btn-xs btn-grey" style="font-size:11px">Stop</button>
             <% } else { %>
               <button class="btn btn-xs" style="font-size:11px">#NA</button>
             <% } %>
 
             <% if (typeof fault !== 'undefined' && fault === false) { %>        
-              <button class="btn btn-xs btn-default" style="font-size:11px">Fault</button>
+              <button class="btn btn-xs btn-grey" style="font-size:11px">Fault</button>
             <% } else if (typeof fault !== 'undefined' && fault === true) { %>  
               <button class="btn btn-xs btn-danger" style="font-size:11px">Fault</button>
             <% } else { %>                                                      

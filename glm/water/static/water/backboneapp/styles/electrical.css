@@ -375,5 +375,8 @@ ul {
     margin-right: 50px;
     /* float: right; */
     /* clear: both; */
+}
 
+.btn-grey {
+    background: lightgrey;
 }

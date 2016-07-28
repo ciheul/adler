@@ -218,7 +218,7 @@ app.FourIndicatorsView = Backbone.View.extend({
   setFourIndicators: function(data) {
     var btns = [];
     data.forEach(function(d) {
-      if (d.value === false) { btns.push('btn-success'); }
+      if (d.value === false) { btns.push('btn-grey'); }
       else if (d.value === true) { btns.push('btn-danger'); }
       else { btns.push('btn-default'); }
     });
