@@ -68,7 +68,7 @@ def grammar_percentage(detail, row):
 
         return float(row['Tags'][a]['Value']) / float(row['Tags'][b]['Value']) * 100.0
     except ZeroDivisionError:
-        return 'NaN'
+        return 0 
 
 
 def grammar_mean(detail, row):
@@ -344,10 +344,16 @@ def create_response(page):
                     if tag_name in row['Tags']:
                         # TODO just for temporary
                         if tag_id == 'voltage':
-                            d['valueStr'] = \
-                                "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 100.0)
+                            if d['text'] in ['L1-L2', 'L2-L3', 'L3-L1']:
+                                d['valueStr'] = \
+                                    "{:,.2f}".format((row['Tags'][tag_name]['Value'] + 65536) / 100.0)
 
-                            d['value'] = row['Tags'][tag_name]['Value'] / 100.0
+                                d['value'] = (row['Tags'][tag_name]['Value'] + 65536) / 100.0
+                            else:
+                                d['valueStr'] = \
+                                    "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 100.0)
+
+                                d['value'] = row['Tags'][tag_name]['Value'] / 100.0
                         elif tag_id == 'current':
                             d['valueStr'] = \
                                 "{:,.2f}".format(row['Tags'][tag_name]['Value'] / 1000.0)

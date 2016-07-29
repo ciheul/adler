@@ -842,7 +842,7 @@
       "grid": { "x": 5, "y": 3, "w": 4, "h": 14 },
       "height": 300,
       "width": 30,
-      "minValue": -450,
+      "minValue": 0,
       "maxValue": 450,
       "label": "V",
       "data": [
