@@ -74,7 +74,6 @@ def grammar_percentage(detail, row):
 def grammar_mean(detail, row):
     total_value = grammar_sum(detail, row)
     return total_value / len(detail['value'])
-    # return "{:,.2f}".format(total_value / len(detail['value']))
 
 
 def get_chart_data(detail, tag_id, start=0, rows=60, first=False):
@@ -267,12 +266,17 @@ def create_response(page):
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'mean':
                         d['value'] = grammar_mean(d, row)
+                        print type(d['value'])
                         if d['value'] != 'NaN':
                             # # TODO temporary
-                            if tag_id == 'information-right':
+                            if tag_id == 'information-right' and d['name'] == 'AVG. VOLTAGE L-L':
+                                d['value'] = \
+                                    "{:,.2f}".format((d['value'] + 65536) / 100.0)
+                            elif tag_id == 'information-right' and d['name'] != 'AVG. VOLTAGE L-L':
                                 d['value'] = \
                                     "{:,.2f}".format(d['value'] / 100.0)
                             else:
+                                print type(d['value'])
                                 d['value'] = "{:,.2f}".format(d['value'])
                         final_data.append(d)
 
