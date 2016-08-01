@@ -45,11 +45,13 @@ class INetSCADASubscriber(MongoConnectorMixin):
         d = json.loads(data.body)
         d[u'SentDatetime'] = dateutil.parser.parse(d['SentTimestamp'])
 
-        print d['Name']
-
-        if d['Name'].split('\\')[0] == GLM:
+        if d['Name'].split('\\')[0] == GLM and d['Name'].split('\\')[2] != REPORT:
             # insert to mongodb. success or error calls on_response callback
             self.db.glm.insert(d, callback=self.on_response)
+
+        if d['Name'].split('\\')[0] == GLM and d['Name'].split('\\')[2] == REPORT:
+            # insert to mongodb. success or error calls on_response callback
+            self.db.glm_report.insert(d, callback=self.on_response)
 
         if d['Name'].split('\\')[0] == SEWATAMA and d['Name'].split('\\')[2] != REPORT:
             # insert to mongodb. success or error calls on_response callback
