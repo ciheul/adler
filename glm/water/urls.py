@@ -53,6 +53,7 @@ urlpatterns = [
     url(r'^api/report/$',api.report_api, name="report-api"),
 
     url(r'^api/latest/$', api.latest, name="latest"),
+    url(r'^api/latest/report/$', api.latest_report, name="latest-report"),
 
     url(r'^$', views.dashboard, name="dashboard"),
 ]

@@ -831,3 +831,9 @@ def trend_reject_api(request):
 def latest(request):
     message = dumps(list(db.glm.find().sort("_id",-1).limit(1)))
     return HttpResponse(message, content_type='application/json') 
+
+
+@login_required
+def latest_report(request):
+    message = dumps(list(db.glm_report.find().sort("_id",-1).limit(1)))
+    return HttpResponse(message, content_type='application/json') 
