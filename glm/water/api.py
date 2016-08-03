@@ -164,8 +164,8 @@ def create_response(page, report=False):
             # set tag_id inside detail
             detail['tagId'] = tag_id
 
-            print tag_id, detail['value'], math.isnan(detail['value'])
-            if math.isnan(detail['value']):
+            if isinstance(detail['value'], float) \
+                    and math.isnan(detail['value']):
                 detail['value'] = '#NA'
             response.append(detail)
 
@@ -256,8 +256,10 @@ def create_response(page, report=False):
                                     and d['name'] == 'REACTIVE POWER':
                                 d['value'] = "{:,.2f}".format(d['value'] / 100.0)
 
-                        if math.isnan(d['value']):
+                        if isinstance(d['value'], float) \
+                                and math.isnan(d['value']):
                             d['value'] = '#NA'
+
                         final_data.append(d)
 
                     # get sum value from several tag names
@@ -385,7 +387,6 @@ def create_response(page, report=False):
             detail['tagId'] = tag_id
             detail['data'] = final_data
 
-            # print detail
             response.append(detail)
 
         if detail['type'] == 'fourIndicators':
@@ -823,7 +824,6 @@ def trend_reject_api(request):
     #x = map(lambda i: i['Tags'], m)
     #y = map(lambda i: i[u'GLM\SWRO_001\RT01\PUMP_BRINE\FREQ'], x)
     #z = map(lambda i: i[u'Value'], y)
-    #print z
     x = [1,2,3]
 
     z = {
