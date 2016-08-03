@@ -945,7 +945,7 @@
       "maxValue": 15000,
       "label": "m3/h",
       "grid": { "x": 1, "y": 25, "w": 2, "h":7 },
-      "value": "TBD"
+      "value": "GLM\\SWRO_001\\REPORT\\TD_VOLUME"
     },
     "sec": {
       "type": "gauge",
@@ -954,7 +954,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 3, "y": 25, "w": 2, "h":7 },
-      "value": "TBD"
+      "value": "GLM\\SWRO_001\\REPORT\\TD_SEC"
     },
     "energy-consumption": {
       "type": "threeColumnsTable",
@@ -964,7 +964,7 @@
         { "type": "default",
           "name": "ENERGY TODAY",
           "label": "kWh",
-          "value": "TBD" }
+          "value": "GLM\\SWRO_001\\REPORT\\TD_ENERGY" }
       ]
     }
   },
@@ -1247,7 +1247,7 @@
       "maxValue": 15000,
       "label": "m3/day",
       "grid": { "x": 1, "y": 3, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\TD_VOLUME"
     },
     "today-sec": {
       "title": "SEC",
@@ -1256,7 +1256,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 3, "y": 3, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\TD_SEC"
     },
     "today-energy-consumption": {
       "type": "threeColumnsTable",
@@ -1266,7 +1266,7 @@
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\REPORT\\TD_ENERGY" }
       ]
     },
     "yesterday-title": {
@@ -1281,7 +1281,7 @@
       "maxValue": 15000,
       "label": "m3/day",
       "grid": { "x": 6, "y": 3, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\LD_VOLUME"
     },
     "yesterday-sec": {
       "title": "SEC",
@@ -1290,7 +1290,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 8, "y": 3, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\LD_SEC"
     },
     "yesterday-energy-consumption": {
       "type": "threeColumnsTable",
@@ -1300,7 +1300,7 @@
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\REPORT\\LD_ENERGY" }
       ]
     },
     "spacer1": {
@@ -1319,7 +1319,7 @@
       "maxValue": 15000,
       "label": "m3/day",
       "grid": { "x": 1, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\TW_VOLUME"
     },
     "this-week-sec": {
       "title": "SEC",
@@ -1328,7 +1328,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 3, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\TW_SEC"
     },
     "this-week-energy-consumption": {
       "type": "threeColumnsTable",
@@ -1338,7 +1338,7 @@
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\REPORT\\TW_ENERGY" }
       ]
     },
     "last-week-title": {
@@ -1353,7 +1353,7 @@
       "maxValue": 15000,
       "label": "m3/day",
       "grid": { "x": 6, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\LW_VOLUME"
     },
     "last-week-sec": {
       "title": "SEC",
@@ -1362,7 +1362,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 8, "y": 17, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\LW_SEC"
     },
     "last-week-energy-consumption": {
       "type": "threeColumnsTable",
@@ -1372,7 +1372,7 @@
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\REPORT\\LW_ENERGY" }
       ]
     },
     "spacer2": {
@@ -1391,7 +1391,7 @@
       "maxValue": 15000,
       "label": "m3/day",
       "grid": { "x": 1, "y": 31, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\TM_VOLUME"
     },
     "this-month-sec": {
       "title": "SEC",
@@ -1400,7 +1400,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 3, "y": 31, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\TM_SEC"
     },
     "this-month-energy-consumption": {
       "type": "threeColumnsTable",
@@ -1410,7 +1410,7 @@
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\REPORT\\TM_ENERGY" }
       ]
     },
     "last-month-title": {
@@ -1425,7 +1425,7 @@
       "maxValue": 15000,
       "label": "m3/day",
       "grid": { "x": 6, "y": 31, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\LM_VOLUME"
     },
     "last-month-sec": {
       "title": "SEC",
@@ -1434,7 +1434,7 @@
       "maxValue": 15000,
       "label": "kWh/m3",
       "grid": { "x": 8, "y": 31, "w": 2, "h":7 },
-      "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL"
+      "value": "GLM\\SWRO_001\\REPORT\\LM_SEC"
     },
     "last-month-energy-consumption": {
       "type": "threeColumnsTable",
@@ -1444,7 +1444,7 @@
         { "type": "default",
           "name": "ENERGY",
           "label": "kWh",
-          "value": "SS\\HSD_NPN0\\RT4\\OUT01\\REAL_PWR_TOTAL" }
+          "value": "GLM\\SWRO_001\\REPORT\\LM_ENERGY" }
       ]
     }
   }
