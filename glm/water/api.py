@@ -118,9 +118,13 @@ def get_chart_data(detail, tag_id, start=0, rows=60, first=False):
 # please check schema.json
 # key: page_name (ex: trend-unit-1)
 # value: detail (ex: {tag_name: subdetail}
-def create_response(page):
+def create_response(page, report=False):
     # query latest row from mongodb. there is only one row in a list
-    row = db[COLL].find().sort("_id", -1).limit(1)[0]
+
+    collection = COLL
+    if report == True:
+        collection = COLL_REPORT
+    row = db[collection].find().sort("_id", -1).limit(1)[0]
 
     response = list()
     for tag_id, detail in page.iteritems():
@@ -160,6 +164,9 @@ def create_response(page):
             # set tag_id inside detail
             detail['tagId'] = tag_id
 
+            print tag_id, detail['value'], math.isnan(detail['value'])
+            if math.isnan(detail['value']):
+                detail['value'] = '#NA'
             response.append(detail)
 
         if detail['type'] == 'chart':
@@ -249,6 +256,8 @@ def create_response(page):
                                     and d['name'] == 'REACTIVE POWER':
                                 d['value'] = "{:,.2f}".format(d['value'] / 100.0)
 
+                        if math.isnan(d['value']):
+                            d['value'] = '#NA'
                         final_data.append(d)
 
                     # get sum value from several tag names
@@ -266,7 +275,6 @@ def create_response(page):
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'mean':
                         d['value'] = grammar_mean(d, row)
-                        print type(d['value'])
                         if d['value'] != 'NaN':
                             # # TODO temporary
                             if tag_id == 'information-right' and d['name'] == 'AVG. VOLTAGE L-L':
@@ -276,7 +284,6 @@ def create_response(page):
                                 d['value'] = \
                                     "{:,.2f}".format(d['value'] / 100.0)
                             else:
-                                print type(d['value'])
                                 d['value'] = "{:,.2f}".format(d['value'])
                         final_data.append(d)
 
@@ -488,7 +495,7 @@ def report_api(request):
     page_id = 'report'
 
     page_schema = get_page_schema(page_id)
-    response = create_response(page_schema)
+    response = create_response(page_schema, True)
 
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
