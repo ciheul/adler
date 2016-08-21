@@ -965,12 +965,12 @@ def file_browser_get_directory(request):
 def alarm_active(request):
     ms = mssqlmapper.MssqlMapper()
     response = { 'data': ms.get_active_alarm('HSD_NPN0') }
-    print response
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
 @login_required
 def alarm_history(request):
+    start = int(request.GET['draw'])
     ms = mssqlmapper.MssqlMapper()
-    response = { 'data': ms.get_alarm_history('HSD_NPN0', 0, 15) }
+    response = { 'data': ms.get_alarm_history('HSD_NPN0', start, 15) }
     return HttpResponse(json.dumps(response), content_type='application/json') 

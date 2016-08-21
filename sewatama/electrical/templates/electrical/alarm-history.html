@@ -56,13 +56,14 @@
     .data('gridster');
 
   $('#example').DataTable({
-    {# serverSide: true, #}
-    {# processing: true, #}
-    {# pagingType: 'full_numbers', #}
+    serverSide: true,
+    processing: true,
+    pagingType: 'numbers',
     bFilter: false,
+    bInfo: false,
     bLengthChange: false,
     bSort: false,
-    paging: false,
+    {# paging: false, #}
     ajax: {
       url: '/electrical/api/alarm/history/',
       type: 'GET'
