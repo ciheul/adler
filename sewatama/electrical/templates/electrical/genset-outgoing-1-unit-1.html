@@ -465,7 +465,6 @@
     url: '/electrical/api/genset-outgoing-1-unit-1/',
     method: 'get',
     success: function(result) {
-      console.log(result);
       if (result.success === 0) {
         setWidget(result.data);
       }
@@ -544,6 +543,9 @@
       var params = {
         boundingBox: '#g1',
         value: data.obj7.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj7.Value);
@@ -555,6 +557,9 @@
       var params = {
         boundingBox: '#g2',
         value: data.obj8.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj8.Value);
@@ -566,6 +571,9 @@
       var params = {
         boundingBox: '#g3',
         value: data.obj9.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj9.Value);
@@ -577,6 +585,9 @@
       var params = {
         boundingBox: '#g4',
         value: data.obj10.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj10.Value);
@@ -588,6 +599,9 @@
       var params = {
         boundingBox: '#g5',
         value: data.obj11.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj11.Value);
@@ -599,6 +613,9 @@
       var params = {
         boundingBox: '#g6',
         value: data.obj12.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj12.Value);
@@ -610,6 +627,9 @@
       var params = {
         boundingBox: '#g7',
         value: data.obj13.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj13.Value);
@@ -621,6 +641,9 @@
       var params = {
         boundingBox: '#g8',
         value: data.obj14.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj14.Value);
@@ -632,6 +655,9 @@
       var params = {
         boundingBox: '#g9',
         value: data.obj15.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj15.Value);
@@ -643,6 +669,9 @@
       var params = {
         boundingBox: '#g10',
         value: data.obj16.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj16.Value);
@@ -654,6 +683,9 @@
       var params = {
         boundingBox: '#g11',
         value: data.obj17.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj17.Value);
@@ -665,6 +697,9 @@
       var params = {
         boundingBox: '#g12',
         value: data.obj18.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj18.Value);
@@ -676,6 +711,9 @@
       var params = {
         boundingBox: '#g13',
         value: data.obj19.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj19.Value);
@@ -687,6 +725,9 @@
       var params = {
         boundingBox: '#g14',
         value: data.obj20.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj20.Value);
@@ -698,6 +739,9 @@
       var params = {
         boundingBox: '#g15',
         value: data.obj21.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj21.Value);
@@ -709,6 +753,9 @@
       var params = {
         boundingBox: '#g16',
         value: data.obj22.Value,
+        minValue: -10,
+        maxValue: 1500,
+        avgValue: data.obj23.Value
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj22.Value);
@@ -720,6 +767,8 @@
       var params = {
         boundingBox: '#g-avg',
         value: data.obj23.Value,
+        minValue: -10,
+        maxValue: 1500,
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj23.Value);
@@ -731,6 +780,8 @@
       var params = {
         boundingBox: '#g-oil-press',
         value: data.obj24.Value,
+        minValue: 0,
+        maxValue: 1000,
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj24.Value, 'kPa');
@@ -742,6 +793,8 @@
       var params = {
         boundingBox: '#g-oil-temp',
         value: data.obj25.Value,
+        minValue: 0,
+        maxValue: 100,
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj25.Value, 'degC');
@@ -753,6 +806,8 @@
       var params = {
         boundingBox: '#g-fuel-press',
         value: data.obj26.Value,
+        minValue: 0,
+        maxValue: 1000,
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj26.Value, 'kPa');
@@ -764,6 +819,8 @@
       var params = {
         boundingBox: '#g-jw-temp',
         value: data.obj27.Value,
+        minValue: 0,
+        maxValue: 100,
       }
       createProgressBar(params);
       setProgressBarIndicator(params['boundingBox'], data.obj27.Value, 'degC');
@@ -834,10 +891,17 @@
           height: 95,
           {# label: params['value'] + '%', #}
           orientation: 'vertical',
-          value: calculateRatioProgressBar(params['value']),
-          {# value: params['value'], #}
+          value: calculateRatioProgressBar(params),
           width: 50
         }).render();
+
+        if (params['avgValue'] !== undefined && (params['value'] - params['avgValue']) > 100) {
+          $(params['boundingBox']).css('background-color', 'red');
+        } else {
+          $(params['boundingBox']).css('background-color', '#428bca');
+        }
+
+        $(params['boundingBox']).children().css('background-color', '#f5f5f5');
       }
     );
   }
@@ -857,11 +921,16 @@
     );
   }
 
-  function calculateRatioProgressBar(value) {
-    if (value > -10 && value < 1500) {
-      return value / 1510 * 100;
+  function calculateRatioProgressBar(params) {
+    var value = params['value']
+    var minValue = params['minValue'];
+    var maxValue = params['maxValue'];
+
+    if (value > minValue && value < maxValue) {
+      var v = (value - minValue) / (maxValue - minValue) * 100;
+      return 100 - v;
     } else {
-      return 0;
+      return 100;
     }
   }
 
