@@ -3,6 +3,7 @@ import StringIO
 
 
 # HOST = 'localhost'
+# USER = ''
 HOST = '10.212.0.10'
 USER = 'reader'
 PASS = ''
@@ -49,4 +50,7 @@ class FtpMapper:
         if 'd' not in s[0]:
             type = 'file'
 
-        self.result.append({'Name': s[8], 'type': type})
+        if 'xls' in s[8]:
+            self.result.insert(0, {'Name': s[8], 'type': type})
+        else:
+            self.result.append({'Name': s[8], 'type': type})

@@ -381,6 +381,7 @@ app.FileBrowserView = Backbone.View.extend({
 
     YUI().use(
       'aui-datatable',
+      'datatable-scroll',
       function(Y) {
         $.ajax({
           url: url,
@@ -400,9 +401,14 @@ app.FileBrowserView = Backbone.View.extend({
             var columns = [{key: 'Name', allowHTML: true}];
             var data = that.modifyDirAsLink(response);
     
-            new Y.DataTable
-              .Base({ columnset: columns, recordset: data })
-              .render('#file-browser-table');
+            new Y.DataTable({
+              columns: columns,
+              data: data,
+              scrollable: 'y',
+              height: '400px'
+            })
+              // .Base({ columnset: columns, recordset: data })
+            .render('#file-browser-table');
           },
           error: function(response) {
             $('#file-browser-table').empty();
