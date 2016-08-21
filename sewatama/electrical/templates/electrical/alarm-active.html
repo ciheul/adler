@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-container">
+  {% include "sidenav-inc.html" %}
+  <div id="content">
+    <div class="row">
+      <div class="col-md-5"><h3>Alarm</h3></div>
+      <div class="col-md-6">
+        <div class="alert page-notif" style="display:none;">
+          <div id="notif-status">
+            <span id="notif-status-icon"><span class="glyphicon glyphicon-ok">&nbsp;</span></span>
+            <span id="notif-content">DATA UPDATED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#"><b>Active Alarm</b></a></li>
+      <li><a href="{% url 'alarm-history' %}">Alarm History</a></li>
+    </ul>
+
+    <br>
+    
+    <div id="grid-0" class="gridster">
+      <ul>
+        <li data-row="1" data-col="1" data-sizex="12" data-sizey="20" style="padding:20px;">
+          <table id="example" class="display pull-left" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Device\Tagname</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+          </table>
+        </li>
+      </ul>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+  var gridster = [];
+
+  gridster[0] = $("#grid-0 ul")
+    .gridster({
+      namespace: '#grid-0',
+      widget_margins: [5, 5],
+      widget_base_dimensions: [90, 20],
+      max_cols: 12,
+      max_size_x: 12})
+    .data('gridster');
+
+  $('#example').DataTable({
+    bFilter: false,
+    bLengthChange: false,
+    bSort: false,
+    paging: false,
+    ajax: {
+      url: '/electrical/api/alarm/active/',
+      type: 'GET'
+    },
+    columns: [
+      { data: 'class', className: 'dt-left' },
+      { data: 'deviceTagname', className: 'dt-left' },
+      { data: 'description', className: 'dt-left' },
+    ]
+  });
+</script>
+{% endblock %}

@@ -17,9 +17,8 @@
     </div>
 
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#"><b>Summary</b></a></li>
-      <li><a href="{% url 'alarm-history' %}">History</a></li>
-      <li><a href="{% url 'alarm-event' %}">Event</a></li>
+      <li><a href="{% url 'alarm-active' %}">Active Alarm</a></li>
+      <li class="active"><a href="#"><b>Alarm History</b></a></li>
     </ul>
 
     <br>
@@ -30,6 +29,7 @@
           <table id="example" class="display pull-left" cellspacing="0" width="100%">
             <thead>
               <tr>
+                <th>Timestamp</th>
                 <th>Class</th>
                 <th>Device\Tagname</th>
                 <th>Description</th>
@@ -56,15 +56,19 @@
     .data('gridster');
 
   $('#example').DataTable({
+    {# serverSide: true, #}
+    {# processing: true, #}
+    {# pagingType: 'full_numbers', #}
     bFilter: false,
     bLengthChange: false,
     bSort: false,
     paging: false,
     ajax: {
-      url: '/electrical/api/alarm/summary/',
+      url: '/electrical/api/alarm/history/',
       type: 'GET'
     },
     columns: [
+      { data: 'timestamp', className: 'dt-left' },
       { data: 'class', className: 'dt-left' },
       { data: 'deviceTagname', className: 'dt-left' },
       { data: 'description', className: 'dt-left' },
