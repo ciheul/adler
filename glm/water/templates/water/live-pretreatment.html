@@ -32,7 +32,7 @@
 
     <br>
 
-    <div id="grid-0" class="gridster">
+    <div id="grid-0" class="gridster ready">
       <ul></ul>
     </div>
   </div>
@@ -43,6 +43,8 @@
 <script>
   var app = app || {};
   
+  {# var gridster = []; #}
+
   app.DashboardView = Backbone.View.extend({
     initialize: function() {
       app.widgets = new app.WidgetList();
@@ -55,6 +57,8 @@
       var that = this;
       setInterval(function() {
         app.widgets.fetch({ async: false });
+        {# $('#grid-0').removeClass('ready'); #}
+        {# $('#grid-0 > ul').removeAttr('style'); #}
         $('.gridster > ul').empty();
         that.render();
   
@@ -111,23 +115,23 @@
           widgetView.render();
         }
       });
+
+    var gridster = $("#grid-0 ul")
+      .gridster({
+        widget_margins: [5, 5],
+        widget_base_dimensions: [90, 20],
+        min_cols: 12,
+        max_cols: 12,
+        max_size_x: 12})
+      .data('gridster')
+      .disable();
+
     }
   });
   
   app.dashboardView = new app.DashboardView();
   
   
-  var gridster = [];
   
-  gridster[0] = $("#grid-0 ul")
-    .gridster({
-      namespace: '#grid-0',
-      widget_margins: [5, 5],
-      widget_base_dimensions: [90, 20],
-      min_cols: 12,
-      max_cols: 12,
-      max_size_x: 12})
-    .data('gridster')
-    .disable();
 </script>
 {% endblock %}

@@ -322,22 +322,14 @@
   </script>
 
   <script type="text/template" id="four-indicators-template">
-    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" style="<%= grid.style %>" class="gs-w">
+    <li data-row="<%= grid.y %>" data-col="<%= grid.x %>" data-sizex="<%= grid.w %>" data-sizey="<%= grid.h %>" class="gs-w">
       <table class="table">
         <% if (typeof title !== 'undefined') { %>
           <thead>
-            <tr><td class="widget-head" colspan="2"><b><%= title %></b></td></tr>
+            <tr><td class="widget-head" colspan="<%= columns %>"><b><%= title %></b></td></tr>
           </thead>
         <% } %>
         <tbody id="<%= tagId %>">
-          <tr>
-            <td><div class="btn btn-xs <%= btn[0] %>" style="font-size:11px;width:70px">LO LO</div></td>
-            <td><div class="btn btn-xs <%= btn[1] %>" style="font-size:11px;width:70px">HI</div></td>
-          </tr>
-          <tr>
-            <td><div class="btn btn-xs <%= btn[2] %>" style="font-size:11px;width:70px">LO</div></td>
-            <td><div class="btn btn-xs <%= btn[3] %>" style="font-size:11px;width:70px">HI HI</div></td>
-          </tr>
         </tbody>
       </table>
     </li>

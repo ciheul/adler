@@ -211,8 +211,33 @@ app.FourIndicatorsView = Backbone.View.extend({
   template: _.template($('#four-indicators-template').html()),
 
   render: function() {
-    this.model.btn = this.setFourIndicators(this.model.data);
     this.$el.append(this.template(this.model));
+    this.setIndicators(this.model);
+    // this.model.btn = this.setFourIndicators(this.model.data);
+  },
+
+  setIndicators: function(model) {
+    var tr = $('<tr>');
+    model.data.forEach(function(d, i) {
+      var colorBtn = 'btn-default';
+      if (d.value === false) { var colorBtn = 'btn-grey'; }
+      if (d.value === true)  { var colorBtn = 'btn-danger'; }
+
+      var td = '<td><div class="btn btn-xs ' + colorBtn + '" style="font-size:11px;width:70px">' + d.text + '</div></td>';
+
+      tr.append(td);
+
+      if ((i+1) % model.columns === 0) {
+        $('#' + model.tagId).append(tr);
+        tr = $('<tr>');
+      }
+    });
+
+    var remaining = model.columns - tr.children().length;
+    for (var i = 0; i < remaining; i++) {
+      tr.append('<td></td>');
+    }
+    $('#' + model.tagId).append(tr);
   },
 
   setFourIndicators: function(data) {

@@ -16,7 +16,7 @@
       "type": "gauge",
       "title": "SWRO FEED FLOW",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 99,
       "label": "m3/h",
       "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
@@ -25,23 +25,10 @@
       "type": "gauge",
       "title": "CIRC. PUMP FLOW",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 99,
       "label": "m3/h",
       "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
-    },
-    "circular-flow-percentage": {
-      "type": "gauge",
-      "title": "CIRC. FLOW PERCENTAGE",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "%",
-      "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
-      "grammar": "percentage",
-      "value": [
-        "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW",
-        "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
-      ]
     },
     "membrane-inlet-pressure": {
       "type": "gauge",
@@ -56,7 +43,7 @@
       "type": "gauge",
       "title": "PRODUCT TDS",
       "minValue": 0,
-      "maxValue": 1500,
+      "maxValue": 500,
       "label": "ppm",
       "grid": { "x": 9, "y": 23, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\TDS"
@@ -65,7 +52,7 @@
       "type": "gauge",
       "title": "RAW WATER TDS",
       "minValue": 0,
-      "maxValue": 15000,
+      "maxValue": 99000,
       "label": "ppm",
       "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
       "value": "TBD"
@@ -74,7 +61,7 @@
       "type": "gauge",
       "title": "PRODUCT PH",
       "minValue": 0,
-      "maxValue": 20,
+      "maxValue": 14,
       "label": "",
       "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PH"
@@ -83,15 +70,15 @@
       "type": "gauge",
       "title": "TRANSFER FLOW RATE",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 99,
       "label": "",
-      "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
+      "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
       "value": "TBD"
     },
     "transfer-summary": {
       "type": "threeColumnsTable",
       "title": "TRANSFER SUMMARY",
-      "grid": { "x": 7, "y": 30, "w": 4, "h":7 },
+      "grid": { "x": 5, "y": 30, "w": 4, "h":4 },
       "data": [
         { "type": "default",
           "name": "VOLUME TODAY",
@@ -100,10 +87,6 @@
         { "type": "default",
           "name": "VOLUME TOTALIZER",
           "label": "m3",
-          "value": "TBD" },
-        { "type": "default",
-          "name": "PRESSURE",
-          "label": "Bar",
           "value": "TBD" }
       ]
     }
@@ -121,50 +104,20 @@
         "style": "line-height: 350px"
       }
     },
-    "seawell-pump-frequency": {
-      "title": "SEAWELL PUMP FREQUENCY",
-      "type": "gauge",
-      "minValue": 0,
-      "maxValue": 55,
-      "label": "Hz",
-      "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
-      "value": "TBD"
-    },
-    "seawell-pump-pressure": {
-      "title": "SEAWELL PUMP PRESSURE",
-      "type": "gauge",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
-      "value": "TBD"
-    },
     "tds-raw-water": {
       "title": "TDS RAW WATER",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 1500,
+      "maxValue": 99000,
       "label": "ppm",
-      "grid": { "x": 5, "y": 13, "w": 2, "h":7 },
-      "value": "TBD"
-    },
-    "ph-raw-meter": {
-      "title": "PH RAW WATER",
-      "type": "gauge",
-      "minValue": 0,
-      "maxValue": 20,
-      "label": "",
-      "grid": { "x": 7, "y": 13, "w": 2, "h":7 },
+      "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
       "value": "TBD"
     },
     "seawell-pump": {
       "type": "twoColumnsTable",
       "title": "SEAWELL PUMP",
-      "grid": { "x": 1, "y": 20, "w": 4, "h": 4 },
+      "grid": { "x": 3, "y": 13, "w": 4, "h": 3 },
       "data": [
-        { "type": "running",
-          "name": "RUNNING MODE",
-          "value": "TBD" },
         { "type": "general",
           "name": "STATUS",
           "run": "TBD",
@@ -174,28 +127,11 @@
     "raw-water-tank": {
       "title": "RAW WATER TANK",
       "type": "fourIndicators",
-      "columns": 2,
-      "grid": { "x": 5, "y": 20, "w": 2, "h": 4 },
+      "columns": 1,
+      "grid": { "x": 7, "y": 13, "w": 2, "h": 3 },
       "data": [
-        { "text": "LO LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSLL" },
         { "text": "HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSL" },
-        { "text": "LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSH" },
-        { "text": "HI HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSHH" }
-      ]
-    },
-    "sea-water-level": {
-      "title": "SEA WATER LEVEL",
-      "type": "oneColumnTable",
-      "grid": { "x": 7, "y": 20, "w": 2, "h": 4 },
-      "data": [
-        { "type": "indicator",
-          "trueText": "HIGH",
-          "falseText": "LOW",
-          "value": "TBD" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_FEED\\LSL" }
       ]
     }
   },
@@ -216,37 +152,19 @@
       "title": "FILTER PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 55,
+      "maxValue": 50,
       "label": "Hz",
       "grid": { "x": 1, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_FEED03\\FREQ"
-    },
-    "filter-pump-pressure": {
-      "title": "FILTER PUMP PRESSURE",
-      "type": "gauge",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\CF_CIP\\DPRESS"
     },
     "mm-filter-pressure-1": {
       "title": "MM FILTER PRESSURE #1",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 6,
       "label": "Bar",
-      "grid": { "x": 5, "y": 13, "w": 2, "h":7 },
+      "grid": { "x": 3, "y": 13, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MMF2A\\DPRESS"
-    },
-    "mm-filter-pressure-2": {
-      "title": "MM FILTER PRESSURE #2",
-      "type": "gauge",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 7, "y": 13, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\MMF2B\\DPRESS"
     },
     "filter-pump": {
       "type": "twoColumnsTable",
@@ -266,33 +184,18 @@
       "title": "INTERMEDIATE TANK",
       "type": "fourIndicators",
       "columns": 2,
-      "grid": { "x": 5, "y": 20, "w": 2, "h": 4 },
+      "grid": { "x": 5, "y": 13, "w": 4, "h": 3 },
       "data": [
-        { "text": "LO LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSLL" },
         { "text": "HI",
           "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSL" },
         { "text": "LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSH" },
-        { "text": "HI HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSHH" }
-      ]
-    },
-    "intermediate-tank-level": {
-      "type": "threeColumnsTable",
-      "title": "INTERMEDIATE TANK LEVEL",
-      "grid": { "x": 7, "y": 20, "w": 2, "h": 4 },
-      "data": [
-        { "type": "default",
-          "name": "LEVEL",
-          "label": "%",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LVL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BREAK\\LSH" }
       ]
     },
     "dosing-anti-scalance": {
       "type": "twoColumnsTable",
       "title": "DOSING ANTI SCALANCE",
-      "grid": { "x": 1, "y": 24, "w": 4, "h": 4 },
+      "grid": { "x": 5, "y": 16, "w": 4, "h": 4 },
       "data": [
         { "type": "indicator",
           "name": "AGITATOR",
@@ -309,7 +212,7 @@
     "dosing-chlorine": {
       "type": "twoColumnsTable",
       "title": "DOSING CHLORINE",
-      "grid": { "x": 5, "y": 24, "w": 4, "h": 4 },
+      "grid": { "x": 5, "y": 20, "w": 4, "h": 4 },
       "data": [
         { "type": "indicator",
           "name": "AGITATOR",
@@ -326,7 +229,7 @@
     "dosing-ph": {
       "type": "twoColumnsTable",
       "title": "DOSING PH",
-      "grid": { "x": 1, "y": 28, "w": 4, "h": 6 },
+      "grid": { "x": 5, "y": 24, "w": 4, "h": 4 },
       "data": [
         { "type": "indicator",
           "name": "AGITATOR",
@@ -337,11 +240,7 @@
           "name": "PUMP",
           "trueText": "RUN",
           "falseText": "STOP",
-          "value": "GLM\\SWRO_001\\RT2\\DOSING_PH\\PUMP_RUN" },
-        { "type": "default",
-          "name": "PH",
-          "label": "pH",
-          "value": "GLM\\SWRO_001\\RT2\\DOSING_PH\\PH" }
+          "value": "GLM\\SWRO_001\\RT2\\DOSING_PH\\PUMP_RUN" }
       ]
     }
   },
@@ -362,33 +261,24 @@
       "type": "gauge",
       "title": "FEED PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 55,
+      "maxValue": 50,
       "label": "Hz",
-      "grid": { "x": 1, "y": 23, "w": 2, "h":7 },
+      "grid": { "x": 1, "y": 23, "w": 2, "h":8 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_SWRO_FEED\\FREQ"
-    },
-    "feed-pump-out-pressure": {
-      "type": "gauge",
-      "title": "FEED PUMP OUT PRESSURE",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 3, "y": 23, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
     },
     "feed-pump-out-flow": {
       "type": "gauge",
       "title": "FEED PUMP OUT FLOW",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 99,
       "label": "m3/h",
-      "grid": { "x": 5, "y": 23, "w": 2, "h":7 },
+      "grid": { "x": 3, "y": 23, "w": 2, "h":8 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\FLOW"
     },
     "feed-pump": {
       "type": "twoColumnsTable",
       "title": "FEED PUMP",
-      "grid": { "x": 7, "y": 23, "w": 4, "h": 7 },
+      "grid": { "x": 7, "y": 23, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
@@ -403,9 +293,9 @@
       "type": "gauge",
       "title": "HPP FREQUENCY",
       "minValue": 0,
-      "maxValue": 55,
+      "maxValue": 60,
       "label": "Hz",
-      "grid": { "x": 1, "y": 30, "w": 2, "h":7 },
+      "grid": { "x": 1, "y": 31, "w": 2, "h":8 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_HP\\FREQ"
     },
     "hpp-in-pressure": {
@@ -414,22 +304,13 @@
       "minValue": 0,
       "maxValue": 100,
       "label": "Bar",
-      "grid": { "x": 3, "y": 30, "w": 2, "h":7 },
+      "grid": { "x": 3, "y": 31, "w": 2, "h":8 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\PRESS"
-    },
-    "cartridge-diff-pressure": {
-      "type": "gauge",
-      "title": "CARTRIDGE DIFF. PRESSURE",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 5, "y": 30, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\CF_SWRO_FEED\\DPRESS"
     },
     "high-pressure-pump": {
       "type": "twoColumnsTable",
       "title": "HIGH PRESSURE PUMP (HPP)",
-      "grid": { "x": 7, "y": 30, "w": 4, "h": 7 },
+      "grid": { "x": 7, "y": 27, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
@@ -444,33 +325,33 @@
       "type": "gauge",
       "title": "BOOSTER PUMP FREQUENCY",
       "minValue": 0,
-      "maxValue": 55,
+      "maxValue": 50,
       "label": "Hz",
-      "grid": { "x": 1, "y": 37, "w": 2, "h":7 },
+      "grid": { "x": 5, "y": 23, "w": 2, "h": 8 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FREQ"
     },
     "booster-pump-in-flow": {
       "type": "gauge",
       "title": "BOOSTER PUMP IN FLOW",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 99,
       "label": "m3/h",
-      "grid": { "x": 3, "y": 37, "w": 2, "h":7 },
+      "grid": { "x": 5, "y": 31, "w": 2, "h": 8 },
       "value": "GLM\\SWRO_001\\RT2\\PX_RAW_OUT\\FLOW"
     },
-    "SWRO FEED TDS": {
+    "swro-feed-tds": {
       "type": "gauge",
       "title": "SWRO FEED TDS",
       "minValue": 0,
-      "maxValue": 1500,
+      "maxValue": 99000,
       "label": "ppm",
-      "grid": { "x": 5, "y": 37, "w": 2, "h":7 },
+      "grid": { "x": 1, "y": 39, "w": 2, "h":8 },
       "value": "GLM\\SWRO_001\\RT2\\SWRO_FEED\\TDS"
     },
     "booster-pump": {
       "type": "twoColumnsTable",
       "title": "BOOSTER PUMP",
-      "grid": { "x": 7, "y": 37, "w": 4, "h": 7 },
+      "grid": { "x": 7, "y": 31, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
@@ -481,37 +362,10 @@
           "fault": "GLM\\SWRO_001\\RT2\\PUMP_CIRC\\FAULT" }
       ]
     },
-    "cip-pump-frequency": {
-      "type": "gauge",
-      "title": "CIP PUMP FREQUENCY",
-      "minValue": 0,
-      "maxValue": 55,
-      "label": "Hz",
-      "grid": { "x": 1, "y": 44, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\PUMP_CIP\\FREQ"
-    },
-    "cip-cartridge-diff-press": {
-      "type": "gauge",
-      "title": "CIP CARTRIDGE DIFF. PRESS.",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 3, "y": 44, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\CF_CIP\\DPRESS"
-    },
-    "membrane-inlet-flow": {
-      "type": "gauge",
-      "title": "MEMBRANE INLET FLOW",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "m3/h",
-      "grid": { "x": 5, "y": 44, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_FEED\\FLOW"
-    },
     "cip-pump": {
       "type": "twoColumnsTable",
       "title": "CIP PUMP",
-      "grid": { "x": 7, "y": 44, "w": 4, "h": 7 },
+      "grid": { "x": 7, "y": 35, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
@@ -525,7 +379,7 @@
     "pressure-exchanger": {
       "type": "bars",
       "title": "PRESSURE EXCHANGER",
-      "grid": { "x": 1, "y": 51, "w": 3, "h": 8 },
+      "grid": { "x": 3, "y": 39, "w": 3, "h": 8 },
       "height": 140,
       "width": 60,
       "minValue": 0,
@@ -550,7 +404,7 @@
     "ro-membrane": {
       "type": "bars",
       "title": "RO MEMBRANE",
-      "grid": { "x": 4, "y": 51, "w": 3, "h": 8 },
+      "grid": { "x": 6, "y": 39, "w": 3, "h": 8 },
       "height": 140,
       "width": 60,
       "minValue": 0,
@@ -575,28 +429,11 @@
     "cip-tank": {
       "title": "CIP TANK",
       "type": "fourIndicators",
-      "columns": 2,
-      "grid": { "x": 7, "y": 51, "w": 2, "h": 4 },
+      "columns": 1,
+      "grid": { "x": 9, "y": 39, "w": 2, "h": 3 },
       "data": [
-        { "text": "LO LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSLL" },
-        { "text": "HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSL" },
         { "text": "LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSH" },
-        { "text": "HI HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSHH" }
-      ]
-    },
-    "cip-tank-level": {
-      "type": "threeColumnsTable",
-      "title": "CIP TANK LEVEL",
-      "grid": { "x": 9, "y": 51, "w": 2, "h": 4 },
-      "data": [
-        { "type": "default",
-          "name": "LEVEL",
-          "label": "%",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LVL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_CIP\\LSH" }
       ]
     }
   },
@@ -617,45 +454,36 @@
       "type": "gauge",
       "title": "TRANSFER PUMP FREQ.",
       "minValue": 0,
-      "maxValue": 55,
+      "maxValue": 50,
       "label": "Hz",
       "grid": { "x": 1, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_PRODUCT\\FREQ"
-    },
-    "transfer-pump-out-press": {
-      "type": "gauge",
-      "title": "TRANSFER PUMP OUT PRESS.",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 3, "y": 21, "w": 2, "h":7 },
-      "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PRESS"
     },
     "product-flow": {
       "type": "gauge",
       "title": "PRODUCT FLOW",
       "minValue": 0,
-      "maxValue": 100,
+      "maxValue": 99,
       "label": "m3/h",
-      "grid": { "x": 5, "y": 21, "w": 2, "h":7 },
+      "grid": { "x": 3, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\FLOW"
     },
     "tds-product": {
       "type": "gauge",
       "title": "TDS PRODUCT",
       "minValue": 0,
-      "maxValue": 1500,
+      "maxValue": 500,
       "label": "ppm",
-      "grid": { "x": 7, "y": 21, "w": 2, "h":7 },
+      "grid": { "x": 5, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\TDS"
     },
     "ph-product": {
       "type": "gauge",
       "title": "PH PRODUCT",
       "minValue": 0,
-      "maxValue": 20,
+      "maxValue": 14,
       "label": "",
-      "grid": { "x": 9, "y": 21, "w": 2, "h":7 },
+      "grid": { "x": 7, "y": 21, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\MEMBRANE_PRODUCT\\PH"
     },
     "transfer-pump": {
@@ -676,43 +504,22 @@
       "title": "PRODUCT TANK",
       "type": "fourIndicators",
       "columns": 2,
-      "grid": { "x": 5, "y": 28, "w": 2, "h": 4 },
+      "grid": { "x": 5, "y": 28, "w": 2, "h": 3 },
       "data": [
-        { "text": "LO LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSLL" },
         { "text": "HI",
           "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSL" },
         { "text": "LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSH" },
-        { "text": "HI HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSHH" }
-      ]
-    },
-    "product-tank-level": {
-      "type": "threeColumnsTable",
-      "title": "PRODUCT TANK LEVEL",
-      "grid": { "x": 7, "y": 28, "w": 2, "h": 4 },
-      "data": [
-        { "type": "default",
-          "name": "LEVEL",
-          "label": "%",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LVL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_PRODUCT\\LSH" }
       ]
     },
     "hotel-tank": {
       "title": "HOTEL TANK",
       "type": "fourIndicators",
-      "columns": 2,
-      "grid": { "x": 9, "y": 28, "w": 2, "h": 4 },
+      "columns": 1,
+      "grid": { "x": 7, "y": 28, "w": 2, "h": 3 },
       "data": [
-        { "text": "LO LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSLL" },
         { "text": "HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSL" },
-        { "text": "LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSH" },
-        { "text": "HI HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSHH" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_HOTEL\\LSL" }
       ]
     }
   },
@@ -733,24 +540,15 @@
       "title": "BRINE PUMP FREQUENCY",
       "type": "gauge",
       "minValue": 0,
-      "maxValue": 55,
+      "maxValue": 50,
       "label": "Hz",
       "grid": { "x": 1, "y": 16, "w": 2, "h":7 },
       "value": "GLM\\SWRO_001\\RT2\\PUMP_BRINE\\FREQ"
     },
-    "brine-pump-out-press": {
-      "title": "BRINE PUMP OUT PRESS.",
-      "type": "gauge",
-      "minValue": 0,
-      "maxValue": 100,
-      "label": "Bar",
-      "grid": { "x": 3, "y": 16, "w": 2, "h":7 },
-      "value": ""
-    },
     "brine-pump": {
       "type": "twoColumnsTable",
       "title": "BRINE PUMP",
-      "grid": { "x": 5, "y": 16, "w": 4, "h": 4 },
+      "grid": { "x": 3, "y": 16, "w": 4, "h": 4 },
       "data": [
         { "type": "running",
           "name": "RUNNING MODE",
@@ -765,27 +563,12 @@
       "title": "BRINE TANK",
       "type": "fourIndicators",
       "columns": 2,
-      "grid": { "x": 9, "y": 16, "w": 2, "h": 4 },
+      "grid": { "x": 3, "y": 20, "w": 2, "h": 3 },
       "data": [
-        { "text": "LO LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSLL" },
         { "text": "HI",
           "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSL" },
         { "text": "LO",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSH" },
-        { "text": "HI HI",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSHH" }
-      ]
-    },
-    "brine-tank-level": {
-      "type": "threeColumnsTable",
-      "title": "BRINE TANK LEVEL",
-      "grid": { "x": 9, "y": 20, "w": 2, "h": 3 },
-      "data": [
-        { "type": "default",
-          "name": "LEVEL",
-          "label": "%",
-          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LVL" }
+          "value": "GLM\\SWRO_001\\RT2\\TANK_BRINE\\LSH" }
       ]
     }
   },
