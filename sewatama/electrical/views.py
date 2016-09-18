@@ -111,15 +111,10 @@ def report_dar(request):
 
 
 @login_required
-def alarm_summary(request):
-    return render(request, 'alarm-summary.html')
+def alarm_active(request):
+    return render(request, 'alarm-active.html')
 
 
 @login_required
 def alarm_history(request):
     return render(request, 'alarm-history.html')
-
-
-@login_required
-def alarm_event(request):
-    return render(request, 'alarm-event.html')

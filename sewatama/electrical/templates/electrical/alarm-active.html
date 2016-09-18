@@ -17,9 +17,8 @@
     </div>
 
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#"><b>Summary</b></a></li>
-      <li><a href="{% url 'alarm-history' %}">History</a></li>
-      <li><a href="{% url 'alarm-event' %}">Event</a></li>
+      <li class="active"><a href="#"><b>Active Alarm</b></a></li>
+      <li><a href="{% url 'alarm-history' %}">Alarm History</a></li>
     </ul>
 
     <br>
@@ -62,7 +61,7 @@
     bSort: false,
     paging: false,
     ajax: {
-      url: '/electrical/api/alarm/summary/',
+      url: '/electrical/api/alarm/active/',
       type: 'GET'
     },
     columns: [

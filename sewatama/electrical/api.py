@@ -72,6 +72,7 @@ def get_chart_data(detail, tag_id, start=0, rows=60, first=False):
         rows = list(db.ss.find().skip(start).limit(rows))
     else:
         # get the latest 60 rows
+        # rows = list(db.ss.find().sort("SentTimestamp", -1).skip(start).limit(rows))
         rows = list(db.ss.find().sort("_id", -1).skip(start).limit(rows))
 
         # sort ascending based so that the oldest time in the first element
@@ -370,6 +371,18 @@ def genset_outgoing_1_unit_1(request):
     for i in x:
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
+        # print data[tag_id]['Name']
+
+        # if type(data[tag_id]['Value']) == str:
+        #     data[tag_id]['Value'].replace(',', '')
+        #     value = float(data[tag_id]['Value'].replace(',', ''))
+        # else:
+        #     value = float(data[tag_id]['Value'])
+        #
+        # if i[0] in ['obj2', 'obj3', 'obj4', 'obj5', 'obj6']:
+        #     data[tag_id]['Value'] = value
+        # else:
+        #     data[tag_id]['Value'] = "{:,.2f}".format(value)
 
         # remove for security reason
         if 'Name' in data[tag_id]:
@@ -481,6 +494,17 @@ def genset_outgoing_1_unit_2(request):
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
 
+        # if type(data[tag_id]['Value']) == str:
+        #     data[tag_id]['Value'].replace(',', '')
+        #     value = float(data[tag_id]['Value'].replace(',', ''))
+        # else:
+        #     value = float(data[tag_id]['Value'])
+        #
+        # if i[0] in ['obj2', 'obj3', 'obj4', 'obj5', 'obj6']:
+        #     data[tag_id]['Value'] = value
+        # else:
+        #     data[tag_id]['Value'] = "{:,.2f}".format(value)
+
         # remove for security reason
         if 'Name' in data[tag_id]:
             del data[tag_id]['Name']
@@ -591,6 +615,20 @@ def genset_outgoing_1_unit_3(request):
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
 
+        # print type(row['Tags'][tag_name]['Value']), row['Tags'][tag_name]['Value']
+        # if type(data[tag_id]['Value']) == str:
+        #     data[tag_id]['Value'].replace(',', '')
+        #     value = float(data[tag_id]['Value'].replace(',', ''))
+        # else:
+        #     value = float(data[tag_id]['Value'])
+        #
+        # if i[0] in ['obj2', 'obj3', 'obj4', 'obj5', 'obj6']:
+        #     data[tag_id]['Value'] = value
+        # else:
+        #     print row['Tags'][tag_name]['Value']
+        #     data[tag_id]['Value'] = "{:,.2f}".format(value)
+        #     print row['Tags'][tag_name]['Value']
+
         # remove for security reason
         if 'Name' in data[tag_id]:
             del data[tag_id]['Name']
@@ -614,6 +652,7 @@ def genset_outgoing_1_unit_3(request):
     value6 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_006']['Value'])
     value7 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_007']['Value'])
     value8 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_008']['Value'])
+    print row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_009']['Value']
     value9 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_009']['Value'])
     value10 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_010']['Value']) 
     value11 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_011']['Value'])
@@ -700,6 +739,17 @@ def genset_outgoing_1_unit_4(request):
     for i in x:
         tag_id, tag_name = i[0], i[1]
         data[tag_id] = row['Tags'][tag_name]
+
+        # if type(data[tag_id]['Value']) == str:
+        #     data[tag_id]['Value'].replace(',', '')
+        #     value = float(data[tag_id]['Value'].replace(',', ''))
+        # else:
+        #     value = float(data[tag_id]['Value'])
+        #
+        # if i[0] in ['obj2', 'obj3', 'obj4', 'obj5', 'obj6']:
+        #     data[tag_id]['Value'] = value
+        # else:
+        #     data[tag_id]['Value'] = "{:,.2f}".format(value)
 
         # remove for security reason
         if 'Name' in data[tag_id]:
@@ -962,17 +1012,16 @@ def file_browser_get_directory(request):
 
 
 @login_required
-def alarm_summary(request):
+def alarm_active(request):
     ms = mssqlmapper.MssqlMapper()
-    response = { 'data': ms.get_active_alarm() }
+    response = { 'data': ms.get_active_alarm('HSD_NPN0') }
     return HttpResponse(json.dumps(response), content_type='application/json') 
 
 
 @login_required
 def alarm_history(request):
-    pass
-
-
-@login_required
-def alarm_event(request):
-    pass
+    start = int(request.GET['start'])
+    rows = 15
+    ms = mssqlmapper.MssqlMapper()
+    response = { 'data': ms.get_alarm_history('HSD_NPN0', start, rows) }
+    return HttpResponse(json.dumps(response), content_type='application/json') 
