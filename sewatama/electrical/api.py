@@ -33,7 +33,7 @@ def get_page_schema(page_id):
     return schema[page_id]
 
 
-def grammar_sum(detail, row):
+def grammar_sum(detail, row):   
     total_value = 0
     for tag_name in detail['value']:
         if tag_name not in row['Tags']:
@@ -232,6 +232,13 @@ def create_response(page):
                     if 'grammar' in d and d['grammar'] == 'mean':
                         d['value'] = grammar_mean(d, row)
                         final_data.append(d)
+
+                    # get mean value from several tag names
+                    if 'grammar' in d and d['grammar'] == 'variant_1':
+                        total_value = grammar_sum(d, row)                        
+                        d['value'] = total_value / len(d['value']) * math.sqrt(3)
+                        d['value'] = "{:,.2f}".format(d['value'])
+                        final_data.append(d)                    
 
                 if d['type'] == 'image':
                     final_data.append(d)
@@ -651,8 +658,7 @@ def genset_outgoing_1_unit_3(request):
     value5 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_005']['Value'])
     value6 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_006']['Value'])
     value7 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_007']['Value'])
-    value8 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_008']['Value'])
-    print row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_009']['Value']
+    value8 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_008']['Value'])    
     value9 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_009']['Value'])
     value10 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_010']['Value']) 
     value11 = float(row['Tags']['SS\HSD_NPN0\RT4\GEN03\CYL_EXH_TMP_011']['Value'])
