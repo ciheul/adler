@@ -236,7 +236,7 @@ def create_response(page):
                     # get mean value from several tag names
                     if 'grammar' in d and d['grammar'] == 'variant_1':
                         total_value = grammar_sum(d, row)                        
-                        d['value'] = total_value / len(d['value']) * math.sqrt(3)
+                        d['value'] = total_value / len(d['value']) / math.sqrt(3)
                         d['value'] = "{:,.2f}".format(d['value'])
                         final_data.append(d)                    
 
